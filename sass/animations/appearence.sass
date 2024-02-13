@@ -1,0 +1,67 @@
+.fade-up
+	transition: var(--duration, 0.5s) var(--easing, ease-out)
+	transform: translateY(var(--initialTranslateY, 50px))
+	opacity: 0
+
+	&.in
+		transform: translateY(0)
+		opacity: 1
+
+
+.fade-in
+	transition: var(--duration, 0.5s) var(--easing, ease-out)
+	opacity: 0
+
+	&.in
+		opacity: 1
+
+
+.zoom-in
+	transition: var(--duration, 0.5s) var(--easing, ease-out)
+	transform: scale(var(--initialScale, 1.1))
+
+	&.in
+		transform: scale(1)
+
+
+.fade-left
+	transition: var(--duration, 0.5s) var(--easing, ease-out)
+	transform: translateX(var(--initialTranslateX, 50px))
+	opacity: 0
+
+	&.in
+		transform: translateX(0)
+		opacity: 1
+
+
+.fade-right
+	transition: var(--duration, 0.5s) var(--easing, ease-out)
+	transform: translateX(var(--initialTranslateX, -50px))
+	opacity: 0
+
+	&.in
+		transform: translateX(0)
+		opacity: 1
+
+
+.delay
+	&-1
+		transition-delay: 0.1s
+	&-2
+		transition-delay: 0.2s
+	&-3
+		transition-delay: 0.3s
+	&-4
+		transition-delay: 0.4s
+	&-5
+		transition-delay: 0.5s
+	&-6
+		transition-delay: 0.6s
+	&-7
+		transition-delay: 0.7s
+	&-8
+		transition-delay: 0.8s
+	&-9
+		transition-delay: 0.9s
+	&-10
+		transition-delay: 1s

@@ -1,0 +1,7 @@
+@mixin s($name)
+	background: url('../img/sprites/' + $name + '.jpg') 0 0 no-repeat
+
+@mixin sr($name)
+	+s($name)
+	+retina
+		background: url('../img/sprites/' + $name + '@2x.jpg') 0 0 no-repeat
