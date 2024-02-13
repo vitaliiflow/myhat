@@ -47,4 +47,6 @@ wp-config.php
 # uncomment the next line
 #/wp-content/themes
 
+/node-modules/*
 /node-modules/
+/node-modules
