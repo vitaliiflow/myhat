@@ -1,0 +1,177 @@
+{
+    "key": "group_65cb64d238794",
+    "title": "Page: Flexible",
+    "fields": [
+        {
+            "key": "field_65cb64d281764",
+            "label": "Building blocks",
+            "name": "content_blocks",
+            "aria-label": "",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "layout_65cb6501ae750": {
+                    "key": "layout_65cb6501ae750",
+                    "name": "hero-home",
+                    "label": "Block: Hero",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_65cb71db1e9d3",
+                            "label": "",
+                            "name": "",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_65cb6712b0d31"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_65cb654181765": {
+                    "key": "layout_65cb654181765",
+                    "name": "product-categories-list",
+                    "label": "Block: Product Categories",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_65cca744859d1",
+                            "label": "Block: Product Categories",
+                            "name": "block:_product_categories",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_65cb67246f717"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_65cb658e81766": {
+                    "key": "layout_65cb658e81766",
+                    "name": "cta-product-customizer",
+                    "label": "Block: CTA - Product Customizer",
+                    "display": "block",
+                    "sub_fields": [],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_65cb65d981767": {
+                    "key": "layout_65cb65d981767",
+                    "name": "product-brands-list",
+                    "label": "Block: Product Brands",
+                    "display": "block",
+                    "sub_fields": [],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_65cb65f381768": {
+                    "key": "layout_65cb65f381768",
+                    "name": "product-team-list",
+                    "label": "Block: Product by Team",
+                    "display": "block",
+                    "sub_fields": [],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_65cb663781769": {
+                    "key": "layout_65cb663781769",
+                    "name": "product-collections-list",
+                    "label": "Block: Product Collections",
+                    "display": "block",
+                    "sub_fields": [],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_65cb664e8176a": {
+                    "key": "layout_65cb664e8176a",
+                    "name": "block-product-models",
+                    "label": "Block: Product Models",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_65ccc8e0dee4a",
+                            "label": "Block: Product Models",
+                            "name": "block:_product_models",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_65ccc2db12fbc"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "min": "",
+            "max": "",
+            "button_label": "Add Row"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-pages\/page-flexible.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1707919624
+}

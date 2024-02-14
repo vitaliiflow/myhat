@@ -1,0 +1,34 @@
+.product-cat
+    &--type
+        .container
+            max-width: 780px
+    .row
+        margin-left: -10px
+        margin-right: -10px
+    &__item
+        max-width: 20%
+        padding-left: 10px
+        padding-right: 10px
+        &:hover
+            img
+                opacity: 1
+        img
+            width: 100%
+            height: auto
+            
+            transition: $default-transition
+
+            object-fit: contain
+            +min-screen($breakpoint-lg)
+                opacity: .65
+
+        &-link
+            display: block
+            +min-screen($breakpoint-sm)
+                padding-left: 0.5rem
+                padding-right: 0.5rem
+            +min-screen($breakpoint-md)
+                padding-left: 1rem
+                padding-right: 1rem
+        h6
+            text-transform: uppercase
