@@ -1,0 +1,17 @@
+.product-cat
+    &.product-cat--model
+        .product-cat
+            &__item
+                width: calc(100% / 3)
+                max-width: 200px
+                margin-bottom: 30px
+                +min-screen($breakpoint-lg)
+                    width: calc(100% / 6)
+                    margin-bottom: 0
+                &-link
+                    +min-screen($breakpoint-sm)
+                        padding-left: 0
+                        padding-right: 0
+                    +min-screen($breakpoint-md)
+                        padding-left: 0.5rem
+                        padding-right: 0.5rem
