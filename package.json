@@ -47,7 +47,9 @@
     "cache-clear": "gulp clearCache"
   },
   "dependencies": {
+    "bootstrap-4-grid": "^3.4.0",
     "gulp-cli": "^2.3.0",
-    "object.map": "^1.0.1"
+    "object.map": "^1.0.1",
+    "slick-carousel": "^1.8.1"
   }
 }
