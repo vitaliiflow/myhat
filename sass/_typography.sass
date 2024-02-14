@@ -1,1 +1,27 @@
+body
+    color: $color-text
+    font-family: Karla, sans-serif
+    font-size: 19px
+    +max-screen($breakpoint-xxl)
+        font-size: 16px
+a
+    color: $color-text
 
+h1, .h1
+    font-family: Lora, sans-serif
+    line-height: 1.2
+    +adaptive-value("font-size", 46, 32, 1) 
+
+h2, .h2
+    font-family: Lora, sans-serif
+    line-height: 1.2
+    +adaptive-value("font-size", 36, 26, 1) 
+
+h6, .h6
+    +adaptive-value("font-size", 16, 14, 1) 
+
+.font-family
+    &-primary
+        font-family: Karla, sans-serif
+    &-secondary
+        font-family: Lora, sans-serif
