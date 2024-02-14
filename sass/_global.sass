@@ -1,0 +1,37 @@
+body
+    background-color: $color-background-main
+    
+header
+    background: #000
+
+img
+    max-width: 100%
+
+.section
+    +adaptive-value('padding-top', 90, 30 , 1)
+    +adaptive-value('padding-bottom', 90, 30 , 1)
+    &__title
+        +adaptive-value('margin-bottom', 40, 20 , 1)
+
+.bg-color
+    &.bg-color
+        &--white
+            background-color: white
+        &--text
+            background-color: $color-text
+        &--main
+            background-color: $color-background-main
+        &--light
+            background-color: $color-background-light
+        &--dark
+            background-color: $color-background-dark
+        &--cream
+            background-color: $color-background-cream
+        &--yellow
+            background-color: $color-yellow
+        &--red
+            background-color: $color-red
+        &--blue
+            background-color: $color-blue
+
+        
