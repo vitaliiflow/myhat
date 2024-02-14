@@ -20,7 +20,7 @@ if (function_exists('acf_add_options_page')) {
 		'capability' => 'edit_posts',
 		'redirect' => false
 	));
-	
+
 	// acf_add_options_sub_page(array(
 	// 	'page_title' => 'Theme Header Settings',
 	// 	'menu_title' => 'Header',
@@ -44,14 +44,4 @@ if (function_exists('acf_add_options_page')) {
 function the_acf_loop()
 {
 	get_template_part('template-parts/loop/acf-blocks', 'loop');
-}
-
-/*
-=====================
-	ACF Flexible Template Loop | Page template
-=====================
-*/
-function the_acf_loop_for_default_page()
-{
-	get_template_part('template-parts/loop/acf-blocks', 'loop_default');
 }
