@@ -86,7 +86,50 @@
                     "name": "cta-product-customizer",
                     "label": "Block: CTA - Product Customizer",
                     "display": "block",
-                    "sub_fields": [],
+                    "sub_fields": [
+                        {
+                            "key": "field_65ce1494f144a",
+                            "label": "Block: CTA - Product Customizer",
+                            "name": "block:_cta_-_product_customizer",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_65cb672e47823"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        },
+                        {
+                            "key": "field_65ce1494121ff",
+                            "label": "Block: CTA - Product Customizer",
+                            "name": "",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": "Block: CTA - Product Customizer",
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        }
+                    ],
                     "min": "",
                     "max": ""
                 },
@@ -95,7 +138,50 @@
                     "name": "product-brands-list",
                     "label": "Block: Product Brands",
                     "display": "block",
-                    "sub_fields": [],
+                    "sub_fields": [
+                        {
+                            "key": "field_65ce145c121fd",
+                            "label": "Block: Product Brands",
+                            "name": "",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": "Block: Product Brands",
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_65ce145cf1448",
+                            "label": "Block: Product Brands",
+                            "name": "block:_product_brands",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_65ce140c63342"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
                     "min": "",
                     "max": ""
                 },
@@ -104,16 +190,82 @@
                     "name": "product-team-list",
                     "label": "Block: Product by Team",
                     "display": "block",
-                    "sub_fields": [],
+                    "sub_fields": [
+                        {
+                            "key": "block-product-by-team",
+                            "label": "",
+                            "name": "",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "Block: Product by Team"
+                        },
+                        {
+                            "key": "field_65ce1471f1449",
+                            "label": "Block: Product by Team",
+                            "name": "block:_product_by_team",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_65ce12778fc02"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
                     "min": "",
                     "max": ""
                 },
                 "layout_65cb663781769": {
                     "key": "layout_65cb663781769",
-                    "name": "product-collections-list",
-                    "label": "Block: Product Collections",
+                    "name": "linked-cards",
+                    "label": "Block: Linked Cards",
                     "display": "block",
-                    "sub_fields": [],
+                    "sub_fields": [
+                        {
+                            "key": "field_65ce120bf68bf",
+                            "label": "Block: Linked Cards",
+                            "name": "linked-cards",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_65cb6755d2c76"
+                            ],
+                            "display": "seamless",
+                            "layout": "row",
+                            "prefix_label": 0,
+                            "prefix_name": "Block: Linked Cards"
+                        }
+                    ],
                     "min": "",
                     "max": ""
                 },
@@ -141,11 +293,20 @@
                                 "group_65ccc2db12fbc"
                             ],
                             "display": "seamless",
-                            "layout": "block",
+                            "layout": "row",
                             "prefix_label": 0,
                             "prefix_name": 0
                         }
                     ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_65ce161cd53df": {
+                    "key": "layout_65ce161cd53df",
+                    "name": "block-latest-products",
+                    "label": "Block: Latest Added Products",
+                    "display": "block",
+                    "sub_fields": [],
                     "min": "",
                     "max": ""
                 }
@@ -173,5 +334,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1707919624
+    "modified": 1708004919
 }
