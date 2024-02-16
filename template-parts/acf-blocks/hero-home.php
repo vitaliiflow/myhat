@@ -42,7 +42,7 @@ if ($slides) : ?>
                     
                         <?php if ($bigCopy) : ?>
 
-                            <div class="h1"><?php echo $bigCopy; ?> <?php echo '1' . get_inline_svg('arrow-right.svg');?></div>
+                            <div class="h1"><?php echo $bigCopy; ?> <?php get_inline_svg('arrow-right.svg');?></div>
                         
                         <?php endif; ?>
 

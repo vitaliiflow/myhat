@@ -3,6 +3,42 @@
     "title": "Block: Linked Cards",
     "fields": [
         {
+            "key": "field_65ce27d68e526",
+            "label": "Section title",
+            "name": "section_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_65ce27e08e527",
+            "label": "Link",
+            "name": "link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
             "key": "field_65ce11aac2ca8",
             "label": "Cards",
             "name": "cards",
@@ -34,7 +70,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "",
+                        "width": "40",
                         "class": "",
                         "id": ""
                     },
@@ -47,7 +83,7 @@
                     "max_height": "",
                     "max_size": "",
                     "mime_types": "",
-                    "preview_size": "medium",
+                    "preview_size": "thumbnail",
                     "parent_repeater": "field_65ce11aac2ca8"
                 },
                 {
@@ -60,7 +96,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "",
+                        "width": "30",
                         "class": "",
                         "id": ""
                     },
@@ -81,7 +117,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "",
+                        "width": "30",
                         "class": "",
                         "id": ""
                     },
@@ -109,5 +145,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1708003820
+    "modified": 1708009462
 }
