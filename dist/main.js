@@ -49,4 +49,17 @@ jQuery(document).ready(function ($) {
       settings: "unslick"
     }]), _$$slick));
   });
+  $(".product-cat--brand-slider").each(function () {
+    var _$$slick2;
+    $(this).slick((_$$slick2 = {
+      dots: false,
+      arrows: false,
+      mobileFirst: true,
+      speed: 1000,
+      infinite: true
+    }, _defineProperty(_$$slick2, "arrows", false), _defineProperty(_$$slick2, "slidesToShow", 1), _defineProperty(_$$slick2, "slidesToShow", 1), _defineProperty(_$$slick2, "centerMode", true), _defineProperty(_$$slick2, "variableWidth", true), _defineProperty(_$$slick2, "responsive", [{
+      breakpoint: 991,
+      settings: "unslick"
+    }]), _$$slick2));
+  });
 });

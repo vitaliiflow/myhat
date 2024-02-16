@@ -120,26 +120,6 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_65ce145c121fd",
-                            "label": "Block: Product Brands",
-                            "name": "",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": "Block: Product Brands",
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
                             "key": "field_65ce145cf1448",
                             "label": "Block: Product Brands",
                             "name": "block:_product_brands",
@@ -171,26 +151,6 @@
                     "label": "Block: Product by Team",
                     "display": "block",
                     "sub_fields": [
-                        {
-                            "key": "block-product-by-team",
-                            "label": "",
-                            "name": "",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "Block: Product by Team"
-                        },
                         {
                             "key": "field_65ce1471f1449",
                             "label": "Block: Product by Team",
@@ -314,5 +274,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1708011187
+    "modified": 1708069743
 }
