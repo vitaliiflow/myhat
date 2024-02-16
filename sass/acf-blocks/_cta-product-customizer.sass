@@ -1,0 +1,38 @@
+.cta--product-customizer
+    position: relative
+    aspect-ratio: 614 / 122
+
+    display: flex
+    align-items: flex-end
+    justify-content: center
+    +max-screen($breakpoint-sm)
+        aspect-ratio: 370 / 310
+        padding-left: 15px
+        padding-right: 15px
+    &::after
+        content: ""
+        display: block
+        inset: 0
+        width: 100%
+        height: 100%
+        background: linear-gradient(0deg, rgba(0,0,0, 0.3) 0%, rgba(0,0,0,0) 50%)
+        position: absolute
+        z-index: 2
+        
+.cta
+    &__img
+        z-index: 1
+    &__icon
+        width: 4rem
+        margin-bottom: 1rem
+    &__content
+        color: white
+        position: relative
+        z-index: 5
+        +min-screen($breakpoint-lg)
+            margin-bottom: -2rem
+        .button
+            color: white
+            svg
+                path
+                    fill: white
