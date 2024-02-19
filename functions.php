@@ -11,3 +11,5 @@ require get_template_directory().'/inc/acf.php';
 require get_template_directory().'/inc/theme-functions.php';
 
 require get_template_directory().'/inc/custom-functions-from-old-theme.php';
+require get_template_directory().'/inc/theme-ajax.php';
+

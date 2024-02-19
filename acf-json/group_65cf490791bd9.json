@@ -5,8 +5,7 @@
         {
             "key": "field_65cf4907a5516",
             "label": "Logo",
-            "name": "logo",
-            "aria-label": "",
+            "name": "header_logo",
             "type": "image",
             "instructions": "",
             "required": 0,
@@ -17,6 +16,7 @@
                 "id": ""
             },
             "return_format": "array",
+            "preview_size": "medium",
             "library": "all",
             "min_width": "",
             "min_height": "",
@@ -24,8 +24,43 @@
             "max_width": "",
             "max_height": "",
             "max_size": "",
-            "mime_types": "",
-            "preview_size": "medium"
+            "mime_types": ""
+        },
+        {
+            "key": "field_65d2900f74e56",
+            "label": "Mobile After Menu Links",
+            "name": "mobile_after_menu_links",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_65d2902a74e57",
+                    "label": "Link",
+                    "name": "link",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array"
+                }
+            ]
         }
     ],
     "location": [
@@ -43,8 +78,7 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": true,
+    "active": 1,
     "description": "",
-    "show_in_rest": 0,
-    "modified": 1708083488
+    "modified": 1708298294
 }

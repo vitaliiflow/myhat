@@ -29,3 +29,32 @@ function codelibry_setup(){
 }
 
 add_action( 'after_setup_theme', 'codelibry_setup', 0 );
+
+
+//Add Icons To Menu
+add_filter('wp_nav_menu_objects', 'my_wp_nav_menu_objects', 10, 2);
+
+function my_wp_nav_menu_objects( $items, $args ) {
+    
+    // loop
+    foreach( $items as &$item ) {
+        
+        // vars
+        $icon = get_field('menu_item_icon', $item);
+        
+        
+        // append icon
+        if( $icon ) {
+            
+            $item->title .= ' <img src="' . $icon['url'] . '" alt="' . $icon['title'] .'">';
+			$item->classes[] .= 'has-mobile-icon';
+            
+        }
+        
+    }
+    
+    
+    // return
+    return $items;
+    
+}
