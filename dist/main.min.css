@@ -349,13 +349,15 @@ a.text-dark:hover,a.text-dark:focus{color:#121416 !important}
 .search__postsList{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
 .search__postsList__itemImage{position:relative;padding-bottom:100%}
 .search__postsList__itemDesc{max-height:4em;overflow:hidden}
-.header{background-color:transparent;padding-top:1.1112rem;padding-bottom:1.1112rem}
+.header{background-color:transparent;padding-top:1.1112rem;padding-bottom:1.1112rem;position:relative;z-index:1}
 .header__logo img{max-width:5rem}
 .header__menu{margin-left:auto;margin-right:auto}
 .header__menu .menu{display:-webkit-box;display:-ms-flexbox;display:flex;margin:0 -0.834rem}
 .header__menu .menu-item{padding:0 .834rem;position:relative}
 .header__menu .menu-item.menu-item-has-children{padding-bottom:1.334rem;margin-bottom:-1.334rem}
 .header__menu .menu-item .sub-menu{display:none;position:absolute;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);top:100%;width:auto;background:#fff;padding:.667rem 0}
+.header__menu .menu-item .sub-menu .sub-menu{left:100%;-webkit-transform:none;transform:none;top:0}
+.header__menu .menu-item .sub-menu .menu-item-has-children{margin-bottom:0}
 .header__menu .menu-item .sub-menu .menu-item{padding:0}
 .header__menu .menu-item .sub-menu .menu-item img{display:none}
 .header__menu .menu-item .sub-menu .menu-item a{white-space:nowrap;padding:.445rem 1.778rem;position:relative;text-align:center;display:block;-webkit-transition:.3s;transition:.3s}
@@ -368,7 +370,7 @@ a.text-dark:hover,a.text-dark:focus{color:#121416 !important}
 .header__iconsList__item{padding:0 .445rem}
 .header__iconsList__item img{display:block;width:1.334rem;height:1.334rem}
 .header__iconsList__item.search{position:relative;z-index:999}
-.header__iconsList__item.search img{width:1.1112rem;height:1.1112rem}
+.header__iconsList__item.search img{width:1.1112rem;height:1.1112rem;cursor:pointer}
 .header__iconsList__item.search .search__bar{margin-left:-2rem}
 .header__iconsList__item.search .search__bar input{padding-left:2.3rem;color:#000}
 .header__iconsList__item.search .search__bar input::-webkit-input-placeholder{color:#000}
