@@ -41,3 +41,23 @@ h6, .h6
     h6, .h6,
     p , ul , ol, blockquote , img
         margin-bottom: 1rem
+
+.check-list
+    ul
+        li
+            position: relative
+            padding-left: 2rem
+            margin-bottom: 0.5rem
+            &:last-child
+                margin-bottom: 0
+            &::before
+                content: ""
+                width: 1.25rem
+                height: 1.25rem
+                position: absolute
+                left: 0
+                top: 50%
+                transform: translateY(-50%)
+                background-image: url(../assets/images/footer/check-white.png)
+                background-size: contain
+                background-position: center

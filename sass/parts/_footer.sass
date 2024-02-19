@@ -1,0 +1,38 @@
+.footer
+    .row
+        margin-left: -1.5rem
+        margin-right: -1.5rem
+        .col
+            padding-left: 1.5rem
+            padding-right: 1.5rem
+    &__nav,
+    &__content-list
+        position: relative
+        &::before
+            content: ""
+            position: absolute
+            display: block
+            width: 1px
+            height: 100%
+            background: $color-background-light
+            left: 0
+            top: 0
+            opacity: .5
+    &__nav
+        a
+            color: white
+            &:hover
+                text-decoration: underline
+
+.social-media
+    display: flex
+    flex-wrap: wrap
+    margin-left: -0.5rem
+    margin-right: -0.5rem
+    &__item
+        padding-left: 0.5rem
+        padding-right: 0.5rem
+    svg
+        width: 2rem
+        height: 2rem
+            
