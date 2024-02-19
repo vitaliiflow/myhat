@@ -1,9 +1,419 @@
 .menu-main-container
     display: none
+.header 
+    background-color: transparent 
+    padding-top: 1.1112rem
+    padding-bottom: 1.1112rem
+    &__logo
+        +max-screen($breakpoint-lg)
+            margin-right: auto
+        img 
+            max-width: 5rem 
+            +max-screen(1200px)
+                max-width: 4rem 
+            +max-screen($breakpoint-md)
+                max-width: 2.5rem
+    &__menu
+        margin-left: auto
+        margin-right: auto
+        +max-screen($breakpoint-lg)
+            display: none 
+        .menu 
+            display: flex 
+            margin: 0 -0.834rem 
+            +max-screen(1200px)
+                margin: 0 -0.556rem
+            +max-screen($breakpoint-lg) 
+                flex-direction: column
+        .menu-item 
+            padding: 0 0.834rem 
+            position: relative 
+            +max-screen(1200px)
+                padding: 0 0.556rem 
+            +max-screen($breakpoint-lg)
+                margin-bottom: 0.278rem
+                &:last-child 
+                    margin-bottom: 0
+            &.menu-item-has-children
+                padding-bottom: 1.334rem
+                margin-bottom: -1.334rem
+                +max-screen(1920px)
+                    padding-bottom: 0.889rem
+                    margin-bottom: -0.889rem
+                +max-screen($breakpoint-lg)
+                    margin-bottom: 0.278rem
+                    padding-bottom: 0
+                    & > div > a
+                        position: relative 
+                        display: block 
+                        width: 100% 
+                        &::after 
+                            content: ""
+                            position: absolute
+                            right: -0.278rem
+                            top: 50% 
+                            transform: translateY(-50%) rotate(90deg)
+                            background-image: url('../assets/images/icons/right-arrow.png')
+                            background-size: contain
+                            background-repeat: no-repeat
+                            background-position: center
+                            width: 1rem 
+                            height: 1rem 
+                            transition: .3s 
+                    &.closed > div > a 
+                        &::after 
+                            transform: translateY(-50%) 
+            a 
+                +max-screen($breakpoint-lg)
+                    font-size: 1.1112rem
+                    font-weight: 700 
+            &.mobile-sm 
+                a 
+                    +max-screen($breakpoint-lg)
+                        font-size: 0.834rem
+                        font-weight: 500
+            & + .menu-item
+                +max-screen($breakpoint-lg)
+                    padding-top: 0
+            & + .mobile-sm
+                +max-screen($breakpoint-lg)
+                    padding-top: 1.889rem
+            &.mobile-sm + .mobile-sm 
+                +max-screen($breakpoint-lg)
+                    padding-top: 0
+            .sub-menu
+                display: none 
+                position: absolute
+                left: 50%
+                transform: translateX(-50%)
+                top: 100%
+                width: auto
+                background: #fff
+                padding: 0.667rem 0px
+                +max-screen($breakpoint-lg)
+                    position: static
+                    width: 100%
+                    transform: none
+                    background: transparent
+                    flex-wrap: wrap
+                    display: flex 
+                    padding-bottom: 1.334rem
+                    margin: 0 -0.778rem
+                +max-screen($breakpoint-md)
+                    margin: 0 -0.334rem 
+                .menu-item 
+                    padding: 0
+                    +max-screen($breakpoint-lg)
+                        width: 100% 
+                        padding: 0 0.778rem
+                        &:last-child 
+                            margin-bottom: -1rem
+                    +max-screen($breakpoint-md)
+                        padding: 0 0.334rem 
+                    img 
+                        display: none 
+                    a 
+                        white-space: nowrap
+                        padding: 0.445rem 1.778rem
+                        position: relative
+                        text-align: center
+                        display: block
+                        transition: .3s 
 
-.header
-    padding-top: 20px
-    padding-bottom: 20px
-    max-width: 80%
-    margin-left: auto
-    margin-right: auto
+                        +max-screen(1920px)
+                            padding: 0.334rem 1.334rem 
+                        +max-screen($breakpoint-lg) 
+                            padding: 0
+                            display: flex
+                            flex-direction: column-reverse
+                            font-size: 0.889rem
+                            font-weight: 400
+                            align-items: flex-start
+                            height: 100% 
+                            img 
+                                margin-bottom: auto
+                                max-width: 110px 
+                                width: 100%
+                                display: block
+                        +max-screen($breakpoint-md)
+                            font-size: 0.778rem
+                        &:hover 
+                            background-color: $color-light-gray
+                    &.has-mobile-icon
+                        +max-screen($breakpoint-lg)
+                            width: 16.6667%
+                        +max-screen($breakpoint-md)
+                            width: 33.3% 
+                            &:last-child
+                                margin-bottom: 0
+                        a 
+                            +max-screen($breakpoint-lg)
+                                font-size: 0.667rem
+                            +max-screen($breakpoint-md)
+                                font-size: 0.556rem 
+                    &.has-mobile-icon 
+                        +max-screen($breakpoint-lg)
+                            margin-top: 0.889rem
+                            margin-bottom: 0
+                        +max-screen($breakpoint-md)
+                            margin-top: 1.56rem
+                    &:nth-child(1),
+                    &:nth-child(2),
+                    &:nth-child(3)
+                        &.has-mobile-icon
+                            +max-screen($breakpoint-md)
+                                margin-top: 0.889rem 
+                                margin-bottom: 0
+                    &.see-all-items 
+                        +max-screen($breakpoint-lg)
+                            text-align: center
+                            margin-bottom: 0
+                            padding-top: 22px
+                        a
+                            font-size: 16px
+                            &::after 
+                                content: ""
+                                position: absolute
+                                background-image: url('../assets/images/icons/right-arrow-sub-menu.png')
+                                background-size: contain 
+                                background-repeat: no-repeat 
+                                background-position: center
+                                right: 12px
+                                top: 50% 
+                                transform: translateY(-50%)
+                                width: 0.7rem 
+                                height: 0.6rem  
+                            +max-screen($breakpoint-lg)
+                                font-size: 0.667rem
+                                position: relative 
+                                font-weight: 700 
+                                text-transform: uppercase 
+                                display: inline 
+                                padding-right: 1.1112rem
+                                &::after 
+                                    width: 0.667rem 
+                                    height: 0.556rem  
+                                    right: 0
+                            +max-screen($breakpoint-md)
+                                font-size: 0.556rem  
+                                padding-right: 0.889rem
+                                &::after 
+                                    width: 0.556rem  
+                                    height: 0.445rem 
+            &.has-magic-icon 
+                a
+                    position: relative 
+                    padding-right: 1.778rem
+                    +max-screen($breakpoint-lg)
+                        padding-right: 1.1112rem
+                    &::after 
+                        content: ""
+                        position: absolute
+                        top: 50% 
+                        transform: translateY(-50%)
+                        width: 1.1112rem 
+                        height: 1.1112rem 
+                        right: 0 
+                        background-image: url('../assets/images/icons/magic-wand.png')
+                        background-size: contain
+                        background-repeat: no-repeat 
+                        background-position: center
+                        +max-screen($breakpoint-lg)
+                            width: 0.889rem 
+                            height: 0.889rem 
+    &__iconsList 
+        display: flex 
+        margin: 0 -0.445rem
+        align-items: center
+        &__item
+            padding: 0 0.445rem 
+            img 
+                display: block 
+                width: 1.334rem 
+                height: 1.334rem 
+            &.search 
+                position: relative
+                z-index: 999
+                +max-screen($breakpoint-lg)
+                    position: static
+                img 
+                    width: 1.1112rem 
+                    height: 1.1112rem 
+                .search
+                    &__bar 
+                        margin-left: -2rem
+                        +max-screen($breakpoint-md)
+                            width: 100% 
+                        input 
+                            padding: 0.5rem 1rem 
+                            padding-left: 2.3rem
+                            font-size: 16px
+                            border: 0
+                            color: $color-text 
+                            +max-screen($breakpoint-md)
+                                width: 100% 
+                            &::placeholder 
+                                color: $color-text
+                        &Wrapper 
+                            position: absolute
+                            top: calc( 100% + 1.1112rem )
+                            right: 0.445rem 
+                            opacity: 0
+                            visibility: hidden 
+                            transform: translateY(30px)
+                            transition: .3s 
+                            +max-screen($breakpoint-lg)
+                                right: 0 
+                                top: 100%
+                            +max-screen($breakpoint-md)
+                                width: 100% 
+                                top: calc( 100% + 0.5rem )
+                            &.opened 
+                                opacity: 1
+                                visibility: visible 
+                                transform: none 
+                            form 
+                                display: flex 
+                                flex-direction: row-reverse
+                                border-radius: 20px
+                                overflow: hidden
+                    &__btn 
+                        z-index: 1
+                        input 
+                            font-size: 0
+                            width: 2rem 
+                            height: 2rem
+                            background-image: url('../assets/images/icons/search.png')
+                            background-size: 0.834rem 
+                            background-repeat: no-repeat 
+                            background-position: center
+                            display: block 
+                            background-color: transparent
+                            margin-left: -1px
+                            border: 0
+                    &__resultsList 
+                        background-color: $color-white
+                        margin-top: 8px
+                        opacity: 0
+                        visibility: hidden
+                        transition: .3s 
+                        border-radius: 20px 
+                        &__content 
+                            padding: 10px 20px 
+                        &.show 
+                            opacity: 1
+                            visibility: visible 
+                        div 
+                            font-size: 15px
+                        .pt_name 
+                            margin-bottom: 4px
+                        a
+                            font-size: 13px
+                            padding-left: 10px
+                            margin-bottom: 2px
+                        .all-results 
+                            a
+                                padding: 0
+                                text-decoration: underline
+                                margin: 0
+                    &_results__list 
+                        display: flex 
+                        flex-direction: column 
+    &__burger 
+        width: 1.1112rem
+        height: 0.889rem
+        position: relative
+        transform: rotate(0deg)
+        transition: .5s ease-in-out
+        cursor: pointer
+        display: none 
+        margin-left: 0.889rem
+        +max-screen($breakpoint-lg)
+            display: block 
+        span 
+            display: block
+            position: absolute
+            height: 2px
+            width: 100%
+            background: $color-text
+            border-radius: 0.5px
+            opacity: 1
+            left: 0
+            transform: rotate(0deg)
+            transition: .25s ease-in-out
+            &:nth-child(1)
+                top: 0
+            &:nth-child(2)
+                top: 50%
+                transform: translateY(-50%) rotate(0deg)
+            &:nth-child(3)
+                bottom: 0
+    &__linksList 
+        &__item 
+            a 
+                font-size: 0.778rem
+                margin-bottom: 0.445rem
+                &:last-child 
+                    margin-bottom: 0
+    &__languages 
+        +max-screen($breakpoint-lg)
+            margin-top: auto
+    &__mobileMenu
+        display: none 
+        +max-screen($breakpoint-lg)
+            position: fixed 
+            top: 0
+            right: -100%
+            width: 100% 
+            height: 100% 
+            background-color: $color-background-main 
+            padding: 1.778rem 
+            display: flex 
+            flex-direction: column 
+            overflow: scroll 
+            transition: .3s 
+            z-index: 999
+        +max-screen($breakpoint-md)
+            padding: 1.1112rem 
+        .header
+            &__menu 
+                +max-screen($breakpoint-lg)
+                    display: block 
+                    padding-top: 1.56rem 
+                    padding-bottom: 1.56rem 
+                    margin: 0
+            &__close
+                position: absolute
+                +max-screen($breakpoint-lg)
+                    width: 1.334rem 
+                    height: 1.334rem 
+                    top: 42px 
+                    right: 1.778rem 
+                +max-screen($breakpoint-md)
+                    top: 2rem 
+                    right: 1.1112rem
+                    width: 1.1112rem 
+                    height: 1.1112rem 
+                &::before,
+                &::after
+                    content: ""
+                    position: absolute
+                    top: 50% 
+                    left: 0
+                    width: 100% 
+                    height: 2px 
+                    background-color: $color-text 
+                &::before 
+                    transform: rotate(45deg)     
+                &::after 
+                    transform: rotate(-45deg)
+    &__content 
+        display: flex 
+        align-items: center
+        +max-screen($breakpoint-lg)
+            position: relative
+        &.open 
+            .header
+                &__mobileMenu 
+                    +max-screen($breakpoint-lg)
+                        right: 0
