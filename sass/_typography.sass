@@ -7,6 +7,10 @@ body
 a
     color: $color-text
 
+h1,h2,h3,h4,h5,h6,
+.h1, .h2, .h3, .h4, .h5, .h6
+    font-weight: 600
+
 h1, .h1
     font-family: Lora, sans-serif
     line-height: 1.2
@@ -21,6 +25,11 @@ h3, .h3
     font-family: Lora, sans-serif
     line-height: 1.2
     +adaptive-value("font-size", 28, 24, 1) 
+
+h5, .h5
+    font-size: 19px
+    +max-screen($breakpoint-xxl)
+        font-size: 17px
 
 h6, .h6
     +adaptive-value("font-size", 16, 14, 1) 

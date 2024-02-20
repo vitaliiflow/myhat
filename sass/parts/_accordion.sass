@@ -1,0 +1,16 @@
+.accordion
+    &__body
+        display: none
+    &__button
+        appearance: none
+        border: 0
+        background-color: transparent
+        color: inherit
+        font-size: inherit
+
+        display: flex
+        &-icon
+            transition: $default-transition
+            &.active
+                transform: rotate(180deg)
+        
