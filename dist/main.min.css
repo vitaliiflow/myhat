@@ -443,7 +443,8 @@ a.text-dark:hover,a.text-dark:focus{color:#121416 !important}
 .button--outline{border:2px solid #000;background-color:transparent;color:#000}
 .button--outline:hover{background-color:#3e4a56;border:2px solid transparent;color:#fff}
 .button--lg{padding:1rem 2rem}
-.button--arrow{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-transform:uppercase;font-weight:600}
+.button--arrow{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-transform:uppercase;font-weight:600;background-color:transparent;color:inherit}
+.button--arrow:hover{background-color:transparent}
 .button--arrow:hover svg{-webkit-transform:translateX(8px);transform:translateX(8px)}
 .button--arrow svg{-webkit-transition:.3s all;transition:.3s all;width:15px;height:26px;margin-bottom:-3px;margin-left:.5rem}
 .wpcf7-submit{text-transform:uppercase;font-weight:600}
