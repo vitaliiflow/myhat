@@ -42,7 +42,9 @@ h6, .h6
 
 .content-block
     h1,.h1
-        margin-bottom: 2rem
+        margin-bottom: 1rem
+        +min-screen($breakpoint-md)
+            margin-bottom: 2rem
     h2, .h2,
     h3, .h3,
     h4, .h4,
@@ -52,8 +54,7 @@ h6, .h6
         margin-bottom: 1rem
         &:last-child
             margin-bottom: 0
-    h1,.h1
-        margin-bottom: 2rem
+    h1,.h1,
     h2, .h2,
     h3, .h3,
     h4, .h4,

@@ -69,5 +69,11 @@ img
 body 
     .container 
         max-width: 1235px 
-        padding: 0 30px 
+        padding: 0 20px 
+        +min-screen($breakpoint-sm)
+            padding-left: 30px
+            padding-right: 30px
 
+// .codelibry
+//     &-under-dev
+//         opacity: 0.5

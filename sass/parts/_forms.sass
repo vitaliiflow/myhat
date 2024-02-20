@@ -4,6 +4,15 @@ input
     border: 0
     border-radius: $radius-default
     font-weight: 600
+    &.text-color--cream
+        transition: $default-transition
+        &::placeholder
+            color: $color-background-cream
+        &:hover
+            background-color: $color-background-cream
+            color: white
+            &::placeholder
+                color: $color-background-cream
 
 .form-flat
     p
@@ -25,13 +34,11 @@ input
             width: 100%
             input
                 width: 100%
-    input
-        &.text-color--cream
-            transition: $default-transition
-            &::placeholder
-                color: $color-background-cream
-            &:hover
-                background-color: $color-background-cream
-                color: white
+    
     *
+        max-width: 100%
+
+.search
+    input
+        width: 400px
         max-width: 100%
