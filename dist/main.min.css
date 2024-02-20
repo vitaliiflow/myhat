@@ -87,10 +87,23 @@ h5,.h5{font-size:19px}
 h6,.h6{font-size:16px}
 .font-family-primary{font-family:Karla,sans-serif}
 .font-family-secondary{font-family:Lora,sans-serif}
-.content-block h1,.content-block .h1{margin-bottom:1.5rem}
-.content-block h2,.content-block .h2,.content-block h3,.content-block .h3,.content-block h4,.content-block .h4,.content-block h5,.content-block .h5,.content-block h6,.content-block .h6,.content-block p,.content-block ul,.content-block ol,.content-block blockquote,.content-block img{margin-bottom:1rem}
-.content-block h2:last-child,.content-block .h2:last-child,.content-block h3:last-child,.content-block .h3:last-child,.content-block h4:last-child,.content-block .h4:last-child,.content-block h5:last-child,.content-block .h5:last-child,.content-block h6:last-child,.content-block .h6:last-child,.content-block p:last-child,.content-block ul:last-child,.content-block ol:last-child,.content-block blockquote:last-child,.content-block img:last-child{margin-bottom:0}
-.check-list ul li{position:relative;padding-left:2rem;margin-bottom:.5rem}
+.content-block h1,.content-block .h1{margin-bottom:2rem}
+.content-block h2,.content-block .h2,.content-block h3,.content-block .h3,.content-block h4,.content-block .h4,.content-block h5,.content-block .h5,.content-block h6,.content-block .h6,.content-block p,.content-block ul,.content-block ol,.content-block blockquote,.content-block img,.content-block li{margin-bottom:1rem}
+.content-block h2:last-child,.content-block .h2:last-child,.content-block h3:last-child,.content-block .h3:last-child,.content-block h4:last-child,.content-block .h4:last-child,.content-block h5:last-child,.content-block .h5:last-child,.content-block h6:last-child,.content-block .h6:last-child,.content-block p:last-child,.content-block ul:last-child,.content-block ol:last-child,.content-block blockquote:last-child,.content-block img:last-child,.content-block li:last-child{margin-bottom:0}
+.content-block h1,.content-block .h1{margin-bottom:2rem}
+.content-block h2,.content-block .h2,.content-block h3,.content-block .h3,.content-block h4,.content-block .h4,.content-block h5,.content-block .h5,.content-block h6,.content-block .h6{margin-top:1rem}
+.content-block ol{padding-left:1rem}
+.content-block ol li{list-style:decimal}
+.content-block ul{padding-left:1rem}
+.content-block ul li{list-style:disc}
+.content-block .list-style-none{padding-left:0}
+.content-block .list-style-none ul{padding-left:0}
+.content-block .list-style-none li{list-style:none}
+.content-block a{text-decoration:underline;-webkit-transition:.3s all;transition:.3s all}
+.content-block a:hover{color:#3e4a56}
+.content-block blockquote{padding-left:2rem;padding-top:.5rem;padding-bottom:.5rem;margin-top:2rem;margin-bottom:2rem;border-left:.25rem solid #3e4a56}
+.check-list ul{padding-left:0}
+.check-list ul li{position:relative;padding-left:2rem;margin-bottom:.5rem;list-style:none}
 .check-list ul li:last-child{margin-bottom:0}
 .check-list ul li::before{content:"";width:1.25rem;height:1.25rem;position:absolute;left:0;top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%);background-image:url(../assets/images/footer/check-white.png);background-size:contain;background-position:center}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}

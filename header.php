@@ -9,6 +9,6 @@
 
 <?php function_exists('wp_body_open') ? wp_body_open() : do_action( 'wp_body_open' ); ?>
 
-<div class="wrapper">
+<?php get_template_part('template-parts/header/header'); ?>
 
-  <?php get_template_part('template-parts/header/header');
+<div class="wrapper">

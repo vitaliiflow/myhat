@@ -26,7 +26,7 @@ $rightColContent = get_field('right_tab_content','option');
 
             <?php if ($socials) : ?>
 
-              <ul class="social-media">
+              <ul class="social-media list-style-none">
 
                 <?php foreach ($socials as $social) : 
                   
