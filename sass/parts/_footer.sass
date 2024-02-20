@@ -1,13 +1,18 @@
 .footer
-    .row
-        margin-left: -1.5rem
-        margin-right: -1.5rem
-        .col
-            padding-left: 1.5rem
-            padding-right: 1.5rem
+    &__container
+        & > .row
+            margin-left: -1.5rem
+            margin-right: -1.5rem
+            .col,
+            .col-12
+                padding-left: 1.5rem
+                padding-right: 1.5rem
     &__nav,
     &__content-list
         position: relative
+        +max-screen($breakpoint-sm)
+            padding-top: 1.5rem
+            padding-bottom: 1.5rem
         &::before
             content: ""
             position: absolute
@@ -18,11 +23,36 @@
             left: 0
             top: 0
             opacity: .5
+            +max-screen($breakpoint-sm)
+                height: 1px
+                left: 1rem
+                width: calc(100% - 2rem)
+                
     &__nav
+        &::before
+            +max-screen($breakpoint-lg)
+                +min-screen($breakpoint-sm)
+                    display: none
         a
             color: white
             &:hover
                 text-decoration: underline
+
+    &__newsletter-inner
+        +max-screen($breakpoint-lg)
+            max-width: 400px
+            margin-left: auto
+            margin-right: auto
+            text-align: center
+        +max-screen($breakpoint-lg)
+            padding-bottom: 1.5rem
+        .social-media
+            +max-screen($breakpoint-lg)
+                justify-content: center
+    &__content-list
+        +max-screen($breakpoint-sm)
+            padding-bottom: 0
+        
 
 .social-media
     display: flex
@@ -32,7 +62,19 @@
     &__item
         padding-left: 0.5rem
         padding-right: 0.5rem
+    a
+        transition: $default-transition
+        &:hover
+            rect
+                fill: $color-background-light
+            svg
+                path
+                    fill: $color-background-cream
+
     svg
         width: 2rem
         height: 2rem
+        *
+            transition: $default-transition
+
             

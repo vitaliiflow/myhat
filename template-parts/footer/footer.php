@@ -18,35 +18,39 @@ $rightColContent = get_field('right_tab_content','option');
 
       <?php if ($newsletter || $socials) : ?>
 
-        <div class="col col-lg-4 footer__newsletter content-block">
+        <div class="col-12 col-lg-4 footer__newsletter content-block">
 
-          <?php echo $newsletter; ?>
+          <div class="footer__newsletter-inner">
 
-          <?php if ($socials) : ?>
+            <?php echo $newsletter; ?>
 
-            <ul class="social-media">
+            <?php if ($socials) : ?>
 
-              <?php foreach ($socials as $social) : 
+              <ul class="social-media">
+
+                <?php foreach ($socials as $social) : 
+                  
+                  $socialMedia = $social['social_media'];
+                  $socialURL = $social['social_media_url'];
+
+                  if ($socialURL) : 
+                  ?>
+                  <li class="social-media__item">
+                    <a href="<?php echo $socialURL;?>" target="_blank">
+                      <?php echo get_inline_svg($socialMedia . '.svg');?>
+                    </a>
+                  </li>
+                  
+
+                  <?php endif; ?>
+
+                <?php endforeach; ?>
                 
-                $socialMedia = $social['social_media'];
-                $socialURL = $social['social_media_url'];
+              </ul>
 
-                if ($socialURL) : 
-                ?>
-                <li class="social-media__item">
-                  <a href="<?php echo $socialURL;?>" target="_blank">
-                    <?php echo get_inline_svg($socialMedia . '.svg');?>
-                  </a>
-                </li>
-                
+            <?php endif; ?>
 
-                <?php endif; ?>
-
-              <?php endforeach; ?>
-              
-            </ul>
-
-          <?php endif; ?>
+          </div>
 
         </div>
 
@@ -54,7 +58,7 @@ $rightColContent = get_field('right_tab_content','option');
 
       <?php if ($footerNavfooter || $rightColContent) : ?>
 
-        <div class="col col-lg-4 footer__nav">
+        <div class="col-sm col-lg-4 footer__nav">
 
         <?php if ($footerNavfooter) : ?>
 
@@ -73,7 +77,7 @@ $rightColContent = get_field('right_tab_content','option');
 
       <?php if ($rightColContent) : ?>
 
-        <div class="col col-lg-4 footer__content-list check-list content-block">
+        <div class="col-sm col-lg-4 footer__content-list check-list content-block">
 
           <?php echo $rightColContent; ?>
 
