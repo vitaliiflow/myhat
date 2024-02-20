@@ -22,6 +22,7 @@
 .slick-dots li{width:10px;height:10px;background-color:white;border-radius:50%;opacity:.7;-webkit-transition:.3s all;transition:.3s all;margin-left:7px;margin-right:7px;cursor:pointer}
 .slick-dots li.slick-active{opacity:1}
 @font-face{font-family:"Lora";font-style:normal;font-weight:700;src:url("../assets/fonts/Lora/Lora-Bold.ttf") format("truetype")}
+@font-face{font-family:"Lora";font-style:normal;font-weight:400;src:url("../assets/fonts/Lora/Lora-Medium.ttf") format("truetype")}
 @font-face{font-family:"Karla";font-style:normal;font-weight:400;src:url("../assets/fonts/Karla/Karla-Regular.ttf") format("truetype")}
 @font-face{font-family:"Karla";font-style:normal;font-weight:700;src:url("../assets/fonts/Karla/Karla-ExtraBold.ttf") format("truetype")}
 @font-face{font-family:"Karla";font-style:normal;font-weight:500;src:url("../assets/fonts/Karla/Karla-Medium.ttf") format("truetype")}
@@ -437,9 +438,14 @@ a.text-dark:hover,a.text-dark:focus{color:#121416 !important}
 .social-media svg{width:2rem;height:2rem}
 .social-media svg *{-webkit-transition:.3s all;transition:.3s all}
 .button,.wpcf7-submit{cursor:pointer;-webkit-transition:.3s all;transition:.3s all}
-.button--arrow,.wpcf7-submit--arrow{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-transform:uppercase;font-weight:600}
-.button--arrow:hover svg,.wpcf7-submit--arrow:hover svg{-webkit-transform:translateX(8px);transform:translateX(8px)}
-.button--arrow svg,.wpcf7-submit--arrow svg{-webkit-transition:.3s all;transition:.3s all;width:15px;height:26px;margin-bottom:-3px;margin-left:.5rem}
+.button{display:inline-block;background-color:#000;color:white}
+.button:hover{background-color:#3e4a56}
+.button--outline{border:2px solid #000;background-color:transparent;color:#000}
+.button--outline:hover{background-color:#3e4a56;border:2px solid transparent;color:#fff}
+.button--lg{padding:1rem 2rem}
+.button--arrow{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-transform:uppercase;font-weight:600}
+.button--arrow:hover svg{-webkit-transform:translateX(8px);transform:translateX(8px)}
+.button--arrow svg{-webkit-transition:.3s all;transition:.3s all;width:15px;height:26px;margin-bottom:-3px;margin-left:.5rem}
 .wpcf7-submit{text-transform:uppercase;font-weight:600}
 input{padding:.75rem 1rem;font-size:16px;border:0;border-radius:20px;font-weight:600}
 .form-flat p{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;position:relative;margin-bottom:0}
@@ -459,6 +465,10 @@ input{padding:.75rem 1rem;font-size:16px;border:0;border-radius:20px;font-weight
 .accordion__button{-webkit-appearance:none;-moz-appearance:none;appearance:none;border:0;background-color:transparent;color:inherit;font-size:inherit;display:-webkit-box;display:-ms-flexbox;display:flex}
 .accordion__button-icon{-webkit-transition:.3s all;transition:.3s all}
 .accordion__button-icon.active{-webkit-transform:rotate(180deg);transform:rotate(180deg)}
+section.error-page .error-page__wrap{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;min-height:375px}
+section.error-page .error-page__title{margin-bottom:20px}
+section.error-page .error-page__title h1{font-size:10rem;line-height:.9 !important}
+section.error-page .error-page__subtitle{margin-bottom:40px}
 .hero-home__item-inner{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}
 .hero-home__content-wrapper{-ms-flex-item-align:end;align-self:flex-end}
 .hero-home__content-wrapper:hover svg{-webkit-transform:translateX(10px);transform:translateX(10px)}

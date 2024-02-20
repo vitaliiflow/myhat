@@ -2,6 +2,24 @@
 .wpcf7-submit
     cursor: pointer
     transition: $default-transition
+
+.button
+    display: inline-block
+    background-color: $color-text
+    
+    color: white
+    &:hover
+        background-color: $color-background-dark
+    &--outline
+        border: 2px solid $color-text
+        background-color: transparent
+        color: $color-text
+        &:hover
+            background-color: $color-background-dark
+            border: 2px solid transparent
+            color: $color-white
+    &--lg
+        padding: 1rem 2rem
     &--arrow
         display: flex
         align-items: center

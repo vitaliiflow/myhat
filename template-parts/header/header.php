@@ -28,7 +28,11 @@ $logo = get_field('header_logo', 'options');
           </div>
         </div>
         <div class="header__iconsList__item cart">
-          <a href="<?php echo wc_get_cart_url(); ?>"><img src="<?php echo get_template_directory_uri(  ) ?>/assets/images/icons/shopping-bag.png" alt=""></a>
+
+          <?php if ( class_exists( 'WooCommerce' ) ) : ?>
+            <a href="<?php echo wc_get_cart_url(); ?>"><img src="<?php echo get_template_directory_uri(  ) ?>/assets/images/icons/shopping-bag.png" alt=""></a>
+          <?php endif; ?>
+
         </div>
       </div>
       <div class="header__burger header--toggler">
