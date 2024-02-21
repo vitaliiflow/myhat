@@ -171,4 +171,58 @@ jQuery(document).ready(function ($) {
       settings: "unslick"
     }]), _$$slick3));
   });
+  $(".tabs__labels-slider").each(function () {
+    var _$$slick4;
+    $(this).slick((_$$slick4 = {
+      dots: false,
+      arrows: false,
+      mobileFirst: true,
+      speed: 1000,
+      infinite: true
+    }, _defineProperty(_$$slick4, "arrows", false), _defineProperty(_$$slick4, "slidesToShow", 1), _defineProperty(_$$slick4, "slidesToShow", 1), _defineProperty(_$$slick4, "centerMode", true), _defineProperty(_$$slick4, "variableWidth", true), _defineProperty(_$$slick4, "responsive", [{
+      breakpoint: 991,
+      settings: "unslick"
+    }]), _$$slick4));
+  });
+});
+"use strict";
+
+jQuery(document).ready(function ($) {
+  if ($('.tabs').length) {
+    console.log('tabs');
+    var sectionId = window.location.hash;
+    if (sectionId) {
+      $('.tabs__nav').removeClass('active');
+      $('.tabs__nav[href="' + sectionId + '"]').addClass('active');
+      $('.tabs__item').removeClass('active');
+      $('.tabs__item' + sectionId).addClass('active');
+    }
+    $('.tabs').each(function () {
+      var block = $(this);
+      block.find('.js-tab-nav').on('click', function (e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        var id = $(this).attr('href');
+        console.log(id);
+        block.find('.tabs__nav').removeClass('active');
+        block.find(this).addClass('active');
+        block.find('.tabs__item').each(function () {
+          $(this).fadeOut();
+        });
+        block.find('.tabs__item.active').removeClass('active').fadeOut(function () {
+          block.find('.tabs__item' + id).fadeIn().addClass('active');
+          console.log('.tabs__item' + id);
+        });
+      });
+    });
+    $('.tabs__item').each(function () {
+      var block = $(this);
+      var header = block.find('.tabs__item__header');
+      var content = block.find('.tabs__item__content');
+      header.on('click', function () {
+        //block.toggleClass('tabs__item--active');
+        //content.slideToggle();
+      });
+    });
+  }
 });

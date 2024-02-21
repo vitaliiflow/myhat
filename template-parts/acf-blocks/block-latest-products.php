@@ -24,14 +24,16 @@ if (!empty($products)) : ?>
 
         <div class="container">
 
-        <?php if ($title || $link) : ?>
+            <?php if ($title || $link) : ?>
 
-            <div class="section__title">
+                <div class="section__title">
 
-                <?php if ($title) : ?>
+                    <?php if ($title) : ?>
 
-                    <h2 class="text-center"><?php echo $title; ?></h2>
-                    
+                        <h2 class="text-center"><?php echo $title; ?></h2>
+
+                    <?php endif; ?>
+                        
                     <?php if ($link) :
                     
                         $link_url = $link['url'];
@@ -43,9 +45,7 @@ if (!empty($products)) : ?>
 
                     <?php endif; ?>
 
-                <?php endif; ?>
-
-            </div>
+                </div>
 
             <?php endif; ?>
 
@@ -84,3 +84,4 @@ if (!empty($products)) : ?>
     </section>
 
 <?php endif; ?>
+

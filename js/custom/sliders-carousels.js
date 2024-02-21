@@ -130,6 +130,31 @@ jQuery(document).ready(function ($) {
         ]
         });
     });
+
+
+    $(".tabs__labels-slider").each(function(){
+        $(this).slick({
+            dots: false,
+            arrows: false,
+            mobileFirst: true,
+            speed: 1000,
+            infinite: true,
+            arrows: false,
+            // autoplay: true,
+            // autoplaySpeed: 7500,
+            slidesToShow: 1,
+            slidesToShow: 1,
+            centerMode: true,
+            variableWidth: true,
+            responsive: [{
+    
+                breakpoint: 991,
+                settings: "unslick"
+    
+            },
+        ]
+        });
+    });
     
 });
 
