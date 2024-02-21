@@ -58,8 +58,15 @@ get_header( 'shop' );
                                  * Hook: woocommerce_shop_loop.
                                  */
                                 do_action( 'woocommerce_shop_loop' );
-                    
-                                wc_get_template_part( 'content', 'product' );
+                                ?>
+
+                                <div class="shopPage__listItem col-6 col-md-3">
+
+                                    <?php wc_get_template_part( 'content', 'product' ); ?>
+
+                                </div>
+
+                                <?php 
                             }
                         }
                     
