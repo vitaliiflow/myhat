@@ -1,0 +1,199 @@
+.shopPage 
+    padding-top: 12px
+    padding-bottom: 80px
+    +max-screen(1200px)
+        padding-top: 0
+        padding-bottom: 64px
+    +max-screen($breakpoint-lg)
+        padding-bottom: 52px
+    +max-screen($breakpoint-md)
+        padding-bottom: 42px
+    &__top
+        +max-screen($breakpoint-md)
+            max-width: 600px 
+            margin: auto
+    &__title 
+        margin-bottom: 16px
+        +max-screen(1200px)
+            margin-bottom: 8px
+        +max-screen($breakpoint-lg)
+            margin-bottom: 0
+    &__text 
+        margin-bottom: 56px
+        +max-screen(1200px)
+            margin-bottom: 48px
+        +max-screen($breakpoint-lg)
+            margin-bottom: 42px
+        +max-screen($breakpoint-md)
+            margin-bottom: 36px
+        .section 
+            padding: 0
+    &__filters
+        margin-bottom: 56px
+        +max-screen(1200px)
+            margin-bottom: 48px
+        +max-screen($breakpoint-lg)
+            margin-bottom: 42px
+        +max-screen($breakpoint-md)
+            margin-bottom: 36px
+        &Row 
+            display: flex 
+            +max-screen(1235px)
+                margin: 0 -30px 
+            +max-screen($breakpoint-md)
+                margin: 0 -15px 
+            &__item 
+                width: 50%
+                &Title 
+                    border: 1px solid $color-text 
+                    justify-content: center
+                    font-weight: 500
+                    display: flex 
+                    align-items: center
+                    padding: 16px 
+                    +max-screen(1200px)
+                        padding: 12px 
+                    +max-screen($breakpoint-lg)
+                        font-size: 15px
+                        padding: 10px 
+                    span 
+                        position: relative
+                    img 
+                        position: absolute
+                        top: 50%
+                        transform: translateY(-50%)
+                        width: 20px 
+                        height: 20px 
+                        left: -28px 
+                        +max-screen($breakpoint-lg)
+                            width: 16px 
+                            height: 16px 
+                            left: -24px
+                &:first-child 
+                    .shopPage__filtersRow__itemTitle
+                        border-right: 0
+                        +max-screen(1235px)
+                            border-left: 0
+                &:last-child 
+                    .shopPage__filtersRow__itemTitle
+                        +max-screen(1235px)
+                            border-right: 0
+    &__list
+        +max-screen($breakpoint-md)
+            max-width: 600px 
+            margin: auto 
+        ul.products
+            display: flex 
+            flex-wrap: wrap
+            margin: 0 -15px 
+            margin-bottom: -52px
+            +max-screen(1200px)
+                margin-bottom: -42px 
+            +max-screen($breakpoint-lg)
+                margin: 0 -7.5px 
+            +max-screen($breakpoint-md)
+                margin: 0 -10px 
+                margin-bottom: -36px
+        &Item 
+            margin-bottom: 52px
+            +max-screen(1200px)
+                margin-bottom: 42px
+            +max-screen($breakpoint-lg)
+                padding: 0 7.5px 
+            +max-screen($breakpoint-md)
+                padding: 0 10px 
+                margin-bottom: 36px
+            &__image 
+                position: relative 
+                padding-bottom: 85%
+                margin-bottom: 32px
+                +max-screen(1200px)
+                    margin-bottom: 28px
+                +max-screen($breakpoint-lg)
+                    margin-bottom: 20px
+            &__tax
+                font-weight: 700
+                text-transform: uppercase
+                font-size: 14px
+                margin-bottom: 8px
+                +max-screen(1200px)
+                    font-size: 12px
+                    margin-bottom: 4px
+                +max-screen($breakpoint-lg)
+                    font-size: 10px
+            &__content 
+                display: flex 
+                flex-direction: column
+                height: 100%
+            &__price 
+                font-size: 22px
+                font-weight: 700
+                margin-top: auto
+                line-height: 1
+                +max-screen(1200px)
+                    font-size: 19px
+                +max-screen($breakpoint-lg)
+                    font-size: 17px
+            &__title 
+                font-size: 18px
+                margin-bottom: 12px
+                +max-screen(1200px)
+                    font-size: 15px
+                    margin-bottom: 8px
+                +max-screen($breakpoint-lg)
+                    font-size: 13px 
+                    margin-bottom: 4px
+    &__pagination 
+        max-width: 360px 
+        display: flex 
+        align-items: center
+        margin: auto  
+        margin-top: 64px
+        +max-screen(1200px)
+            margin-top: 48px
+        +max-screen($breakpoint-lg)
+            max-width: 300px
+            margin-top: 42px
+        &Page 
+            font-size: 16px
+            display: flex 
+            margin-left: 16px
+            margin-right: 16px
+            +max-screen($breakpoint-lg)
+                font-size: 14px
+                margin-left: 10px
+                margin-right: 10px
+            span 
+                margin: 0 4px 
+                +max-screen($breakpoint-lg)
+                    display: block 
+                    margin: 0 2px 
+        &Button 
+            flex: 1
+            a 
+                background-color: $color-text
+                color: $color-white
+                display: flex
+                justify-content: space-around
+                padding: 14px
+                +max-screen($breakpoint-lg)
+                    font-size: 15px
+                    padding: 11px 6px
+                svg 
+                    height: auto
+                    width: 12px 
+                    +max-screen($breakpoint-lg) 
+                        width: 10px 
+                    line 
+                        stroke: #fff !important
+            &.prev 
+                svg 
+                    transform: rotate(180deg)
+            &.disabled 
+                pointer-events: none 
+                a 
+                    color: $color-disabled
+                    background-color: $color-background-disabled 
+                    svg 
+                        line 
+                            stroke: $color-disabled !important

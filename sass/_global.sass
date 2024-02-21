@@ -70,3 +70,14 @@ body
     .container 
         max-width: 1235px 
         padding: 0 30px 
+        +max-screen($breakpoint-md)
+            padding: 0 15px 
+.woocommerce 
+    .woocommerce-breadcrumb
+        color: $color-text
+        margin-bottom: 1.5rem
+        +max-screen(1200px)
+            margin-bottom: 0.75rem
+        a 
+            font-weight: 700
+            color: $color-text
