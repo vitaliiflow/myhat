@@ -124,3 +124,14 @@ jQuery(document).ready(function ($) {
     }]), _$$slick2));
   });
 });
+"use strict";
+
+jQuery(document).ready(function ($) {
+  $('.accordion .js-accordion-button').click(toggleAccordionItem);
+  function toggleAccordionItem() {
+    $(this).find('.js-accordion-button-icon').toggleClass('active');
+    var bodyId = $(this).data('for');
+    var body = $(".js-accordion-body[data-body=\"".concat(bodyId, "\"]"));
+    body.slideToggle();
+  }
+});

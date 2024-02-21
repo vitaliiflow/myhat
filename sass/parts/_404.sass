@@ -1,0 +1,19 @@
+section.error-page
+    .error-page
+        &__wrap
+            display: flex
+            flex-direction: column
+            justify-content: center
+            min-height: 375px
+            // min-height: calc(100vh - 120px)
+            // min-height: calc(100svh - 120px)
+            +max-screen($breakpoint-xxl)
+            +max-screen($breakpoint-lg)
+        &__title
+            margin-bottom: 20px
+            h1
+                font-size: 10rem
+                line-height: .9 !important
+        &__subtitle
+            margin-bottom: 40px
+        &__btn

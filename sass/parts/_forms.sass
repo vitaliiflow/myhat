@@ -4,6 +4,15 @@ input
     border: 0
     border-radius: $radius-default
     font-weight: 600
+    &.text-color--cream
+        transition: $default-transition
+        &::placeholder
+            color: $color-background-cream
+        &:hover
+            background-color: $color-background-cream
+            color: white
+            &::placeholder
+                color: $color-background-cream
 
 .form-flat
     p
@@ -21,9 +30,15 @@ input
             &:hover
                 padding-left: 1.25rem
                 padding-right: 1.25rem
-    input
-        &.text-color--cream
-            &::placeholder
-                color: $color-background-cream
+        .wpcf7-form-control-wrap
+            width: 100%
+            input
+                width: 100%
+    
     *
+        max-width: 100%
+
+.search
+    input
+        width: 400px
         max-width: 100%
