@@ -26,6 +26,9 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 ?>
 <div class="shopPage__listItem col-6 col-md-3">
 	<a href="<?php the_permalink( ); ?>" class="shopPage__listItem__content">
+		<div class="shopPage__listItem__labels">
+			<?php echo get_template_part( 'woocommerce/loop/sale-flash' ); ?>
+		</div>
 		<?php 
 		$categories = get_the_terms( $product->get_id(), 'varumarke' );
         if(empty(wp_get_attachment_url( $product->get_image_id() ))):
@@ -41,6 +44,6 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 			<div class="shopPage__listItem__tax"><?php echo $categories[0]->name; ?></div>
 		<?php endif; ?>
 		<div class="shopPage__listItem__title"><?php echo $product->get_title(); ?></div>
-		<div class="shopPage__listItem__price"><?php echo $product->get_price() . ' '; show_currency_symbol(); ?></div>
+		<div class="shopPage__listItem__price<?php if($product->is_on_sale()){ echo ' sale';} ?>"><?php echo $product->get_price_html(); ?></div>
 	</a>
 </div>
