@@ -40,8 +40,8 @@
             display: flex 
             +max-screen(1235px)
                 margin: 0 -30px 
-            +max-screen($breakpoint-md)
-                margin: 0 -15px 
+            +max-screen($breakpoint-sm)
+                margin: 0 -20px 
             &__item 
                 width: 50%
                 &Title 
@@ -111,6 +111,9 @@
                     margin-bottom: 28px
                 +max-screen($breakpoint-lg)
                     margin-bottom: 20px
+                img 
+                    height: 100% 
+                    object-fit: contain
             &__tax
                 font-weight: 700
                 text-transform: uppercase
