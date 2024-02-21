@@ -121,7 +121,7 @@ jQuery(document).ready(function ($) {
       settings: "unslick"
     }]), _$$slick));
   });
-  $(".product-cat--brand-slider").each(function () {
+  $(".latest-products__list-slider").each(function () {
     var _$$slick2;
     $(this).slick((_$$slick2 = {
       dots: false,
@@ -129,9 +129,46 @@ jQuery(document).ready(function ($) {
       mobileFirst: true,
       speed: 1000,
       infinite: true
-    }, _defineProperty(_$$slick2, "arrows", false), _defineProperty(_$$slick2, "slidesToShow", 1), _defineProperty(_$$slick2, "slidesToShow", 1), _defineProperty(_$$slick2, "centerMode", true), _defineProperty(_$$slick2, "variableWidth", true), _defineProperty(_$$slick2, "responsive", [{
+    }, _defineProperty(_$$slick2, "arrows", false), _defineProperty(_$$slick2, "slidesToShow", 2), _defineProperty(_$$slick2, "slidesToScroll", 1), _defineProperty(_$$slick2, "responsive", [{
+      breakpoint: 565,
+      settings: {
+        speed: 1000,
+        infinite: true,
+        arrows: false,
+        // autoplay: true,
+        // autoplaySpeed: 7500,
+        dots: false,
+        slidesToShow: 3,
+        slidesToScroll: 1
+      }
+    }, {
+      breakpoint: 768,
+      settings: {
+        speed: 1000,
+        infinite: true,
+        arrows: false,
+        // autoplay: true,
+        // autoplaySpeed: 7500,
+        dots: false,
+        slidesToShow: 4,
+        slidesToScroll: 1
+      }
+    }, {
       breakpoint: 991,
       settings: "unslick"
     }]), _$$slick2));
+  });
+  $(".product-cat--brand-slider").each(function () {
+    var _$$slick3;
+    $(this).slick((_$$slick3 = {
+      dots: false,
+      arrows: false,
+      mobileFirst: true,
+      speed: 1000,
+      infinite: true
+    }, _defineProperty(_$$slick3, "arrows", false), _defineProperty(_$$slick3, "slidesToShow", 1), _defineProperty(_$$slick3, "slidesToShow", 1), _defineProperty(_$$slick3, "centerMode", true), _defineProperty(_$$slick3, "variableWidth", true), _defineProperty(_$$slick3, "responsive", [{
+      breakpoint: 991,
+      settings: "unslick"
+    }]), _$$slick3));
   });
 });
