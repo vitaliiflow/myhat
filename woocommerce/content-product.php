@@ -31,7 +31,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 		</div>
 		<?php 
 		$categories = get_the_terms( $product->get_id(), 'varumarke' );
-        if(empty(wp_get_attachment_url( $product->get_image_id() ))):
+        if(!empty(wp_get_attachment_url( $product->get_image_id() ))):
             $image = wp_get_attachment_url( $product->get_image_id() );
         else: 
             $image = get_template_directory_uri() . '/assets/images/elementor-placeholder-image.webp';
