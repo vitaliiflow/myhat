@@ -1,17 +1,6 @@
 "use strict";
 
 jQuery(document).ready(function ($) {
-  $('.accordion .js-accordion-button').click(toggleAccordionItem);
-  function toggleAccordionItem() {
-    $(this).find('.js-accordion-button-icon').toggleClass('active');
-    var bodyId = $(this).data('for');
-    var body = $(".js-accordion-body[data-body=\"".concat(bodyId, "\"]"));
-    body.slideToggle();
-  }
-});
-"use strict";
-
-jQuery(document).ready(function ($) {
   $(".header__menu .menu-item-has-children").not('.header__mobileMenu .menu-item-has-children').hover(function () {
     $(this).children('.sub-menu').stop().slideDown();
   }, function () {
@@ -184,6 +173,17 @@ jQuery(document).ready(function ($) {
       settings: "unslick"
     }]), _$$slick4));
   });
+});
+"use strict";
+
+jQuery(document).ready(function ($) {
+  $('.accordion .js-accordion-button').click(toggleAccordionItem);
+  function toggleAccordionItem() {
+    $(this).find('.js-accordion-button-icon').toggleClass('active');
+    var bodyId = $(this).data('for');
+    var body = $(".js-accordion-body[data-body=\"".concat(bodyId, "\"]"));
+    body.slideToggle();
+  }
 });
 "use strict";
 

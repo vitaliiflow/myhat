@@ -28,5 +28,42 @@ function sale_badge_percentage() {
          }
       }
    }
-   if ( $max_percentage > 0 ) echo "<span class='onsale'>-" . round($max_percentage) . "%</span>"; 
+   if ( $max_percentage > 0 ) echo "<span class='onsale shopPage__listItem__badge'>-" . round($max_percentage) . "%</span>"; 
+}
+
+
+//Sold Products Count
+function dw_product_totals() {
+   global $wpdb;
+
+   $post = get_post($post_id);
+
+   $current_product = get_the_ID($post);
+
+   $order_items = apply_filters('woocommerce_reports_top_earners_order_items', $wpdb->get_results("
+       SELECT order_item_meta_2.meta_value as product_id, SUM(order_item_meta.meta_value) as total_quantity
+       FROM {$wpdb->prefix}woocommerce_order_items as order_items
+       LEFT JOIN {$wpdb->prefix}woocommerce_order_itemmeta as order_item_meta ON order_items.order_item_id = order_item_meta.order_item_id
+       LEFT JOIN {$wpdb->prefix}woocommerce_order_itemmeta as order_item_meta_2 ON order_items.order_item_id = order_item_meta_2.order_item_id
+       LEFT JOIN {$wpdb->posts} AS posts ON order_items.order_id = posts.ID
+       WHERE posts.post_type = 'shop_order'
+       AND posts.post_status IN ('" . implode("','", array('wc-completed', 'wc-processing', 'wc-on-hold')) . "')
+       AND order_items.order_item_type = 'line_item'
+       AND order_item_meta.meta_key = '_qty'
+       AND order_item_meta_2.meta_key = '_product_id'
+       AND posts.post_date >= DATE_SUB(NOW(), INTERVAL 30 DAY) 
+       GROUP BY order_item_meta_2.meta_value
+   "));
+
+   $current = array($current_product);
+
+   foreach ($order_items as $item) {
+       if (in_array($item->product_id, $current)) {
+           $total_quantity = $item->total_quantity;
+       }
+   }
+
+   $total_quantity = number_format($total_quantity, 0, '.', ''); // Форматуємо кількість без десяткових знаків
+
+   return $total_quantity;
 }

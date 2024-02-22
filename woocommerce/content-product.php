@@ -30,6 +30,33 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 <a href="<?php the_permalink( ); ?>" class="shopPage__listItem__content">
 	<div class="shopPage__listItem__labels">
 		<?php echo get_template_part( 'woocommerce/loop/sale-flash' ); ?>
+		<?php 
+		//New Product Label
+		$newness_days = 30; 
+		$created = strtotime( $product->get_date_created() );
+		if ( ( time() - ( 60 * 60 * 24 * $newness_days ) ) < $created ) {
+			echo '<span class="new-badge shopPage__listItem__badge">' . esc_html__( 'NEW', 'woocommerce' ) . '</span>';
+		}
+
+		//Last Chance Label
+		$total_stock = 0;
+		if($product->is_type('variable')){
+			$product_variable = new WC_Product_Variable($product->id);
+			$product_variations = $product_variable->get_available_variations();
+			foreach ($product_variations as $variation)  {
+				$total_stock += $variation['max_qty'];
+			}
+		} else {
+			$total_stock = $product->get_stock_quantity();
+		}
+		if($total_stock <= 3){
+			echo '<span class="last-chance shopPage__listItem__badge">' . esc_html__( 'Last Chance', 'woocommerce' ) . '</span>';
+		}
+		if(dw_product_totals() > 50){
+			echo '<span class="top-seller shopPage__listItem__badge">' . esc_html__( 'Top seller', 'woocommerce' ) . '</span>';
+		}
+		?>
+
 	</div>
 	<?php 
 	$categories = get_the_terms( $product->get_id(), 'varumarke' );

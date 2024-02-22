@@ -27,7 +27,7 @@ global $post, $product;
 	echo $sale_price = $product->get_sale_price();
 	echo $regular_price = $product->get_regular_price();	
 	?>
-	<?php echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'woocommerce' ) . '</span>', $post, $product ); ?>
+	<?php echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale shopPage__listItem__badge">' . esc_html__( 'Sale!', 'woocommerce' ) . '</span>', $post, $product ); ?>
 
 	<?php
 endif;
