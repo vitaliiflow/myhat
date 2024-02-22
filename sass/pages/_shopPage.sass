@@ -175,14 +175,32 @@
                 font-weight: 700
                 margin-top: auto
                 line-height: 1
+                display: flex 
+                flex-wrap: wrap 
                 ins 
                     text-decoration: none
                 &.sale 
                     del 
                         font-weight: 500
                         color: $color-background-dark
+                        text-decoration: none 
+                        order: 1
+                        font-size: 16px
+                        +max-screen(1200px)
+                            font-size: 14px
+                        +max-screen($breakpoint-lg)
+                            font-size: 12px
+                        &::before 
+                            content: "Ord pris "
                     ins 
                         color: $color-red
+                    del,
+                    ins
+                        width: 100% 
+                        bdi 
+                            span  
+                                display: inline-block 
+                                margin-left: 0.25em
                 +max-screen(1200px)
                     font-size: 19px
                 +max-screen($breakpoint-lg)

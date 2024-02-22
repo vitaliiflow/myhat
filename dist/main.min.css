@@ -390,10 +390,13 @@ a.text-dark:hover,a.text-dark:focus{color:#121416 !important}
 .shopPage__listItem__labels span.shopPage__listItem__badge.top-seller{background-color:#0ca3e2;color:#fff}
 .shopPage__listItem__labels span.shopPage__listItem__badge.last-chance{background-color:#3e4a56;color:#fff}
 .shopPage__listItem__content{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;height:100%}
-.shopPage__listItem__price{font-size:22px;font-weight:700;margin-top:auto;line-height:1}
+.shopPage__listItem__price{font-size:22px;font-weight:700;margin-top:auto;line-height:1;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}
 .shopPage__listItem__price ins{text-decoration:none}
-.shopPage__listItem__price.sale del{font-weight:500;color:#3e4a56}
+.shopPage__listItem__price.sale del{font-weight:500;color:#3e4a56;text-decoration:none;-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;font-size:16px}
+.shopPage__listItem__price.sale del::before{content:"Ord pris "}
 .shopPage__listItem__price.sale ins{color:#e40d68}
+.shopPage__listItem__price.sale del,.shopPage__listItem__price.sale ins{width:100%}
+.shopPage__listItem__price.sale del bdi span,.shopPage__listItem__price.sale ins bdi span{display:inline-block;margin-left:.25em}
 .shopPage__listItem__title{font-size:18px;margin-bottom:12px}
 .shopPage__pagination{max-width:360px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin:auto;margin-top:64px}
 .shopPage__paginationPage{font-size:16px;display:-webkit-box;display:-ms-flexbox;display:flex;margin-left:16px;margin-right:16px}
@@ -1333,6 +1336,7 @@ h6,.h6{font-size:calc(14px + 2 * ((100vw - 320px) / 1040))}
 .shopPage__listItem__image{margin-bottom:28px}
 .shopPage__listItem__tax{font-size:12px;margin-bottom:4px}
 .shopPage__listItem__labels span.shopPage__listItem__badge{font-size:12px;padding:2.5px 6px}
+.shopPage__listItem__price.sale del{font-size:14px}
 .shopPage__listItem__price{font-size:19px}
 .shopPage__listItem__title{font-size:15px;margin-bottom:8px}
 .shopPage__pagination{margin-top:48px}
@@ -1350,6 +1354,7 @@ h6,.h6{font-size:calc(14px + 2 * ((100vw - 320px) / 1040))}
 .shopPage__listItem__image{margin-bottom:20px}
 .shopPage__listItem__tax{font-size:10px}
 .shopPage__listItem__labels{left:12px;top:4.5px}
+.shopPage__listItem__price.sale del{font-size:12px}
 .shopPage__listItem__price{font-size:17px}
 .shopPage__listItem__title{font-size:13px;margin-bottom:4px}
 .shopPage__pagination{max-width:300px;margin-top:42px}
