@@ -9,34 +9,41 @@ $list = get_sub_field('product_team_list');
 
 if ($list ) : ?>
 
-<section class="section tabs">
+<section class="section tabs product-cat product-cat--team">
     <div class="container">
 
-        <?php if ($title) : ?>
-            <h2 class="section__title text-center"><?php echo $title; ?></h2>
-        <?php endif; ?>
+        <div class="section__title">
 
-        <ul class="row justify-content-center tabs__labels-slider">
+            <?php if ($title) : ?>
+                <h2 class="text-center"><?php echo $title; ?></h2>
+            <?php endif; ?>
 
-            <?php $i = 1; ?>
+            <ul class="row justify-content-between tabs__labels-slider mt-3">
 
-            <?php foreach ($list as $item) : 
+                <?php $i = 1; ?>
 
-                $category = $item['category'];
-                $name = $item['custom_name'] ? $item['custom_name'] : $category->name;
-                $id = $category->term_id;
+                <?php foreach ($list as $item) : 
 
-                ?>
+                    $category = $item['category'];
+                    // $name = $item['custom_name'] ? $item['custom_name'] : $category->name;
+                    $name = $category->name;
+                    $id = $category->term_id;
 
-                    <li class="tabsNav__item mb-4 col-auto">
-                        <a class="tabs__nav js-tab-nav <?php if($i == '1') : echo 'active'; endif;?>" href="<?php echo "#tab" . $i; $i++;?>">
-                            <h6><?php echo $name; ?></h6>
-                        </a>
-                    </li>
+                    ?>
 
-            <?php endforeach; ?>
-            
-        </ul>
+                        <li class="tabsNav__item mb-4 col-auto">
+                            <a class="tabs__nav text-uppercase js-tab-nav <?php if($i == '1') : echo 'active'; endif;?>" href="<?php echo "#tab" . $i; $i++;?>">
+                                <h6><?php echo $name; ?></h6>
+                            </a>
+                        </li>
+
+                <?php endforeach; ?>
+                
+            </ul>
+
+        </div>
+
+        
 
         <ul>
 
@@ -94,7 +101,7 @@ if ($list ) : ?>
                                     ?>
 
 
-                                        <div class="shopPage__listItem latest-products__item col-lg-auto">
+                                        <div class="shopPage__listItem latest-products__item col-6 col-sm-4 col-lg-auto">
 
                                             <?php wc_get_template_part('content', 'product'); ?>
 
