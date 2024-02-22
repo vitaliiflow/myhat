@@ -515,6 +515,9 @@ section.error-page .error-page__title h1{font-size:10rem;line-height:.9 !importa
 section.error-page .error-page__subtitle{margin-bottom:40px}
 .search{margin-top:2rem;margin-bottom:2rem}
 .tabs__item:not(.active){display:none}
+.tabs__nav{-webkit-transition:.3s all;transition:.3s all}
+.tabs__nav:hover{opacity:1}
+.tabs__nav:not(.active){opacity:.5}
 .hero-home__item-inner{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}
 .hero-home__content-wrapper{-ms-flex-item-align:end;align-self:flex-end}
 .hero-home__content-wrapper:hover svg{-webkit-transform:translateX(10px);transform:translateX(10px)}
