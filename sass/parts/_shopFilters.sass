@@ -1,0 +1,103 @@
+.shopPage 
+    &__filters
+        margin-bottom: 56px
+        +max-screen(1200px)
+            margin-bottom: 48px
+        +max-screen($breakpoint-lg)
+            margin-bottom: 42px
+        +max-screen($breakpoint-md)
+            margin-bottom: 36px
+        &Row 
+            display: flex 
+            +max-screen(1235px)
+                margin: 0 -30px 
+            +max-screen($breakpoint-sm)
+                margin: 0 -20px 
+            &__item 
+                width: 50%
+                position: relative
+                cursor: pointer
+                &Title 
+                    border: 1px solid $color-text 
+                    justify-content: center
+                    font-weight: 500
+                    display: flex 
+                    align-items: center
+                    padding: 16px 
+                    +max-screen(1200px)
+                        padding: 12px 
+                    +max-screen($breakpoint-lg)
+                        font-size: 15px
+                        padding: 10px 
+                    span 
+                        position: relative
+                    img 
+                        position: absolute
+                        top: 50%
+                        transform: translateY(-50%)
+                        width: 20px 
+                        height: 20px 
+                        left: -28px 
+                        +max-screen($breakpoint-lg)
+                            width: 16px 
+                            height: 16px 
+                            left: -24px
+                &:first-child 
+                    .shopPage__filtersRow__itemTitle
+                        border-right: 0
+                        +max-screen(1235px)
+                            border-left: 0
+                &:last-child 
+                    .shopPage__filtersRow__itemTitle
+                        +max-screen(1235px)
+                            border-right: 0
+                &.sort 
+                    .shopPage__filtersRow__list
+                        &Wrapper 
+                            padding: 32px 
+                            border: 1px solid $color-text
+                            border-top: 0
+                            position: absolute
+                            left: 0
+                            top: 100% 
+                            width: 100%
+                            z-index: 10
+                            background-color: $color-background-main
+                            display: none 
+                        &Item 
+                            display: flex 
+                            margin-bottom: 20px
+                            align-items: center
+                            &__checkbox 
+                                width: 20px 
+                                height: 20px 
+                                position: relative
+                                border: 1px solid $color-text
+                                margin-right: 12px
+                                &::after 
+                                    content: ""
+                                    position: absolute
+                                    left: 50%
+                                    top: 50%
+                                    transform: translate(-50%, -50%)
+                                    width: 14px 
+                                    height: 14px 
+                                    background-image: url('../assets/images/icons/tick.svg')
+                                    background-size: contain
+                                    background-repeat: no-repeat
+                                    background-position: center
+                                    opacity: 0
+                                    visibility: hidden 
+                                    transition: .3s
+                            &.active .shopPage__filtersRow__listItem__checkbox 
+                                &::after 
+                                    opacity: 1 
+                                    visibility: visible 
+                        &__apply 
+                            margin: 0 -32px 
+                            margin-bottom: -32px
+                            margin-top: 36px
+                            background-color: $color-text 
+                            padding: 16px 
+                            display: block 
+                            text-align: center
