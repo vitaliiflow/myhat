@@ -67,3 +67,10 @@ function dw_product_totals() {
 
    return $total_quantity;
 }
+
+
+//Change Default Products Ordering 
+function custom_default_catalog_orderby($sortby) {
+   return 'popularity';
+}
+add_filter('woocommerce_default_catalog_orderby', 'custom_default_catalog_orderby');

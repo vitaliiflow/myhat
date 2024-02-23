@@ -80,3 +80,50 @@ function ajax_search(){
     }
     die();
 }
+
+//Ajax Sorting
+add_action('wp_ajax_nopriv_products_sorting', 'products_sorting');
+add_action('wp_ajax_products_sorting', 'products_sorting');
+function products_sorting() {
+    $args = array(
+        'post_type' => 'product',
+        'posts_per_page' => 16,
+    );
+    $sort = $_POST['sortType'];
+    if(!empty($sort)):
+        switch($sort):
+            case 'popularity':
+                $args['orderby'] = 'popularity';
+                $args['order'] = 'DESC';
+                break;
+            case 'rating':
+                $args['orderby'] = 'meta_value_num';
+                $args['meta_key'] = '_wc_average_rating';
+                $args['order'] = 'DESC';
+                break;
+            case 'date':
+                $args['orderby'] = 'publish_date';
+                $args['order'] = 'DESC';
+                break;
+            case 'price':
+                $args['orderby'] = 'meta_value_num';
+                $args['meta_key'] = '_price';
+                $args['order'] = 'ASC';
+                break;
+            case 'price-desc':
+                $args['orderby'] = 'meta_value_num';
+                $args['meta_key'] = '_price';
+                $args['order'] = 'DESC';
+                break;
+        endswitch;
+    endif;
+    $the_query = new WP_Query($args);
+    if($the_query->have_posts()):
+        while($the_query->have_posts()): $the_query->the_post(); ?>
+            <div class="shopPage__listItem col-6 col-md-3">
+                <?php wc_get_template_part( 'content', 'product' ); ?>
+            </div>
+        <?php endwhile;
+    endif;
+    die();
+}
