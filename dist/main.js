@@ -33,6 +33,19 @@ console.log("Hello world!");
 "use strict";
 
 jQuery(document).ready(function ($) {
+  var seoText = $('.seo-text');
+  var seoTextHeight = seoText.height();
+  console.log(seoTextHeight);
+  if (seoTextHeight > 300) {
+    seoText.addClass('seo-text__content--long');
+  }
+  $(document).on('click', '.seo-text__opener', function () {
+    $(seoText).toggleClass('seo-text__content--long-opened');
+  });
+});
+"use strict";
+
+jQuery(document).ready(function ($) {
   $('.header__searchIcon').click(function () {
     $(this).parent().find('.search__barWrapper').toggleClass('opened');
   });

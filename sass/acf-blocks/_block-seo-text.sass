@@ -1,0 +1,31 @@
+.seo-text
+    &__content
+        transition: $default-transition
+        max-height: 100%
+    &__content--long
+        position: relative
+        max-height: 500px
+        overflow: hidden
+        &-opened
+            max-height: 100%
+            padding-bottom: 200px
+            .seo-text
+                &__opener
+                    transform: rotate(180deg)
+        .seo-text
+            &__opener
+                max-height: 200px
+                // transform: rotate(0)
+    &__opener
+        position: absolute
+        bottom: 0
+        left: 0
+        width: 100%
+        height: 200px
+        max-height: 0
+        background-image: url("data:image/svg+xml,%3Csvg fill='%23' height='40px' width='40px' version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 407.437 407.437' xml:space='preserve'%3E%3Cpolygon points='386.258,91.567 203.718,273.512 21.179,91.567 0,112.815 203.718,315.87 407.437,112.815 '%3E%3C/polygon%3E%3C/svg%3E"), linear-gradient(0deg, rgba(241,241,239,1) 0%, rgba(241,241,239,0.5256696428571428) 96%, rgba(241,241,239,0) 100%)
+        // background-size: 3rem
+        background-position: center
+        background-repeat: no-repeat
+        cursor: pointer
+        
