@@ -4,9 +4,11 @@ $title = get_sub_field('title');
 $link = get_sub_field('link');
 $quantity = get_sub_field('quantity_of_products_to_show');
 
+$slider = get_sub_field('enable_slider');
+
 // Define the query arguments
 $args = array(
-    'limit' => 5,
+    'limit' => $quantity,
     'orderby' => 'date',
     'order' => 'DESC',
     'status' => 'publish',
@@ -49,7 +51,7 @@ if (!empty($products)) : ?>
 
             <?php endif; ?>
 
-            <ul class="latest-products__list latest-products__list-slider products row">
+            <ul class="row products latest-products__list<?php if ($slider) : echo ' latest-products__list-slider'; endif; ?>">
 
             <?php foreach ($products as $product_id) :
                 // Load product
@@ -65,7 +67,7 @@ if (!empty($products)) : ?>
 
                 ?>
 
-                <div class="shopPage__listItem latest-products__item col-lg-auto">
+                <div class="shopPage__listItem latest-products__item<?php if ($slider) : echo ' col-lg-auto'; else : echo ' col-6 col-sm-4 col-md-3'; endif;?>">
 
                     <?php wc_get_template_part('content', 'product'); ?>
 
