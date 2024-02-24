@@ -482,6 +482,7 @@ a.text-dark:hover,a.text-dark:focus{color:#121416 !important}
 .social-media a:hover svg path{fill:#c7bdb1}
 .social-media svg{width:2rem;height:2rem}
 .social-media svg *{-webkit-transition:.3s all;transition:.3s all}
+.breadcrumbs__wrapper+.section{padding-top:0}
 .button,.wpcf7-submit{cursor:pointer;-webkit-transition:.3s all;transition:.3s all}
 .button{display:inline-block;background-color:#000;color:white}
 .button:hover{background-color:#3e4a56}
