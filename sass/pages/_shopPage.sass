@@ -89,6 +89,7 @@
                 +max-screen($breakpoint-md)
                     top: 4px 
                     left: 14px 
+                    flex-wrap: wrap
                 span.shopPage__listItem__badge
                     position: static
                     min-width: 0
@@ -106,6 +107,11 @@
                     +max-screen($breakpoint-md)
                         padding: 2px 4px 
                         font-size: 10px
+                        display: flex 
+                        align-items: center 
+                        text-align: center
+                        white-space: nowrap 
+                        margin-bottom: 6px
                     &.onsale 
                         background-color: $color-red
                     &.new-badge 

@@ -23,30 +23,36 @@ global $product;
 if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
-$badges = get_field('badges');
-if($badges):
-	foreach($badges as $badge):
-		switch($badge['value']):
-			case 'hide':
-				$hide = true;
-				break;
-			case 'top':
-				$top = true;
-				break;
-			case 'new':
-				$new = true;
-				break;
-			case 'last':
-				$last = true;
-				break;
-		endswitch;
-	endforeach;
-endif;
 ?>
 <a href="<?php the_permalink( ); ?>" class="shopPage__listItem__content">
 	<div class="shopPage__listItem__labels">
 		<?php echo get_template_part( 'woocommerce/loop/sale-flash' ); ?>
 		<?php 
+		$badges = get_field('badges');
+		if(!empty($badges)):
+			foreach($badges as $badge):
+				switch($badge['value']):
+					case 'hide':
+						$hide= true;
+						break;
+					case 'top':
+						$top = true;
+						break;
+					case 'new':
+						$new = true;
+						break;
+					case 'last':
+						$last = true;
+						break;
+				endswitch;
+			endforeach;
+		else: 
+			$badges = false;
+			$new = false;
+			$top = false;
+			$last = false;
+			$hide = false;
+		endif;
 		if(!$hide):
 			//New Product Label
 			$newness_days = 30; 
