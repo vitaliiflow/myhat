@@ -44,21 +44,41 @@
             "name": "quantity_of_products_to_show",
             "aria-label": "",
             "type": "number",
-            "instructions": "",
+            "instructions": "Use any value from 1 to 100",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "30",
+                "width": "20",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
-            "min": "",
-            "max": "",
+            "min": 1,
+            "max": 100,
             "placeholder": "",
-            "step": "",
+            "step": 1,
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_65d99f296690f",
+            "label": "Enable slider?",
+            "name": "enable_slider",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "This option is for homepage by design. Applied to screens up to 991px",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
         }
     ],
     "location": [
@@ -79,5 +99,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1708506364
+    "modified": 1708761371
 }

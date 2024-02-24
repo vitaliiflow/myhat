@@ -29,7 +29,7 @@ $description = get_field('page_description');
 
         </div>
 
-        <div class="codelibry-under-dev search">
+        <div class="codelibry-under-dev search mt-4 mb-4">
             <form>
                 <input class="text-color text-color--cream" type="text" placeholder="<?php _e('Search in our brands','codelibry');?>">
             </form>

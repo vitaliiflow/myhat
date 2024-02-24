@@ -21,6 +21,7 @@ global $product;
 
 // Ensure visibility.
 if ( empty( $product ) || ! $product->is_visible() ) {
+	echo ' product invisible inside';
 	return;
 }
 ?>
