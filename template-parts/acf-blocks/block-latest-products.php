@@ -56,15 +56,20 @@ if (!empty($products)) : ?>
             <?php foreach ($products as $product_id) :
                 // Load product
                 $product = wc_get_product($product_id);
+
                 if (!$product) {
                     continue;
+                }
+
+                // Ensure visibility.
+                if ( empty( $product ) || ! $product->is_visible() ) {
+                    return;
                 }
                 
                 // Setup global product data
                 global $post, $product;
                 $post = get_post($product_id);
                 setup_postdata($post);
-
                 ?>
 
                 <div class="shopPage__listItem latest-products__item<?php if ($slider) : echo ' col-lg-auto'; else : echo ' col-6 col-sm-4 col-md-3'; endif;?>">
