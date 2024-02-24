@@ -1,0 +1,85 @@
+.contact
+    padding: 2.5rem 0
+    overflow: hidden
+    +max-screen($breakpoint-lg)
+        padding: 2rem 0
+    +max-screen($breakpoint-md)
+        padding: 1.5rem 0
+    &-title 
+        font-weight: 400
+        font-family: $font-family-base
+        margin-bottom: 1.3rem
+        +max-screen($breakpoint-lg)
+            margin-bottom: 1rem
+        +max-screen($breakpoint-md)
+            margin-bottom: 0.8rem
+    &__content
+        display: flex 
+        flex-wrap: wrap 
+        margin: 0 -30px 
+    &__text 
+        width: 100% 
+        margin-bottom: 3rem
+        padding: 0 30px 
+        +max-screen($breakpoint-lg) 
+            margin-bottom: 2rem
+        +max-screen($breakpoint-md)
+            margin-bottom: 1.5rem
+    &__accordionList
+        &__wrapper 
+            width: 60%
+            padding: 0 30px 
+            +max-screen($breakpoint-lg)
+                width: 100%
+                margin-bottom: 2.5rem
+        &__item 
+            border-bottom: 1px solid $color-text
+            &Title
+                position: relative
+                cursor: pointer
+                padding: 16px 36px
+                font-weight: 400
+                +max-screen($breakpoint-md)
+                    padding: 8px 20px 
+                svg 
+                    position: absolute
+                    top: 26px
+                    width: 20px 
+                    height: 12px
+                    object-fit: contact
+                    object-position: center 
+                    left: 16px 
+                    transform: translateX(-50%)
+                    transition: .3s 
+                    +max-screen($breakpoint-md)
+                        width: 14px 
+                        height: 9px 
+                        left: 9px
+                        top: 17px  
+            &Content 
+                padding-left: 36px
+                padding-right: 36px
+                padding-bottom: 12px
+                display: none 
+                +max-screen($breakpoint-md)
+                    padding-left: 20px
+                    padding-right: 20px
+                    padding-bottom: 8px
+            &:first-child 
+                border-top: 1px solid $color-text
+            &.opened &Title 
+                svg 
+                    transform: translateX(-50%) rotate(180deg)
+    &__form
+        &Wrapper 
+            width: 40%
+            padding: 0 30px 
+            +max-screen($breakpoint-lg)
+                width: 100%
+        input,
+        textarea 
+            font-weight: 400
+    &__address 
+        p 
+            br
+                display: block 

@@ -86,6 +86,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{font-weight:600}
 h1,.h1{font-family:Lora,sans-serif;line-height:1.2;font-size:46px}
 h2,.h2{font-family:Lora,sans-serif;line-height:1.2;font-size:36px}
 h3,.h3{font-family:Lora,sans-serif;line-height:1.2;font-size:28px}
+h4,.h4{font-size:22px}
 h5,.h5{font-size:19px}
 h6,.h6{font-size:16px}
 .font-family-primary{font-family:Karla,sans-serif}
@@ -411,6 +412,20 @@ body.woocommerce-order-received{display:-webkit-box;display:-ms-flexbox;display:
 body.woocommerce-order-received .wrapper{-webkit-box-flex:1;-ms-flex:1;flex:1;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}
 body.woocommerce-order-received .wrapper>div.section{-webkit-box-flex:1;-ms-flex:1;flex:1;display:-webkit-box;display:-ms-flexbox;display:flex}
 body.woocommerce-order-received .wrapper>div.section .container{margin-top:auto;margin-bottom:auto}
+.contact{padding:2.5rem 0;overflow:hidden}
+.contact-title{font-weight:400;font-family:"Avenir",sans-serif;margin-bottom:1.3rem}
+.contact__content{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;margin:0 -30px}
+.contact__text{width:100%;margin-bottom:3rem;padding:0 30px}
+.contact__accordionList__wrapper{width:60%;padding:0 30px}
+.contact__accordionList__item{border-bottom:1px solid #000}
+.contact__accordionList__itemTitle{position:relative;cursor:pointer;padding:16px 36px;font-weight:400}
+.contact__accordionList__itemTitle svg{position:absolute;top:26px;width:20px;height:12px;-o-object-fit:contact;object-fit:contact;-o-object-position:center;object-position:center;left:16px;-webkit-transform:translateX(-50%);transform:translateX(-50%);-webkit-transition:.3s;transition:.3s}
+.contact__accordionList__itemContent{padding-left:36px;padding-right:36px;padding-bottom:12px;display:none}
+.contact__accordionList__item:first-child{border-top:1px solid #000}
+.contact__accordionList__item.opened .contact__accordionList__itemTitle svg{-webkit-transform:translateX(-50%) rotate(180deg);transform:translateX(-50%) rotate(180deg)}
+.contact__formWrapper{width:40%;padding:0 30px}
+.contact__form input,.contact__form textarea{font-weight:400}
+.contact__address p br{display:block}
 .brands-page__item{padding-top:1.5rem;padding-bottom:1.5rem;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
 .teams-page__tabs{background:white}
 .teams-page__tabs .row{margin-left:-20px;margin-right:-20px}
@@ -507,20 +522,26 @@ body.woocommerce-order-received .wrapper>div.section .container{margin-top:auto;
 .button--black:hover,.btn--black:hover{color:#000;background-color:#fff}
 .button--white,.btn--white{border:1px solid #000;background:#fff;color:#000}
 .button--white:hover,.btn--white:hover{color:#fff;background-color:#000}
+.button.bg-color--cream:hover,.btn.bg-color--cream:hover{background-color:#c0b1a2}
 .wpcf7-submit{text-transform:uppercase;font-weight:600}
-input{padding:.75rem 1rem;font-size:16px;border:0;border-radius:20px;font-weight:600}
-input.text-color--cream{-webkit-transition:.3s all;transition:.3s all}
-input.text-color--cream::-webkit-input-placeholder{color:#c7bdb1}
-input.text-color--cream::-moz-placeholder{color:#c7bdb1}
-input.text-color--cream:-ms-input-placeholder{color:#c7bdb1}
-input.text-color--cream::-ms-input-placeholder{color:#c7bdb1}
-input.text-color--cream::placeholder{color:#c7bdb1}
-input.text-color--cream:hover{background-color:#c7bdb1;color:white}
-input.text-color--cream:hover::-webkit-input-placeholder{color:#c7bdb1}
-input.text-color--cream:hover::-moz-placeholder{color:#c7bdb1}
-input.text-color--cream:hover:-ms-input-placeholder{color:#c7bdb1}
-input.text-color--cream:hover::-ms-input-placeholder{color:#c7bdb1}
-input.text-color--cream:hover::placeholder{color:#c7bdb1}
+input,textarea{padding:.75rem 1rem;font-size:16px;border:0;border-radius:20px;font-weight:600;width:100%;font-family:"Avenir",sans-serif;resize:none}
+input.text-color--cream,textarea.text-color--cream{-webkit-transition:.3s all;transition:.3s all}
+input.text-color--cream::-webkit-input-placeholder,textarea.text-color--cream::-webkit-input-placeholder{color:#c7bdb1}
+input.text-color--cream::-moz-placeholder,textarea.text-color--cream::-moz-placeholder{color:#c7bdb1}
+input.text-color--cream:-ms-input-placeholder,textarea.text-color--cream:-ms-input-placeholder{color:#c7bdb1}
+input.text-color--cream::-ms-input-placeholder,textarea.text-color--cream::-ms-input-placeholder{color:#c7bdb1}
+input.text-color--cream::placeholder,textarea.text-color--cream::placeholder{color:#c7bdb1}
+input.text-color--cream:hover,textarea.text-color--cream:hover{background-color:#c7bdb1;color:white}
+input.text-color--cream:hover::-webkit-input-placeholder,textarea.text-color--cream:hover::-webkit-input-placeholder{color:#c7bdb1}
+input.text-color--cream:hover::-moz-placeholder,textarea.text-color--cream:hover::-moz-placeholder{color:#c7bdb1}
+input.text-color--cream:hover:-ms-input-placeholder,textarea.text-color--cream:hover:-ms-input-placeholder{color:#c7bdb1}
+input.text-color--cream:hover::-ms-input-placeholder,textarea.text-color--cream:hover::-ms-input-placeholder{color:#c7bdb1}
+input.text-color--cream:hover::placeholder,textarea.text-color--cream:hover::placeholder{color:#c7bdb1}
+textarea{height:140px}
+.wpcf7 form br{display:none}
+.wpcf7 form .wpcf7-form-control-wrap{display:block;margin-bottom:16px}
+.wpcf7 form .wpcf7-not-valid-tip{padding-left:10px;padding-top:4px;font-size:14px}
+.wpcf7 form .wpcf7-response-output{margin-top:0;font-size:14px}
 .form-flat p{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;position:relative;margin-bottom:0}
 .form-flat p .wpcf7-submit{position:absolute;right:0;z-index:10}
 .form-flat p .wpcf7-submit:hover{padding-left:1.25rem;padding-right:1.25rem}
@@ -528,6 +549,8 @@ input.text-color--cream:hover::placeholder{color:#c7bdb1}
 .form-flat p .wpcf7-form-control-wrap input{width:100%}
 .form-flat *{max-width:100%}
 .search input{width:400px;max-width:100%}
+.form__field.submit{margin-bottom:16px;position:relative}
+.form__field.submit .wpcf7-spinner{position:absolute;top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%);right:12px;margin:0;opacity:.5}
 .accordion__body{display:none}
 .accordion__button{-webkit-appearance:none;-moz-appearance:none;appearance:none;border:0;background-color:transparent;color:inherit;font-size:inherit;display:-webkit-box;display:-ms-flexbox;display:flex}
 .accordion__button-icon{-webkit-transition:.3s all;transition:.3s all}
@@ -1348,6 +1371,7 @@ section.search{margin-top:2rem;margin-bottom:2rem}
 .text-xl-center{text-align:center !important}
 }@media only screen and (min-width:1235px){.teams-page__tabs .row{margin-left:0;margin-right:0}
 }@media only screen and (max-width:1920px){body{font-size:16px}
+h4,.h4{font-size:20px}
 h5,.h5{font-size:17px}
 .header__menu .menu-item.menu-item-has-children{padding-bottom:.889rem;margin-bottom:-0.889rem}
 .header__menu .menu-item .sub-menu .menu-item a{padding:.334rem 1.334rem}
@@ -1400,6 +1424,11 @@ h6,.h6{font-size:calc(14px + 2 * ((100vw - 320px) / 1040))}
 .shopPage__paginationButton a svg{width:10px}
 .orderThanks{padding:52px 0}
 .orderThanks__buttons{margin-top:36px}
+.contact{padding:2rem 0}
+.contact-title{margin-bottom:1rem}
+.contact__text{margin-bottom:2rem}
+.contact__accordionList__wrapper{width:100%;margin-bottom:2.5rem}
+.contact__formWrapper{width:100%}
 .header__logo{margin-right:auto}
 .header__menu{display:none}
 .header__menu .menu{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}
@@ -1454,6 +1483,12 @@ h6,.h6{font-size:calc(14px + 2 * ((100vw - 320px) / 1040))}
 .shopPage__listItem__labels span.shopPage__listItem__badge{padding:2px 4px;font-size:10px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;text-align:center;white-space:nowrap;margin-bottom:6px}
 .orderThanks{padding:42px 0}
 .orderThanks__buttons{margin-top:32px;width:100%}
+.contact{padding:1.5rem 0}
+.contact-title{margin-bottom:.8rem}
+.contact__text{margin-bottom:1.5rem}
+.contact__accordionList__itemTitle{padding:8px 20px}
+.contact__accordionList__itemTitle svg{width:14px;height:9px;left:9px;top:17px}
+.contact__accordionList__itemContent{padding-left:20px;padding-right:20px;padding-bottom:8px}
 .header{padding:.5rem 0}
 .header__logo img{max-width:2.5rem}
 .header__menu .menu-item .sub-menu{margin:0 -0.334rem}

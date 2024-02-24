@@ -1,9 +1,13 @@
-input
+input,
+textarea
     padding: 0.75rem 1rem 
     font-size: 16px
     border: 0
     border-radius: $radius-default
     font-weight: 600
+    width: 100%
+    font-family: $font-family-base
+    resize: none
     &.text-color--cream
         transition: $default-transition
         &::placeholder
@@ -13,7 +17,21 @@ input
             color: white
             &::placeholder
                 color: $color-background-cream
-
+textarea 
+    height: 140px 
+.wpcf7 form 
+    br 
+        display: none 
+    .wpcf7-form-control-wrap
+        display: block
+        margin-bottom: 16px
+    .wpcf7-not-valid-tip
+        padding-left: 10px
+        padding-top: 4px
+        font-size: 14px
+    .wpcf7-response-output
+        margin-top: 0
+        font-size: 14px
 .form-flat
     p
         display: flex
@@ -42,3 +60,15 @@ input
     input
         width: 400px
         max-width: 100%
+.form
+    &__field 
+        &.submit 
+            margin-bottom: 16px
+            position: relative
+            .wpcf7-spinner
+                position: absolute
+                top: 50%
+                transform: translateY(-50%)
+                right: 12px
+                margin: 0
+                opacity: 0.5
