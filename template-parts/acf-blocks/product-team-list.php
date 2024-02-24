@@ -48,7 +48,6 @@ if ($list ) : ?>
         <ul>
 
             <?php $c = 1; ?>
-
             <?php foreach ($list as $item) : 
 
                 $category = $item['category'];
