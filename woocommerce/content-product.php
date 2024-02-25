@@ -30,11 +30,19 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 		<?php echo get_template_part( 'woocommerce/loop/sale-flash' ); ?>
 		<?php 
 		$badges = get_field('badges');
+		$new = false;
+		$top = false;
+		$last = false;
+		$hide = false;
+		$limited = false;
 		if(!empty($badges)):
 			foreach($badges as $badge):
 				switch($badge['value']):
 					case 'hide':
 						$hide= true;
+						break;
+					case 'limited':
+						$limited= true;
 						break;
 					case 'top':
 						$top = true;
@@ -49,10 +57,6 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 			endforeach;
 		else: 
 			$badges = false;
-			$new = false;
-			$top = false;
-			$last = false;
-			$hide = false;
 		endif;
 		if(!$hide):
 			//New Product Label
@@ -79,6 +83,9 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 			if(dw_product_totals() > 50 || $top){
 				echo '<span class="top-seller shopPage__listItem__badge">' . esc_html__( 'Top seller', 'woocommerce' ) . '</span>';
 			}
+			if($limited):
+				echo '<span class="limited-edition shopPage__listItem__badge">' . esc_html__( 'Limited Edition', 'woocommerce' ) . '</span>';
+			endif;
 		endif;
 		?>
 

@@ -20,7 +20,8 @@
                 "hide": "Hide All",
                 "new": "New",
                 "top": "Top Seller",
-                "last": "Last Chance"
+                "last": "Last Chance",
+                "limited": "Limited Edition"
             },
             "default_value": [],
             "return_format": "array",
@@ -49,5 +50,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1708647810
+    "modified": 1708883184
 }

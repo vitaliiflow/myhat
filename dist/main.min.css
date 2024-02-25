@@ -377,12 +377,13 @@ a.text-dark:hover,a.text-dark:focus{color:#121416 !important}
 .shopPage__listItem__image{position:relative;padding-bottom:85%;margin-bottom:32px}
 .shopPage__listItem__image img{height:100%;-o-object-fit:contain;object-fit:contain;-o-object-position:top;object-position:top}
 .shopPage__listItem__tax{font-weight:700;text-transform:uppercase;font-size:14px;margin-bottom:8px}
-.shopPage__listItem__labels{position:absolute;z-index:1;left:21px;top:6px;line-height:1;display:-webkit-box;display:-ms-flexbox;display:flex;margin:0 -4px}
-.shopPage__listItem__labels span.shopPage__listItem__badge{position:static;min-width:0;min-height:0;line-height:1;border-radius:20px;padding:4px 8px;display:block;margin:0 4px;font-weight:500;font-size:16px}
+.shopPage__listItem__labels{position:absolute;z-index:1;left:21px;top:6px;line-height:1;display:-webkit-box;display:-ms-flexbox;display:flex;margin:0 -4px;-ms-flex-wrap:wrap;flex-wrap:wrap}
+.shopPage__listItem__labels span.shopPage__listItem__badge{position:static;min-width:0;min-height:0;line-height:1;border-radius:20px;padding:4px 8px;display:block;margin:0 4px;font-weight:500;font-size:16px;margin-bottom:6px}
 .shopPage__listItem__labels span.shopPage__listItem__badge.onsale{background-color:#e40d68}
 .shopPage__listItem__labels span.shopPage__listItem__badge.new-badge{background-color:#edde29}
 .shopPage__listItem__labels span.shopPage__listItem__badge.top-seller{background-color:#0ca3e2;color:#fff}
 .shopPage__listItem__labels span.shopPage__listItem__badge.last-chance{background-color:#3e4a56;color:#fff}
+.shopPage__listItem__labels span.shopPage__listItem__badge.limited-edition{background-color:#ffd700;color:#fff}
 .shopPage__listItem__content{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;height:100%}
 .shopPage__listItem__price{font-size:22px;font-weight:700;margin-top:auto;line-height:1;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}
 .shopPage__listItem__price ins{text-decoration:none}
@@ -412,6 +413,7 @@ body.woocommerce-order-received{display:-webkit-box;display:-ms-flexbox;display:
 body.woocommerce-order-received .wrapper{-webkit-box-flex:1;-ms-flex:1;flex:1;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}
 body.woocommerce-order-received .wrapper>div.section{-webkit-box-flex:1;-ms-flex:1;flex:1;display:-webkit-box;display:-ms-flexbox;display:flex}
 body.woocommerce-order-received .wrapper>div.section .container{margin-top:auto;margin-bottom:auto}
+body.woocommerce-order-received #breadcrumbs{display:none}
 .contact{padding:2.5rem 0;overflow:hidden}
 .contact-title{font-weight:400;font-family:"Avenir",sans-serif;margin-bottom:1.3rem}
 .contact__content{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;margin:0 -30px}
@@ -1479,8 +1481,8 @@ h6,.h6{font-size:calc(14px + 2 * ((100vw - 320px) / 1040))}
 .shopPage__list{max-width:600px;margin:auto}
 .shopPage__list ul.products{margin:0 -10px;margin-bottom:-36px}
 .shopPage__listItem{padding:0 10px;margin-bottom:36px}
-.shopPage__listItem__labels{top:4px;left:14px;-ms-flex-wrap:wrap;flex-wrap:wrap}
-.shopPage__listItem__labels span.shopPage__listItem__badge{padding:2px 4px;font-size:10px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;text-align:center;white-space:nowrap;margin-bottom:6px}
+.shopPage__listItem__labels{top:4px;left:14px}
+.shopPage__listItem__labels span.shopPage__listItem__badge{padding:2px 4px;font-size:10px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;text-align:center;white-space:nowrap}
 .orderThanks{padding:42px 0}
 .orderThanks__buttons{margin-top:32px;width:100%}
 .contact{padding:1.5rem 0}

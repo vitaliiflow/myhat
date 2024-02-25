@@ -83,13 +83,13 @@
                 line-height: 1
                 display: flex 
                 margin: 0 -4px 
+                flex-wrap: wrap 
                 +max-screen($breakpoint-lg)
                     left: 12px 
                     top: 4.5px 
                 +max-screen($breakpoint-md)
                     top: 4px 
                     left: 14px 
-                    flex-wrap: wrap
                 span.shopPage__listItem__badge
                     position: static
                     min-width: 0
@@ -101,6 +101,7 @@
                     margin: 0 4px 
                     font-weight: 500
                     font-size: 16px
+                    margin-bottom: 6px
                     +max-screen(1200px)
                         font-size: 12px
                         padding: 2.5px 6px 
@@ -111,7 +112,6 @@
                         align-items: center 
                         text-align: center
                         white-space: nowrap 
-                        margin-bottom: 6px
                     &.onsale 
                         background-color: $color-red
                     &.new-badge 
@@ -121,6 +121,9 @@
                         color: $color-white
                     &.last-chance 
                         background-color: $color-background-dark
+                        color: $color-white
+                    &.limited-edition 
+                        background-color: $color-background-gold
                         color: $color-white
             &__content 
                 display: flex 
