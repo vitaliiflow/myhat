@@ -24,30 +24,40 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	echo ' product invisible inside';
 	return;
 }
-$badges = get_field('badges');
-if($badges):
-	foreach($badges as $badge):
-		switch($badge['value']):
-			case 'hide':
-				$hide = true;
-				break;
-			case 'top':
-				$top = true;
-				break;
-			case 'new':
-				$new = true;
-				break;
-			case 'last':
-				$last = true;
-				break;
-		endswitch;
-	endforeach;
-endif;
 ?>
 <a href="<?php the_permalink( ); ?>" class="shopPage__listItem__content">
 	<div class="shopPage__listItem__labels">
 		<?php echo get_template_part( 'woocommerce/loop/sale-flash' ); ?>
 		<?php 
+		$badges = get_field('badges');
+		$new = false;
+		$top = false;
+		$last = false;
+		$hide = false;
+		$limited = false;
+		if(!empty($badges)):
+			foreach($badges as $badge):
+				switch($badge['value']):
+					case 'hide':
+						$hide= true;
+						break;
+					case 'limited':
+						$limited= true;
+						break;
+					case 'top':
+						$top = true;
+						break;
+					case 'new':
+						$new = true;
+						break;
+					case 'last':
+						$last = true;
+						break;
+				endswitch;
+			endforeach;
+		else: 
+			$badges = false;
+		endif;
 		if(!$hide):
 			//New Product Label
 			$newness_days = 30; 
@@ -73,6 +83,9 @@ endif;
 			if(dw_product_totals() > 50 || $top){
 				echo '<span class="top-seller shopPage__listItem__badge">' . esc_html__( 'Top seller', 'woocommerce' ) . '</span>';
 			}
+			if($limited):
+				echo '<span class="limited-edition shopPage__listItem__badge">' . esc_html__( 'Limited Edition', 'woocommerce' ) . '</span>';
+			endif;
 		endif;
 		?>
 

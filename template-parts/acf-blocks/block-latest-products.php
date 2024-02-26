@@ -1,10 +1,17 @@
 <?php
+if(is_page_template( 'template-pages/contact.php' )):
+    $title = get_field('title');
+    $link = get_field('link');
+    $quantity = get_field('quantity_of_products_to_show');
 
-$title = get_sub_field('title');
-$link = get_sub_field('link');
-$quantity = get_sub_field('quantity_of_products_to_show');
+    $slider = get_field('enable_slider');
+else:
+    $title = get_sub_field('title');
+    $link = get_sub_field('link');
+    $quantity = get_sub_field('quantity_of_products_to_show');
 
-$slider = get_sub_field('enable_slider');
+    $slider = get_sub_field('enable_slider');
+endif;
 
 // Define the query arguments
 $args = array(

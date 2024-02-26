@@ -25,6 +25,10 @@ h3, .h3
     font-family: Lora, sans-serif
     line-height: 1.2
     +adaptive-value("font-size", 28, 24, 1) 
+h4, .h4
+    font-size: 22px
+    +max-screen($breakpoint-xxl)
+        font-size: 20px
 
 h5, .h5
     font-size: 19px
@@ -76,7 +80,7 @@ h6, .h6
             padding-left: 0
         li
             list-style: none
-    a
+    a:not(.btn):not(.button)
         text-decoration: underline
         transition: $default-transition
         &:hover

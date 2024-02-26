@@ -54,5 +54,6 @@ if ( ! defined( 'ABSPATH' ) ) {
             </div>
             <div class="shopPage__filtersRow__list__apply button"><?php _e('APPLY', 'woocommerce'); ?></div>
         </div>
+        <div class="shopPage__filtersRow__itemClose"></div>
     </div>
 </div>

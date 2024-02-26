@@ -3,10 +3,11 @@
     cursor: pointer
     transition: $default-transition
 
-.button
+.button,
+.btn
     display: inline-block
     background-color: $color-text
-    
+    text-decoration: none 
     color: white
     &:hover
         background-color: $color-background-dark
@@ -40,6 +41,33 @@
             height: 26px
             margin-bottom: -3px
             margin-left: 0.5rem
+    &--black,
+    &--white 
+        border-radius: 0
+        font-weight: 400
+        padding: 16px 36px
+        transition: .3s
+        +max-screen($breakpoint-lg)
+            padding: 12px 32px 
+        +max-screen($breakpoint-md)
+            padding: 10px 24px 
+    &--black 
+        background: $color-text
+        color: $color-white
+        border: 1px solid $color-text
+        &:hover 
+            color: $color-text
+            background-color: $color-white
+    &--white 
+        border: 1px solid $color-text
+        background: $color-white
+        color: $color-text
+        &:hover 
+            color: $color-white
+            background-color: $color-text
+    &.bg-color--cream:hover 
+        background-color: $color-background-disabled
+
 
 .wpcf7-submit
     text-transform: uppercase
