@@ -60,36 +60,32 @@ if (!empty($products)) : ?>
 
             <ul class="row products latest-products__list<?php if ($slider) : echo ' latest-products__list-slider'; endif; ?>">
 
-            <?php foreach ($products as $product_id) :
-                // Load product
-                $product = wc_get_product($product_id);
+                <?php foreach ($products as $product_id) :
+                    // Load product
+                    $product = wc_get_product($product_id);
 
-                if (!$product) {
-                    continue;
-                }
+                    // Ensure visibility.
+                    if ( empty( $product ) || ! $product->is_visible() ) {
+                        continue;
+                    }
+                    
+                    // Setup global product data
+                    global $post, $product;
+                    $post = get_post($product_id);
+                    setup_postdata($post);
+                    ?>
 
-                // Ensure visibility.
-                if ( empty( $product ) || ! $product->is_visible() ) {
-                    return;
-                }
-                
-                // Setup global product data
-                global $post, $product;
-                $post = get_post($product_id);
-                setup_postdata($post);
-                ?>
+                    <li class="shopPage__listItem latest-products__item<?php if ($slider) : echo ' col-lg-auto'; else : echo ' col-6 col-sm-4 col-md-3'; endif;?>">
 
-                <div class="shopPage__listItem latest-products__item<?php if ($slider) : echo ' col-lg-auto'; else : echo ' col-6 col-sm-4 col-md-3'; endif;?>">
+                        <?php wc_get_template_part('content', 'product'); ?>
 
-                    <?php wc_get_template_part('content', 'product'); ?>
-
-                </div>
+                    </li>
 
 
-                <?php 
-                // Reset the global post data
-                wp_reset_postdata();
-            endforeach; ?>
+                    <?php 
+                    // Reset the global post data
+                    wp_reset_postdata();
+                endforeach; ?>
 
             </ul>
 
