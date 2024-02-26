@@ -78,7 +78,6 @@
                     left: 20px 
                     display: flex 
                     flex-direction: column-reverse
-                    width: min-content
                 & > div > a
                     &::after 
                         +max-screen($breakpoint-md)
@@ -111,12 +110,14 @@
                     +max-screen($breakpoint-md)
                         padding-bottom: 0
                         margin: 0
+                        flex-direction: column
                     .menu-item 
                         +max-screen($breakpoint-md)
                             font-size: 14px
                             border: 1px solid #000
                             border-bottom: 0
                             margin: 0
+                            width: auto
                         a 
                             +max-screen($breakpoint-md)
                                 padding: 4px 2px 
