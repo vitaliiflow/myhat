@@ -10,7 +10,8 @@ get_header();
 $title = get_field('page_title') ? get_field('page_title') : get_the_title();
 $description = get_field('page_description');
 
-$list = get_field('leagues-list');
+$list = get_field('leagues-list'); /*repeater: category, custom name*/
+//var_dump($list);
 $taxonomy_name = 'product_cat';
 ?>
 
@@ -33,9 +34,13 @@ $taxonomy_name = 'product_cat';
         </div>
 
         <div class="codelibry-under-dev search mt-4 mb-4">
-            <form>
+            <form id="search-teams-form">
                 <input class="text-color text-color--cream" type="text" placeholder="<?php _e('Search in our brands','codelibry');?>">
+                <button type="submit" class="teams-page-search-btn">
+                    <img src="<?php echo get_template_directory_uri(  ) ?>/assets/images/icons/search.png" alt="">
+                </button>
             </form>
+            <button type="button" class="clear-search-results-btn__teams"><?php _e('Reset','codelibry');?></button>
         </div>
 
         <?php if ($list) : ?>
@@ -46,7 +51,8 @@ $taxonomy_name = 'product_cat';
 
                     <?php $i = 1; ?>
 
-                    <?php foreach ($list as $item) : 
+                    <?php foreach ($list as $item) :
+//                        var_dump($item);
 
                         $category = $item['category'];
                         $name = $item['custom_name'] ? $item['custom_name'] : $category->name;
@@ -70,7 +76,7 @@ $taxonomy_name = 'product_cat';
                     <?php foreach ($list as $item) : 
 
                         $category = $item['category'];
-        
+
                         $terms = get_terms( array(
                             'taxonomy' => 'product_cat',
                             'orderby' => 'name',
@@ -79,7 +85,7 @@ $taxonomy_name = 'product_cat';
                             'child_of' => $category->term_id
                         ) );
 
-                        get_terms($args);
+//                        get_terms($args);
 
                         //var_dump($children);
 
@@ -100,7 +106,7 @@ $taxonomy_name = 'product_cat';
                                         $name = $term->name;
                         
                                         
-                                        if ($image) : ?>  
+//                                        if ($image) : ?><!--  -->
                                             <li class="col-4 col-md-3 col-lg-2 py-2 tabs__item-child-item">
                                                 <a href="<?php echo $link; ?>" class="product-cat__item-link">
                         
@@ -114,7 +120,7 @@ $taxonomy_name = 'product_cat';
                                                 </a>
                                             </li>
                                                        
-                                        <?php endif; ?>
+<!--                                        --><?php //endif; ?>
 
 
                                     <?php endforeach; ?>
