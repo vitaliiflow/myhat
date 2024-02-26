@@ -3,7 +3,7 @@
     padding-top: 1.1112rem
     padding-bottom: 1.1112rem
     position: relative
-    z-index: 1
+    z-index: 111
     +max-screen($breakpoint-md)
         padding: 0.5rem 0
     &__logo
@@ -18,6 +18,13 @@
     &__menu
         margin-left: auto
         margin-right: auto
+        display: flex 
+        .menu-main-container
+            .menu 
+                margin-right: 0
+        .menu-languages-menu-container
+            .menu
+                margin-left: 0
         +max-screen($breakpoint-lg)
             display: none 
         .menu 
@@ -70,56 +77,66 @@
                     font-size: 1.1112rem
                     font-weight: 700 
             &.menu-item-language 
-                +max-screen($breakpoint-md)
-                    position: absolute
+                +max-screen($breakpoint-lg)
                     margin-bottom: 0
-                    bottom: 24px 
                     padding: 0
-                    left: 20px 
                     display: flex 
                     flex-direction: column-reverse
                 & > div > a
                     &::after 
-                        +max-screen($breakpoint-md)
+                        +max-screen($breakpoint-lg)
                             transform: translateY(-50%) rotate(270deg)
                 &.closed > div > a
                     &::after 
-                        +max-screen($breakpoint-md)
+                        +max-screen($breakpoint-lg)
                             transform: translateY(-50%) rotate(90deg)
                 .menu-item__parent
+                    +max-screen($breakpoint-lg)
+                        border: 1px solid $color-text
+                        padding: 6px 12px 
                     +max-screen($breakpoint-md)
                         padding: 4px 8px
-                        border: 1px solid $color-text
                     a
-                        +max-screen($breakpoint-md)
-                            font-size: 14px
+                        +max-screen($breakpoint-lg)
                             padding-right: 16px
                             display: flex
                             align-items: center
                             flex-direction: row-reverse
                             justify-content: flex-end
-                            img 
-                                +max-screen($breakpoint-md)
-                                    width: 14px
-                                    height: 14px
-                                    object-fit: cover
-                                    border-radius: 50%
-                                    display: block
-                                    margin-right: 8px
-                .sub-menu 
-                    +max-screen($breakpoint-md)
-                        padding-bottom: 0
-                        margin: 0
-                        flex-direction: column
-                    .menu-item 
+                            font-size: 16px
                         +max-screen($breakpoint-md)
                             font-size: 14px
+                        img 
+                            display: none 
+                            +max-screen($breakpoint-lg)
+                                object-fit: cover
+                                border-radius: 50%
+                                display: block
+                                margin-right: 12px
+                                width: 16px
+                                height: 16px
+                            +max-screen($breakpoint-md)
+                                margin-right: 8px
+                                width: 14px
+                                height: 14px
+                .sub-menu 
+                    +max-screen($breakpoint-lg)
+                        padding-bottom: 0
+                        margin: 0
+                        display: block
+                    .menu-item 
+                        +max-screen($breakpoint-lg)
+                            font-size: 16px
                             border: 1px solid #000
                             border-bottom: 0
                             margin: 0
                             width: auto
+                        +max-screen($breakpoint-md)
+                            font-size: 14px
+                        &:last-child
+                            margin-bottom: 0
                         a 
-                            +max-screen($breakpoint-md)
+                            +max-screen($breakpoint-lg)
                                 padding: 4px 2px 
 
             &.mobile-sm 
@@ -418,9 +435,6 @@
                 margin-bottom: 0.445rem
                 &:last-child 
                     margin-bottom: 0
-    &__languages 
-        +max-screen($breakpoint-lg)
-            margin-top: auto
     &__mobileMenu
         display: none 
         +max-screen($breakpoint-lg)
@@ -445,6 +459,14 @@
                     padding-top: 1.56rem 
                     padding-bottom: 1.56rem 
                     margin: 0
+            &__languages
+                +max-screen($breakpoint-lg)
+                    margin-top: auto
+                    display: flex
+                    padding-bottom: 0
+                .menu 
+                    +max-screen($breakpoint-md)
+                        margin: 0
             &__close
                 position: absolute
                 +max-screen($breakpoint-lg)

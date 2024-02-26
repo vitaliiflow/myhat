@@ -24,6 +24,7 @@ function codelibry_setup(){
     array(
       'header-menu' => __('Header Menu', 'theme-name'),
       'footer-menu' => __('Footer Menu', 'theme-name'),
+      'languages-menu' => __('Languages Menu', 'theme-name'),
     )
   );
 }
