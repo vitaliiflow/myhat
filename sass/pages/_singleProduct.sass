@@ -1,0 +1,266 @@
+.single-product 
+    #main > .woocommerce-breadcrumb 
+        display: none 
+    #sidebar 
+        display: none 
+    .latest-products 
+        .products
+            margin-bottom: -36px
+.singleProduct
+    &__colorsList 
+        +max-screen($breakpoint-md)
+            margin: 0 -4px 
+            margin-top: 16px
+            margin-bottom: 16px
+            display: flex 
+        &__item 
+            border-radius: 50%
+            +max-screen($breakpoint-md)
+                width: 20px 
+                height: 20px 
+            &Wrapper 
+                +max-screen($breakpoint-md)
+                    padding: 0 4px 
+            &.active
+                border: 1px solid $color-text
+    &__breadcrumbs 
+        .woocommerce-breadcrumb
+            +max-screen($breakpoint-md)
+                font-size: 10px
+                margin-bottom: 8px
+    &__gallery 
+        overflow: hidden 
+        .slick-dots
+            display: flex
+            justify-content: center
+            +max-screen($breakpoint-md)
+                margin-bottom: 8px
+                margin-top: 12px
+            li 
+                background-color: $color-background-gray
+                border-radius: 0
+                +max-screen($breakpoint-md)
+                    width: 24px
+                    height: 3px 
+                    margin: 0 3px 
+                &.slick-active 
+                    background-color: $color-text
+    &__data
+        position: relative
+        padding-top: 16px
+        &Wrapper
+            position: relative 
+            padding-bottom: 32px
+            &::before 
+                content: ""__
+                position: absolute
+                top: 0
+                height: 100%
+                background-color: $color-white
+                +max-screen($breakpoint-md)
+                    left: -30px 
+                    width: calc(100% + 60px )
+                +max-screen($breakpoint-sm)
+                    left: -20px 
+                    width: calc( 100% + 40px )
+
+    &__tax 
+        font-size: 12px 
+        font-weight: 700
+        text-transform: uppercase
+        margin-bottom: 4px 
+    &__title 
+        margin-bottom: 12px
+    &__price 
+        font-weight: 700
+        +max-screen($breakpoint-md)
+            font-size: 22px
+            &:not(.sale)
+                line-height: 1.2
+        .woocommerce-Price-currencySymbol
+            margin-left: 4.5px
+            display: inline-block 
+        ins 
+            text-decoration: none
+            line-height: 1.2
+        &.sale 
+            display: flex 
+            flex-direction: column
+            del 
+                font-weight: 500
+                color: $color-background-dark
+                text-decoration: none 
+                order: 1
+                +max-screen($breakpoint-md)
+                    font-size: 13px
+                    color: $color-text
+                &::before 
+                    content: "Ord pris "
+            ins 
+                color: $color-red
+            del,
+            ins
+                width: 100% 
+    &__size 
+        &Wrapper 
+            margin-bottom: 16px
+        &Title 
+            padding: 11px 24px 
+            text-align: center
+            background-color: $color-background-main
+            position: relative 
+            &::after 
+                content: "▼"
+                position: absolute
+                top: 50% 
+                right: 10px 
+                transform: translateY(-50%) 
+                font-size: 10px
+                transition: 0.3s
+            &.opened::after 
+                transform: translateY(-50%) rotate(180deg)
+        &List 
+            background-color: $color-background-main
+            display: none 
+            &__item 
+                padding: 6px 12px 
+                text-align: center
+                transition: .3s 
+                &.active 
+                    background-color: $color-text 
+                    color: $color-white
+    &__purchase 
+        .single_variation 
+            +max-screen($breakpoint-md)
+                justify-content: flex-end
+                font-weight: 700
+                margin-bottom: 8px
+        .single_variation_wrap *
+            display: flex 
+        .variations_form
+            table 
+                opacity: 0
+                visibility: hidden
+                display: block
+                width: 0
+                height: 0
+        .quantity 
+            background-color: $color-background-main
+            width: calc( 30% - 6px )
+            margin-right: 6px
+            min-width: 100px
+            input.qty
+                background-color: transparent
+                padding: 12px 0
+                text-align: center
+                width: 100%
+            &-btn
+                height: 100% 
+                display: flex 
+                align-items: center
+                padding: 0 13px 
+                &.disabled
+                    opacity: 0.7 
+                    pointer-events: none 
+        .single_add_to_cart_button
+            background-color: #000
+            opacity: 1
+            text-align: center
+            display: block
+            +max-screen($breakpoint-md)
+                font-size: 16px
+                width: calc( 70% - 6px )
+                margin-left: 6px
+                padding-left: 12px
+                padding-right: 12px
+            &.disabled 
+                opacity: 0.8
+    &__featuresList 
+        margin-top: 24px
+        margin-bottom: 36px
+        &__item 
+            display: flex 
+            margin-bottom: 12px
+            align-items: center
+            &Label
+                font-size: 14px
+                font-weight: 500
+            &Icon 
+                margin-right: 8px
+                display: flex 
+                img 
+                    width: 16px 
+                    height: 16px 
+                    object-fit: contain
+    &__accordion
+        &List 
+        &Item 
+            &__title 
+                position: relative 
+                &::after 
+                    content: ""
+                    width: 18px 
+                    height: 18px 
+                    top: 50% 
+                    right: -2px 
+                    transform: translateY(-50%) rotate(90deg)
+                    background-image: url('../assets/images/icons/right-arrow.png')
+                    background-size: contain
+                    background-repeat: no-repeat
+                    background-position: center
+                    position: absolute
+                    transition: .3s 
+                &.opened::after 
+                    transform: translateY(-50%) rotate(270deg)
+            &__content 
+                display: none 
+                padding-top: 12px
+                h1
+                    +max-screen($breakpoint-md)
+                        font-size: 20px
+                        margin: 0.75rem 0
+                h2 
+                    +max-screen($breakpoint-md)
+                        font-size: 18px
+                        margin: 0.5rem 0
+                h3
+                    +max-screen($breakpoint-md)
+                        font-size: 16px
+                        margin: 0.5rem 0
+                h4,
+                h5
+                    +max-screen($breakpoint-md)
+                        font-size: 14px
+                        margin: 0.35rem 0
+                p,
+                ul,
+                li 
+                    +max-screen($breakpoint-md)
+                        font-size: 14px
+                ul,
+                li 
+                    list-style-type: disc 
+                ul 
+                    +max-screen($breakpoint-md)
+                        margin: 0.5rem 0
+                        padding-left: 20px
+                & > h2 
+                    display: none 
+                .woocommerce-Tabs-panel--description > *:first-child 
+                    margin-top: 0
+    &__link 
+        position: relative 
+        margin-top: 16px
+        display: block
+        &::after 
+            content: ""
+            width: 18px 
+            height: 18px 
+            top: 50% 
+            right: -2px 
+            transform: translateY(-50%)
+            background-image: url('../assets/images/icons/right-arrow.png')
+            background-size: contain
+            background-repeat: no-repeat
+            background-position: center
+            position: absolute

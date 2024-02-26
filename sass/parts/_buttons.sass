@@ -41,6 +41,15 @@
             height: 26px
             margin-bottom: -3px
             margin-left: 0.5rem
+        &.sm 
+            +max-screen($breakpoint-md)
+                font-size: 12px
+                margin-top: 4px
+            svg 
+                +max-screen($breakpoint-md)
+                    margin-left: 0.25rem
+                    width: 12px 
+                    height: 100%
     &--black,
     &--white 
         border-radius: 0

@@ -69,6 +69,58 @@
                 +max-screen($breakpoint-lg)
                     font-size: 1.1112rem
                     font-weight: 700 
+            &.menu-item-language 
+                +max-screen($breakpoint-md)
+                    position: absolute
+                    margin-bottom: 0
+                    bottom: 24px 
+                    padding: 0
+                    left: 20px 
+                    display: flex 
+                    flex-direction: column-reverse
+                    width: min-content
+                & > div > a
+                    &::after 
+                        +max-screen($breakpoint-md)
+                            transform: translateY(-50%) rotate(270deg)
+                &.closed > div > a
+                    &::after 
+                        +max-screen($breakpoint-md)
+                            transform: translateY(-50%) rotate(90deg)
+                .menu-item__parent
+                    +max-screen($breakpoint-md)
+                        padding: 4px 8px
+                        border: 1px solid $color-text
+                    a
+                        +max-screen($breakpoint-md)
+                            font-size: 14px
+                            padding-right: 16px
+                            display: flex
+                            align-items: center
+                            flex-direction: row-reverse
+                            justify-content: flex-end
+                            img 
+                                +max-screen($breakpoint-md)
+                                    width: 14px
+                                    height: 14px
+                                    object-fit: cover
+                                    border-radius: 50%
+                                    display: block
+                                    margin-right: 8px
+                .sub-menu 
+                    +max-screen($breakpoint-md)
+                        padding-bottom: 0
+                        margin: 0
+                    .menu-item 
+                        +max-screen($breakpoint-md)
+                            font-size: 14px
+                            border: 1px solid #000
+                            border-bottom: 0
+                            margin: 0
+                        a 
+                            +max-screen($breakpoint-md)
+                                padding: 4px 2px 
+
             &.mobile-sm 
                 a 
                     +max-screen($breakpoint-lg)
