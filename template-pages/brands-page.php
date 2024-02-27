@@ -30,9 +30,13 @@ $description = get_field('page_description');
         </div>
 
         <div class="codelibry-under-dev search mt-4 mb-4">
-            <form>
+            <form id="search-brands-form">
                 <input class="text-color text-color--cream" type="text" placeholder="<?php _e('Search in our brands','codelibry');?>">
+                <button type="submit" class="brands-page-search-btn text-color text-color--cream bg-color bg-color--main">
+                    <img src="<?php echo get_template_directory_uri(  ) ?>/assets/images/icons/search.png" alt="">
+                </button>
             </form>
+            <button type="button" class="clear-search-results-btn text-color text-color--cream bg-color bg-color--main"><?php _e('Reset','codelibry');?></button>
         </div>
 
         

@@ -9,8 +9,17 @@ $logo = get_field('header_logo', 'options');
       <?php endif; ?>
       
       <div class="header__menu">
-        <?php wp_nav_menu(array('theme_location' => 'header-menu')); ?>
-        <?php wp_nav_menu(array('theme_location' => 'languages-menu')); ?>
+
+        <?php 
+        if (has_nav_menu('header-menu')) :
+          wp_nav_menu(array('theme_location' => 'header-menu')); 
+        endif; 
+
+        if (has_nav_menu('languages-menu')) :
+          wp_nav_menu(array('theme_location' => 'languages-menu'));
+        endif; 
+        ?>
+        
       </div>
       <div class="header__iconsList">
         <div class="header__iconsList__item search">

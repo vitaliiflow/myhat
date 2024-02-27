@@ -1,5 +1,5 @@
 const projectName = "myhat"; // Name of your theme
-const projectURL = "localhost:8888/myhat/"; // Your local server address
+const projectURL = "myhat/"; // Your local server address
 
 // Local project URL of your already running WordPress site.
 // > Could be something like "wpgulp.local" or "localhost"

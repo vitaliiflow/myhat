@@ -32,12 +32,23 @@ function codelibry_enqueue () {
   wp_enqueue_script( 'vendor', "{$DIST}/vendor.min.js", array('jquery'), $vendor_version, true ); // vendor js
   wp_enqueue_script( 'main', "{$DIST}/main.min.js", array('vendor'), $custom_version, true ); // main js
 
+  $localized_strings = array(
+       'searching' => __('Search...', 'codelibry'),
+       'resetError'   => __('Unable to reset. Please try again.', 'codelibry'),
+       'searchError'   => __('Error during search. Please try again.', 'codelibry'),
+       'ajaxError'    => __('Error during reset. Please try again.', 'codelibry'),
+       'noTeamsFound'    => __('No teams found.', 'codelibry'),
+       'noBrandsFound'    => __('No brands found.', 'codelibry'),
+  );
+
+
   wp_localize_script( 'main', 'codelibry',
     array( 
       'ajax_url' => admin_url( 'admin-ajax.php' ),
       'ajax_nonce' => wp_create_nonce( "secure_nonce_name" ),
       'site_url' => get_site_url(),
-      'theme_url' => get_template_directory_uri()
+      'theme_url' => get_template_directory_uri(),
+      'strings' => $localized_strings,
     )
   );
 }
