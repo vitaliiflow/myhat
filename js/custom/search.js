@@ -1,5 +1,7 @@
 jQuery(document).ready(function($){
 
+    console.log('54875475485');
+
     $('.header__searchIcon').click(function(){
         $(this).parent().find('.search__barWrapper').toggleClass('opened');
     });
