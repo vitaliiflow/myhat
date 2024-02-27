@@ -505,6 +505,8 @@ body.woocommerce-order-received #breadcrumbs{display:none}
 .teams-page .tabs__nav.active{background:white}
 .teams-page .tabsNav__item{padding-left:0;padding-right:0}
 .teams-page .tabs__item{padding-left:0;padding-right:0}
+.teams-page-result-list{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;gap:10px}
+.teams-page-result-list li{height:200px;width:200px}
 .header{background-color:transparent;padding-top:1.1112rem;padding-bottom:1.1112rem;position:relative;z-index:111}
 .header__logo img{max-width:5rem}
 .header__menu{margin-left:auto;margin-right:auto;display:-webkit-box;display:-ms-flexbox;display:flex}
@@ -599,26 +601,26 @@ body.woocommerce-order-received #breadcrumbs{display:none}
 .button.bg-color--cream:hover,.btn.bg-color--cream:hover{background-color:#c0b1a2}
 .button.wpcf7-submit,.btn.wpcf7-submit{width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}
 .wpcf7-submit{text-transform:uppercase;font-weight:600}
-input,textarea{padding:.75rem 1rem;font-size:16px;border:0;border-radius:20px;font-weight:600;width:100%;font-family:"Avenir",sans-serif;resize:none}
-input.text-color--cream,textarea.text-color--cream{-webkit-transition:.3s all;transition:.3s all}
-input.text-color--cream::-webkit-input-placeholder,textarea.text-color--cream::-webkit-input-placeholder{color:#c7bdb1}
-input.text-color--cream::-moz-placeholder,textarea.text-color--cream::-moz-placeholder{color:#c7bdb1}
-input.text-color--cream:-ms-input-placeholder,textarea.text-color--cream:-ms-input-placeholder{color:#c7bdb1}
-input.text-color--cream::-ms-input-placeholder,textarea.text-color--cream::-ms-input-placeholder{color:#c7bdb1}
-input.text-color--cream::placeholder,textarea.text-color--cream::placeholder{color:#c7bdb1}
-input.text-color--cream:hover,textarea.text-color--cream:hover{background-color:#c7bdb1;color:white}
-input.text-color--cream:hover::-webkit-input-placeholder,textarea.text-color--cream:hover::-webkit-input-placeholder{color:#c7bdb1}
-input.text-color--cream:hover::-moz-placeholder,textarea.text-color--cream:hover::-moz-placeholder{color:#c7bdb1}
-input.text-color--cream:hover:-ms-input-placeholder,textarea.text-color--cream:hover:-ms-input-placeholder{color:#c7bdb1}
-input.text-color--cream:hover::-ms-input-placeholder,textarea.text-color--cream:hover::-ms-input-placeholder{color:#c7bdb1}
-input.text-color--cream:hover::placeholder,textarea.text-color--cream:hover::placeholder{color:#c7bdb1}
+input,textarea,button{padding:.75rem 1rem;font-size:16px;border:0;border-radius:20px;font-weight:600;width:100%;font-family:"Avenir",sans-serif;-webkit-transition:.3s all;transition:.3s all;resize:none;width:auto}
+input.text-color--cream,textarea.text-color--cream,button.text-color--cream{-webkit-transition:.3s all;transition:.3s all}
+input.text-color--cream::-webkit-input-placeholder,textarea.text-color--cream::-webkit-input-placeholder,button.text-color--cream::-webkit-input-placeholder{color:#c7bdb1}
+input.text-color--cream::-moz-placeholder,textarea.text-color--cream::-moz-placeholder,button.text-color--cream::-moz-placeholder{color:#c7bdb1}
+input.text-color--cream:-ms-input-placeholder,textarea.text-color--cream:-ms-input-placeholder,button.text-color--cream:-ms-input-placeholder{color:#c7bdb1}
+input.text-color--cream::-ms-input-placeholder,textarea.text-color--cream::-ms-input-placeholder,button.text-color--cream::-ms-input-placeholder{color:#c7bdb1}
+input.text-color--cream::placeholder,textarea.text-color--cream::placeholder,button.text-color--cream::placeholder{color:#c7bdb1}
+input.text-color--cream:hover,textarea.text-color--cream:hover,button.text-color--cream:hover{background-color:#c7bdb1;color:white}
+input.text-color--cream:hover::-webkit-input-placeholder,textarea.text-color--cream:hover::-webkit-input-placeholder,button.text-color--cream:hover::-webkit-input-placeholder{color:#c7bdb1}
+input.text-color--cream:hover::-moz-placeholder,textarea.text-color--cream:hover::-moz-placeholder,button.text-color--cream:hover::-moz-placeholder{color:#c7bdb1}
+input.text-color--cream:hover:-ms-input-placeholder,textarea.text-color--cream:hover:-ms-input-placeholder,button.text-color--cream:hover:-ms-input-placeholder{color:#c7bdb1}
+input.text-color--cream:hover::-ms-input-placeholder,textarea.text-color--cream:hover::-ms-input-placeholder,button.text-color--cream:hover::-ms-input-placeholder{color:#c7bdb1}
+input.text-color--cream:hover::placeholder,textarea.text-color--cream:hover::placeholder,button.text-color--cream:hover::placeholder{color:#c7bdb1}
 textarea{height:140px}
 .wpcf7 form br{display:none}
 .wpcf7 form .wpcf7-form-control-wrap{display:block;margin-bottom:16px}
 .wpcf7 form .wpcf7-not-valid-tip{padding-left:10px;padding-top:4px;font-size:14px}
 .wpcf7 form .wpcf7-response-output{margin-top:0;font-size:14px}
 .form-flat p{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;position:relative;margin-bottom:0}
-.form-flat p .wpcf7-submit{position:absolute;right:0;z-index:10}
+.form-flat p .wpcf7-submit{position:absolute;right:0;z-index:10;width:auto}
 .form-flat p .wpcf7-submit:hover{padding-left:1.25rem;padding-right:1.25rem}
 .form-flat p .wpcf7-form-control-wrap{width:100%}
 .form-flat p .wpcf7-form-control-wrap input{width:100%}
@@ -626,6 +628,18 @@ textarea{height:140px}
 .search input{width:400px;max-width:100%}
 .form__field.submit{margin-bottom:16px;position:relative}
 .form__field.submit .wpcf7-spinner{position:absolute;top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%);right:12px;margin:0;opacity:.5}
+#search-brands-form{position:relative;display:inline-block}
+#search-brands-form .brands-page-search-btn{position:absolute;right:0;top:0;border-radius:20px;height:100%;-webkit-box-shadow:5px 0 15px rgba(0,0,0,0.1);box-shadow:5px 0 15px rgba(0,0,0,0.1)}
+#search-brands-form .brands-page-search-btn:hover{padding-left:1.25rem;padding-right:1.25rem}
+#search-brands-form .brands-page-search-btn img{height:20px;width:20px}
+.clear-search-results-btn{margin-left:20px;-webkit-box-shadow:5px 0 15px rgba(0,0,0,0.1);box-shadow:5px 0 15px rgba(0,0,0,0.1)}
+.searching-brands-text{min-height:300px;width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
+#search-teams-form{position:relative;display:inline-block}
+#search-teams-form .teams-page-search-btn{position:absolute;right:0;top:0;border-radius:20px;height:100%}
+#search-teams-form .teams-page-search-btn:hover{padding-left:1.25rem;padding-right:1.25rem}
+#search-teams-form .teams-page-search-btn img{height:20px;width:20px}
+.clear-search-results-btn__teams{margin-left:20px;-webkit-box-shadow:5px 0 15px rgba(0,0,0,0.1);box-shadow:5px 0 15px rgba(0,0,0,0.1)}
+.searching-teams-text{min-height:300px;width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
 .accordion__body{display:none}
 .accordion__button{-webkit-appearance:none;-moz-appearance:none;appearance:none;border:0;background-color:transparent;color:inherit;font-size:inherit;display:-webkit-box;display:-ms-flexbox;display:flex}
 .accordion__button-icon{-webkit-transition:.3s all;transition:.3s all}

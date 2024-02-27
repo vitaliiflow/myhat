@@ -10,7 +10,7 @@ get_header();
 $title = get_field('page_title') ? get_field('page_title') : get_the_title();
 $description = get_field('page_description');
 
-$list = get_field('leagues-list');
+$list = get_field('leagues-list'); /*repeater: category, custom name*/
 $taxonomy_name = 'product_cat';
 ?>
 
@@ -33,9 +33,13 @@ $taxonomy_name = 'product_cat';
         </div>
 
         <div class="codelibry-under-dev search mt-4 mb-4">
-            <form>
+            <form id="search-teams-form">
                 <input class="text-color text-color--cream" type="text" placeholder="<?php _e('Search in our brands','codelibry');?>">
+                <button type="submit" class="teams-page-search-btn text-color text-color--cream bg-color bg-color--mai">
+                    <img src="<?php echo get_template_directory_uri(  ) ?>/assets/images/icons/search.png" alt="">
+                </button>
             </form>
+            <button type="button" class="clear-search-results-btn__teams text-color text-color--cream bg-color bg-color--main"><?php _e('Reset','codelibry');?></button>
         </div>
 
         <?php if ($list) : ?>
@@ -46,7 +50,7 @@ $taxonomy_name = 'product_cat';
 
                     <?php $i = 1; ?>
 
-                    <?php foreach ($list as $item) : 
+                    <?php foreach ($list as $item) :
 
                         $category = $item['category'];
                         $name = $item['custom_name'] ? $item['custom_name'] : $category->name;
@@ -70,7 +74,7 @@ $taxonomy_name = 'product_cat';
                     <?php foreach ($list as $item) : 
 
                         $category = $item['category'];
-        
+
                         $terms = get_terms( array(
                             'taxonomy' => 'product_cat',
                             'orderby' => 'name',
@@ -79,13 +83,8 @@ $taxonomy_name = 'product_cat';
                             'child_of' => $category->term_id
                         ) );
 
-                        get_terms($args);
-
-                        //var_dump($children);
-
                         // Check if products exist
                         if (! empty( $terms ) && ! is_wp_error( $terms)) : ?>
-                        
 
                             <li id="<?php echo 'tab' . $c;?>" class="tabs__item col <?php echo 'tab' . $c;?>  <?php if($c == 1) : echo 'active'; endif;?>">
 
@@ -100,7 +99,7 @@ $taxonomy_name = 'product_cat';
                                         $name = $term->name;
                         
                                         
-                                        if ($image) : ?>  
+//                                        if ($image) : ?><!--  -->
                                             <li class="col-4 col-md-3 col-lg-2 py-2 tabs__item-child-item">
                                                 <a href="<?php echo $link; ?>" class="product-cat__item-link">
                         
@@ -114,7 +113,7 @@ $taxonomy_name = 'product_cat';
                                                 </a>
                                             </li>
                                                        
-                                        <?php endif; ?>
+<!--                                        --><?php //endif; ?>
 
 
                                     <?php endforeach; ?>
@@ -133,6 +132,8 @@ $taxonomy_name = 'product_cat';
                     </ul>
 
             </div>
+
+            <div class="search-results"></div>
 
         <?php endif; ?>    
         
