@@ -140,6 +140,8 @@ $taxonomy_name = 'product_cat';
 
             </div>
 
+            <div class="search-results"></div>
+
         <?php endif; ?>    
         
     </div>

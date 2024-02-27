@@ -209,7 +209,7 @@ jQuery(document).ready(function ($) {
     event.preventDefault();
     var searchValue = $('#search-teams-form input[type="text"]').val().trim();
     var teamsList = $('.tabs__item-list');
-    var tabsContainer = $('.teams-page__tabs');
+    var tabsContainer = $('.search-results');
     tabsContainer.html('<li class="searching-brands-text">Search...</li>');
     if (searchValue === '') {
       $.ajax({
@@ -251,10 +251,10 @@ jQuery(document).ready(function ($) {
               if (league.child_terms.length > 0) {
                 var leagueSection = $('<section>');
                 var leagueName = $('<h6>').text(league.custom_name);
-                var leagueList = $('<ul class="teams-page-result-list">');
+                var leagueList = $('<ul class="teams-page-result-list row">');
                 league.child_terms.forEach(function (term) {
-                  var termItem = $('<li>');
-                  var termLink = $('<a>').attr('href', term.url).text(term.name);
+                  var termItem = $('<li class="col-4 col-md-3 col-lg-2 py-2 tabs__item-child-item">');
+                  var termLink = $('<a class="d-block">').attr('href', term.url).text(term.name);
                   if (term.logo) {
                     // Предполагается, что term.logo - это URL, если это ID, необходимо изменить
                     var termImage = $('<img>').attr('src', term.logo).attr('alt', term.name);
@@ -321,67 +321,6 @@ jQuery(document).ready(function ($) {
       });
     }
   }
-});
-"use strict";
-
-jQuery(document).ready(function ($) {
-  $('.singleProduct__gallery').slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    dots: true
-  });
-  $('.singleProduct__sizeTitle').click(function () {
-    $(this).parent().toggleClass('opened');
-    $(this).parent().find('.singleProduct__sizeList').slideToggle();
-  });
-  $('.singleProduct__accordionItem__title').click(function () {
-    $(this).toggleClass('opened');
-    $(this).parent().find('.singleProduct__accordionItem__content').slideToggle();
-  });
-  $('.quantity-btn').click(function () {
-    var item = $(this).parent().find('.qty'),
-      number = parseInt(item.val());
-    if ($(this).hasClass('increase')) {
-      item.val(parseInt(item.val()) + 1);
-      if (parseInt(item.val()) == $(this).attr('max')) {
-        $('.increase').addClass('disabled');
-      }
-    }
-    if ($(this).hasClass('decrease')) {
-      item.val(parseInt(item.val()) - 1);
-      if (parseInt(item.val()) <= 1) {
-        $('.decrease').addClass('disabled');
-      }
-    }
-    if (parseInt(item.val()) > 1 && parseInt(item.val()) != $(this).attr('max')) {
-      $('.quantity-btn').removeClass('disabled');
-    }
-  });
-  $('.attributes-picker-item').click(function () {
-    var element = $(this),
-      elementAttr = element.attr('data-attribute'),
-      attr = element.closest('.attributes-picker-list').attr('data-attribute-name');
-    $('.attributes-picker-item').removeClass('active');
-    element.addClass('active');
-    $("#".concat(attr)).prop('selectedIndex', $("#".concat(attr, " option[value=\"").concat(elementAttr, "\"]")).index());
-    $("#".concat(attr, " option[value=\"").concat(elementAttr, "\"]")).change();
-    if (attr == 'pa_storlek') {
-      $('.singleProduct__sizeWrapper').find('.singleProduct__sizeTitle').html(element.html());
-    }
-  });
-  $('.variations_form select').each(function () {
-    $(this).find('option').each(function () {
-      if (typeof $(this).attr('selected') !== 'undefined' && $(this).attr('selected') !== false) {
-        console.log(123);
-        var listitem = $("div[data-attribute-name=\"".concat($(this).parent().attr('id'), "\"] div[data-attribute=\"").concat($(this).attr('value'), "\"]"));
-        listitem.addClass('active');
-        if ($(this).parent().attr('name') == 'attribute_pa_storlek') {
-          $('.singleProduct__sizeWrapper').find('.singleProduct__sizeTitle').html(listitem.html());
-        }
-      }
-    });
-  });
 });
 "use strict";
 
@@ -535,4 +474,65 @@ jQuery(document).ready(function ($) {
       });
     });
   }
+});
+"use strict";
+
+jQuery(document).ready(function ($) {
+  $('.singleProduct__gallery').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    dots: true
+  });
+  $('.singleProduct__sizeTitle').click(function () {
+    $(this).parent().toggleClass('opened');
+    $(this).parent().find('.singleProduct__sizeList').slideToggle();
+  });
+  $('.singleProduct__accordionItem__title').click(function () {
+    $(this).toggleClass('opened');
+    $(this).parent().find('.singleProduct__accordionItem__content').slideToggle();
+  });
+  $('.quantity-btn').click(function () {
+    var item = $(this).parent().find('.qty'),
+      number = parseInt(item.val());
+    if ($(this).hasClass('increase')) {
+      item.val(parseInt(item.val()) + 1);
+      if (parseInt(item.val()) == $(this).attr('max')) {
+        $('.increase').addClass('disabled');
+      }
+    }
+    if ($(this).hasClass('decrease')) {
+      item.val(parseInt(item.val()) - 1);
+      if (parseInt(item.val()) <= 1) {
+        $('.decrease').addClass('disabled');
+      }
+    }
+    if (parseInt(item.val()) > 1 && parseInt(item.val()) != $(this).attr('max')) {
+      $('.quantity-btn').removeClass('disabled');
+    }
+  });
+  $('.attributes-picker-item').click(function () {
+    var element = $(this),
+      elementAttr = element.attr('data-attribute'),
+      attr = element.closest('.attributes-picker-list').attr('data-attribute-name');
+    $('.attributes-picker-item').removeClass('active');
+    element.addClass('active');
+    $("#".concat(attr)).prop('selectedIndex', $("#".concat(attr, " option[value=\"").concat(elementAttr, "\"]")).index());
+    $("#".concat(attr, " option[value=\"").concat(elementAttr, "\"]")).change();
+    if (attr == 'pa_storlek') {
+      $('.singleProduct__sizeWrapper').find('.singleProduct__sizeTitle').html(element.html());
+    }
+  });
+  $('.variations_form select').each(function () {
+    $(this).find('option').each(function () {
+      if (typeof $(this).attr('selected') !== 'undefined' && $(this).attr('selected') !== false) {
+        console.log(123);
+        var listitem = $("div[data-attribute-name=\"".concat($(this).parent().attr('id'), "\"] div[data-attribute=\"").concat($(this).attr('value'), "\"]"));
+        listitem.addClass('active');
+        if ($(this).parent().attr('name') == 'attribute_pa_storlek') {
+          $('.singleProduct__sizeWrapper').find('.singleProduct__sizeTitle').html(listitem.html());
+        }
+      }
+    });
+  });
 });

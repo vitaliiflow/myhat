@@ -136,7 +136,7 @@ jQuery(document).ready(function($){
         event.preventDefault();
         var searchValue = $('#search-teams-form input[type="text"]').val().trim();
         var teamsList = $('.tabs__item-list');
-        var tabsContainer = $('.teams-page__tabs');
+        var tabsContainer = $('.search-results');
 
         tabsContainer.html('<li class="searching-brands-text">Search...</li>');
 
@@ -181,11 +181,11 @@ jQuery(document).ready(function($){
                             if (league.child_terms.length > 0) {
                                 var leagueSection = $('<section>');
                                 var leagueName = $('<h6>').text(league.custom_name);
-                                var leagueList = $('<ul class="teams-page-result-list">');
+                                var leagueList = $('<ul class="teams-page-result-list row">');
 
                                 league.child_terms.forEach(function (term) {
-                                    var termItem = $('<li>');
-                                    var termLink = $('<a>').attr('href', term.url).text(term.name);
+                                    var termItem = $('<li class="col-4 col-md-3 col-lg-2 py-2 tabs__item-child-item">');
+                                    var termLink = $('<a class="d-block">').attr('href', term.url).text(term.name);
 
                                     if (term.logo) {
                                         // Предполагается, что term.logo - это URL, если это ID, необходимо изменить

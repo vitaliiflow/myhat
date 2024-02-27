@@ -488,8 +488,8 @@ body.woocommerce-order-received #breadcrumbs{display:none}
 .teams-page .tabs__nav.active{background:white}
 .teams-page .tabsNav__item{padding-left:0;padding-right:0}
 .teams-page .tabs__item{padding-left:0;padding-right:0}
-.teams-page-result-list{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;gap:10px;border:1px solid black}
-.teams-page-result-list li{height:200px;width:200px;border:1px solid red}
+.teams-page-result-list{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;gap:10px}
+.teams-page-result-list li{height:200px;width:200px}
 .header{background-color:transparent;padding-top:1.1112rem;padding-bottom:1.1112rem;position:relative;z-index:111}
 .header__logo img{max-width:5rem}
 .header__menu{margin-left:auto;margin-right:auto;display:-webkit-box;display:-ms-flexbox;display:flex}
