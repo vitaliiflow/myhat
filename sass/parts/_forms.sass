@@ -1,5 +1,6 @@
 input,
-textarea
+textarea,
+button
     padding: 0.75rem 1rem 
     font-size: 16px
     border: 0
@@ -7,7 +8,9 @@ textarea
     font-weight: 600
     width: 100%
     font-family: $font-family-base
+    transition: $default-transition
     resize: none
+    width: auto
     &.text-color--cream
         transition: $default-transition
         &::placeholder
@@ -94,31 +97,25 @@ textarea
         position: absolute
         right: 0
         top: 0
-        background-color: $color-background-cream
         border-radius: $radius-default
-        padding: 0.75rem 1rem
         height: 100%
-        cursor: pointer
-        border: none
-        transition: .3s all
+        box-shadow: $shadow-default
         &:hover
             padding-left: 1.25rem
             padding-right: 1.25rem
-
-
         img
             height: 20px
             width: 20px
 
 .clear-search-results-btn
     margin-left: 20px
-    border: none
-    font-size: 20px
-    font-weight: 500
-    transition: .3s all
-
-    &:hover
-        text-decoration: underline
+    // border: none
+    // font-size: 20px
+    // font-weight: 500
+    // transition: .3s all
+    box-shadow: $shadow-default
+    // &:hover
+    //     text-decoration: underline
 
 .searching-brands-text
     min-height: 300px
@@ -135,13 +132,13 @@ textarea
         position: absolute
         right: 0
         top: 0
-        background-color: $color-background-cream
+        // background-color: $color-background-cream
         border-radius: $radius-default
-        padding: 0.75rem 1rem
+        // padding: 0.75rem 1rem
         height: 100%
-        cursor: pointer
-        border: none
-        transition: .3s all
+        // cursor: pointer
+        // border: none
+        // transition: .3s all
         &:hover
             padding-left: 1.25rem
             padding-right: 1.25rem
@@ -153,13 +150,14 @@ textarea
 
 .clear-search-results-btn__teams
     margin-left: 20px
-    border: none
-    font-size: 20px
-    font-weight: 500
-    transition: .3s all
+    box-shadow: $shadow-default
+    // border: none
+    // font-size: 20px
+    // font-weight: 500
+    // transition: .3s all
 
-    &:hover
-        text-decoration: underline
+    // &:hover
+    //     text-decoration: underline
 
 .searching-teams-text
     min-height: 300px

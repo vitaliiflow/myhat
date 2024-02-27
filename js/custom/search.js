@@ -45,7 +45,7 @@ jQuery(document).ready(function($){
         var searchValue = $('#search-brands-form input[type="text"]').val();
         var brandsList = $('.brands-page__list');
 
-        brandsList.html('<li class="searching-brands-text">Поиск...</li>');
+        brandsList.html('<li class="searching-brands-text">Search...</li>');
 
         $.ajax({
             url: codelibry.ajax_url,
@@ -89,7 +89,7 @@ jQuery(document).ready(function($){
         $('#search-brands-form input[type="text"]').val('');
 
         var brandsList = $('.brands-page__list');
-        brandsList.html('<li class="searching-brands-text">Поиск...</li>');
+        brandsList.html('<li class="searching-brands-text">Search...</li>');
 
         $.ajax({
             url: codelibry.ajax_url,
@@ -136,7 +136,7 @@ jQuery(document).ready(function($){
         var teamsList = $('.tabs__item-list');
         var tabsContainer = $('.teams-page__tabs');
 
-        tabsContainer.html('<li class="searching-brands-text">Поиск...</li>');
+        tabsContainer.html('<li class="searching-brands-text">Search...</li>');
 
         if (searchValue === '') {
             $.ajax({

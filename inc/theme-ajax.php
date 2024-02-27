@@ -197,7 +197,7 @@ function search_teams() {
         $category = $item['category'];
         $terms_array = array();
 
-        // Ищем дочерние термины только если есть поисковый запрос
+        // Looking for child terms, if there is a search request
         if (!empty($search_query)) {
             $terms = get_terms(array(
                 'taxonomy' => 'product_cat',

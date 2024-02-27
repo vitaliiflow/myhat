@@ -36,11 +36,11 @@ $taxonomy_name = 'product_cat';
         <div class="codelibry-under-dev search mt-4 mb-4">
             <form id="search-teams-form">
                 <input class="text-color text-color--cream" type="text" placeholder="<?php _e('Search in our brands','codelibry');?>">
-                <button type="submit" class="teams-page-search-btn">
+                <button type="submit" class="teams-page-search-btn text-color text-color--cream bg-color bg-color--mai">
                     <img src="<?php echo get_template_directory_uri(  ) ?>/assets/images/icons/search.png" alt="">
                 </button>
             </form>
-            <button type="button" class="clear-search-results-btn__teams"><?php _e('Reset','codelibry');?></button>
+            <button type="button" class="clear-search-results-btn__teams text-color text-color--cream bg-color bg-color--main"><?php _e('Reset','codelibry');?></button>
         </div>
 
         <?php if ($list) : ?>
