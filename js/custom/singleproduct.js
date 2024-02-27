@@ -1,5 +1,5 @@
 jQuery(document).ready(function($){
-    $('.singleProduct__gallery').slick({
+    $('.singleProduct__gallery .woocommerce-product-gallery__wrapper').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
@@ -57,5 +57,10 @@ jQuery(document).ready(function($){
                 }
             }
         })
-    })
+    });
+    // $('.attributes-picker-item').click(function(){
+    //     setTimeout(function(){
+    //         if($('.woocommerce-product-gallery__image'))
+    //     }, 100)
+    // })
 })

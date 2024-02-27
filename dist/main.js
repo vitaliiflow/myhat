@@ -16,9 +16,8 @@ jQuery(document).ready(function ($) {
     $('.header__content').toggleClass('open');
   });
 });
+// console.log("Hello world!");
 "use strict";
-
-console.log("Hello world!");
 "use strict";
 
 jQuery(document).ready(function ($) {
@@ -279,7 +278,7 @@ jQuery(document).ready(function ($) {
 "use strict";
 
 jQuery(document).ready(function ($) {
-  $('.singleProduct__gallery').slick({
+  $('.singleProduct__gallery .woocommerce-product-gallery__wrapper').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
@@ -336,4 +335,9 @@ jQuery(document).ready(function ($) {
       }
     });
   });
+  // $('.attributes-picker-item').click(function(){
+  //     setTimeout(function(){
+  //         if($('.woocommerce-product-gallery__image'))
+  //     }, 100)
+  // })
 });

@@ -136,3 +136,34 @@ function products_sorting() {
     endif;
     die();
 }
+
+
+//Pagination
+add_action('wp_ajax_nopriv_products_pagination', 'products_pagination');
+add_action('wp_ajax_products_pagination', 'products_pagination');
+function products_pagination() {
+    $current_page = max( 1, get_query_var( 'paged' ) );
+    $args = array(
+        'post_type' => 'product',
+        'posts_per_page' => 16,
+        'paged' => $current_page + 1,
+        'meta_query'     => array(
+            array(
+                'key'     => '_stock_status',
+                'value'   => 'instock',
+                'compare' => '=',
+            ),
+        ),
+    );
+    $the_query = new WP_Query($args);
+    echo $current_page;
+    if($the_query->have_posts()):
+        while($the_query->have_posts()): $the_query->the_post(); ?>
+            <?php global $product; ?>
+            <div class="shopPage__listItem col-6 col-md-3 product-<?php echo get_the_ID() ?>">
+                <?php wc_get_template_part( 'content', 'product' ); ?>
+            </div>
+        <?php endwhile;
+    endif;
+    die();
+}

@@ -80,7 +80,6 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 			if($total_stock <= 3 || $last){
 				echo '<span class="last-chance shopPage__listItem__badge">' . esc_html__( 'Last Chance', 'woocommerce' ) . '</span>';
 			}
-			echo dw_product_totals();
 			if(dw_product_totals() > 50 || $top){
 				echo '<span class="top-seller shopPage__listItem__badge">' . esc_html__( 'Top seller', 'woocommerce' ) . '</span>';
 			}

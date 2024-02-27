@@ -81,9 +81,27 @@ get_header( 'shop' );
         </div>
     </div>
 </div>
+<?php 
+$total   = isset( $total ) ? $total : wc_get_loop_prop( 'total_pages' );
+$current = isset( $current ) ? $current : wc_get_loop_prop( 'current_page' );
+$base    = isset( $base ) ? $base : esc_url_raw( str_replace( 999999999, '%#%', remove_query_arg( 'add-to-cart', get_pagenum_link( 999999999, false ) ) ) );
+$format  = isset( $format ) ? $format : '';
+
+if ( $total <= 1 ) {
+	return;
+}
+$link = explode('%#%', $base);
+$prev = $current - 1;
+$next = $current + 1;
+?>
 <div class="pagination-test">
     <div class="prev">prev</div>
-    <div class="next"></div>
+    <div class="items">
+        <span><?php echo $current ?></span>
+        <span>/</span>
+        <span><?php echo $total; ?></span>
+    </div>
+    <div class="next">next</div>
 </div>
 
 <?php 

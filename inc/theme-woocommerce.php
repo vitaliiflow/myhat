@@ -81,3 +81,6 @@ function custom_default_catalog_orderby($sortby) {
    return 'popularity';
 }
 add_filter('woocommerce_default_catalog_orderby', 'custom_default_catalog_orderby');
+
+
+

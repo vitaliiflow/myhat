@@ -441,6 +441,7 @@ body.woocommerce-order-received #breadcrumbs{display:none}
 .singleProduct__breadcrumbs::before{content:"";position:absolute;height:100%;width:100vw;left:50%;top:0;-webkit-transform:translateX(-50%);transform:translateX(-50%);background:#f1f1ef}
 .singleProduct__breadcrumbs .woocommerce-breadcrumb{position:relative}
 .singleProduct__gallery{overflow:hidden}
+.singleProduct__gallery img{width:100%}
 .singleProduct__gallery .slick-dots{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;margin-top:24px}
 .singleProduct__gallery .slick-dots li{background-color:#a5a5a5;border-radius:0;width:32px;height:4px;margin:0 5px}
 .singleProduct__gallery .slick-dots li.slick-active{background-color:#000}
