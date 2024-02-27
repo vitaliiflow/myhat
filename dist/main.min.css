@@ -597,6 +597,7 @@ body.woocommerce-order-received #breadcrumbs{display:none}
 .button--white,.btn--white{border:1px solid #000;background:#fff;color:#000}
 .button--white:hover,.btn--white:hover{color:#fff;background-color:#000}
 .button.bg-color--cream:hover,.btn.bg-color--cream:hover{background-color:#c0b1a2}
+.button.wpcf7-submit,.btn.wpcf7-submit{width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}
 .wpcf7-submit{text-transform:uppercase;font-weight:600}
 input,textarea{padding:.75rem 1rem;font-size:16px;border:0;border-radius:20px;font-weight:600;width:100%;font-family:"Avenir",sans-serif;resize:none}
 input.text-color--cream,textarea.text-color--cream{-webkit-transition:.3s all;transition:.3s all}
@@ -651,6 +652,9 @@ section.search{margin-top:2rem;margin-bottom:2rem}
 .shopPage__filtersRow__item.sort .shopPage__filtersRow__listItem__checkbox::after{content:"";position:absolute;left:50%;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);width:14px;height:14px;background-image:url("../assets/images/icons/tick.svg");background-size:contain;background-repeat:no-repeat;background-position:center;opacity:0;visibility:hidden;-webkit-transition:.3s;transition:.3s}
 .shopPage__filtersRow__item.sort .shopPage__filtersRow__listItem.active .shopPage__filtersRow__listItem__checkbox::after{opacity:1;visibility:visible}
 .shopPage__filtersRow__item.sort .shopPage__filtersRow__list__apply{margin:0 -32px;margin-bottom:-32px;margin-top:36px;background-color:#000;padding:16px;display:block;text-align:center}
+body .woocommerce-message{max-width:1175px;margin:auto;width:calc(100% - 60px);margin-bottom:12px;border-color:#000}
+body .woocommerce-message::before{color:#000}
+body .woocommerce-message a.button{color:#fff;background:#000;border-radius:0;font-weight:500;margin-left:24px}
 .hero-home__item-inner{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}
 .hero-home__content-wrapper{-ms-flex-item-align:end;align-self:flex-end}
 .hero-home__content-wrapper:hover svg{-webkit-transform:translateX(10px);transform:translateX(10px)}
@@ -1661,6 +1665,8 @@ h6,.h6{font-size:calc(14px + 2 * ((100vw - 320px) / 1040))}
 .shopPage__filtersRow__item.sort .shopPage__filtersRow__listItem__checkbox{width:16px;height:16px;margin-right:8px}
 .shopPage__filtersRow__item.sort .shopPage__filtersRow__listItem__checkbox::after{width:10px;height:10px}
 .shopPage__filtersRow__item.sort .shopPage__filtersRow__list__apply{margin:0;padding:10px 32px;width:100%;margin-top:auto}
+body .woocommerce-message{font-size:14px}
+body .woocommerce-message a.button{margin-left:12px}
 .hero-home__content-wrapper{-webkit-box-ordinal-group:3;-ms-flex-order:2;order:2}
 .hero-home__image-wrapper{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;margin-bottom:.5rem;height:auto}
 }@media only screen and (max-width:576px){.singleProduct__dataWrapper::before{left:-5px;width:calc(100% + 10px)}

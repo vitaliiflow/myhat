@@ -22,7 +22,7 @@ global $product;
 // Ensure visibility.
 if ( empty( $product ) || ! $product->is_visible() ) {
 	echo ' product invisible inside';
-	return;
+	//return;
 }
 ?>
 <a href="<?php the_permalink( ); ?>" class="shopPage__listItem__content">
@@ -80,6 +80,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 			if($total_stock <= 3 || $last){
 				echo '<span class="last-chance shopPage__listItem__badge">' . esc_html__( 'Last Chance', 'woocommerce' ) . '</span>';
 			}
+			echo dw_product_totals();
 			if(dw_product_totals() > 50 || $top){
 				echo '<span class="top-seller shopPage__listItem__badge">' . esc_html__( 'Top seller', 'woocommerce' ) . '</span>';
 			}

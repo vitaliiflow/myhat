@@ -81,6 +81,10 @@ get_header( 'shop' );
         </div>
     </div>
 </div>
+<div class="pagination-test">
+    <div class="prev">prev</div>
+    <div class="next"></div>
+</div>
 
 <?php 
 get_footer( 'shop' );

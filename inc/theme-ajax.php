@@ -85,9 +85,17 @@ function ajax_search(){
 add_action('wp_ajax_nopriv_products_sorting', 'products_sorting');
 add_action('wp_ajax_products_sorting', 'products_sorting');
 function products_sorting() {
+    echo $current_page = max( 1, get_query_var( 'paged' ) );
     $args = array(
         'post_type' => 'product',
         'posts_per_page' => 16,
+        'meta_query'     => array(
+            array(
+                'key'     => '_stock_status',
+                'value'   => 'instock',
+                'compare' => '=',
+            ),
+        ),
     );
     $sort = $_POST['sortType'];
     if(!empty($sort)):
@@ -99,7 +107,7 @@ function products_sorting() {
             case 'rating':
                 $args['orderby'] = 'meta_value_num';
                 $args['meta_key'] = '_wc_average_rating';
-                $args['order'] = 'DESC';
+                $args['order'] = 'ASC';
                 break;
             case 'date':
                 $args['orderby'] = 'publish_date';
@@ -120,7 +128,8 @@ function products_sorting() {
     $the_query = new WP_Query($args);
     if($the_query->have_posts()):
         while($the_query->have_posts()): $the_query->the_post(); ?>
-            <div class="shopPage__listItem col-6 col-md-3">
+            <?php global $product; ?>
+            <div class="shopPage__listItem col-6 col-md-3 product-<?php echo get_the_ID() ?>">
                 <?php wc_get_template_part( 'content', 'product' ); ?>
             </div>
         <?php endwhile;

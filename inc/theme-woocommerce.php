@@ -40,7 +40,7 @@ function sale_badge_percentage() {
 function dw_product_totals() {
    global $wpdb;
 
-   $post = get_post($post_id);
+   $post = get_post(get_the_ID());
 
    $current_product = get_the_ID($post);
 
@@ -66,8 +66,11 @@ function dw_product_totals() {
            $total_quantity = $item->total_quantity;
        }
    }
+   if(empty($total_quantity)){
+      $total_quantity = 0;
+   }
 
-   $total_quantity = number_format($total_quantity, 0, '.', ''); // Форматуємо кількість без десяткових знаків
+   $total_quantity = number_format($total_quantity, 0, '.', ''); 
 
    return $total_quantity;
 }

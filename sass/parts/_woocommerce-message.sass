@@ -1,0 +1,19 @@
+body
+    .woocommerce-message
+        max-width: 1175px
+        margin: auto
+        width: calc( 100% - 60px )
+        margin-bottom: 12px
+        border-color: $color-text
+        +max-screen($breakpoint-md)
+            font-size: 14px
+        &::before 
+            color: $color-text
+        a.button
+            color: $color-white
+            background: $color-text
+            border-radius: 0
+            font-weight: 500
+            margin-left: 24px
+            +max-screen($breakpoint-md)
+                margin-left: 12px
