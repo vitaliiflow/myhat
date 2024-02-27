@@ -1,4 +1,6 @@
 .single-product 
+    #main 
+        overflow: hidden
     #main > .woocommerce-breadcrumb 
         display: none 
     #sidebar 
@@ -7,24 +9,65 @@
         .products
             margin-bottom: -36px
 .singleProduct
+    +min-screen(770px)
+        background-color: $color-white
+        padding-bottom: 42px
+        +max-screen($breakpoint-lg)
+            padding-bottom: 32px
+    &__content 
+        display: flex 
+        margin: 0 -20px 
+        +max-screen($breakpoint-lg)
+            margin: 0 -15px 
+        +max-screen($breakpoint-md)            
+            display: block
     &__colorsList 
+        display: flex 
+        margin: 0 -6px 
+        margin-top: 24px
+        margin-bottom: 24px
         +max-screen($breakpoint-md)
             margin: 0 -4px 
             margin-top: 16px
             margin-bottom: 16px
-            display: flex 
         &__item 
             border-radius: 50%
+            width: 24px 
+            height: 24px 
             +max-screen($breakpoint-md)
                 width: 20px 
                 height: 20px 
             &Wrapper 
+                padding: 0 8px 
+                +max-screen($breakpoint-lg)
+                    padding: 0 6px 
                 +max-screen($breakpoint-md)
                     padding: 0 4px 
             &.active
                 border: 1px solid $color-text
     &__breadcrumbs 
+        position: relative
+        &::before
+            content: ""
+            position: absolute
+            height: 100% 
+            width: 100vw 
+            left: 50% 
+            top: 0
+            transform: translateX(-50%)
+            background: $color-background-main
         .woocommerce-breadcrumb
+            position: relative
+            +max-screen(1200px)
+                margin-bottom: 2rem
+            +max-screen($breakpoint-lg)
+                margin-bottom: 0.75rem
+            +min-screen(770px)
+                padding-bottom: 12px
+                +max-screen(1200px)
+                    padding-bottom: 8px
+                +max-screen($breakpoint-lg)
+                    font-size: 12px
             +max-screen($breakpoint-md)
                 font-size: 10px
                 margin-bottom: 8px
@@ -33,50 +76,81 @@
         .slick-dots
             display: flex
             justify-content: center
-            +max-screen($breakpoint-md)
+            margin-top: 24px
+            +max-screen($breakpoint-lg)
                 margin-bottom: 8px
                 margin-top: 12px
             li 
                 background-color: $color-background-gray
                 border-radius: 0
-                +max-screen($breakpoint-md)
+                width: 32px
+                height: 4px 
+                margin: 0 5px 
+                +max-screen($breakpoint-lg)
                     width: 24px
                     height: 3px 
                     margin: 0 3px 
                 &.slick-active 
                     background-color: $color-text
+        &Wrapper 
+            width: 50% 
+            padding: 0 20px
+            +max-screen($breakpoint-lg)
+                width: 45%
+                padding: 0 15px 
+            +max-screen($breakpoint-md)
+                width: 100% 
     &__data
         position: relative
-        padding-top: 16px
+        +max-screen($breakpoint-md)
+            padding-top: 16px
         &Wrapper
             position: relative 
             padding-bottom: 32px
+            width: 50%
+            padding-left: 20px
+            padding-right: 20px
+            +max-screen($breakpoint-lg)
+                padding-left: 15px
+                padding-right: 15px
+                width: 55%
+            +max-screen($breakpoint-md)
+                width: 100%
             &::before 
-                content: ""__
+                content: ""
                 position: absolute
                 top: 0
                 height: 100%
                 background-color: $color-white
                 +max-screen($breakpoint-md)
-                    left: -30px 
-                    width: calc(100% + 60px )
+                    left: -15px 
+                    width: calc(100% + 30px )
                 +max-screen($breakpoint-sm)
-                    left: -20px 
-                    width: calc( 100% + 40px )
+                    left: -5px 
+                    width: calc( 100% + 10px )
 
     &__tax 
-        font-size: 12px 
         font-weight: 700
         text-transform: uppercase
-        margin-bottom: 4px 
+        +max-screen($breakpoint-lg)
+            font-size: 14px
+            margin-bottom: 8px
+        +max-screen($breakpoint-md)
+            font-size: 12px 
+            margin-bottom: 4px 
     &__title 
-        margin-bottom: 12px
+        margin-bottom: 24px
+        +max-screen($breakpoint-lg)
+            margin-bottom: 16px
+        +max-screen($breakpoint-md)
+            margin-bottom: 12px
     &__price 
         font-weight: 700
+        font-size: 24px
+        &:not(.sale)
+            line-height: 1.2
         +max-screen($breakpoint-md)
             font-size: 22px
-            &:not(.sale)
-                line-height: 1.2
         .woocommerce-Price-currencySymbol
             margin-left: 4.5px
             display: inline-block 
@@ -91,6 +165,7 @@
                 color: $color-background-dark
                 text-decoration: none 
                 order: 1
+                font-size: 15px
                 +max-screen($breakpoint-md)
                     font-size: 13px
                     color: $color-text
@@ -102,13 +177,21 @@
             ins
                 width: 100% 
     &__size 
-        &Wrapper 
-            margin-bottom: 16px
+        &Wrapper
+            margin-bottom: 24px
+            font-size: 18px
+            +max-screen(1200px)
+                font-size: 16px
+            +max-screen($breakpoint-md) 
+                margin-bottom: 16px
         &Title 
-            padding: 11px 24px 
             text-align: center
             background-color: $color-background-main
             position: relative 
+            cursor: pointer
+            padding: 15px 24px 
+            +max-screen(1200px)
+                padding: 11px 24px 
             &::after 
                 content: "▼"
                 position: absolute
@@ -123,18 +206,27 @@
             background-color: $color-background-main
             display: none 
             &__item 
-                padding: 6px 12px 
                 text-align: center
                 transition: .3s 
+                cursor: pointer
+                padding: 8px 12px 
+                +max-screen(1200px)
+                    padding: 6px 12px 
                 &.active 
                     background-color: $color-text 
                     color: $color-white
     &__purchase 
         .single_variation 
+            margin-bottom: 12px
+            justify-content: flex-end
+            font-weight: 700
+            margin-top: -8px
+            font-size: 20px
             +max-screen($breakpoint-md)
-                justify-content: flex-end
-                font-weight: 700
                 margin-bottom: 8px
+                font-size: 16px
+            .woocommerce-variation-availability 
+                display: none 
         .single_variation_wrap *
             display: flex 
         .variations_form
@@ -146,9 +238,12 @@
                 height: 0
         .quantity 
             background-color: $color-background-main
-            width: calc( 30% - 6px )
-            margin-right: 6px
             min-width: 100px
+            width: calc( 40% - 16px )
+            margin-right: 16px
+            +max-screen($breakpoint-md)
+                width: calc( 30% - 6px )
+                margin-right: 6px
             input.qty
                 background-color: transparent
                 padding: 12px 0
@@ -159,6 +254,7 @@
                 display: flex 
                 align-items: center
                 padding: 0 13px 
+                cursor: pointer
                 &.disabled
                     opacity: 0.7 
                     pointer-events: none 
@@ -167,36 +263,75 @@
             opacity: 1
             text-align: center
             display: block
-            +max-screen($breakpoint-md)
+            width: calc( 70% - 6px )
+            margin-left: 6px
+            font-size: 18px
+            +max-screen(1200px)
                 font-size: 16px
-                width: calc( 70% - 6px )
-                margin-left: 6px
+            +max-screen($breakpoint-md)
                 padding-left: 12px
                 padding-right: 12px
+                width: calc( 70% - 6px )
+                margin-left: 6px
             &.disabled 
                 opacity: 0.8
     &__featuresList 
-        margin-top: 24px
-        margin-bottom: 36px
+        position: relative
+        margin-top: 32px
+        margin-bottom: 42px
+        +max-screen($breakpoint-md)
+            margin-top: 24px
+            margin-bottom: 36px
+        &::after 
+            content: ""
+            position: absolute
+            left: 0
+            width: 100% 
+            height: 1px 
+            border: 1px solid $color-gray-border
+            bottom: -21px
+            +max-screen($breakpoint-md)
+                bottom: -17px 
         &__item 
             display: flex 
             margin-bottom: 12px
             align-items: center
+            +max-screen($breakpoint-md)
+                margin-bottom: 8px
             &Label
-                font-size: 14px
                 font-weight: 500
+                +max-screen($breakpoint-lg)
+                    font-size: 16px
+                +max-screen($breakpoint-md)
+                    font-size: 14px
             &Icon 
-                margin-right: 8px
                 display: flex 
+                margin-right: 12px
+                +max-screen($breakpoint-md)
+                    margin-right: 8px
                 img 
-                    width: 16px 
-                    height: 16px 
                     object-fit: contain
+                    width: 24px
+                    height: 24px 
+                    +max-screen($breakpoint-lg)
+                        width: 20px 
+                        height: 20px 
+                    +max-screen($breakpoint-md)
+                        width: 16px 
+                        height: 16px 
     &__accordion
         &List 
         &Item 
+            +max-screen($breakpoint-md)
+                margin-bottom: 8px
             &__title 
                 position: relative 
+                cursor: pointer 
+                font-size: 18px
+                +min-screen($breakpoint-xxl)
+                    font-size: 19px
+                +max-screen(1200px)
+                    font-size: 16px
                 &::after 
                     content: ""
                     width: 18px 
@@ -215,20 +350,29 @@
             &__content 
                 display: none 
                 padding-top: 12px
+                padding-bottom: 1px
                 h1
+                    font-size: 24px
+                    margin: 1rem 0
                     +max-screen($breakpoint-md)
                         font-size: 20px
                         margin: 0.75rem 0
                 h2 
+                    font-size: 20px
+                    margin: 0.75rem 0
                     +max-screen($breakpoint-md)
                         font-size: 18px
                         margin: 0.5rem 0
                 h3
+                    font-size: 18px
+                    margin: 0.75rem 0
                     +max-screen($breakpoint-md)
                         font-size: 16px
                         margin: 0.5rem 0
                 h4,
                 h5
+                    font-size: 16px
+                    margin: 0.35rem 0
                     +max-screen($breakpoint-md)
                         font-size: 14px
                         margin: 0.35rem 0
@@ -241,9 +385,10 @@
                 li 
                     list-style-type: disc 
                 ul 
+                    margin: 0.75rem 0
+                    padding-left: 20px
                     +max-screen($breakpoint-md)
                         margin: 0.5rem 0
-                        padding-left: 20px
                 & > h2 
                     display: none 
                 .woocommerce-Tabs-panel--description > *:first-child 
@@ -252,6 +397,11 @@
         position: relative 
         margin-top: 16px
         display: block
+        font-size: 18px
+        +min-screen($breakpoint-xxl)
+            font-size: 19px
+        +max-screen(1200px)
+            font-size: 16px
         &::after 
             content: ""
             width: 18px 
