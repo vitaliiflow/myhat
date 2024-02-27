@@ -147,11 +147,16 @@ jQuery(document).ready(function($){
         event.preventDefault();
         var searchValue = $('#search-teams-form input[type="text"]').val().trim();
         var teamsList = $('.tabs__item-list');
-        var tabsContainer = $('.search-results');
+        var tabsContainer = $('.teams-page__tabs');
+        var SearchResultContainer = $('.search-results');
 
-        tabsContainer.html('<li class="searching-brands-text">' + codelibry.strings.searching + '</li>');
+        tabsContainer.hide();
 
         if (searchValue === '') {
+            SearchResultContainer.hide();
+            tabsContainer.show();
+            tabsContainer.html('<li class="searching-brands-text">' + codelibry.strings.searching + '</li>');
+
             $.ajax({
                 url: codelibry.ajax_url,
                 type: 'post',
@@ -164,7 +169,6 @@ jQuery(document).ready(function($){
                         initializeTabs();
                     } else {
                         tabsContainer.html('<div>' + codelibry.strings.resetError + '</div>');
-
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
@@ -174,6 +178,11 @@ jQuery(document).ready(function($){
                 }
             });
         } else {
+
+            tabsContainer.hide();
+            SearchResultContainer.show();
+            SearchResultContainer.html('<li class="searching-brands-text">' + codelibry.strings.searching + '</li>');
+
             $.ajax({
                 url: codelibry.ajax_url,
                 type: 'post',
@@ -182,7 +191,7 @@ jQuery(document).ready(function($){
                     search_query: searchValue
                 },
                 success: function(response) {
-                    tabsContainer.empty();
+                    SearchResultContainer.empty();
                     // Checking if there is at least one object with a non-empty child_terms array
                     var hasTeams = response.data.some(function(league) {
                         return league.child_terms.length > 0;
@@ -200,7 +209,7 @@ jQuery(document).ready(function($){
                                     var termLink = $('<a class="d-block">').attr('href', term.url).text(term.name);
 
                                     if (term.logo) {
-                                        // Предполагается, что term.logo - это URL, если это ID, необходимо изменить
+                                        // Term.logo is supposed to be a URL, if it is an ID it needs to be changed
                                         var termImage = $('<img>').attr('src', term.logo).attr('alt', term.name);
                                         termLink.prepend(termImage);
                                     }
@@ -209,17 +218,16 @@ jQuery(document).ready(function($){
                                 });
 
                                 leagueSection.append(leagueName).append(leagueList);
-                                tabsContainer.append(leagueSection);
+                                SearchResultContainer.append(leagueSection);
                             }
                         });
 
                     } else {
-                        tabsContainer.html('<div>' + codelibry.strings.noTeamsFound + '</div>');
-
+                        SearchResultContainer.html('<div>' + codelibry.strings.noTeamsFound + '</div>');
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                    tabsContainer.html('<div>' + codelibry.strings.ajaxError + '</div>');
+                    SearchResultContainer.html('<div>' + codelibry.strings.ajaxError + '</div>');
 
                     console.error('AJAX request failed:', textStatus, errorThrown);
                 }
@@ -243,7 +251,10 @@ jQuery(document).ready(function($){
         $('#search-teams-form input[type="text"]').val('').trigger('input');
 
         var tabsContainer = $('.teams-page__tabs');
-        tabsContainer.empty();
+        var SearchResultContainer = $('.search-results');
+
+        SearchResultContainer.hide();
+        tabsContainer.show();
 
         $.ajax({
             url: codelibry.ajax_url,

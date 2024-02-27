@@ -11,7 +11,6 @@ $title = get_field('page_title') ? get_field('page_title') : get_the_title();
 $description = get_field('page_description');
 
 $list = get_field('leagues-list'); /*repeater: category, custom name*/
-//var_dump($list);
 $taxonomy_name = 'product_cat';
 ?>
 
@@ -52,7 +51,6 @@ $taxonomy_name = 'product_cat';
                     <?php $i = 1; ?>
 
                     <?php foreach ($list as $item) :
-//                        var_dump($item);
 
                         $category = $item['category'];
                         $name = $item['custom_name'] ? $item['custom_name'] : $category->name;
@@ -85,13 +83,8 @@ $taxonomy_name = 'product_cat';
                             'child_of' => $category->term_id
                         ) );
 
-//                        get_terms($args);
-
-                        //var_dump($children);
-
                         // Check if products exist
                         if (! empty( $terms ) && ! is_wp_error( $terms)) : ?>
-                        
 
                             <li id="<?php echo 'tab' . $c;?>" class="tabs__item col <?php echo 'tab' . $c;?>  <?php if($c == 1) : echo 'active'; endif;?>">
 
