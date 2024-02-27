@@ -38,7 +38,7 @@ jQuery(document).ready(function($){
         const element = $(this),
               elementAttr = element.attr('data-attribute'),
               attr = element.closest('.attributes-picker-list').attr('data-attribute-name');
-        $('.attributes-picker-item').removeClass('active');
+        $(this).closest('.attributes-picker-list').find('.attributes-picker-item').removeClass('active');
         element.addClass('active');
         $(`#${attr}`).prop('selectedIndex', $(`#${attr} option[value="${elementAttr}"]`).index());
         $(`#${attr} option[value="${elementAttr}"]`).change();
@@ -46,6 +46,11 @@ jQuery(document).ready(function($){
             $('.singleProduct__sizeWrapper').find('.singleProduct__sizeTitle').html(element.html());
         }
     });
+    $('.singleProduct__sizeList__item').click(function(){
+        $('.singleProduct__sizeList').slideUp();
+    });
+
+
     $('.variations_form select').each(function(){
         $(this).find('option').each(function(){
             if(typeof $(this).attr('selected') !== 'undefined' && $(this).attr('selected') !== false){
@@ -58,9 +63,18 @@ jQuery(document).ready(function($){
             }
         })
     });
-    // $('.attributes-picker-item').click(function(){
-    //     setTimeout(function(){
-    //         if($('.woocommerce-product-gallery__image'))
-    //     }, 100)
-    // })
+
+
+    let imageUrl = $('.woocommerce-product-gallery__image[data-slick-index="-1"] a').attr('href');
+    $('.attributes-picker-item').click(function(){
+        setTimeout(function(){
+            if($('.woocommerce-product-gallery__image[data-slick-index="-1"] a').attr('href') != imageUrl) {
+                $('.woocommerce-product-gallery__image[data-slick-index="0"]').attr('data-thumb', $('.woocommerce-product-gallery__image[data-slick-index="-1"] a').attr('href'));
+                $('.woocommerce-product-gallery__image[data-slick-index="0"] a').attr('href', $('.woocommerce-product-gallery__image[data-slick-index="-1"] a').attr('href'));
+                $('.woocommerce-product-gallery__image[data-slick-index="0"] img').attr('srcset', $('.woocommerce-product-gallery__image[data-slick-index="-1"] a').attr('href'));
+
+                imageUrl = $('.woocommerce-product-gallery__image[data-slick-index="-1"] a').attr('href');
+            }
+        }, 100)
+    })
 })

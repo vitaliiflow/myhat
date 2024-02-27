@@ -541,13 +541,16 @@ jQuery(document).ready(function ($) {
     var element = $(this),
       elementAttr = element.attr('data-attribute'),
       attr = element.closest('.attributes-picker-list').attr('data-attribute-name');
-    $('.attributes-picker-item').removeClass('active');
+    $(this).closest('.attributes-picker-list').find('.attributes-picker-item').removeClass('active');
     element.addClass('active');
     $("#".concat(attr)).prop('selectedIndex', $("#".concat(attr, " option[value=\"").concat(elementAttr, "\"]")).index());
     $("#".concat(attr, " option[value=\"").concat(elementAttr, "\"]")).change();
     if (attr == 'pa_storlek') {
       $('.singleProduct__sizeWrapper').find('.singleProduct__sizeTitle').html(element.html());
     }
+  });
+  $('.singleProduct__sizeList__item').click(function () {
+    $('.singleProduct__sizeList').slideUp();
   });
   $('.variations_form select').each(function () {
     $(this).find('option').each(function () {
@@ -561,9 +564,15 @@ jQuery(document).ready(function ($) {
       }
     });
   });
-  // $('.attributes-picker-item').click(function(){
-  //     setTimeout(function(){
-  //         if($('.woocommerce-product-gallery__image'))
-  //     }, 100)
-  // })
+  var imageUrl = $('.woocommerce-product-gallery__image[data-slick-index="-1"] a').attr('href');
+  $('.attributes-picker-item').click(function () {
+    setTimeout(function () {
+      if ($('.woocommerce-product-gallery__image[data-slick-index="-1"] a').attr('href') != imageUrl) {
+        $('.woocommerce-product-gallery__image[data-slick-index="0"]').attr('data-thumb', $('.woocommerce-product-gallery__image[data-slick-index="-1"] a').attr('href'));
+        $('.woocommerce-product-gallery__image[data-slick-index="0"] a').attr('href', $('.woocommerce-product-gallery__image[data-slick-index="-1"] a').attr('href'));
+        $('.woocommerce-product-gallery__image[data-slick-index="0"] img').attr('srcset', $('.woocommerce-product-gallery__image[data-slick-index="-1"] a').attr('href'));
+        imageUrl = $('.woocommerce-product-gallery__image[data-slick-index="-1"] a').attr('href');
+      }
+    }, 100);
+  });
 });

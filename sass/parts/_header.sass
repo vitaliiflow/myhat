@@ -43,6 +43,7 @@
                 margin-bottom: 0.278rem
                 &:last-child 
                     margin-bottom: 0
+            
             &.menu-item-has-children
                 padding-bottom: 1.334rem
                 margin-bottom: -1.334rem
@@ -225,10 +226,24 @@
                             &:last-child
                                 margin-bottom: 0
                         a 
+                            +min-screen(994px)
+                                display: flex
+                                flex-direction: row-reverse
+                                justify-content: flex-end
+                                align-items: center
                             +max-screen($breakpoint-lg)
                                 font-size: 0.667rem
                             +max-screen($breakpoint-md)
                                 font-size: 0.556rem 
+                        img 
+                            +min-screen(994px)
+                                display: block
+                                width: 36px
+                                margin-right: 8px
+                                object-fit: contain
+                                +max-screen(1200px)
+                                    width: 28px 
+                                    margin-right: 6px
                     &.has-mobile-icon 
                         +max-screen($breakpoint-lg)
                             margin-top: 0.889rem
