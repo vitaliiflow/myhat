@@ -45,7 +45,7 @@ jQuery(document).ready(function($){
         var searchValue = $('#search-brands-form input[type="text"]').val();
         var brandsList = $('.brands-page__list');
 
-        brandsList.html('<li class="searching-brands-text">Search...</li>');
+        brandsList.html('<li class="searching-brands-text">' + codelibry.strings.searching + '</li>');
 
         $.ajax({
             url: codelibry.ajax_url,
@@ -75,12 +75,12 @@ jQuery(document).ready(function($){
                         brandsList.append(brandItem);
                     });
                 } else {
-                    brandsList.html('<li>No brands found.</li>');
+                    brandsList.html('<div>' + codelibry.strings.noBrandsFound + '</div>');
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.error('AJAX request failed:', textStatus, errorThrown);
-                brandsList.html('<li>Error during search. Please try again.</li>');
+                brandsList.html('<li>' + codelibry.strings.searchError + '</li>');
             }
         });
     });
@@ -101,7 +101,8 @@ jQuery(document).ready(function($){
         $('#search-brands-form input[type="text"]').val('').trigger('input');
 
         var brandsList = $('.brands-page__list');
-        brandsList.html('<li class="searching-brands-text">Search...</li>');
+        brandsList.html('<li class="searching-brands-text">' + codelibry.strings.searching + '</li>');
+
 
         $.ajax({
             url: codelibry.ajax_url,
@@ -131,12 +132,12 @@ jQuery(document).ready(function($){
                         brandsList.append(brandItem);
                     });
                 } else {
-                    brandsList.html('<li>No brands found.</li>');
+                    brandsList.html('<div>' + codelibry.strings.noBrandsFound + '</div>');
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.error('AJAX request failed:', textStatus, errorThrown);
-                brandsList.html('<li>Error during search. Please try again.</li>');
+                brandsList.html('<li>' + codelibry.strings.searchError + '</li>');
             }
         });
     });
@@ -148,7 +149,7 @@ jQuery(document).ready(function($){
         var teamsList = $('.tabs__item-list');
         var tabsContainer = $('.search-results');
 
-        tabsContainer.html('<li class="searching-brands-text">Search...</li>');
+        tabsContainer.html('<li class="searching-brands-text">' + codelibry.strings.searching + '</li>');
 
         if (searchValue === '') {
             $.ajax({
@@ -162,11 +163,13 @@ jQuery(document).ready(function($){
                         tabsContainer.html(response.data);
                         initializeTabs();
                     } else {
-                        tabsContainer.html('<div>Unable to reset. Please try again.</div>');
+                        tabsContainer.html('<div>' + codelibry.strings.resetError + '</div>');
+
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                    tabsContainer.html('<div>Error during reset. Please try again.</div>');
+                    tabsContainer.html('<div>' + codelibry.strings.ajaxError + '</div>');
+
                     console.error('AJAX request failed:', textStatus, errorThrown);
                 }
             });
@@ -180,8 +183,7 @@ jQuery(document).ready(function($){
                 },
                 success: function(response) {
                     tabsContainer.empty();
-                    console.log(response.data);
-                    // Проверка, есть ли хотя бы один объект с непустым массивом child_terms
+                    // Checking if there is at least one object with a non-empty child_terms array
                     var hasTeams = response.data.some(function(league) {
                         return league.child_terms.length > 0;
                     });
@@ -212,13 +214,13 @@ jQuery(document).ready(function($){
                         });
 
                     } else {
-                        tabsContainer.html('<div>No teams found.</div>');
-                        console.log('nothing...');
+                        tabsContainer.html('<div>' + codelibry.strings.noTeamsFound + '</div>');
 
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                    tabsContainer.html('<div>Error during search. Please try again.</div>');
+                    tabsContainer.html('<div>' + codelibry.strings.ajaxError + '</div>');
+
                     console.error('AJAX request failed:', textStatus, errorThrown);
                 }
             });
@@ -254,11 +256,11 @@ jQuery(document).ready(function($){
                     tabsContainer.html(response.data);
                     initializeTabs();
                 } else {
-                    tabsContainer.html('<div>Unable to reset. Please try again.</div>');
+                    tabsContainer.html('<div>' + codelibry.strings.resetError + '</div>');
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                tabsContainer.html('<div>Error during reset. Please try again.</div>');
+                tabsContainer.html('<div>' + codelibry.strings.ajaxError + '</div>');
                 console.error('AJAX request failed:', textStatus, errorThrown);
             }
         });
@@ -275,7 +277,7 @@ jQuery(document).ready(function($){
                 block.find('.js-tab-nav').off('click').on('click', function(e) {
                     e.preventDefault();
                     var id = $(this).attr('href');
-                    console.log(id);
+                    // console.log(id);
                     block.find('.tabs__nav').removeClass('active');
                     $(this).addClass('active');
                     block.find('.tabs__item').removeClass('active').hide();
