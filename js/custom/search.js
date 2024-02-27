@@ -1,7 +1,5 @@
 jQuery(document).ready(function($){
 
-    console.log('54875475485');
-
     $('.header__searchIcon').click(function(){
         $(this).parent().find('.search__barWrapper').toggleClass('opened');
     });
@@ -87,8 +85,20 @@ jQuery(document).ready(function($){
         });
     });
 
+    $('.clear-search-results-btn').hide();
+
+    // Checking an input field for a value
+    $('#search-brands-form input[type="text"]').on('input', function() {
+        if ($(this).val().length > 0) {
+            $('.clear-search-results-btn').show();
+        } else {
+            $('.clear-search-results-btn').hide();
+        }
+    });
+
     $('.clear-search-results-btn').on('click', function() {
-        $('#search-brands-form input[type="text"]').val('');
+        //trigger - fires an input event on the same text field.
+        $('#search-brands-form input[type="text"]').val('').trigger('input');
 
         var brandsList = $('.brands-page__list');
         brandsList.html('<li class="searching-brands-text">Search...</li>');
@@ -216,8 +226,19 @@ jQuery(document).ready(function($){
         }
     });
 
+    $('.clear-search-results-btn__teams').hide();
+
+    // Checking an input field for a value
+    $('#search-teams-form input[type="text"]').on('input', function() {
+        if ($(this).val().length > 0) {
+            $('.clear-search-results-btn__teams').show();
+        } else {
+            $('.clear-search-results-btn__teams').hide();
+        }
+    });
+
     $('.clear-search-results-btn__teams').on('click', function() {
-        $('#search-teams-form input[type="text"]').val('');
+        $('#search-teams-form input[type="text"]').val('').trigger('input');
 
         var tabsContainer = $('.teams-page__tabs');
         tabsContainer.empty();
