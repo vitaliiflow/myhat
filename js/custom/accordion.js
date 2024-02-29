@@ -1,11 +1,12 @@
 jQuery(document).ready(function ($) {
-    $('.contact__accordionList__itemTitle').click(function(){
-        const parent = $(this).parent();
+    $('.accordion .js-accordion-button').click(toggleAccordionItem);
 
-        $('.contact__accordionList__item').not(parent).removeClass('opened');
-        $('.contact__accordionList__itemContent').not(parent.find('.contact__accordionList__itemContent')).slideUp();
-        
-        parent.toggleClass('opened');
-        parent.find('.contact__accordionList__itemContent').slideToggle();
-    });
+    function toggleAccordionItem(){
+        $(this).find('.js-accordion-button-icon').toggleClass('active');
+
+        const bodyId = $(this).data('for');
+        const body = $(`.js-accordion-body[data-body="${bodyId}"]`);
+
+        body.slideToggle();
+    }
 });
