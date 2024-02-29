@@ -69,17 +69,19 @@ $description = get_field('page_description');
                     $logo = get_field('logo', $category);
                     
                     ?>
-                    <li class="col-4 col-sm-3 col-md-2 brands-page__item">
-                        <a href="<?php echo esc_url($category_url); ?>" class="brands-page__item-link">
-                            <?php if ($logo) : ?>
+                    <?php if ($logo) : ?>
+
+                        <li class="col-4 col-sm-3 col-md-2 brands-page__item">
+                            <a href="<?php echo esc_url($category_url); ?>" class="brands-page__item-link">
+                                
                                 <div class="img-wrapper d-flex">
                                     <img src="<?php echo $logo['url'] ?>" class="" alt="<?php echo $logo['title'] ?>">
                                 </div>
-                            <?php else :?>
-                                <?php echo $category_name; ?>
-                            <?php endif; ?>
-                        </a>
-                    </li>
+                                
+                            </a>
+                        </li>
+
+                    <?php endif; ?>
                 <?php endforeach; ?>
             <?php endif; ?>
 
