@@ -42,17 +42,49 @@ get_header( 'shop' );
                 ?>
                 <div class="shopPage__text"><?php echo wpautop($page_content); ?></div>
             </div>
-            <?php if ( woocommerce_product_loop() ) { ?>
+            <?php 
+            $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+            $current_term = get_queried_object();
+
+            $term_id = $current_term->slug;
+            $taxonomy_slug = $current_term->taxonomy;
+
+            $args = array(
+                'post_type' => 'product',
+                'posts_per_page' => 16,
+                'paged' => $paged,
+                'orderby' => 'popularity',
+                'order' => 'ASC',
+                'meta_query' => array(
+                    array(
+                        'key'     => '_stock_status',
+                        'value'   => 'instock',
+                        'compare' => '=',
+                    ),
+                ),
+                'tax_query' => array(),
+            );
+            if(!empty($term_id) && !empty($taxonomy_slug)) {
+                $tax_array = array(
+                    'taxonomy' => $taxonomy_slug, 
+                    'field' => 'slug',
+                    'terms' => $term_id 
+                );
+                array_push($args["tax_query"], $tax_array);
+            }
+            $the_query = new WP_Query($args);
+            if ( $the_query->have_posts() ) { ?>
+                <?php $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
                 <div class="shopPage__filters">
                     <?php do_action( 'woocommerce_before_shop_loop' ); ?>
                 </div>
-                <div class="shopPage__list">
+                <div class="shopPage__list" data-paged="<?php echo $paged; ?>" data-order="ASC" data-orderby="popularity" data-metaKey="">
                     <?php 
                     	woocommerce_product_loop_start();
 
                         if ( wc_get_loop_prop( 'total' ) ) {
-                            while ( have_posts() ) {
-                                the_post();
+                            while ( $the_query->have_posts() ) {
+                                $the_query->the_post();
                     
                                 /**
                                  * Hook: woocommerce_shop_loop.
@@ -81,28 +113,7 @@ get_header( 'shop' );
         </div>
     </div>
 </div>
-<?php 
-$total   = isset( $total ) ? $total : wc_get_loop_prop( 'total_pages' );
-$current = isset( $current ) ? $current : wc_get_loop_prop( 'current_page' );
-$base    = isset( $base ) ? $base : esc_url_raw( str_replace( 999999999, '%#%', remove_query_arg( 'add-to-cart', get_pagenum_link( 999999999, false ) ) ) );
-$format  = isset( $format ) ? $format : '';
 
-if ( $total <= 1 ) {
-	return;
-}
-$link = explode('%#%', $base);
-$prev = $current - 1;
-$next = $current + 1;
-?>
-<div class="pagination-test">
-    <div class="prev">prev</div>
-    <div class="items">
-        <span><?php echo $current ?></span>
-        <span>/</span>
-        <span><?php echo $total; ?></span>
-    </div>
-    <div class="next">next</div>
-</div>
 
 <?php 
 get_footer( 'shop' );

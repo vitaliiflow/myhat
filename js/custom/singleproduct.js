@@ -1,18 +1,25 @@
 jQuery(document).ready(function($){
+    //Product Slider
     $('.singleProduct__gallery .woocommerce-product-gallery__wrapper').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
         dots: true,
     });
+    
+
     $('.singleProduct__sizeTitle').click(function(){
         $(this).parent().toggleClass('opened');
         $(this).parent().find('.singleProduct__sizeList').slideToggle();
     });
+
+
     $('.singleProduct__accordionItem__title').click(function(){
         $(this).toggleClass('opened');
         $(this).parent().find('.singleProduct__accordionItem__content').slideToggle();
     });
+
+
     $('.quantity-btn').click(function(){
         const item = $(this).parent().find('.qty'),
               number = parseInt(item.val());
@@ -34,6 +41,7 @@ jQuery(document).ready(function($){
         }
     });
 
+
     $('.attributes-picker-item').click(function(){
         const element = $(this),
               elementAttr = element.attr('data-attribute'),
@@ -54,7 +62,6 @@ jQuery(document).ready(function($){
     $('.variations_form select').each(function(){
         $(this).find('option').each(function(){
             if(typeof $(this).attr('selected') !== 'undefined' && $(this).attr('selected') !== false){
-                console.log(123);
                 const listitem = $(`div[data-attribute-name="${$(this).parent().attr('id')}"] div[data-attribute="${$(this).attr('value')}"]`);
                 listitem.addClass('active');
                 if($(this).parent().attr('name') == 'attribute_pa_storlek'){
@@ -76,5 +83,8 @@ jQuery(document).ready(function($){
                 imageUrl = $('.woocommerce-product-gallery__image[data-slick-index="-1"] a').attr('href');
             }
         }, 100)
-    })
+    });
+
+
+
 })

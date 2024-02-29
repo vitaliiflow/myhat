@@ -456,15 +456,18 @@ jQuery(document).ready(function ($) {
 jQuery(document).ready(function ($) {
   var w = $(window).width();
   $(window).on('load', function () {
-    if (w > 993) {
+    if (w >= 994) {
       $('.shopPage__filtersRow__item.sort').hover(function () {
         $('.shopPage__filtersRow__listWrapper').stop().slideToggle();
       }, function () {
         $('.shopPage__filtersRow__listWrapper').stop().slideToggle();
       });
+      $('.shopPage__filtersRow__item.sort .shopPage__filtersRow__list__apply').click(function () {
+        $('.shopPage__filtersRow__item.sort .shopPage__filtersRow__listWrapper').slideUp();
+      });
     } else {
-      $('.shopPage__filtersRow__itemTitle').click(function () {
-        $(this).parent().addClass('opened');
+      $('.shopPage__filtersRow__item .mobile-toggle').click(function () {
+        $(this).closest('.shopPage__filtersRow__item').find('.shopPage__filtersRow__listWrapper').toggleClass('active');
       });
     }
     $('.shopPage__filtersRow__listItem').click(function () {
@@ -473,19 +476,51 @@ jQuery(document).ready(function ($) {
     });
   });
   $('.shopPage__filtersRow__item.sort .shopPage__filtersRow__list__apply').click(function () {
-    var sortType = $('.shopPage__filtersRow__item.sort .active .shopPage__filtersRow__listItem__name').attr('data-slug');
-    $('.shopPage__filtersRow__item.sort .shopPage__filtersRow__listWrapper').slideUp();
+    var sortType = $('.shopPage__filtersRow__item.sort .active .shopPage__filtersRow__listItem__name').attr('data-slug'),
+      paged = $('.shopPage__list').attr('data-paged');
+    var order, orderby, metaKey;
+    switch (sortType) {
+      case 'popularity':
+        orderby = 'popularity';
+        order = 'ASC';
+        break;
+      case 'rating':
+        orderby = 'meta_value_num';
+        metaKey = '_wc_average_rating';
+        order = 'ASC';
+        break;
+      case 'date':
+        orderby = 'publish_date';
+        order = 'DESC';
+        break;
+      case 'price':
+        orderby = 'meta_value_num';
+        metaKey = '_price';
+        order = 'ASC';
+        break;
+      case 'price-desc':
+        orderby = 'meta_value_num';
+        metaKey = '_price';
+        order = 'DESC';
+        break;
+    }
     $.ajax({
       url: codelibry.ajax_url,
       type: 'post',
       data: {
         action: 'products_sorting',
-        sortType: sortType
+        paged: paged,
+        order: order,
+        orderby: orderby,
+        metaKey: metaKey
       },
       success: function success(response) {
         $('.products').html(response);
       }
     });
+    $('.shopPage__list').attr('data-order', order);
+    $('.shopPage__list').attr('data-orderby', orderby);
+    $('.shopPage__list').attr('data-metakey', metaKey);
   });
 });
 "use strict";
@@ -504,6 +539,7 @@ jQuery(document).ready(function ($) {
 "use strict";
 
 jQuery(document).ready(function ($) {
+  //Product Slider
   $('.singleProduct__gallery .woocommerce-product-gallery__wrapper').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -555,7 +591,6 @@ jQuery(document).ready(function ($) {
   $('.variations_form select').each(function () {
     $(this).find('option').each(function () {
       if (typeof $(this).attr('selected') !== 'undefined' && $(this).attr('selected') !== false) {
-        console.log(123);
         var listitem = $("div[data-attribute-name=\"".concat($(this).parent().attr('id'), "\"] div[data-attribute=\"").concat($(this).attr('value'), "\"]"));
         listitem.addClass('active');
         if ($(this).parent().attr('name') == 'attribute_pa_storlek') {
@@ -574,5 +609,65 @@ jQuery(document).ready(function ($) {
         imageUrl = $('.woocommerce-product-gallery__image[data-slick-index="-1"] a').attr('href');
       }
     }, 100);
+  });
+});
+"use strict";
+
+jQuery(document).ready(function ($) {
+  $('.shopPage__paginationButton').click(function () {
+    var order = $('.shopPage__list').attr('data-order'),
+      orderby = $('.shopPage__list').attr('data-orderby'),
+      metaKey = $('.shopPage__list').attr('data-metakey');
+    var paged = parseInt($('.shopPage__list').attr('data-paged')),
+      separator;
+    if ($(this).hasClass('next')) {
+      paged = ++paged;
+    }
+    if ($(this).hasClass('prev')) {
+      paged = paged - 1;
+    }
+    $.ajax({
+      url: codelibry.ajax_url,
+      type: 'post',
+      data: {
+        action: 'products_pagination',
+        paged: paged,
+        order: order,
+        orderby: orderby,
+        metaKey: metaKey
+      },
+      success: function success(result) {
+        $('.shopPage__list').html(result);
+      }
+    });
+    $('.shopPage__list').attr('data-paged', paged);
+    $('.shopPage__paginationPage .current').html(paged);
+
+    //Link Chnage
+    if (window.location['href'].split('?')[1] != undefined && window.location['href'].split('?')[1] != '') {
+      separator = '&';
+    } else {
+      separator = '?';
+    }
+    if (window.location.split('paged=')[1] != '' && window.location.split('paged=')[1] != undefined) {
+      http:
+      //localhost:8888/myHat/butik/?paged=2&paged=3&paged=4
+      if (window.location.split('paged=')[1].split('&')[1] != '' && window.location.split('paged=')[1].split('&')[1] != undefined) {
+        window.history.pushState('', '', window.location.split('paged=')[0] + "paged=".concat(paged) + window.location.split('paged=')[1].split('&')[1]);
+      } else {
+        window.history.pushState('', '', window.location.split('paged=')[0] + "".concat(separator, "paged=").concat(paged));
+      }
+    } else {
+      window.history.pushState('', '', window.location + "".concat(separator, "paged=").concat(paged));
+    }
+  });
+  $(document).ajaxSend(function (event, xhr, settings) {
+    var action = settings.data ? settings.data.split('action=')[1].split('&paged')[0] : '';
+    if (action && action === 'products_pagination') {
+      $('.shopPage__list').addClass('loading');
+    }
+  });
+  $(document).ajaxComplete(function () {
+    $('.shopPage__list').removeClass('loading');
   });
 });

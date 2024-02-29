@@ -17,6 +17,26 @@
                 width: 50%
                 position: relative
                 cursor: pointer
+                &Close 
+                    +max-screen($breakpoint-lg)
+                        position: absolute
+                        top: 24px 
+                        right: 24px
+                        width: 24px 
+                        height: 24px 
+                        &::before,
+                        &::after 
+                            content: ""
+                            position: absolute
+                            top: 50% 
+                            left: 0
+                            width: 100% 
+                            height: 1px 
+                            background-color: $color-text
+                        &::before 
+                            transform: translateY(-50%) rotate(45deg)
+                        &::after 
+                            transform: translateY(-50%) rotate(-45deg)
                 &Title 
                     border: 1px solid $color-text 
                     justify-content: center
@@ -70,8 +90,9 @@
                                 width: 100%
                                 height: 100%
                                 position: fixed
-                                z-index: 10
-                                right: 0
+                                z-index: 1000
+                                right: -100%
+                                left: auto
                                 top: 0
                                 border: 0
                                 padding: 16px
@@ -81,6 +102,8 @@
                                 align-items: center
                                 padding-bottom: 42px
                                 transition: .3s
+                                &.active 
+                                    right: 0
                         &Item 
                             display: flex 
                             margin-bottom: 20px

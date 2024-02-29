@@ -18,8 +18,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
-$total   = isset( $total ) ? $total : wc_get_loop_prop( 'total_pages' );
+// $total   = isset( $total ) ? $total : wc_get_loop_prop( 'total_pages' );
 $current = isset( $current ) ? $current : wc_get_loop_prop( 'current_page' );
 $base    = isset( $base ) ? $base : esc_url_raw( str_replace( 999999999, '%#%', remove_query_arg( 'add-to-cart', get_pagenum_link( 999999999, false ) ) ) );
 $format  = isset( $format ) ? $format : '';
@@ -30,9 +29,29 @@ if ( $total <= 1 ) {
 $link = explode('%#%', $base);
 $prev = $current - 1;
 $next = $current + 1;
+
+
+$args = array(
+	'post_type' => 'product',
+	'posts_per_page' => 16,
+	'paged' => 2,
+	'meta_query'     => array(
+		array(
+			'key'     => '_stock_status',
+			'value'   => 'instock',
+			'compare' => '=',
+		),
+	),
+);
+$the_query = new WP_Query($args);
+
 ?>
-<div class="shopPage__pagination">
-	<div class="shopPage__paginationButton prev<?php if($current < 2){echo ' disabled';} ?>"><a href="<?php echo $link[0] . $prev ; ?>"><?php echo get_inline_svg('pagination-arrow-right.svg'); ?>Föregående</a></div>
-	<div class="shopPage__paginationPage"><?php echo $current; ?><span>/</span><?php echo $total; ?></div>
-	<div class="shopPage__paginationButton next<?php if($current == $total){echo ' disabled';} ?>"><a href="<?php echo $link[0] . $next; ?>">Nästa<?php echo get_inline_svg('pagination-arrow-right.svg'); ?></a></div>
 </div>
+<div class="shopPage__pagination">
+    <div class="shopPage__paginationButton prev"><?php echo get_inline_svg('pagination-arrow-right.svg'); ?>Föregående</div>
+    <div class="shopPage__paginationPage">
+        <span class="current"><?php echo $current ?></span>
+        <span>/</span>
+        <span class="total"><?php echo $the_query->max_num_pages; ?></span>
+    </div>
+    <div class="shopPage__paginationButton next">Nästa<?php echo get_inline_svg('pagination-arrow-right.svg'); ?></div>

@@ -85,10 +85,17 @@ function ajax_search(){
 add_action('wp_ajax_nopriv_products_sorting', 'products_sorting');
 add_action('wp_ajax_products_sorting', 'products_sorting');
 function products_sorting() {
-    echo $current_page = max( 1, get_query_var( 'paged' ) );
+    $paged = $_POST['paged'];
+    $order = $_POST['order'];
+    $orderby = $_POST['orderby'];
+    $metaKey = $_POST['metaKey'];
+
     $args = array(
         'post_type' => 'product',
         'posts_per_page' => 16,
+        'paged' => $paged,
+        'order' => $order,
+        'orderby' => $orderby,
         'meta_query'     => array(
             array(
                 'key'     => '_stock_status',
@@ -97,34 +104,10 @@ function products_sorting() {
             ),
         ),
     );
-    $sort = $_POST['sortType'];
-    if(!empty($sort)):
-        switch($sort):
-            case 'popularity':
-                $args['orderby'] = 'popularity';
-                $args['order'] = 'DESC';
-                break;
-            case 'rating':
-                $args['orderby'] = 'meta_value_num';
-                $args['meta_key'] = '_wc_average_rating';
-                $args['order'] = 'ASC';
-                break;
-            case 'date':
-                $args['orderby'] = 'publish_date';
-                $args['order'] = 'DESC';
-                break;
-            case 'price':
-                $args['orderby'] = 'meta_value_num';
-                $args['meta_key'] = '_price';
-                $args['order'] = 'ASC';
-                break;
-            case 'price-desc':
-                $args['orderby'] = 'meta_value_num';
-                $args['meta_key'] = '_price';
-                $args['order'] = 'DESC';
-                break;
-        endswitch;
-    endif;
+    if(!empty($metaKey)){
+        $args['meta_key'] = $metaKey;
+    }
+    
     $the_query = new WP_Query($args);
     if($the_query->have_posts()):
         while($the_query->have_posts()): $the_query->the_post(); ?>
@@ -142,11 +125,15 @@ function products_sorting() {
 add_action('wp_ajax_nopriv_products_pagination', 'products_pagination');
 add_action('wp_ajax_products_pagination', 'products_pagination');
 function products_pagination() {
-    $current_page = max( 1, get_query_var( 'paged' ) );
+    $paged = $_POST['paged'];
+    $order = $_POST['order'];
+    $orderby = $_POST['orderby'];
+    $metaKey = $_POST['metaKey'];
+
     $args = array(
         'post_type' => 'product',
         'posts_per_page' => 16,
-        'paged' => $current_page + 1,
+        'paged' => $paged,
         'meta_query'     => array(
             array(
                 'key'     => '_stock_status',
@@ -155,18 +142,33 @@ function products_pagination() {
             ),
         ),
     );
-    $the_query = new WP_Query($args);
-    echo $current_page;
-    if($the_query->have_posts()):
-        while($the_query->have_posts()): $the_query->the_post(); ?>
-            <?php global $product; ?>
-            <div class="shopPage__listItem col-6 col-md-3 product-<?php echo get_the_ID() ?>">
-                <?php wc_get_template_part( 'content', 'product' ); ?>
-            </div>
-        <?php endwhile;
+    if(!empty($order)): 
+        $args['order'] = $order;
     endif;
-    die();
+    if(!empty($orderby)): 
+        $args['orderby'] = $orderby;
+    endif;
+    if(!empty($metaKey)): 
+        $args['meta_key'] = $metaKey;
+    endif;
+
+    $the_query = new WP_Query($args);
+    ?>
+    <ul class="products column-4">
+        <?php if($the_query->have_posts()):
+            while($the_query->have_posts()): $the_query->the_post(); ?>
+                <?php global $product; ?>
+                <div class="shopPage__listItem col-6 col-md-3 product-<?php echo get_the_ID() ?>">
+                    <?php wc_get_template_part( 'content', 'product' ); ?>
+                </div>
+            <?php endwhile;
+        endif; ?>
+    </ul>
+    
+    <?php die();
 }
+
+
 //Ajax Search Brands
 add_action('wp_ajax_nopriv_search_brands', 'search_brands');
 add_action('wp_ajax_search_brands', 'search_brands');

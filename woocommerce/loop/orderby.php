@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <div class="shopPage__filtersRow__listWrapper"></div>
     </div>
     <div class="shopPage__filtersRow__item sort">
-        <div class="shopPage__filtersRow__itemTitle"><span>Sortering</span></div>
+        <div class="shopPage__filtersRow__itemTitle mobile-toggle"><span>Sortering</span></div>
         <div class="shopPage__filtersRow__listWrapper">
             <div class="shopPage__filtersRow__list">
                 <div class="shopPage__filtersRow__listItem active">
@@ -52,8 +52,8 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <div class="shopPage__filtersRow__listItem__name" data-slug="price-desc"><?php _e('Sortera efter pris: högt till lågt', 'woocommerce'); ?></div>
                 </div>
             </div>
-            <div class="shopPage__filtersRow__list__apply button"><?php _e('APPLY', 'woocommerce'); ?></div>
+            <div class="shopPage__filtersRow__list__apply button mobile-toggle"><?php _e('APPLY', 'woocommerce'); ?></div>
+            <div class="shopPage__filtersRow__itemClose mobile-toggle"></div>
         </div>
-        <div class="shopPage__filtersRow__itemClose"></div>
     </div>
 </div>

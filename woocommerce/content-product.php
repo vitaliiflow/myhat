@@ -22,7 +22,7 @@ global $product;
 // Ensure visibility.
 if ( empty( $product ) || ! $product->is_visible() ) {
 	echo ' product invisible inside';
-	//return;
+	// return;
 }
 ?>
 <a href="<?php the_permalink( ); ?>" class="shopPage__listItem__content">

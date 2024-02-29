@@ -32,6 +32,30 @@
         +max-screen($breakpoint-md)
             max-width: 600px 
             margin: auto 
+        &.loading 
+            position: relative
+            &::before 
+                content: ""
+                position: absolute
+                left: -20px 
+                top: -20px 
+                width: calc( 100% + 40px )
+                height: calc( 100% + 20px )
+                background-color: rgba(255, 255, 255, 0.7)
+                z-index: 10
+            &::after 
+                content: ""
+                width: 64px 
+                height: 64px 
+                position: absolute 
+                left: 50% 
+                top: 50%
+                transform: translate(-50%, -50%)
+                background-image: url('../assets/images/loading-gif.gif')
+                background-size: contain
+                background-position: center
+                background-repeat: no-repeat
+                z-index: 11
         ul.products
             display: flex 
             flex-wrap: wrap
@@ -200,30 +224,29 @@
                     margin: 0 2px 
         &Button 
             flex: 1
-            a 
-                background-color: $color-text
-                color: $color-white
-                display: flex
-                justify-content: space-around
-                padding: 14px
-                +max-screen($breakpoint-lg)
-                    font-size: 15px
-                    padding: 11px 6px
-                svg 
-                    height: auto
-                    width: 12px 
-                    +max-screen($breakpoint-lg) 
-                        width: 10px 
-                    line 
-                        stroke: #fff !important
+            background-color: $color-text
+            color: $color-white
+            display: flex
+            justify-content: space-around
+            padding: 14px
+            cursor: pointer
+            +max-screen($breakpoint-lg)
+                font-size: 15px
+                padding: 11px 6px
+            svg 
+                height: auto
+                width: 12px 
+                +max-screen($breakpoint-lg) 
+                    width: 10px 
+                line 
+                    stroke: #fff !important
             &.prev 
                 svg 
                     transform: rotate(180deg)
             &.disabled 
                 pointer-events: none 
-                a 
-                    color: $color-disabled
-                    background-color: $color-background-disabled 
-                    svg 
-                        line 
-                            stroke: $color-disabled !important
+                color: $color-disabled
+                background-color: $color-background-disabled 
+                svg 
+                    line 
+                        stroke: $color-disabled !important
