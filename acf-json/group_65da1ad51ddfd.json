@@ -24,20 +24,20 @@
             "label": "Content",
             "name": "form_content",
             "aria-label": "",
-            "type": "text",
+            "type": "wysiwyg",
             "instructions": "",
-            "required": 0,
+            "required": false,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
             "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "delay": 0
         },
         {
             "key": "field_65da1b0cfe708",
@@ -73,5 +73,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1709214881
+    "modified": 1709232573
 }
