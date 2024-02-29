@@ -1,13 +1,13 @@
 "use strict";
 
 jQuery(document).ready(function ($) {
-  $('.contact__accordionList__itemTitle').click(function () {
-    var parent = $(this).parent();
-    $('.contact__accordionList__item').not(parent).removeClass('opened');
-    $('.contact__accordionList__itemContent').not(parent.find('.contact__accordionList__itemContent')).slideUp();
-    parent.toggleClass('opened');
-    parent.find('.contact__accordionList__itemContent').slideToggle();
-  });
+  $('.accordion .js-accordion-button').click(toggleAccordionItem);
+  function toggleAccordionItem() {
+    $(this).find('.js-accordion-button-icon').toggleClass('active');
+    var bodyId = $(this).data('for');
+    var body = $(".js-accordion-body[data-body=\"".concat(bodyId, "\"]"));
+    body.slideToggle();
+  }
 });
 "use strict";
 
