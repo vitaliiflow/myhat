@@ -1,4 +1,6 @@
 .hero-home
+    .container
+        margin-bottom: 3rem
     &__item-inner
         align-items: flex-end
         
@@ -40,3 +42,14 @@
             aspect-ratio: 5 / 3
             
             object-fit: contain
+
+.slider-full
+    &__item
+        display: none
+        &:first-child
+            display: block
+    .slick-dots
+        position: absolute
+        left: 50%
+        transform: translateX(-50%)
+        bottom: -50px
