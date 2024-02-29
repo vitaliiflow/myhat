@@ -69,7 +69,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 			//Last Chance Label
 			$total_stock = 0;
 			if($product->is_type('variable')){
-				$product_variable = new WC_Product_Variable($product->id);
+				$product_variable = new WC_Product_Variable($product->get_id());
 				$product_variations = $product_variable->get_available_variations();
 				foreach ($product_variations as $variation)  {
 					$total_stock += intval($variation['max_qty']);
