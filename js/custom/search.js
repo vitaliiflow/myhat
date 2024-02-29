@@ -200,7 +200,7 @@ jQuery(document).ready(function($){
                     if (response.success && hasTeams) {
                         response.data.forEach(function(league) {
                             if (league.child_terms.length > 0) {
-                                var leagueSection = $('<section>');
+                                var leagueSection = $('<section class="mb-4">');
                                 var leagueName = $('<h6>').text(league.custom_name);
                                 var leagueList = $('<ul class="teams-page-result-list row">');
 

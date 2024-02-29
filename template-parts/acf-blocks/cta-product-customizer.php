@@ -1,6 +1,7 @@
 <?php 
 
 $image = get_sub_field('image');
+$image_mobile = get_sub_field('image_mobile');
 $link = get_sub_field('link');
 $title = get_sub_field('title');
 
@@ -13,7 +14,24 @@ if ($image && $link) :
 
 <sectioin class="section cta cta--product-customizer">
 
-    <img src="<?php echo $image['url'];?>" alt="<?php echo $image['alt'];?>" class="img-absoolute cta__img">
+    <picture class="img-absoolute cta__img">
+
+        <!-- For screens 768px and larger -->
+        <source media="(min-width: 768px)" srcset="<?php echo $image['url'];?>">
+        
+        <?php if ($image_mobile) : ?>
+
+            <!-- For screens smaller than 768px -->
+            <source media="(max-width: 767px)" srcset="<?php echo $image_mobile['url'];?>">
+
+        <?php endif; ?>
+        
+        <!-- Fallback image for browsers that do not support srcset -->
+        <img src="<?php echo $image['url'];?>" alt="<?php echo $image['alt'];?>" class="img-absoolute cta__img">
+    </picture>
+
+
+    <!-- <img src="<?php echo $image['url'];?>" alt="<?php echo $image['alt'];?>" class="img-absoolute cta__img"> -->
     
     <div class="cta__content text-center">
 

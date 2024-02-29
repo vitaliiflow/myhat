@@ -97,9 +97,9 @@ $taxonomy_name = 'product_cat';
                                         $thumbnail_id = get_term_meta( $term->term_id, 'thumbnail_id', true );
                                         $image = wp_get_attachment_url( $thumbnail_id );
                                         $name = $term->name;
+                                        $link = get_term_link($term);
                         
-                                        
-//                                        if ($image) : ?><!--  -->
+                                        if ($image) : ?>
                                             <li class="col-4 col-md-3 col-lg-2 py-2 tabs__item-child-item">
                                                 <a href="<?php echo $link; ?>" class="product-cat__item-link">
                         
@@ -113,7 +113,7 @@ $taxonomy_name = 'product_cat';
                                                 </a>
                                             </li>
                                                        
-<!--                                        --><?php //endif; ?>
+                                        <?php endif; ?>
 
 
                                     <?php endforeach; ?>

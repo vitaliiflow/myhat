@@ -203,7 +203,7 @@ jQuery(document).ready(function ($) {
           if (response.success && hasTeams) {
             response.data.forEach(function (league) {
               if (league.child_terms.length > 0) {
-                var leagueSection = $('<section>');
+                var leagueSection = $('<section class="mb-4">');
                 var leagueName = $('<h6>').text(league.custom_name);
                 var leagueList = $('<ul class="teams-page-result-list row">');
                 league.child_terms.forEach(function (term) {
@@ -402,13 +402,13 @@ jQuery(document).ready(function ($) {
 "use strict";
 
 jQuery(document).ready(function ($) {
-  $('.contact__accordionList__itemTitle').click(function () {
-    var parent = $(this).parent();
-    $('.contact__accordionList__item').not(parent).removeClass('opened');
-    $('.contact__accordionList__itemContent').not(parent.find('.contact__accordionList__itemContent')).slideUp();
-    parent.toggleClass('opened');
-    parent.find('.contact__accordionList__itemContent').slideToggle();
-  });
+  $('.accordion .js-accordion-button').click(toggleAccordionItem);
+  function toggleAccordionItem() {
+    $(this).find('.js-accordion-button-icon').toggleClass('active');
+    var bodyId = $(this).data('for');
+    var body = $(".js-accordion-body[data-body=\"".concat(bodyId, "\"]"));
+    body.slideToggle();
+  }
 });
 "use strict";
 

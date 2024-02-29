@@ -252,7 +252,7 @@ function search_teams() {
                 $terms_array[] = array(
                     'name' => $term->name,
                     'url' => get_term_link($term),
-                    'logo' => get_term_meta($term->term_id, 'thumbnail_id', true)
+                    'logo' => wp_get_attachment_url(get_term_meta($term->term_id, 'thumbnail_id', true))
                 );
             }
         }
@@ -311,7 +311,7 @@ function get_initial_teams_content() {
                 echo '<li id="tab' . $c . '" class="tabs__item col '. ($c == 1 ? 'active' : '') .'">';
                 echo '<div class="tabs__item-inner bg-color bg-color--white">';
                 echo '<ul class="row mx-0 tabs__item-list">';
-                foreach ($terms as $term) {
+                foreach ($terms as $term) { 
                     $thumbnail_id = get_term_meta($term->term_id, 'thumbnail_id', true);
                     $image = wp_get_attachment_url($thumbnail_id);
                     $name = $term->name;
@@ -320,7 +320,7 @@ function get_initial_teams_content() {
                     echo '<a href="'. esc_url(get_term_link($term)) .'" class="product-cat__item-link">';
 
                     if ($image) {
-                        echo '<img class="teams-page__logo mb-3" src="'. esc_url($image) .'" alt="'. esc_attr($name) . ' logo" />';
+                        echo '<img class="teams-page__logo mb-3" src="'. $image .'" alt="'. esc_attr($name) . ' logo" />';
                     }
 
                     echo '<div>'. esc_html($name) .'</div>';

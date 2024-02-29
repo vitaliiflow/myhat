@@ -2,7 +2,7 @@
 
 /**
  * 
- */
+ */ 
 
 $title = get_sub_field('section_title');
 $list = get_sub_field('product_team_list');
@@ -52,11 +52,13 @@ if ($list ) : ?>
 
                 $category = $item['category'];
                 $id = $category->term_id;
-
+                $category_name = $category->name;
+                $category_url = get_term_link($category); // Get category URL
+                //var_dump($category);
 
                 // Define the query arguments
                 $args = array(
-                    'limit' => 3,
+                    'limit' => 6,
                     'orderby' => 'meta_value_num',
                     'order' => 'DESC',
                     'status' => 'publish',
@@ -75,6 +77,8 @@ if ($list ) : ?>
                 // The Query
                 $product_query = new WC_Product_Query($args);
                 $products = $product_query->get_products();
+
+                $count = count($products);
 
                 // Check if products exist
                 if (!empty($products)) : ?>
@@ -113,6 +117,12 @@ if ($list ) : ?>
 
                             </ul>
 
+                            <?php if ($count > 5) : ?>
+                                
+                                <a class="button button--arrow mt-3" href="<?php echo esc_url( $category_url ); ?>" target="_self"><?php echo esc_html( __('View all', 'codelibry') . ' ' . esc_html($category_name) ); ?>
+<?php echo get_inline_svg('arrow-right.svg');?></a>
+
+                            <?php endif; ?>
                         </div>
 
                     </li>
