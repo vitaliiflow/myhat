@@ -304,6 +304,102 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_65e08d3d7c339": {
+                    "key": "layout_65e08d3d7c339",
+                    "name": "block-contact",
+                    "label": "Block: Contact",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_65e08d4a7c33c",
+                            "label": "Contact",
+                            "name": "contact",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_65da1ad51ddfd"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_65e08d6f7c33e": {
+                    "key": "layout_65e08d6f7c33e",
+                    "name": "block-faq",
+                    "label": "Block: FAQ",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_65e08d797c341",
+                            "label": "FAQ",
+                            "name": "faq",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_65e0882564196"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_65e08d8e7c342": {
+                    "key": "layout_65e08d8e7c342",
+                    "name": "block-image",
+                    "label": "Block: Image",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_65e08d9a7c345",
+                            "label": "Image",
+                            "name": "image",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_65e08cf8ae0eb"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -329,5 +425,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1708678740
+    "modified": 1709215173
 }

@@ -149,7 +149,7 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": "theme-general-settings"
+                "value": "acf-options-single-product"
             }
         ]
     ],
@@ -162,5 +162,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1708916002
+    "modified": 1709214390
 }
