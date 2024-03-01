@@ -1,22 +1,58 @@
 .shopPage 
     &__filters
         margin-bottom: 56px
+        width: 25%
         +max-screen(1200px)
             margin-bottom: 48px
         +max-screen($breakpoint-lg)
             margin-bottom: 42px
+            width: 100% 
         +max-screen($breakpoint-md)
             margin-bottom: 36px
+        &.desktop-lg 
+            +max-screen(1200px)
+                display: none 
+        &.desktop-sm 
+            display: none 
+            +max-screen(1200px)
+                display: block 
+        &.sort-wrapper 
+            width: 100% 
+            .shopPage__filtersRow
+                border-bottom: 1px solid $color-text
+                &__item 
+                    &Title 
+                        justify-content: flex-end
+                        padding: 0
+                        padding-bottom: 16px
+                &__list 
+                    &Wrapper 
+                        display: block
+                        width: fit-content
+                        right: -32px
+                        left: auto
+                        border: 0px
+                        top: calc(100% + 1px)
+        &.filter-wrapper 
+            width: 25% 
+            border: 1px solid $color-text
         &Row 
             display: flex 
+            padding-right: 32px
+            flex-direction: column-reverse 
             +max-screen(1235px)
                 margin: 0 -30px 
+            +max-screen($breakpoint-lg)
+                flex-direction: row 
+                padding-right: 0
             +max-screen($breakpoint-sm)
                 margin: 0 -20px 
             &__item 
-                width: 50%
                 position: relative
                 cursor: pointer
+                width: 100%
+                +max-screen($breakpoint-lg)
+                    width: 50%
                 &Close 
                     +max-screen($breakpoint-lg)
                         position: absolute
@@ -38,7 +74,6 @@
                         &::after 
                             transform: translateY(-50%) rotate(-45deg)
                 &Title 
-                    border: 1px solid $color-text 
                     justify-content: center
                     font-weight: 500
                     display: flex 
@@ -49,6 +84,7 @@
                     +max-screen($breakpoint-lg)
                         font-size: 15px
                         padding: 10px 
+                        border: 1px solid $color-text 
                     span 
                         position: relative
                     img 
@@ -77,14 +113,14 @@
                             width: 100%
                         &Wrapper 
                             padding: 32px 
-                            border: 1px solid $color-text
+                            border: 0
                             border-top: 0
                             position: absolute
-                            left: 0
-                            top: 100% 
-                            width: 100%
+                            top: calc( 100% + 1px )
                             z-index: 10
                             background-color: $color-background-main
+                            widthL fit-content
+                            right: -32px 
                             display: none 
                             +max-screen($breakpoint-md)
                                 width: 100%
@@ -102,17 +138,18 @@
                                 align-items: center
                                 padding-bottom: 42px
                                 transition: .3s
+                                border: 1px solid $color-text
                                 &.active 
                                     right: 0
                         &Item 
                             display: flex 
-                            margin-bottom: 20px
+                            margin-bottom: 16px
                             align-items: center
                             +max-screen($breakpoint-md)
                                 margin-bottom: 12px
                             &__checkbox 
-                                width: 20px 
-                                height: 20px 
+                                width: 14px 
+                                height: 14px 
                                 position: relative
                                 border: 1px solid $color-text
                                 margin-right: 12px
@@ -126,8 +163,8 @@
                                     left: 50%
                                     top: 50%
                                     transform: translate(-50%, -50%)
-                                    width: 14px 
-                                    height: 14px 
+                                    width: 12px 
+                                    height: 12px 
                                     background-image: url('../assets/images/icons/tick.svg')
                                     background-size: contain
                                     background-repeat: no-repeat
@@ -138,20 +175,108 @@
                                     +max-screen($breakpoint-md)
                                         width: 10px 
                                         height: 10px 
+                            &__name 
+                                font-size: 16px
                             &.active .shopPage__filtersRow__listItem__checkbox 
                                 &::after 
                                     opacity: 1 
                                     visibility: visible 
                         &__apply 
-                            margin: 0 -32px 
-                            margin-bottom: -32px
-                            margin-top: 36px
+                            margin-top: 24px
                             background-color: $color-text 
-                            padding: 16px 
+                            padding: 12px 
                             display: block 
+                            font-size: 16px
                             text-align: center
                             +max-screen($breakpoint-md)
                                 margin: 0
                                 padding: 10px 32px
                                 width: 100%
                                 margin-top: auto
+        &.filters-wrapper
+            .shopPage__filtersRow
+                &__list 
+                    &Item 
+                        margin-bottom: 32px
+                        &__title 
+                            font-weight: 500
+                            position: relative
+                            &::after 
+                                content: ""
+                                position: absolute
+                                top: 50%
+                                right: 0 
+                                width: 12px 
+                                height: 10px 
+                                background-image: url('../assets/images/icons/accordion__arrow.svg')
+                                background-size: contain
+                                background-repeat: no-repeat
+                                background-position: center
+                                transform: translateY(-50%)
+                                transition: .3s 
+                        &__sublist 
+                            padding: 6px
+                            margin-top: 12px
+                            max-height: 300px
+                            overflow-y: scroll
+                            display: none 
+                            &::-webkit-scrollbar
+                                width: 5px 
+                                
+                            &::-webkit-scrollbar-track
+                                background-color: #f1f1f1
+
+                            &::-webkit-scrollbar-thumb
+                                background: #888
+                                border-radius: 20px 
+                                transition: .3s 
+                            &::-webkit-scrollbar-thumb:hover
+                                background: #555
+                            &Item 
+                                position: relative
+                                &__name 
+                                    font-size: 16px
+                                    padding-left: 20px
+                                    margin-bottom: 4px
+                                &__checkbox 
+                                    height: 12px
+                                    width: 12px
+                                    position: absolute
+                                    top: 50%
+                                    left: 0
+                                    transform: translateY(-50%)
+                                    border: 1px solid $color-text
+                                    &::after 
+                                        content: ""
+                                        position: absolute
+                                        left: 50%
+                                        top: 50%
+                                        transform: translate(-50%, -50%)
+                                        width: 10px 
+                                        height: 10px 
+                                        background-image: url('../assets/images/icons/tick.svg')
+                                        background-size: contain
+                                        background-repeat: no-repeat
+                                        background-position: center
+                                        opacity: 0
+                                        visibility: hidden 
+                                        transition: .3s
+                                        +max-screen($breakpoint-md)
+                                            width: 10px 
+                                            height: 10px 
+                                &.active
+                                    .shopPage__filtersRow__listItem__sublistItem__checkbox::after 
+                                        visibility: visible 
+                                        opacity: 1
+                                        
+                        &.opened .shopPage__filtersRow__listItem__title
+                            &::after 
+                                transform: translateY(-50%) rotate(180deg)
+                        &:first-child
+                            .shopPage__filtersRow__listItem__sublist
+                                display: block 
+                    &__apply 
+                        .btn 
+                            width: 100%
+                            padding: 12px 24px 
+                            text-align: center

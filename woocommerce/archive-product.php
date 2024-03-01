@@ -48,13 +48,48 @@ get_header( 'shop' );
 
             $term_id = $current_term->slug;
             $taxonomy_slug = $current_term->taxonomy;
-
+            if(isset($_GET['orderby'])):
+                switch($_GET['orderby']):
+                    case 'popularity':
+                        $orderby = 'popularity';
+                        $order = 'ASC';
+                        $metaKey = '';
+                        break;
+                    case 'rating':
+                        $orderby = 'meta_value_num';
+                        $metaKey = '_wc_average_rating';
+                        $order = 'ASC';
+                        break;
+                    case 'date':
+                        $orderby = 'publish_date';
+                        $order = 'DESC';
+                        $metaKey = '';
+                        break;
+                    case 'price':
+                        $orderby = 'meta_value_num';
+                        $metaKey = '_price';
+                        $order = 'ASC';
+                        break;
+                    case 'price-desc':
+                        $orderby = 'meta_value_num';
+                        $metaKey = '_price';
+                        $order = 'DESC';
+                        break;
+                endswitch;
+                $settedOrder = $_GET['orderby'];
+            else:
+                $orderby = 'popularity';
+                $metaKey = '';
+                $order = 'ASC';
+                $settedOrder = 'popularity';
+            endif;
             $args = array(
                 'post_type' => 'product',
+                'post_status'    => array( 'publish' ),
                 'posts_per_page' => 16,
                 'paged' => $paged,
-                'orderby' => 'popularity',
-                'order' => 'ASC',
+                'orderby' => $orderby,
+                'order' => $order,
                 'meta_query' => array(
                     array(
                         'key'     => '_stock_status',
@@ -64,6 +99,13 @@ get_header( 'shop' );
                 ),
                 'tax_query' => array(),
             );
+
+
+            if(!empty($metaKey)){
+                $args['meta_key'] = $metaKey;
+            }
+
+
             if(!empty($term_id) && !empty($taxonomy_slug)) {
                 $tax_array = array(
                     'taxonomy' => $taxonomy_slug, 
@@ -72,13 +114,13 @@ get_header( 'shop' );
                 );
                 array_push($args["tax_query"], $tax_array);
             }
+
+
             $the_query = new WP_Query($args);
             if ( $the_query->have_posts() ) { ?>
                 <?php $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
-                <div class="shopPage__filters">
-                    <?php do_action( 'woocommerce_before_shop_loop' ); ?>
-                </div>
-                <div class="shopPage__list" data-paged="<?php echo $paged; ?>" data-order="ASC" data-orderby="popularity" data-metaKey="">
+                <?php do_action( 'woocommerce_before_shop_loop' ); ?>
+                <div class="shopPage__list" data-paged="<?php echo $paged; ?>" data-sort="<?php echo $settedOrder; ?>" data-varumarke="" data-storek="" data-taggar="" data-kategori="">
                     <?php 
                     	woocommerce_product_loop_start();
 

@@ -33,8 +33,9 @@ $next = $current + 1;
 
 $args = array(
 	'post_type' => 'product',
+	'post_status'    => array( 'publish' ),
 	'posts_per_page' => 16,
-	'paged' => 2,
+	'paged' => $current,
 	'meta_query'     => array(
 		array(
 			'key'     => '_stock_status',
@@ -46,12 +47,12 @@ $args = array(
 $the_query = new WP_Query($args);
 
 ?>
-</div>
 <div class="shopPage__pagination">
-    <div class="shopPage__paginationButton prev"><?php echo get_inline_svg('pagination-arrow-right.svg'); ?>Föregående</div>
+    <div class="shopPage__paginationButton prev<?php if($current == 1){ echo ' disabled';} ?>"><?php echo get_inline_svg('pagination-arrow-right.svg'); ?>Föregående</div>
     <div class="shopPage__paginationPage">
         <span class="current"><?php echo $current ?></span>
         <span>/</span>
         <span class="total"><?php echo $the_query->max_num_pages; ?></span>
     </div>
-    <div class="shopPage__paginationButton next">Nästa<?php echo get_inline_svg('pagination-arrow-right.svg'); ?></div>
+    <div class="shopPage__paginationButton next<?php if($the_query->max_num_pages <= 1 || $current == $the_query->max_num_pages){echo ' disabled';} ?>">Nästa<?php echo get_inline_svg('pagination-arrow-right.svg'); ?></div>
+</div>
