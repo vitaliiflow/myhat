@@ -21,6 +21,9 @@
             color: $color-white
     &--lg
         padding: 1rem 2rem
+    &--block
+        display: block
+        width: 100%
     &--arrow
         display: flex
         align-items: center
@@ -82,9 +85,13 @@
             background-color: $color-text
     &.bg-color--cream:hover 
         background-color: $color-background-disabled
-    &.wpcf7-submit
+    &.wpcf7-submit:not(.button--block)
         width: fit-content
 
 .wpcf7-submit
     text-transform: uppercase
     font-weight: 600
+    background-color: $color-background-cream
+    // &:hover
+    //     background-color: white
+    //     color: $color-background-cream

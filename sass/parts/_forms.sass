@@ -5,12 +5,12 @@ button
     font-size: 16px
     border: 0
     border-radius: $radius-default
-    font-weight: 600
+    font-weight: 500
     width: 100%
     font-family: $font-family-base
     transition: $default-transition
     resize: none
-    width: auto
+    // width: auto removed and mopved for inputs and buttons only
     &.text-color--cream
         transition: $default-transition
         &::placeholder
@@ -20,6 +20,10 @@ button
             color: white
             &::placeholder
                 color: $color-background-cream
+
+button,
+input[type="button"]
+    width: auto
 textarea 
     height: 140px 
 .wpcf7 form 
