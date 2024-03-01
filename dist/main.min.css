@@ -720,6 +720,10 @@ body .woocommerce-message a.button{color:#fff;background:#000;border-radius:0;fo
 .contact-us a:hover{text-decoration:underline !important}
 .faq-opened__item:not(:last-child){margin-bottom:2rem}
 .block-image{aspect-ratio:1920 / 583;-o-object-fit:cover;object-fit:cover}
+.image-content__image{height:100%;width:100%;-o-object-fit:cover;object-fit:cover}
+.image-content__image-wrapper{height:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}
+.image-content__image-wrapper .content-block h1,.image-content__image-wrapper .content-block h2,.image-content__image-wrapper .content-block h3,.image-content__image-wrapper .content-block h4,.image-content__image-wrapper .content-block h5,.image-content__image-wrapper .content-block h6{margin-bottom:.5rem}
+.image-content--image-left .row{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse}
 @media only screen and (min-width:576px){body .container{padding-left:30px;padding-right:30px}
 .teams-page__tabs .row{margin-left:-30px;margin-right:-30px}
 .product-cat__item-link{padding-left:.5rem;padding-right:.5rem}
