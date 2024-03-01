@@ -92,6 +92,7 @@ function products_sorting() {
 
     $args = array(
         'post_type' => 'product',
+        'post_status'    => array( 'publish' ),
         'posts_per_page' => 16,
         'paged' => $paged,
         'order' => $order,
@@ -107,7 +108,7 @@ function products_sorting() {
     if(!empty($metaKey)){
         $args['meta_key'] = $metaKey;
     }
-    
+
     $the_query = new WP_Query($args);
     if($the_query->have_posts()):
         while($the_query->have_posts()): $the_query->the_post(); ?>
@@ -121,6 +122,100 @@ function products_sorting() {
 }
 
 
+//Ajax Filter
+add_action('wp_ajax_nopriv_products_filter', 'products_filter');
+add_action('wp_ajax_products_filter', 'products_filter');
+function products_filter() {
+    $paged = $_POST['paged'];
+
+    $order = $_POST['order'];
+    $orderby = $_POST['orderby'];
+    $metaKey = $_POST['metaKey'];
+
+    $varumarke = $_POST['varumarke'];
+    $storek = $_POST['storek'];
+    $taggar = $_POST['taggar'];
+    $kategori = $_POST['kategori'];
+
+    $args = array(
+        'post_type' => 'product',
+        'post_status'    => array( 'publish' ),
+        'posts_per_page' => 16,
+        'paged' => $paged,
+        'order' => $order,
+        'orderby' => $orderby,
+        'meta_query'     => array(
+            array(
+                'key'     => '_stock_status',
+                'value'   => 'instock',
+                'compare' => '=',
+            ),
+        ),
+        'tax_query' => array(),
+    );
+
+    if(!empty($metaKey)){
+        $args['meta_key'] = $metaKey;
+    }
+
+    if(!empty($varumarke)){
+        $varumarke_array = array(
+            'taxonomy' => 'varumarke',
+            'field' => 'slug',
+            'terms' => $varumarke[0],
+        );
+        array_push($args["tax_query"], $varumarke_array);
+    }
+    if(!empty($storek)){
+        $storek_array = array(
+            'taxonomy' => 'pa_storlek',
+            'field' => 'slug',
+            'terms' => $storek[0],
+        );
+        array_push($args["tax_query"], $varumarke_array);
+    }
+    if(!empty($taggar)){
+        $taggar_array = array(
+            'taxonomy' => 'product_tag',
+            'field' => 'slug',
+            'terms' => $taggar[0],
+        );
+        array_push($args["tax_query"], $taggar_array);
+    }
+    if(!empty($kategori)){
+        $kategori_array = array(
+            'taxonomy' => 'product_cat',
+            'field' => 'slug',
+            'terms' => $kategori[0],
+        );
+        array_push($args["tax_query"], $kategori_array);
+    }
+    $the_query = new WP_Query($args);
+    if($the_query->have_posts()): ?>
+        <ul class="products columns-4">
+        <?php
+            while($the_query->have_posts()): $the_query->the_post(); ?>
+                <?php global $product; ?>
+                    <div class="shopPage__listItem col-6 col-md-3 product-<?php echo get_the_ID() ?>">
+                        <?php wc_get_template_part( 'content', 'product' ); ?>
+                    </div>
+            <?php endwhile; ?>
+        </ul>
+        </div>
+        <div class="shopPage__pagination">
+            <div class="shopPage__paginationButton prev<?php if($paged == 1){ echo ' disabled';} ?>"><?php echo get_inline_svg('pagination-arrow-right.svg'); ?>Föregående</div>
+            <div class="shopPage__paginationPage">
+                <span class="current"><?php echo $paged; ?></span>
+                <span>/</span>
+                <span class="total"><?php echo $the_query->max_num_pages; ?></span>
+            </div>
+            <div class="shopPage__paginationButton next<?php if($the_query->max_num_pages <= 1 || $current == $the_query->max_num_pages){echo ' disabled';} ?>">Nästa<?php echo get_inline_svg('pagination-arrow-right.svg'); ?></div>
+    <?php else: 
+        echo '<h4>Inget hittades...</h4>';
+    endif;
+    die();
+}
+
 //Pagination
 add_action('wp_ajax_nopriv_products_pagination', 'products_pagination');
 add_action('wp_ajax_products_pagination', 'products_pagination');
@@ -132,6 +227,7 @@ function products_pagination() {
 
     $args = array(
         'post_type' => 'product',
+        'post_status'    => array( 'publish' ),
         'posts_per_page' => 16,
         'paged' => $paged,
         'meta_query'     => array(

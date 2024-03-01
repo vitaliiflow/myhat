@@ -615,16 +615,43 @@ jQuery(document).ready(function ($) {
 
 jQuery(document).ready(function ($) {
   $('.shopPage__paginationButton').click(function () {
-    var order = $('.shopPage__list').attr('data-order'),
-      orderby = $('.shopPage__list').attr('data-orderby'),
-      metaKey = $('.shopPage__list').attr('data-metakey');
+    var sort = $('.shopPage__list').attr('data-sort'),
+      total = parseInt($('.shopPage__paginationPage .total').html());
     var paged = parseInt($('.shopPage__list').attr('data-paged')),
+      orderby,
+      order,
+      metaKey = '',
       separator;
     if ($(this).hasClass('next')) {
       paged = ++paged;
     }
     if ($(this).hasClass('prev')) {
       paged = paged - 1;
+    }
+    switch (sort) {
+      case 'popularity':
+        orderby = 'popularity';
+        order = 'ASC';
+        break;
+      case 'rating':
+        orderby = 'meta_value_num';
+        metaKey = '_wc_average_rating';
+        order = 'ASC';
+        break;
+      case 'date':
+        orderby = 'publish_date';
+        order = 'DESC';
+        break;
+      case 'price':
+        orderby = 'meta_value_num';
+        metaKey = '_price';
+        order = 'ASC';
+        break;
+      case 'price-desc':
+        orderby = 'meta_value_num';
+        metaKey = '_price';
+        order = 'DESC';
+        break;
     }
     $.ajax({
       url: codelibry.ajax_url,
@@ -643,22 +670,30 @@ jQuery(document).ready(function ($) {
     $('.shopPage__list').attr('data-paged', paged);
     $('.shopPage__paginationPage .current').html(paged);
 
-    //Link Chnage
+    //Link Change
     if (window.location['href'].split('?')[1] != undefined && window.location['href'].split('?')[1] != '') {
       separator = '&';
     } else {
       separator = '?';
     }
-    if (window.location.split('paged=')[1] != '' && window.location.split('paged=')[1] != undefined) {
-      http:
-      //localhost:8888/myHat/butik/?paged=2&paged=3&paged=4
-      if (window.location.split('paged=')[1].split('&')[1] != '' && window.location.split('paged=')[1].split('&')[1] != undefined) {
-        window.history.pushState('', '', window.location.split('paged=')[0] + "paged=".concat(paged) + window.location.split('paged=')[1].split('&')[1]);
+    if (window.location['href'].split('paged=')[1] != '' && window.location['href'].split('paged=')[1] != undefined) {
+      if (window.location['href'].split('paged=')[1].split('&')[1] != '' && window.location['href'].split('paged=')[1].split('&')[1] != undefined) {
+        window.history.pushState('', '', window.location['href'].split('paged=')[0] + "paged=".concat(paged) + '&' + window.location['href'].split('paged=')[1].split('&')[1]);
       } else {
-        window.history.pushState('', '', window.location.split('paged=')[0] + "".concat(separator, "paged=").concat(paged));
+        window.history.pushState('', '', window.location['href'].split('paged=')[0] + "paged=".concat(paged));
       }
     } else {
       window.history.pushState('', '', window.location + "".concat(separator, "paged=").concat(paged));
+    }
+    if (paged == 1) {
+      $('.shopPage__paginationButton.prev').addClass('disabled');
+    } else if (paged > 1 && $('.shopPage__paginationButton.prev').hasClass('disabled')) {
+      $('.shopPage__paginationButton.prev').removeClass('disabled');
+    }
+    if (paged == total) {
+      $('.shopPage__paginationButton.next').addClass('disabled');
+    } else if (paged != total && $('.shopPage__paginationButton.next').hasClass('disabled')) {
+      $('.shopPage__paginationButton.next').removeClass('disabled');
     }
   });
   $(document).ajaxSend(function (event, xhr, settings) {

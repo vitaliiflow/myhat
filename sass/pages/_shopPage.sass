@@ -9,9 +9,13 @@
     +max-screen($breakpoint-md)
         padding-bottom: 42px
     &__top
+        width: 100%
         +max-screen($breakpoint-md)
             max-width: 600px 
             margin: auto
+    &__content 
+        display: flex 
+        flex-wrap: wrap 
     &__title 
         margin-bottom: 16px
         +max-screen(1200px)
@@ -29,6 +33,9 @@
         .section 
             padding: 0
     &__list
+        width: 75%
+        +max-screen($breakpoint-lg)
+            width: 100%
         +max-screen($breakpoint-md)
             max-width: 600px 
             margin: auto 
