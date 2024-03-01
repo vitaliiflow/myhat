@@ -502,7 +502,9 @@ body.woocommerce-order-received #breadcrumbs{display:none}
 .singleProduct__accordionItem__content .woocommerce-Tabs-panel--description>*:first-child{margin-top:0}
 .singleProduct__link{position:relative;margin-top:16px;display:block;font-size:18px}
 .singleProduct__link::after{content:"";width:18px;height:18px;top:50%;right:-2px;-webkit-transform:translateY(-50%);transform:translateY(-50%);background-image:url("../assets/images/icons/right-arrow.png");background-size:contain;background-repeat:no-repeat;background-position:center;position:absolute}
-.brands-page__item{padding-top:1.5rem;padding-bottom:1.5rem;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
+.brands-page__item a{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:100%;padding-top:1.5rem;padding-bottom:1.5rem}
+.brands-page__item a:hover{-webkit-box-shadow:5px 0 15px rgba(0,0,0,0.1);box-shadow:5px 0 15px rgba(0,0,0,0.1)}
+.brands-page__item img{height:3rem;max-width:90%;width:auto;-o-object-fit:contain;object-fit:contain;margin-left:auto;margin-right:auto}
 .teams-page__tabs{background:white}
 .teams-page__tabs .row{margin-left:-20px;margin-right:-20px}
 .teams-page__logo{width:100%;aspect-ratio:1 / 1;-o-object-fit:contain;object-fit:contain}

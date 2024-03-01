@@ -4,11 +4,23 @@
             margin-left: -0.5rem
             margin-right: -0.5rem
     &__item
-        padding-top: 1.5rem
-        padding-bottom: 1.5rem
-        display: flex
-        justify-content: center
-        align-items: center
+        
         +max-screen($breakpoint-sm)
             padding-left: 0.5rem
             padding-right: 0.5rem
+        a
+            display: flex
+            justify-content: center
+            align-items: center
+            width: 100%
+            padding-top: 1.5rem
+            padding-bottom: 1.5rem
+            &:hover
+                box-shadow: $shadow-default
+        img
+            height: 3rem
+            max-width: 90%
+            width: auto
+            object-fit: contain
+            margin-left: auto
+            margin-right: auto
