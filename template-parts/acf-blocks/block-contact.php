@@ -7,6 +7,8 @@ $phone = get_field('phone','option');
 $open_hours = get_field('open_hours','option');
 $address = get_field('address','option');
 
+$socials = get_field('social_media_list','option');
+
 if ($content || $form || $phone || $open_hours || $address) : ?>
 
 <section class="section contact-us">
@@ -15,7 +17,7 @@ if ($content || $form || $phone || $open_hours || $address) : ?>
 
             <?php if ($content || $phone || $open_hours || $address) : ?>
 
-                <div class="col-md-6 col-lg-5">
+                <div class="col-md-6 col-lg-5 content-block">
 
                     <?php if ($content) : ?>
 
@@ -23,25 +25,76 @@ if ($content || $form || $phone || $open_hours || $address) : ?>
 
                     <?php endif; ?>
 
-                    <?php if ($phone) : ?>
+                    <div class="row">
 
-                        <?php echo $phone; ?>
+                        <?php if ($phone || $address) : ?>
 
-                    <?php endif; ?>
+                            <div class="col-sm-6">
 
-                    <?php if ($open_hours) : ?>
+                                <?php if ($phone) : ?>
 
-                        <?php echo $open_hours; ?>
+                                    <div class="contact-us__item">
 
-                    <?php endif; ?>
+                                        <div class="h4 font-weight font-weight--500 mb-2"><?php _e('Tel:','codelibry');?></div>
 
-                    <?php if ($address) : ?>
+                                        <?php echo $phone; ?>
 
-                        <?php echo $address; ?>
+                                    </div>
 
-                    <?php endif; ?>
+                                <?php endif; ?>
 
-                    <?php get_template_part('template-parts/parts/social-media'); ?>
+                                <?php if ($address) : ?>
+
+                                    <div class="contact-us__item">
+
+                                        <div class="h4 font-weight font-weight--500 mb-2"><?php _e('Address:','codelibry');?></div>
+
+                                        <?php echo $address; ?>
+
+                                    </div>
+
+                                <?php endif; ?>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if ($open_hours || $socials) : ?>
+
+
+                            <div class="col-sm-6">
+
+                                <?php if ($open_hours) : ?>
+
+                                    <div class="contact-us__item">
+
+                                        <div class="h4 font-weight font-weight--500 mb-2"><?php _e('Open hours:','codelibry');?></div>
+
+                                        <?php echo $open_hours; ?>
+
+                                    </div>
+
+                                <?php endif; ?>
+
+                                <?php if ($socials) : ?>
+
+                                    <div class="contact-us__item">
+
+                                        <div class="h4 font-weight font-weight--500 mb-2"><?php _e('Social Media:','codelibry');?></div>
+
+                                        <?php get_template_part('template-parts/parts/social-media'); ?>
+
+                                    </div>
+
+
+                                <?php endif; ?> 
+
+                            </div>
+
+                        <?php endif; ?>
+
+
+                    </div>                    
 
                 </div>
 
@@ -49,7 +102,7 @@ if ($content || $form || $phone || $open_hours || $address) : ?>
 
             <?php if ($form) : ?> 
 
-                <div class="col-md-6 col-lg-5">
+                <div class="col-md-6 col-lg-5 mt-3 mt-md-0">
 
                     <?php echo $form; ?>
 

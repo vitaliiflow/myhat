@@ -8,11 +8,11 @@ $image_left = get_sub_field('image_left');
 
 if ($image || $content) : ?>
 
-    <section class="section image-content">
+    <section class="section image-content<?php if ($image_left) : echo ' image-content--image-left'; endif;?>">
         <div class="container">
             <div class="row justify-content-lg-between">
 
-                <div class="col-12 col-md-6 col-lg-5">
+                <div class="col-12 col-md-6 col-lg-5 content-block image-content__content-col">
 
                     <?php if ($content) : ?>
 
@@ -25,13 +25,23 @@ if ($image || $content) : ?>
 
                 <?php if( !empty( $image ) ): ?>
 
-                    <div class="col-12 col-md-6 col-lg-5">
-
-                        <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" class="block-image"/>
+                    <div class="col-12 col-md-6 col-lg-5 image-content__image-col mt-4 mt-md-0">
 
                         <?php if ($caption) : ?>
+                        
+                            <div class="image-content__image-wrapper bg-color bg-color--white p-3">
 
-                            <?php echo $caption; ?>
+                                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" class="image-content__image"/>
+                                
+                                <div class="content-block text-center">
+                                    <?php echo $caption; ?>
+                                </div>
+
+                            </div>
+                            
+                        <?php else : ?>
+
+                            <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" class="image-content__image"/>
 
                         <?php endif; ?>
 
