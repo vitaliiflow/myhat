@@ -3,6 +3,26 @@
     "title": "Block: Features ( Icons block )",
     "fields": [
         {
+            "key": "field_65e19b6bfc693",
+            "label": "Section title",
+            "name": "section_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_65e0d9d539eb4",
             "label": "Icons list",
             "name": "icons_list",
@@ -109,5 +129,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1709234753
+    "modified": 1709284237
 }

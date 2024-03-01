@@ -724,6 +724,8 @@ body .woocommerce-message a.button{color:#fff;background:#000;border-radius:0;fo
 .image-content__image-wrapper{height:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}
 .image-content__image-wrapper .content-block h1,.image-content__image-wrapper .content-block h2,.image-content__image-wrapper .content-block h3,.image-content__image-wrapper .content-block h4,.image-content__image-wrapper .content-block h5,.image-content__image-wrapper .content-block h6{margin-bottom:.5rem}
 .image-content--image-left .row{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse}
+.features__item{padding-top:1rem;padding-bottom:1rem}
+.features__item-wrapper{padding-left:5px;padding-right:5px}
 @media only screen and (min-width:576px){body .container{padding-left:30px;padding-right:30px}
 .teams-page__tabs .row{margin-left:-30px;margin-right:-30px}
 .product-cat__item-link{padding-left:.5rem;padding-right:.5rem}
@@ -1299,6 +1301,7 @@ body .woocommerce-message a.button{color:#fff;background:#000;border-radius:0;fo
 .product-cat.product-cat--model .product-cat__item{width:calc(100% / 6);margin-bottom:0}
 .cta__content{margin-bottom:-2rem}
 .latest-products__item{max-width:20%}
+.features__item-wrapper{min-width:180px}
 }@media only screen and (min-width:994px){.header__menu .menu-item .sub-menu .menu-item.has-mobile-icon a{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
 .header__menu .menu-item .sub-menu .menu-item.has-mobile-icon img{display:block;width:36px;margin-right:8px;-o-object-fit:contain;object-fit:contain}
 }@media only screen and (min-width:994px) and (max-width:1200px){.header__menu .menu-item .sub-menu .menu-item.has-mobile-icon img{width:28px;margin-right:6px}
