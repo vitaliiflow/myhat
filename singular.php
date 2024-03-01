@@ -2,6 +2,7 @@
 
 get_header(); ?>
 
+<?php get_template_part('template-parts/parts/single-hero'); ?>
 
 <div class="section pt-3">
     <div class="container">

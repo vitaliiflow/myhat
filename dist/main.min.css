@@ -583,6 +583,10 @@ body.woocommerce-order-received #breadcrumbs{display:none}
 .social-media a:hover svg path{fill:#c7bdb1}
 .social-media svg{width:2rem;height:2rem}
 .social-media svg *{-webkit-transition:.3s all;transition:.3s all}
+.single-hero{position:relative;aspect-ratio:1920 / 583;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding-left:15px;padding-right:15px;text-align:center}
+.single-hero::after{content:"";position:absolute;display:block;background:-webkit-gradient(linear,left bottom,left top,color-stop(-16.04%,#333),color-stop(83.96%,rgba(51,51,51,0)));background:linear-gradient(360deg,#333 -16.04%,rgba(51,51,51,0) 83.96%);width:100%;height:100%;inset:0;z-index:5}
+.single-hero__img{position:absolute;inset:0;width:100%;height:100%;-o-object-fit:cover;object-fit:cover;z-index:1}
+.single-hero h1{position:relative;z-index:10;color:white}
 .breadcrumbs__wrapper+.section{padding-top:0}
 .button,.wpcf7-submit{cursor:pointer;-webkit-transition:.3s all;transition:.3s all}
 .button,.btn{display:inline-block;background-color:#000;text-decoration:none;color:white}
@@ -715,6 +719,8 @@ body .woocommerce-message a.button{color:#fff;background:#000;border-radius:0;fo
 .seo-text__content--long-opened .seo-text__opener{-webkit-transform:rotate(180deg);transform:rotate(180deg)}
 .seo-text__content--long .seo-text__opener{max-height:200px}
 .seo-text__opener{position:absolute;bottom:0;left:0;width:100%;height:200px;max-height:0;background-image:url("data:image/svg+xml,%3Csvg fill='%23' height='40px' width='40px' version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 407.437 407.437' xml:space='preserve'%3E%3Cpolygon points='386.258,91.567 203.718,273.512 21.179,91.567 0,112.815 203.718,315.87 407.437,112.815 '%3E%3C/polygon%3E%3C/svg%3E"),-webkit-gradient(linear,left bottom,left top,from(white),color-stop(96%,rgba(255,255,255,0.52567)),to(rgba(255,255,255,0)));background-image:url("data:image/svg+xml,%3Csvg fill='%23' height='40px' width='40px' version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 407.437 407.437' xml:space='preserve'%3E%3Cpolygon points='386.258,91.567 203.718,273.512 21.179,91.567 0,112.815 203.718,315.87 407.437,112.815 '%3E%3C/polygon%3E%3C/svg%3E"),linear-gradient(0,white 0,rgba(255,255,255,0.52567) 96%,rgba(255,255,255,0) 100%);background-position:center;background-repeat:no-repeat;cursor:pointer}
+.contact-us{position:relative}
+.contact-us .wpcf7{position:sticky;top:50px}
 .contact-us h1{margin-top:0}
 .contact-us a{text-decoration:none !important}
 .contact-us a:hover{text-decoration:underline !important}
@@ -1618,6 +1624,7 @@ h6,.h6{font-size:calc(14px + 2 * ((100vw - 320px) / 1040))}
 .footer__newsletter-inner{max-width:400px;margin-left:auto;margin-right:auto;text-align:center}
 .footer__newsletter-inner{padding-bottom:1.5rem}
 .footer__newsletter-inner .social-media{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
+.single-hero{aspect-ratio:5 / 2}
 .button--arrow.sm,.btn--arrow.sm{font-size:14px;margin-top:6px}
 .button--arrow.sm svg,.btn--arrow.sm svg{margin-bottom:0;margin-left:.25rem;width:13px;height:100%}
 .button--black,.button--white,.btn--black,.btn--white{padding:12px 32px}
@@ -1720,6 +1727,7 @@ body .woocommerce-message a.button{margin-left:12px}
 .footer__container>.row .col-sm,.footer__container>.row .col-12{padding-left:1rem;padding-right:1rem}
 .footer__nav::before,.footer__content-list::before{height:1px;left:1rem;width:calc(100% - 2rem)}
 .footer__content-list{padding-bottom:0}
+.single-hero{aspect-ratio:4 / 3}
 .shopPage__filtersRow{margin:0 -20px}
 .cta--product-customizer{aspect-ratio:370 / 310;padding-left:15px;padding-right:15px}
 .block-image{aspect-ratio:4 / 3}
