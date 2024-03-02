@@ -104,8 +104,10 @@ $taxonomy_name = 'product_cat';
                                                 <a href="<?php echo $link; ?>" class="product-cat__item-link">
                         
                                                     <?php if ( $image ) : ?>
-                        
-                                                        <img class="teams-page__logo mb-3" src="<?php echo $image; ?>" alt="<?php echo $name . ' logo'; ?>" />
+
+                                                        <div class="teams-page__logo-wrapper mb-3">
+                                                            <img class="teams-page__logo" src="<?php echo $image; ?>" alt="<?php echo $name . ' logo'; ?>" />
+                                                        </div>
                         
                                                     <?php endif; ?>
                         
