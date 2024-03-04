@@ -31,19 +31,153 @@ $prev = $current - 1;
 $next = $current + 1;
 
 
+$varumarke = explode(',', $_GET['varumarke_cat']);
+$storek = explode(',', $_GET['storek']);
+$taggar = explode(',', $_GET['taggar']);
+$kategori = explode(',', $_GET['kategori']);
+
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+$current_term = get_queried_object();
+
+$term_id = $current_term->slug;
+$taxonomy_slug = $current_term->taxonomy;
+if(isset($_GET['orderby'])):
+    switch($_GET['orderby']):
+        case 'popularity':
+            $orderby = 'popularity';
+            $order = 'ASC';
+            $metaKey = '';
+            break;
+        case 'rating':
+            $orderby = 'meta_value_num';
+            $metaKey = '_wc_average_rating';
+            $order = 'ASC';
+            break;
+        case 'date':
+            $orderby = 'publish_date';
+            $order = 'DESC';
+            $metaKey = '';
+            break;
+        case 'price':
+            $orderby = 'meta_value_num';
+            $metaKey = '_price';
+            $order = 'ASC';
+            break;
+        case 'price-desc':
+            $orderby = 'meta_value_num';
+            $metaKey = '_price';
+            $order = 'DESC';
+            break;
+    endswitch;
+    $settedOrder = $_GET['orderby'];
+else:
+    $orderby = 'popularity';
+    $metaKey = '';
+    $order = 'ASC';
+    $settedOrder = 'popularity';
+endif;
+
+
 $args = array(
-	'post_type' => 'product',
-	'post_status'    => array( 'publish' ),
-	'posts_per_page' => 16,
-	'paged' => $current,
-	'meta_query'     => array(
-		array(
-			'key'     => '_stock_status',
-			'value'   => 'instock',
-			'compare' => '=',
-		),
-	),
+    'post_type' => 'product',
+    'post_status'    => array( 'publish' ),
+    'posts_per_page' => 16,
+    'paged' => $paged,
+    'orderby' => $orderby,
+    'order' => $order,
+    'meta_query' => array(
+        array(
+            'key'     => '_stock_status',
+            'value'   => 'instock',
+            'compare' => '=',
+        ),
+    ),
+    'tax_query' => array(),
 );
+
+
+if(!empty($metaKey)){
+    $args['meta_key'] = $metaKey;
+}
+
+
+if(!empty($term_id) && !empty($taxonomy_slug)) {
+    if(gettype($term_id) == 'string'){
+        $term_id = [$term_id];
+    }
+
+    if($taxonomy_slug == 'varumarke' && (sizeof($varumarke) > 1 || $varumarke[0] != '')){
+        $term_id = array_merge( $term_id, $varumarke );
+    }
+    if($taxonomy_slug == 'varumarke'){
+        $varumarke = $term_id;
+    }
+
+    if($taxonomy_slug == 'pa_storlek' && (sizeof($storek) > 1 || $storek[0] != '')){
+        $term_id = array_merge( $term_id, $storek );
+    }
+    if($taxonomy_slug == 'pa_storlek'){
+        $storek = $term_id;
+    }
+
+    if($taxonomy_slug == 'product_tag' && (sizeof($taggar) > 1 || $taggar[0] != '')){
+        $term_id = array_merge( $term_id, $taggar );
+    }
+    if($taxonomy_slug == 'product_tag'){
+        $taggar = $term_id;
+    }
+                
+    if($taxonomy_slug == 'product_cat' && (sizeof($kategori) > 1 || $kategori[0] != '')){
+        $term_id = array_merge( $term_id, $kategori );
+    }
+    if($taxonomy_slug == 'product_cat'){
+        $kategori = $term_id;
+    }
+
+
+    $tax_array = array(
+        'taxonomy' => $taxonomy_slug, 
+        'field' => 'slug',
+        'terms' => $term_id 
+    );
+
+
+    array_push($args["tax_query"], $tax_array);
+}
+
+
+if((sizeof($varumarke) > 1 || $varumarke[0] != '') && $taxonomy_slug != 'varumarke'){
+    $varumarke__arr = array(
+        'taxonomy' => 'varumarke', 
+        'field' => 'slug',
+        'terms' => $varumarke 
+    );
+    array_push($args["tax_query"], $varumarke__arr);
+}
+if((sizeof($storek) > 1 || $storek[0] != '') && $taxonomy_slug != 'pa_storlek'){
+    $storek__arr = array(
+        'taxonomy' => 'pa_storlek', 
+        'field' => 'slug',
+        'terms' => $storek 
+    );
+    array_push($args["tax_query"], $storek__arr);
+}
+if((sizeof($taggar) > 1 || $taggar[0] != '') && $taxonomy_slug != 'product_tag'){
+    $taggar__arr = array(
+        'taxonomy' => 'product_tag', 
+        'field' => 'slug',
+        'terms' => $taggar 
+    );
+    array_push($args["tax_query"], $taggar__arr);
+}
+if((sizeof($kategori) > 1 || $kategori[0] != '') && $taxonomy_slug != 'product_cat'){
+    $kategori_arr = array(
+        'taxonomy' => 'product_cat', 
+        'field' => 'slug',
+        'terms' => $kategori 
+    );
+    array_push($args["tax_query"], $kategori_arr);
+}
 $the_query = new WP_Query($args);
 
 ?>

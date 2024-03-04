@@ -43,6 +43,11 @@ get_header( 'shop' );
                 <div class="shopPage__text"><?php echo wpautop($page_content); ?></div>
             </div>
             <?php 
+            $varumarke = explode(',', $_GET['varumarke_cat']);
+            $storek = explode(',', $_GET['storek']);
+            $taggar = explode(',', $_GET['taggar']);
+            $kategori = explode(',', $_GET['kategori']);
+
             $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
             $current_term = get_queried_object();
 
@@ -83,6 +88,8 @@ get_header( 'shop' );
                 $order = 'ASC';
                 $settedOrder = 'popularity';
             endif;
+
+
             $args = array(
                 'post_type' => 'product',
                 'post_status'    => array( 'publish' ),
@@ -107,20 +114,87 @@ get_header( 'shop' );
 
 
             if(!empty($term_id) && !empty($taxonomy_slug)) {
+                if(gettype($term_id) == 'string'){
+                    $term_id = [$term_id];
+                }
+
+                if($taxonomy_slug == 'varumarke' && (sizeof($varumarke) > 1 || $varumarke[0] != '')){
+                    $term_id = array_merge( $term_id, $varumarke );
+                }
+                if($taxonomy_slug == 'varumarke'){
+                    $varumarke = $term_id;
+                }
+
+                if($taxonomy_slug == 'pa_storlek' && (sizeof($storek) > 1 || $storek[0] != '')){
+                    $term_id = array_merge( $term_id, $storek );
+                }
+                if($taxonomy_slug == 'pa_storlek'){
+                    $storek = $term_id;
+                }
+
+                if($taxonomy_slug == 'product_tag' && (sizeof($taggar) > 1 || $taggar[0] != '')){
+                    $term_id = array_merge( $term_id, $taggar );
+                }
+                if($taxonomy_slug == 'product_tag'){
+                    $taggar = $term_id;
+                }
+                
+                if($taxonomy_slug == 'product_cat' && (sizeof($kategori) > 1 || $kategori[0] != '')){
+                    $term_id = array_merge( $term_id, $kategori );
+                }
+                if($taxonomy_slug == 'product_cat'){
+                    $kategori = $term_id;
+                }
+
+
                 $tax_array = array(
                     'taxonomy' => $taxonomy_slug, 
                     'field' => 'slug',
                     'terms' => $term_id 
                 );
+
+
                 array_push($args["tax_query"], $tax_array);
             }
 
 
+            if((sizeof($varumarke) > 1 || $varumarke[0] != '') && $taxonomy_slug != 'varumarke'){
+                $varumarke__arr = array(
+                    'taxonomy' => 'varumarke', 
+                    'field' => 'slug',
+                    'terms' => $varumarke 
+                );
+                array_push($args["tax_query"], $varumarke__arr);
+            }
+            if((sizeof($storek) > 1 || $storek[0] != '') && $taxonomy_slug != 'pa_storlek'){
+                $storek__arr = array(
+                    'taxonomy' => 'pa_storlek', 
+                    'field' => 'slug',
+                    'terms' => $storek 
+                );
+                array_push($args["tax_query"], $storek__arr);
+            }
+            if((sizeof($taggar) > 1 || $taggar[0] != '') && $taxonomy_slug != 'product_tag'){
+                $taggar__arr = array(
+                    'taxonomy' => 'product_tag', 
+                    'field' => 'slug',
+                    'terms' => $taggar 
+                );
+                array_push($args["tax_query"], $taggar__arr);
+            }
+            if((sizeof($kategori) > 1 || $kategori[0] != '') && $taxonomy_slug != 'product_cat'){
+                $kategori_arr = array(
+                    'taxonomy' => 'product_cat', 
+                    'field' => 'slug',
+                    'terms' => $kategori 
+                );
+                array_push($args["tax_query"], $kategori_arr);
+            }
             $the_query = new WP_Query($args);
             if ( $the_query->have_posts() ) { ?>
                 <?php $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
                 <?php do_action( 'woocommerce_before_shop_loop' ); ?>
-                <div class="shopPage__list" data-paged="<?php echo $paged; ?>" data-sort="<?php echo $settedOrder; ?>" data-varumarke="" data-storek="" data-taggar="" data-kategori="">
+                <div class="shopPage__list" data-paged="<?php echo $paged; ?>" data-sort="<?php echo $settedOrder; ?>"<?php if(sizeof($varumarke) > 1 || $varumarke[0] != ''): ?> data-varumarke="<?php echo implode(',', $varumarke); ?>"<?php endif; ?><?php if(sizeof($storek) > 1 || $storek[0] != ''): ?> data-storek="<?php echo implode(',', $storek); ?>"<?php endif; ?><?php if(sizeof($taggar) > 1 || $taggar[0] != ''): ?> data-taggar="<?php echo implode(',', $taggar); ?>"<?php endif; ?><?php if(sizeof($kategori) > 1 || $kategori[0] != ''): ?> data-kategori="<?php echo implode(',', $kategori); ?>"<?php endif; ?>>
                     <?php 
                     	woocommerce_product_loop_start();
 

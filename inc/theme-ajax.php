@@ -90,6 +90,12 @@ function products_sorting() {
     $orderby = $_POST['orderby'];
     $metaKey = $_POST['metaKey'];
 
+    $varumarke = $_POST['varumarke'];
+    $storek = $_POST['storek'];
+    $taggar = $_POST['taggar'];
+    $kategori = $_POST['kategori'];
+
+
     $args = array(
         'post_type' => 'product',
         'post_status'    => array( 'publish' ),
@@ -104,9 +110,47 @@ function products_sorting() {
                 'compare' => '=',
             ),
         ),
+        'tax_query' => array(),
     );
     if(!empty($metaKey)){
         $args['meta_key'] = $metaKey;
+    }
+
+    if(!empty($varumarke)){
+        $varumarke = explode(',', $varumarke);
+        $varumarke_array = array(
+            'taxonomy' => 'varumarke',
+            'field' => 'slug',
+            'terms' => $varumarke,
+        );
+        array_push($args["tax_query"], $varumarke_array);
+    }
+    if(!empty($storek)){
+        $storek = explode(',', $storek);
+        $storek_array = array(
+            'taxonomy' => 'pa_storlek',
+            'field' => 'slug',
+            'terms' => $storek,
+        );
+        array_push($args["tax_query"], $storek_array);
+    }
+    if(!empty($taggar)){
+        $taggar = explode(',', $taggar);
+        $taggar_array = array(
+            'taxonomy' => 'product_tag',
+            'field' => 'slug',
+            'terms' => $taggar,
+        );
+        array_push($args["tax_query"], $taggar_array);
+    }
+    if(!empty($kategori)){
+        $kategori = explode(',', $kategori);
+        $kategori_array = array(
+            'taxonomy' => 'product_cat',
+            'field' => 'slug',
+            'terms' => $kategori,
+        );
+        array_push($args["tax_query"], $kategori_array);
     }
 
     $the_query = new WP_Query($args);
@@ -162,7 +206,7 @@ function products_filter() {
         $varumarke_array = array(
             'taxonomy' => 'varumarke',
             'field' => 'slug',
-            'terms' => $varumarke[0],
+            'terms' => $varumarke,
         );
         array_push($args["tax_query"], $varumarke_array);
     }
@@ -170,15 +214,15 @@ function products_filter() {
         $storek_array = array(
             'taxonomy' => 'pa_storlek',
             'field' => 'slug',
-            'terms' => $storek[0],
+            'terms' => $storek,
         );
-        array_push($args["tax_query"], $varumarke_array);
+        array_push($args["tax_query"], $storek_array);
     }
     if(!empty($taggar)){
         $taggar_array = array(
             'taxonomy' => 'product_tag',
             'field' => 'slug',
-            'terms' => $taggar[0],
+            'terms' => $taggar,
         );
         array_push($args["tax_query"], $taggar_array);
     }
@@ -186,7 +230,7 @@ function products_filter() {
         $kategori_array = array(
             'taxonomy' => 'product_cat',
             'field' => 'slug',
-            'terms' => $kategori[0],
+            'terms' => $kategori,
         );
         array_push($args["tax_query"], $kategori_array);
     }
@@ -225,6 +269,12 @@ function products_pagination() {
     $orderby = $_POST['orderby'];
     $metaKey = $_POST['metaKey'];
 
+    $varumarke = $_POST['varumarke'];
+    $storek = $_POST['storek'];
+    $taggar = $_POST['taggar'];
+    $kategori = $_POST['kategori'];
+
+
     $args = array(
         'post_type' => 'product',
         'post_status'    => array( 'publish' ),
@@ -237,6 +287,7 @@ function products_pagination() {
                 'compare' => '=',
             ),
         ),
+        'tax_query' => array(),
     );
     if(!empty($order)): 
         $args['order'] = $order;
@@ -248,18 +299,54 @@ function products_pagination() {
         $args['meta_key'] = $metaKey;
     endif;
 
+
+    if(!empty($varumarke)){
+        $varumarke = explode(',', $varumarke);
+        $varumarke_array = array(
+            'taxonomy' => 'varumarke',
+            'field' => 'slug',
+            'terms' => $varumarke,
+        );
+        array_push($args["tax_query"], $varumarke_array);
+    }
+    if(!empty($storek)){
+        $storek = explode(',', $storek);
+        $storek_array = array(
+            'taxonomy' => 'pa_storlek',
+            'field' => 'slug',
+            'terms' => $storek,
+        );
+        array_push($args["tax_query"], $storek_array);
+    }
+    if(!empty($taggar)){
+        $taggar = explode(',', $taggar);
+        $taggar_array = array(
+            'taxonomy' => 'product_tag',
+            'field' => 'slug',
+            'terms' => $taggar,
+        );
+        array_push($args["tax_query"], $taggar_array);
+    }
+    if(!empty($kategori)){
+        $kategori = explode(',', $kategori);
+        $kategori_array = array(
+            'taxonomy' => 'product_cat',
+            'field' => 'slug',
+            'terms' => $kategori,
+        );
+        array_push($args["tax_query"], $kategori_array);
+    }
+
     $the_query = new WP_Query($args);
     ?>
-    <ul class="products column-4">
-        <?php if($the_query->have_posts()):
-            while($the_query->have_posts()): $the_query->the_post(); ?>
-                <?php global $product; ?>
-                <div class="shopPage__listItem col-6 col-md-3 product-<?php echo get_the_ID() ?>">
-                    <?php wc_get_template_part( 'content', 'product' ); ?>
-                </div>
-            <?php endwhile;
-        endif; ?>
-    </ul>
+    <?php if($the_query->have_posts()):
+        while($the_query->have_posts()): $the_query->the_post(); ?>
+            <?php global $product; ?>
+            <div class="shopPage__listItem col-6 col-md-3 product-<?php echo get_the_ID() ?>">
+                <?php wc_get_template_part( 'content', 'product' ); ?>
+            </div>
+        <?php endwhile;
+    endif; ?>
     
     <?php die();
 }

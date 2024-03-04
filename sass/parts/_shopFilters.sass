@@ -6,25 +6,35 @@
             margin-bottom: 48px
         +max-screen($breakpoint-lg)
             margin-bottom: 42px
-            width: 100% 
+            width: calc( 100% + 60px )
+            margin-left: -30px
+            margin-right: -30px
         +max-screen($breakpoint-md)
             margin-bottom: 36px
-        &.desktop-lg 
-            +max-screen(1200px)
-                display: none 
-        &.desktop-sm 
-            display: none 
-            +max-screen(1200px)
-                display: block 
+        +max-screen($breakpoint-sm)
+            margin-left: -20px
+            margin-right: -20px
+            width: calc( 100% + 40px )
         &.sort-wrapper 
             width: 100% 
+            +max-screen($breakpoint-lg)
+                width: calc( 50% + 30px )
+                margin-right: -30px
+                margin-left: 0
+                order: 4
+            +max-screen($breakpoint-sm)
+                width: calc( 50% + 20px )
+                margin-right: -20px
             .shopPage__filtersRow
                 border-bottom: 1px solid $color-text
+                +max-screen($breakpoint-lg)
+                    border: 0
                 &__item 
                     &Title 
-                        justify-content: flex-end
-                        padding: 0
-                        padding-bottom: 16px
+                        +min-screen(993px)
+                            justify-content: flex-end
+                            padding: 0
+                            padding-bottom: 16px
                 &__list 
                     &Wrapper 
                         display: block
@@ -33,58 +43,45 @@
                         left: auto
                         border: 0px
                         top: calc(100% + 1px)
-        &.filter-wrapper 
-            width: 25% 
-            border: 1px solid $color-text
         &Row 
             display: flex 
             padding-right: 32px
             flex-direction: column-reverse 
-            +max-screen(1235px)
-                margin: 0 -30px 
+            +max-screen(1200px)
+                padding-right: 20px
             +max-screen($breakpoint-lg)
                 flex-direction: row 
                 padding-right: 0
-            +max-screen($breakpoint-sm)
-                margin: 0 -20px 
+            &__list 
+                &Close 
+                    +max-screen($breakpoint-lg)
+                        width: 20px 
+                        height: 20px 
+                        background-image: url('../assets/images/icons/close.svg')
+                        background-size: contain
+                        background-position: center
+                        background-repeat: no-repeat
+                        position: absolute
+                        top: 16px 
+                        right: 16px 
             &__item 
                 position: relative
                 cursor: pointer
                 width: 100%
-                +max-screen($breakpoint-lg)
-                    width: 50%
-                &Close 
-                    +max-screen($breakpoint-lg)
-                        position: absolute
-                        top: 24px 
-                        right: 24px
-                        width: 24px 
-                        height: 24px 
-                        &::before,
-                        &::after 
-                            content: ""
-                            position: absolute
-                            top: 50% 
-                            left: 0
-                            width: 100% 
-                            height: 1px 
-                            background-color: $color-text
-                        &::before 
-                            transform: translateY(-50%) rotate(45deg)
-                        &::after 
-                            transform: translateY(-50%) rotate(-45deg)
                 &Title 
                     justify-content: center
                     font-weight: 500
                     display: flex 
                     align-items: center
                     padding: 16px 
-                    +max-screen(1200px)
-                        padding: 12px 
                     +max-screen($breakpoint-lg)
+                        padding: 12px 
                         font-size: 15px
-                        padding: 10px 
                         border: 1px solid $color-text 
+                        border-left: 0
+                        border-right: 0
+                    +max-screen($breakpoint-lg)
+                        padding: 10px 
                     span 
                         position: relative
                     img 
@@ -98,15 +95,6 @@
                             width: 16px 
                             height: 16px 
                             left: -24px
-                &:first-child 
-                    .shopPage__filtersRow__itemTitle
-                        border-right: 0
-                        +max-screen(1235px)
-                            border-left: 0
-                &:last-child 
-                    .shopPage__filtersRow__itemTitle
-                        +max-screen(1235px)
-                            border-right: 0
                 &.sort 
                     .shopPage__filtersRow__list
                         +max-screen($breakpoint-md)
@@ -122,29 +110,30 @@
                             widthL fit-content
                             right: -32px 
                             display: none 
+                            +max-screen(1200px)
+                                padding: 20px 
+                                right: -20px 
+                            +max-screen($breakpoint-lg)
+                                position: fixed 
+                                top: 0
+                                left: -40%
+                                width: 40% 
+                                height: 100%
+                                display: block
+                                z-index: 200
+                                transition: .3s 
+                                padding: 64px 32px
+                                display: flex 
+                                flex-direction: column 
                             +max-screen($breakpoint-md)
                                 width: 100%
-                                height: 100%
-                                position: fixed
-                                z-index: 1000
-                                right: -100%
-                                left: auto
-                                top: 0
-                                border: 0
-                                padding: 16px
-                                padding-top: 80px
-                                display: flex
-                                flex-direction: column
-                                align-items: center
-                                padding-bottom: 42px
-                                transition: .3s
-                                border: 1px solid $color-text
-                                &.active 
-                                    right: 0
+                                left: -100%
                         &Item 
                             display: flex 
                             margin-bottom: 16px
                             align-items: center
+                            +max-screen(1200px)
+                                margin-bottom: 8px
                             +max-screen($breakpoint-md)
                                 margin-bottom: 12px
                             &__checkbox 
@@ -153,10 +142,13 @@
                                 position: relative
                                 border: 1px solid $color-text
                                 margin-right: 12px
-                                +max-screen($breakpoint-md)
-                                    width: 16px 
-                                    height: 16px 
+                                +max-screen(1200px)
+                                    width: 12px 
+                                    height: 12px 
                                     margin-right: 8px
+                                +max-screen($breakpoint-md)
+                                    width: 14px 
+                                    height: 14px 
                                 &::after 
                                     content: ""
                                     position: absolute
@@ -172,32 +164,176 @@
                                     opacity: 0
                                     visibility: hidden 
                                     transition: .3s
-                                    +max-screen($breakpoint-md)
+                                    +max-screen(1200px)
                                         width: 10px 
                                         height: 10px 
                             &__name 
                                 font-size: 16px
+                                +max-screen(1200px)
+                                    font-size: 14px
                             &.active .shopPage__filtersRow__listItem__checkbox 
                                 &::after 
                                     opacity: 1 
                                     visibility: visible 
                         &__apply 
                             margin-top: 24px
-                            background-color: $color-text 
-                            padding: 12px 
                             display: block 
-                            font-size: 16px
+                            padding: 12px 24px
                             text-align: center
+                            +max-screen(1200px)
+                                font-size: 14px 
+                                padding: 8px 
+                                margin-top: 20px
+                            +max-screen($breakpoint-lg)
+                                margin-top: auto
+                                padding: 12px 32px 
+                                font-size: 16px
                             +max-screen($breakpoint-md)
                                 margin: 0
                                 padding: 10px 32px
                                 width: 100%
                                 margin-top: auto
+                    &.opened
+                        .shopPage__filtersRow__listWrapper 
+                            left: 0 
+                        .shopPage__filtersRow__itemOverlay
+                            +max-screen($breakpoint-lg)
+                                opacity: 1
+                                visibility: visible
+                &.filter 
+                    .shopPage__filtersRow__itemTitle
+                        +min-screen(993px)
+                            display: none 
+                    .shopPage__filtersRow__list
+                        &Wrapper 
+                            +max-screen($breakpoint-lg)
+                                position: fixed 
+                                top: 0
+                                left: -40%
+                                width: 40%
+                                height: 100% 
+                                background-color: $color-background-main 
+                                z-index: 200
+                                padding: 64px 32px 
+                                display: flex 
+                                flex-direction: column 
+                                overflow: scroll
+                                opacity: 0
+                                visibility: hidden
+                                transition: .3s 
+                            +max-screen($breakpoint-md)
+                                width: 100%
+                        &Item 
+                            +max-screen($breakpoint-lg)
+                                margin-bottom: 24px
+                            &__sublist
+                                +max-screen($breakpoint-lg)
+                                    display: none 
+                                    max-height: 250px 
+                                    overflow: scroll 
+                                    padding: 0 6px 
+                                    margin: 6px 0
+                                &Item 
+                                    +max-screen($breakpoint-lg)
+                                        margin-bottom: 4px
+                                        position: relative
+                                    &__name 
+                                        +max-screen($breakpoint-lg)
+                                            padding-left: 16px
+                                    &__checkbox 
+                                        +max-screen($breakpoint-lg)
+                                            position: absolute
+                                            left: 0
+                                            top: 50%
+                                            transform: translateY(-50%)
+                                            width: 11px 
+                                            height: 11px 
+                                            border: 1px solid $color-text
+                                        &::after 
+                                            +max-screen($breakpoint-lg)
+                                                content: ""
+                                                position: absolute
+                                                top: 50%
+                                                left: 50%
+                                                transform: translate(-50%, -50%)
+                                                width: 10px 
+                                                height: 10px 
+                                                background-size: contain
+                                                background-repeat: no-repeat
+                                                background-position: center
+                                                background-image: url('../assets/images/icons/tick.svg')
+                                                transition: .3s 
+                                                opacity: 1
+                                                visibility: hidden
+                                    &.active
+                                        .shopPage__filtersRow__listItem__sublistItem__checkbox::after 
+                                            +max-screen($breakpoint-lg)
+                                                visibility: visible 
+                                                opacity: 1
+                                    
+                            &__title 
+                                +max-screen($breakpoint-lg)
+                                    position: relative
+                                &::after 
+                                    +max-screen($breakpoint-lg)
+                                        content: ""
+                                        position: absolute
+                                        right: 0
+                                        top: 50%
+                                        transform: translateY(-50%)
+                                        width: 14px 
+                                        height: 10px 
+                                        background-image: url('../assets/images/icons/accordion__arrow.svg')
+                                        background-size: contain
+                                        background-position: center
+                                        background-repeat: no-repeat
+                        &__apply 
+                            +max-screen($breakpoint-lg)
+                                margin-top: auto
+                            .btn
+                                +max-screen($breakpoint-lg)
+                                    width: 100%
+                                    text-align: center
+                    &.opened
+                        .shopPage__filtersRow__listWrapper
+                            left: 0
+                        .shopPage__filtersRow__listWrapper,
+                        .shopPage__filtersRow__itemOverlay
+                            opacity: 1 
+                            visibility: visible  
+
+                &Overlay 
+                    position: fixed 
+                    top: 0
+                    left: 0
+                    width: 100%
+                    height: 100% 
+                    background-color: rgba(0, 0, 0, 0.3)
+                    z-index: 199
+                    opacity: 0
+                    visibility: hidden 
+                    transition: .3s 
         &.filters-wrapper
+            +max-screen($breakpoint-lg)
+                width: calc( 50% + 30px )
+                margin-left: -30px
+                margin-right: 0
+                order: 3
+            +max-screen($breakpoint-sm)
+                width: calc( 50% + 20px )
+                margin-left: -20px
             .shopPage__filtersRow
+                &__item 
+                    &Title 
+                        display: none 
+                        +max-screen($breakpoint-lg)
+                            display: flex
+                            border-right: 1px solid $color-text
                 &__list 
                     &Item 
                         margin-bottom: 32px
+                        +max-screen(1200px)
+                            margin-bottom: 20px
                         &__title 
                             font-weight: 500
                             position: relative
@@ -220,32 +356,48 @@
                             max-height: 300px
                             overflow-y: scroll
                             display: none 
+                            +max-screen(1200px)
+                                padding: 0 6px 
+                                margin-top: 6px
                             &::-webkit-scrollbar
-                                width: 5px 
+                                +min-screen(993px)
+                                    width: 5px 
                                 
                             &::-webkit-scrollbar-track
-                                background-color: #f1f1f1
+                                +min-screen(993px)
+                                    background-color: #f1f1f1
 
                             &::-webkit-scrollbar-thumb
-                                background: #888
-                                border-radius: 20px 
-                                transition: .3s 
+                                +min-screen(993px)
+                                    background: #888
+                                    border-radius: 20px 
+                                    transition: .3s 
                             &::-webkit-scrollbar-thumb:hover
-                                background: #555
+                                +min-screen(993px)
+                                    background: #555
                             &Item 
                                 position: relative
+                                &s 
+                                    display: flex 
+                                    flex-direction: column
                                 &__name 
                                     font-size: 16px
                                     padding-left: 20px
                                     margin-bottom: 4px
+                                    +max-screen(1200px)
+                                        font-size: 14px
+                                        padding-left: 16px
                                 &__checkbox 
                                     height: 12px
                                     width: 12px
                                     position: absolute
-                                    top: 50%
+                                    top: calc( 50% - 2px ) 
                                     left: 0
                                     transform: translateY(-50%)
                                     border: 1px solid $color-text
+                                    +max-screen(1200px)
+                                        height: 10px 
+                                        width: 10px 
                                     &::after 
                                         content: ""
                                         position: absolute
@@ -261,6 +413,9 @@
                                         opacity: 0
                                         visibility: hidden 
                                         transition: .3s
+                                        +max-screen(1200px)
+                                            width: 8px 
+                                            height: 8px 
                                         +max-screen($breakpoint-md)
                                             width: 10px 
                                             height: 10px 
@@ -280,3 +435,5 @@
                             width: 100%
                             padding: 12px 24px 
                             text-align: center
+                            +max-screen(1200px)
+                                padding: 8px 16px 

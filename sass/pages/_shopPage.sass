@@ -10,9 +10,14 @@
         padding-bottom: 42px
     &__top
         width: 100%
+        +max-screen($breakpoint-lg)
+            order: 1
         +max-screen($breakpoint-md)
             max-width: 600px 
             margin: auto
+    .woocommerce-notices-wrapper 
+        +max-screen($breakpoint-lg)
+            order: 2
     &__content 
         display: flex 
         flex-wrap: wrap 
@@ -36,6 +41,7 @@
         width: 75%
         +max-screen($breakpoint-lg)
             width: 100%
+            order: 5
         +max-screen($breakpoint-md)
             max-width: 600px 
             margin: auto 

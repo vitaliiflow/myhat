@@ -46,71 +46,36 @@ $categories = get_terms(
 );
 
 ?>
-<div class="shopPage__filters desktop-sm">
-    <div class="shopPage__filtersRow">
-        <div class="shopPage__filtersRow__item filter">
-            <div class="shopPage__filtersRow__itemTitle"><span><img src="<?php echo get_template_directory_uri(  ) ?>/assets/images/icons/settings.png" alt="">Filter</span></div>
-            <div class="shopPage__filtersRow__listWrapper"></div>
-        </div>
-        <div class="shopPage__filtersRow__item sort">
-            <div class="shopPage__filtersRow__itemTitle mobile-toggle"><span>Sortering</span></div>
-            <div class="shopPage__filtersRow__listWrapper">
-                <div class="shopPage__filtersRow__list">
-                    <div class="shopPage__filtersRow__listItem active">
-                        <div class="shopPage__filtersRow__listItem__checkbox"></div>
-                        <div class="shopPage__filtersRow__listItem__name" data-slug="popularity"><?php _e('Sortera efter popularitet', 'woocommerce'); ?></div>
-                    </div>
-                    <div class="shopPage__filtersRow__listItem">
-                        <div class="shopPage__filtersRow__listItem__checkbox"></div>
-                        <div class="shopPage__filtersRow__listItem__name" data-slug="rating"><?php _e('Sortera efter genomsnittligt betyg', 'woocommerce'); ?></div>
-                    </div>
-                    <div class="shopPage__filtersRow__listItem">
-                        <div class="shopPage__filtersRow__listItem__checkbox"></div>
-                        <div class="shopPage__filtersRow__listItem__name" data-slug="date"><?php _e('Sortera efter senast', 'woocommerce'); ?></div>
-                    </div>
-                    <div class="shopPage__filtersRow__listItem">
-                        <div class="shopPage__filtersRow__listItem__checkbox"></div>
-                        <div class="shopPage__filtersRow__listItem__name" data-slug="price"><?php _e('Sortera efter pris: lågt till högt', 'woocommerce'); ?></div>
-                    </div>
-                    <div class="shopPage__filtersRow__listItem">
-                        <div class="shopPage__filtersRow__listItem__checkbox"></div>
-                        <div class="shopPage__filtersRow__listItem__name" data-slug="price-desc"><?php _e('Sortera efter pris: högt till lågt', 'woocommerce'); ?></div>
-                    </div>
-                </div>
-                <div class="shopPage__filtersRow__list__apply button mobile-toggle"><?php _e('APPLY', 'woocommerce'); ?></div>
-                <div class="shopPage__filtersRow__itemClose mobile-toggle"></div>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="shopPage__filters sort-wrapper desktop-lg">
     <div class="shopPage__filtersRow">  
         <div class="shopPage__filtersRow__item sort">
-            <div class="shopPage__filtersRow__itemTitle mobile-toggle"><span>Sortering</span></div>
+            <div class="shopPage__filtersRow__itemTitle mobile-toggler"><span>Sortering</span></div>
+            <div class="shopPage__filtersRow__itemOverlay mobile-toggler"></div>
             <div class="shopPage__filtersRow__listWrapper">
+                <div class="shopPage__filtersRow__listClose mobile-toggler"></div>
                 <div class="shopPage__filtersRow__list">
-                    <div class="shopPage__filtersRow__listItem active">
+                    <div class="shopPage__filtersRow__listItem<?php if(!isset($_GET['orderby']) || $_GET['orderby'] == 'popularity'){echo ' active';} ?>">
                         <div class="shopPage__filtersRow__listItem__checkbox"></div>
                         <div class="shopPage__filtersRow__listItem__name" data-slug="popularity"><?php _e('Sortera efter popularitet', 'woocommerce'); ?></div>
                     </div>
-                    <div class="shopPage__filtersRow__listItem">
+                    <div class="shopPage__filtersRow__listItem<?php if($_GET['orderby'] == 'rating'){echo ' active';} ?>">
                         <div class="shopPage__filtersRow__listItem__checkbox"></div>
                         <div class="shopPage__filtersRow__listItem__name" data-slug="rating"><?php _e('Sortera efter genomsnittligt betyg', 'woocommerce'); ?></div>
                     </div>
-                    <div class="shopPage__filtersRow__listItem">
+                    <div class="shopPage__filtersRow__listItem<?php if($_GET['orderby'] == 'date'){echo ' active';} ?>">
                         <div class="shopPage__filtersRow__listItem__checkbox"></div>
                         <div class="shopPage__filtersRow__listItem__name" data-slug="date"><?php _e('Sortera efter senast', 'woocommerce'); ?></div>
                     </div>
-                    <div class="shopPage__filtersRow__listItem">
+                    <div class="shopPage__filtersRow__listItem<?php if($_GET['orderby'] == 'price'){echo ' active';} ?>">
                         <div class="shopPage__filtersRow__listItem__checkbox"></div>
                         <div class="shopPage__filtersRow__listItem__name" data-slug="price"><?php _e('Sortera efter pris: lågt till högt', 'woocommerce'); ?></div>
                     </div>
-                    <div class="shopPage__filtersRow__listItem">
+                    <div class="shopPage__filtersRow__listItem<?php if($_GET['orderby'] == 'price-desc'){echo ' active';} ?>">
                         <div class="shopPage__filtersRow__listItem__checkbox"></div>
                         <div class="shopPage__filtersRow__listItem__name" data-slug="price-desc"><?php _e('Sortera efter pris: högt till lågt', 'woocommerce'); ?></div>
                     </div>
                 </div>
-                <div class="shopPage__filtersRow__list__apply button mobile-toggle"><?php _e('APPLY', 'woocommerce'); ?></div>
+                <div class="shopPage__filtersRow__list__apply button button--black mobile-toggle"><?php _e('APPLY', 'woocommerce'); ?></div>
                 <div class="shopPage__filtersRow__itemClose mobile-toggle"></div>
             </div>
         </div>
@@ -119,19 +84,24 @@ $categories = get_terms(
 <div class="shopPage__filters filters-wrapper desktop-lg">
     <div class="shopPage__filtersRow">
         <div class="shopPage__filtersRow__item filter">
+            <div class="shopPage__filtersRow__itemTitle mobile-toggler"><span><img src="<?php echo get_template_directory_uri(  ) ?>/assets/images/icons/settings.png" alt="">Filter</span></div>
+            <div class="shopPage__filtersRow__itemOverlay mobile-toggler"></div>
             <div class="shopPage__filtersRow__listWrapper">
+                <div class="shopPage__filtersRow__listClose mobile-toggler"></div>
                 <?php 
                 if ( !empty($varumarke_terms) && !is_wp_error( $varumarke_terms ) ):
                 ?>
                     <div class="shopPage__filtersRow__listItem opened" data-attr-name="varumarke">
                         <div class="shopPage__filtersRow__listItem__title">VARUMÄRKE</div>
                         <div class="shopPage__filtersRow__listItem__sublist">
-                            <?php foreach($varumarke_terms as $term): ?>
-                                <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term->slug; ?>">
-                                    <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
-                                    <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term->name; ?></div>
-                                </div>
-                            <?php endforeach; ?>
+                            <div class="shopPage__filtersRow__listItem__sublistItems">
+                                <?php foreach($varumarke_terms as $term): ?>
+                                    <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term->slug; ?>">
+                                        <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
+                                        <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term->name; ?></div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
                         </div>
                     </div>
                 <?php endif; ?>
@@ -141,12 +111,14 @@ $categories = get_terms(
                     <div class="shopPage__filtersRow__listItem" data-attr-name="storek">
                         <div class="shopPage__filtersRow__listItem__title">STORLEK</div>
                         <div class="shopPage__filtersRow__listItem__sublist">
-                            <?php foreach($pa_storlek as $term): ?>
-                                <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term->slug; ?>">
-                                    <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
-                                    <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term->name; ?></div>
-                                </div>
-                            <?php endforeach; ?>
+                            <div class="shopPage__filtersRow__listItem__sublistItems">
+                                <?php foreach($pa_storlek as $term): ?>
+                                    <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term->slug; ?>">
+                                        <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
+                                        <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term->name; ?></div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
                         </div>
                     </div>
                 <?php endif; ?>
@@ -156,12 +128,14 @@ $categories = get_terms(
                     <div class="shopPage__filtersRow__listItem" data-attr-name="taggar">
                         <div class="shopPage__filtersRow__listItem__title">TAGGAR</div>
                         <div class="shopPage__filtersRow__listItem__sublist">
-                            <?php foreach($tags as $term): ?>
-                                <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term->slug; ?>">
-                                    <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
-                                    <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term->name; ?></div>
-                                </div>
-                            <?php endforeach; ?>
+                            <div class="shopPage__filtersRow__listItem__sublistItems">
+                                <?php foreach($tags as $term): ?>
+                                    <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term->slug; ?>">
+                                        <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
+                                        <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term->name; ?></div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
                         </div>
                     </div>
                 <?php endif; ?>
@@ -171,12 +145,14 @@ $categories = get_terms(
                     <div class="shopPage__filtersRow__listItem" data-attr-name="kategori">
                         <div class="shopPage__filtersRow__listItem__title">KATEGORI</div>
                         <div class="shopPage__filtersRow__listItem__sublist">
-                            <?php foreach($categories as $term): ?>
-                                <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term->slug; ?>">
-                                    <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
-                                    <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term->name; ?></div>
-                                </div>
-                            <?php endforeach; ?>
+                            <div class="shopPage__filtersRow__listItem__sublistItems">
+                                <?php foreach($categories as $term): ?>
+                                    <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term->slug; ?>">
+                                        <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
+                                        <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term->name; ?></div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
                         </div>
                     </div>
                 <?php endif; ?>
