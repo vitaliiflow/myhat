@@ -83,4 +83,3 @@ function custom_default_catalog_orderby($sortby) {
 add_filter('woocommerce_default_catalog_orderby', 'custom_default_catalog_orderby');
 
 
-

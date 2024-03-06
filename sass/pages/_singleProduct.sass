@@ -47,15 +47,6 @@
                 border: 1px solid $color-text
     &__breadcrumbs 
         position: relative
-        &::before
-            content: ""
-            position: absolute
-            height: 100% 
-            width: 100vw 
-            left: 50% 
-            top: 0
-            transform: translateX(-50%)
-            background: $color-background-main
         .woocommerce-breadcrumb
             position: relative
             +max-screen(1200px)
@@ -64,6 +55,7 @@
                 margin-bottom: 0.75rem
             +min-screen(770px)
                 padding-bottom: 12px
+                padding-top: 6px
                 +max-screen(1200px)
                     padding-bottom: 8px
                 +max-screen($breakpoint-lg)

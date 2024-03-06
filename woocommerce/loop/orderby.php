@@ -93,7 +93,7 @@ $categories = get_terms(
                 ?>
                     <div class="shopPage__filtersRow__listItem opened" data-attr-name="varumarke">
                         <div class="shopPage__filtersRow__listItem__title">VARUMÄRKE</div>
-                        <div class="shopPage__filtersRow__listItem__sublist">
+                        <div class="shopPage__filtersRow__listItem__sublist" style="display: block;">
                             <div class="shopPage__filtersRow__listItem__sublistItems">
                                 <?php foreach($varumarke_terms as $term): ?>
                                     <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term->slug; ?>">

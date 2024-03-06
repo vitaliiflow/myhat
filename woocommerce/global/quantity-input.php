@@ -18,23 +18,7 @@
  * @var string $type     The input type attribute.
  */
 
-defined( 'ABSPATH' ) || exit;
-
-/* translators: %s: Quantity. */
-$label = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 'woocommerce' ), wp_strip_all_tags( $args['product_name'] ) ) : esc_html__( 'Quantity', 'woocommerce' );
-
-?>
-<div class="quantity">
-	<?php
-	/**
-	 * Hook to output something before the quantity input field.
-	 *
-	 * @since 7.2.0
-	 */
-	do_action( 'woocommerce_before_quantity_input_field' );
-	?>
-	<label class="screen-reader-text" for="<?php echo esc_attr( $input_id ); ?>"><?php echo esc_attr( $label ); ?></label>
-	<div class="quantity-btn decrease">-</div>
+defined( 'ABSPATH' ) || exit; ?> 
 	<input
 		type="<?php echo esc_attr( $type ); ?>"
 		<?php echo $readonly ? 'readonly="readonly"' : ''; ?>
@@ -45,7 +29,7 @@ $label = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 
 		aria-label="<?php esc_attr_e( 'Product quantity', 'woocommerce' ); ?>"
 		size="4"
 		min="<?php echo esc_attr( $min_value ); ?>"
-		max="3"
+		max="<?php echo esc_attr( 0 < $max_value ? $max_value : '' ); ?>"
 		<?php if ( ! $readonly ) : ?>
 			step="<?php echo esc_attr( $step ); ?>"
 			placeholder="<?php echo esc_attr( $placeholder ); ?>"
@@ -53,14 +37,3 @@ $label = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 
 			autocomplete="<?php echo esc_attr( isset( $autocomplete ) ? $autocomplete : 'on' ); ?>"
 		<?php endif; ?>
 	/>
-	<div class="quantity-btn increase">+</div>
-	<?php
-	/**
-	 * Hook to output something after quantity input field
-	 *
-	 * @since 3.6.0
-	 */
-	do_action( 'woocommerce_after_quantity_input_field' );
-	?>
-</div>
-<?php

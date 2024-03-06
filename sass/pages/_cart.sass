@@ -1,0 +1,365 @@
+.cart
+    display: flex 
+    +max-screen($breakpoint-lg)
+        flex-direction: column
+    .woocommerce-cart-form &__title 
+        margin-bottom: 3rem
+        margin-top: 0
+        +max-screen($breakpoint-lg)
+            margin-bottom: 2rem
+        +max-screen($breakpoint-md)
+            margin-bottom: 1.5rem
+    .woocommerce-shipping-destination,
+    .shipping-calculator-button,
+    .woocommerce-shipping-calculator
+        display: none 
+    .cart-discount
+        margin-bottom: 32px
+        font-size: 16px
+        margin-top: -36px
+        +max-screen($breakpoint-md)
+            font-size: 14px
+            margin-top: -24px
+
+    &__top 
+        width: 60%
+        +max-screen($breakpoint-lg)
+            width: 100%
+    &__bottom 
+        margin-left: 32px
+        padding-left: 42px
+        width: calc(40% - 32px)
+        border-left: 1px solid #ded8d2
+        display: flex 
+        flex-direction: column 
+        +max-screen(1200px)
+            padding-left: 24px 
+            margin-left: 24px
+        +max-screen($breakpoint-lg)
+            width: 100%
+            padding-left: 0
+            border: 0
+            margin-left: 0
+            padding-top: 36px
+        +max-screen($breakpoint-md)
+            width: 100% 
+            margin-left: 0 
+            padding-left: 0
+            border: 0
+    ul#shipping_method.woocommerce-shipping-methods
+        li 
+            display: flex 
+            input 
+                width: 0
+                height: 0
+                padding: 0
+                margin: 0
+            label 
+                display: block 
+                position: relative
+                padding-left: 24px
+                font-size: 16px
+                cursor: pointer
+                +max-screen($breakpoint-md)
+                    padding-left: 20px
+                    font-size: 14px
+                &::before 
+                    content: ""
+                    position: absolute
+                    left: 0
+                    top: 50% 
+                    transform: translateY(-50%)
+                    border-radius: 50% 
+                    border: 1px solid $color-text
+                    width: 14px 
+                    height: 14px 
+                    +max-screen($breakpoint-md)
+                        width: 12px 
+                        height: 12px 
+            &.checked label
+                &::after 
+                    content: ""
+                    position: absolute
+                    width: 8px
+                    height: 8px 
+                    border-radius: 50% 
+                    background-color: $color-text 
+                    top: 50% 
+                    left: 3px 
+                    transform: translateY(-50%)
+                    +max-screen($breakpoint-md)
+                        width: 6px
+                        height: 6px 
+    &__item 
+        display: flex 
+        border-bottom: 1px solid #DED8D2
+        position: relative 
+        margin-right: -32px
+        padding-right: 32px
+        padding-bottom: 42px
+        margin-bottom: 42px
+        &:last-child
+            margin-bottom: 0
+        +max-screen(1200px)
+            margin-right: -24px
+            padding-right: 24px
+        +max-screen($breakpoint-lg)
+            margin-right: 0
+            padding-right: 0
+            margin-bottom: 36px
+            padding-bottom: 36px
+        +max-screen($breakpoint-md)
+            margin-right: 0
+            padding-right: 0
+            padding-bottom: 32px
+            margin-bottom: 24px
+        &Image 
+            width: 25%
+            +max-screen($breakpoint-md)
+                width: 30%
+        &Content 
+            width: 75%
+            padding-left: 32px
+            +max-screen($breakpoint-md)
+                width: 70% 
+                padding-left: 16px
+        &Tax 
+            font-weight: 700
+            font-size: 16px
+            margin-bottom: 4px
+            +max-screen($breakpoint-md)
+                font-size: 12px
+                margin-bottom: 0
+        &Name
+            margin-bottom: 24px
+            max-width: 300px 
+            +max-screen($breakpoint-md)
+                font-size: 14px
+                margin-bottom: 12px
+                padding-right: 32px
+        &Data 
+            display: flex 
+            align-items: center
+            justify-content: space-between
+        &Price 
+            font-weight: 700
+            font-size: 22px
+            +max-screen($breakpoint-md)
+                font-size: 16px
+        &Quantity
+            border: 1px solid $color-text 
+            .quantity
+                display: flex 
+                min-width: 1px 
+                align-items: center
+                .qty 
+                    width: auto 
+                    padding: 0
+                    background-color: $color-background-main
+                    width: 50px 
+                    padding: 6px 
+                    font-size: 16px
+                    +max-screen($breakpoint-md)
+                        font-size: 14px
+                        padding: 4px 6px 
+                        width: 40px 
+            .wac-qty-button
+                border: 0
+                color: $color-text 
+                padding: 4px 6px 
+                display: flex 
+                height: 100% 
+                width: fit-content
+                font-weight: 400
+                line-height: 1
+            .wac-btn-sub
+                font-size: 22px
+                +max-screen($breakpoint-md)
+                    font-size: 18px
+        &Remove 
+            position: absolute 
+            border: 1px solid $color-text 
+            border-radius: 50%
+            right: 32px 
+            width: 20px 
+            height: 20px 
+            top: 0 
+            cursor: pointer
+            +max-screen($breakpoint-lg)
+                right: 0
+            +max-screen($breakpoint-md)
+                right: 0
+                width: 16px 
+                height: 16px 
+                top: -5px 
+            &::before,
+            &::after 
+                content: ""
+                position: absolute
+                left: 50%
+                top: 50% 
+                background-color: $color-text 
+                border-radius: 20px 
+                width: 12px 
+                height: 1px 
+                +max-screen($breakpoint-md)
+                    width: 10px 
+                    height: 1px 
+            &::before 
+                transform: translate(-50%, -50%) rotate(45deg)
+            &::after
+                transform: translate(-50%, -50%) rotate(-45deg)
+    &__hiddenContent 
+        opacity: 0
+        visibility: hidden 
+        width: 0
+        height: 0
+    &__order
+        &Totals 
+            display: flex 
+            justify-content: center
+            font-weight: 700
+            font-size: 24px
+            +max-screen($breakpoint-md)
+                font-size: 18px
+            &__price 
+                margin-left: 3px
+                .includes_tax
+                    display: none 
+                .woocommerce-Price-currencySymbol
+                    margin-left: 4px
+        &FreeShipping 
+            display: flex
+            justify-content: center
+            font-size: 16px
+            +max-screen($breakpoint-md)
+                font-size: 13px
+            &__price 
+                margin-left: 3px
+    &__shippingData 
+        font-size: 18px
+        margin-bottom: 42px 
+        +max-screen($breakpoint-lg)
+            margin-top: 16px
+        +max-screen($breakpoint-md)
+            font-size: 14px
+            margin-bottom: 32px
+            margin-top: 0
+        ul#shipping_method
+            margin-top: 12px
+            +max-screen($breakpoint-md)
+                margin-top: 3px
+            li 
+                margin-bottom: 8px
+                +max-screen($breakpoint-md)
+                    margin-bottom: 0
+    &__submit.btn,
+    &__shop.btn
+        padding: 12px 36px 
+        +max-screen($breakpoint-md)
+            padding: 10px 24px
+    &__coupon
+        &Toggler 
+            text-decoration: underline 
+            cursor: pointer
+            font-size: 16px
+            +max-screen($breakpoint-lg)
+                font-size: 18px
+            +max-screen($breakpoint-md)
+                font-size: 14px
+        &Wrapper
+            order: 1
+            +max-screen($breakpoint-lg)
+                order: 0
+            & > .actions 
+                display: none 
+            .coupon
+                display: flex 
+                padding: 12px 0
+                button.button 
+                    background-color: $color-text 
+                    color: $color-white 
+                    transition: .3s 
+                    border: 1px solid $color-text
+                    border-radius: 20px
+                    font-weight: 400
+                    padding: 6px 12px
+                    font-size: 16px
+                    &:hover 
+                        color: $color-text 
+                        background-color: $color-white
+                    +max-screen($breakpoint-md)
+                        font-size: 14px
+            #coupon_code
+                height: auto
+                min-height: 1px
+                line-height: 1
+                color: $color-background-cream 
+                font-weight: 400
+                color: $color-text
+                margin-right: -36px
+                padding-right: 42px
+                &::placeholder 
+                    color: $color-text
+                +max-screen($breakpoint-md)
+                    margin-right: -45px
+                    font-size: 14px
+                    padding: 10px 20px
+    &__totals 
+        &Buttons.wc-proceed-to-checkout
+            display: flex 
+            flex-direction: column 
+            padding-bottom: 52px
+            +max-screen($breakpoint-lg)
+                padding-bottom: 0
+            +max-screen($breakpoint-md)
+                padding-bottom: 52px
+            .btn 
+                margin-bottom: 16px
+                text-align: center
+                font-weight: 700
+                &.button--black 
+                    position: relative
+                    &::after 
+                        content: ""
+                        position: absolute
+                        top: 50%
+                        width: 12px
+                        height: 12px 
+                        background-image: url('../assets/images/icons/checkout__btn__arrow.png')
+                        background-size: contain
+                        background-repeat: no-repeat
+                        background-position: center
+                        right: 16px 
+                        transform: translateY(-50%)
+                        transition: .3s
+                    &:hover::after 
+                        background-image: url('../assets/images/icons/checkout__btn-black__arrow.png')
+                &:last-child
+                    margin-bottom: 0
+.woocommerce-cart 
+    .latest-products
+        padding-bottom: 0
+        +max-screen($breakpoint-md)
+            padding-top: 0
+        .container 
+            padding: 0
+        h2 
+            +max-screen($breakpoint-md)
+                margin-bottom: 0
+        .btn 
+            +max-screen($breakpoint-md)
+                margin-top: 0 !important
+                font-size: 14px
+    &-form 
+        width: 100%
+    .woocommerce 
+        display: flex 
+        flex-wrap: wrap 
+        +max-screen($breakpoint-md)
+            flex-direction: column
+    .cart-collaterals .cart_totals 
+        width: 100% 
+        float: none 
+    .woocommerce-notices-wrapper
+        width: 100%

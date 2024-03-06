@@ -1,5 +1,5 @@
 <?php
-if(is_page_template( 'template-pages/contact.php' )):
+if(is_page( 'cart' ) || is_cart()):
     $title = get_field('title');
     $link = get_field('link');
     $quantity = get_field('quantity_of_products_to_show');
@@ -50,7 +50,7 @@ if (!empty($products)) : ?>
                         $link_target = $link['target'] ? $link['target'] : '_self';
                         ?>
 
-                        <a class="button button--arrow mt-3" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?><?php echo get_inline_svg('arrow-right.svg');?></a>
+                        <a class="btn button--arrow mt-3" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?><?php echo get_inline_svg('arrow-right.svg');?></a>
 
                     <?php endif; ?>
 
