@@ -559,7 +559,6 @@ body.woocommerce-order-received #breadcrumbs{display:none}
 .cart__totalsButtons.wc-proceed-to-checkout .btn.button--black:hover::after{background-image:url("../assets/images/icons/checkout__btn-black__arrow.png")}
 .cart__totalsButtons.wc-proceed-to-checkout .btn:last-child{margin-bottom:0}
 .woocommerce-cart .latest-products{padding-bottom:0}
-.woocommerce-cart .latest-products .container{padding:0}
 .woocommerce-cart-form{width:100%}
 .woocommerce-cart .woocommerce{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}
 .woocommerce-cart .cart-collaterals .cart_totals{width:100%;float:none}

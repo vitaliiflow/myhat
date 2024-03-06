@@ -17,6 +17,10 @@ get_header(); ?>
         
     </div>
 </div>
+<?php if( is_page( 'cart' ) || is_cart() ): ?>
+    <?php echo get_template_part('template-parts/acf-blocks/block-latest-products'); ?>
+<?php endif; ?>
+
 
 
 

@@ -134,6 +134,5 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 <?php do_action( 'woocommerce_before_cart_collaterals' ); ?>
 
-<?php echo get_template_part('template-parts/acf-blocks/block-latest-products'); ?>
 
 <?php do_action( 'woocommerce_after_cart' ); ?>
