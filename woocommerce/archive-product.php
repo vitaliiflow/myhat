@@ -43,16 +43,36 @@ get_header( 'shop' );
                 <div class="shopPage__text"><?php echo wpautop($page_content); ?></div>
             </div>
             <?php 
-            $varumarke = explode(',', $_GET['varumarke_cat']);
-            $storek = explode(',', $_GET['storek']);
-            $taggar = explode(',', $_GET['taggar']);
-            $kategori = explode(',', $_GET['kategori']);
+            if(!empty($_GET['varumarke_cat'])):
+                $varumarke = explode(',', $_GET['varumarke_cat']);
+            else:
+                $varumarke = array('');
+            endif;
+            if(!empty($_GET['storek'])):
+                $storek = explode(',', $_GET['storek']);
+            else:
+                $storek = array('');
+            endif;
+            if(!empty($_GET['taggar'])):
+                $taggar = explode(',', $_GET['taggar']);
+            else:
+                $taggar = array('');
+            endif;
+            if(!empty($_GET['kategori'])):
+                $kategori = explode(',', $_GET['kategori']);
+            else:
+                $kategori = array('');
+            endif;
 
             $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
             $current_term = get_queried_object();
 
-            $term_id = $current_term->slug;
-            $taxonomy_slug = $current_term->taxonomy;
+            if(!empty($current_term->slug)):
+                $term_id = $current_term->slug;
+            endif;
+            if(!empty($current_term->taxonomy)):
+                $taxonomy_slug = $current_term->taxonomy;
+            endif;
             if(isset($_GET['orderby'])):
                 switch($_GET['orderby']):
                     case 'popularity':

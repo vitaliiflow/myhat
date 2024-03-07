@@ -45,6 +45,10 @@ $categories = get_terms(
     )
 );
 
+if(empty($_GET['orderby'])){
+    $_GET['orderby'] = 'popularity';
+}
+
 ?>
 <div class="shopPage__filters sort-wrapper desktop-lg">
     <div class="shopPage__filtersRow">  

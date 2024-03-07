@@ -86,14 +86,25 @@ add_action('wp_ajax_nopriv_products_sorting', 'products_sorting');
 add_action('wp_ajax_products_sorting', 'products_sorting');
 function products_sorting() {
     $paged = $_POST['paged'];
+
     $order = $_POST['order'];
     $orderby = $_POST['orderby'];
-    $metaKey = $_POST['metaKey'];
+    if(!empty($_POST['metaKey'])):
+        $metaKey = $_POST['metaKey'];
+    endif;
 
-    $varumarke = $_POST['varumarke'];
-    $storek = $_POST['storek'];
-    $taggar = $_POST['taggar'];
-    $kategori = $_POST['kategori'];
+    if(!empty($_POST['varumarke'])):
+        $varumarke = $_POST['varumarke'];
+    endif;
+    if(!empty($_POST['storek'])):
+        $storek = $_POST['storek'];
+    endif;
+    if(!empty($_POST['taggar'])):
+        $taggar = $_POST['taggar'];
+    endif;
+    if(!empty($_POST['kategori'])):
+        $kategori = $_POST['kategori'];
+    endif;
 
 
     $args = array(
@@ -174,12 +185,22 @@ function products_filter() {
 
     $order = $_POST['order'];
     $orderby = $_POST['orderby'];
-    $metaKey = $_POST['metaKey'];
+    if(!empty($_POST['metaKey'])):
+        $metaKey = $_POST['metaKey'];
+    endif;
 
-    $varumarke = $_POST['varumarke'];
-    $storek = $_POST['storek'];
-    $taggar = $_POST['taggar'];
-    $kategori = $_POST['kategori'];
+    if(!empty($_POST['varumarke'])):
+        $varumarke = $_POST['varumarke'];
+    endif;
+    if(!empty($_POST['storek'])):
+        $storek = $_POST['storek'];
+    endif;
+    if(!empty($_POST['taggar'])):
+        $taggar = $_POST['taggar'];
+    endif;
+    if(!empty($_POST['kategori'])):
+        $kategori = $_POST['kategori'];
+    endif;
 
     $args = array(
         'post_type' => 'product',
@@ -265,14 +286,25 @@ add_action('wp_ajax_nopriv_products_pagination', 'products_pagination');
 add_action('wp_ajax_products_pagination', 'products_pagination');
 function products_pagination() {
     $paged = $_POST['paged'];
+
     $order = $_POST['order'];
     $orderby = $_POST['orderby'];
-    $metaKey = $_POST['metaKey'];
+    if(!empty($_POST['metaKey'])):
+        $metaKey = $_POST['metaKey'];
+    endif;
 
-    $varumarke = $_POST['varumarke'];
-    $storek = $_POST['storek'];
-    $taggar = $_POST['taggar'];
-    $kategori = $_POST['kategori'];
+    if(!empty($_POST['varumarke'])):
+        $varumarke = $_POST['varumarke'];
+    endif;
+    if(!empty($_POST['storek'])):
+        $storek = $_POST['storek'];
+    endif;
+    if(!empty($_POST['taggar'])):
+        $taggar = $_POST['taggar'];
+    endif;
+    if(!empty($_POST['kategori'])):
+        $kategori = $_POST['kategori'];
+    endif;
 
 
     $args = array(

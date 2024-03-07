@@ -220,3 +220,4 @@ function acf_link_attrs(array $link) {
   $target = $link['target'] ? $link['target'] : '_self';
   echo 'href="' . esc_url($url) . '" target="' . esc_attr($target) . '"';
 }
+

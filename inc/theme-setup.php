@@ -51,6 +51,8 @@ function my_wp_nav_menu_objects( $items, $args ) {
 			$item->classes[] .= 'has-mobile-icon';
             
         }
+
+            // $item->title .= $item->object_id;
         
     }
     
