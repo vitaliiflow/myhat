@@ -102,19 +102,10 @@
                     height: 100% 
                     object-fit: contain
                     object-position: top 
-                &.has-hover 
-                    img 
-                        transition: .5s 
-                        &.hover-image
-                            opacity: 0
-                            visibility: hidden
-                    &:hover 
-                        img 
-                            opacity: 0
-                            visibility: hidden
-                            &.hover-image
-                                opacity: 1
-                                visibility: visible
+                    transition: .5s 
+                    &.hover-image
+                        opacity: 0
+                        visibility: hidden
             &__tax
                 font-weight: 700
                 text-transform: uppercase
@@ -179,6 +170,14 @@
                 display: flex 
                 flex-direction: column
                 height: 100%
+                &:hover 
+                    .shopPage__listItem__image.has-hover 
+                        img 
+                            opacity: 0
+                            visibility: hidden
+                            &.hover-image
+                                opacity: 1
+                                visibility: visible
             &__price 
                 font-size: 22px
                 font-weight: 700

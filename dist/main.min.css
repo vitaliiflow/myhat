@@ -382,11 +382,8 @@ a.text-dark:hover,a.text-dark:focus{color:#121416 !important}
 .shopPage__list ul.products{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;margin:0 -15px;margin-bottom:-52px}
 .shopPage__listItem{margin-bottom:52px}
 .shopPage__listItem__image{position:relative;padding-bottom:85%;margin-bottom:32px}
-.shopPage__listItem__image img{height:100%;-o-object-fit:contain;object-fit:contain;-o-object-position:top;object-position:top}
-.shopPage__listItem__image.has-hover img{-webkit-transition:.5s;transition:.5s}
-.shopPage__listItem__image.has-hover img.hover-image{opacity:0;visibility:hidden}
-.shopPage__listItem__image.has-hover:hover img{opacity:0;visibility:hidden}
-.shopPage__listItem__image.has-hover:hover img.hover-image{opacity:1;visibility:visible}
+.shopPage__listItem__image img{height:100%;-o-object-fit:contain;object-fit:contain;-o-object-position:top;object-position:top;-webkit-transition:.5s;transition:.5s}
+.shopPage__listItem__image img.hover-image{opacity:0;visibility:hidden}
 .shopPage__listItem__tax{font-weight:700;text-transform:uppercase;font-size:14px;margin-bottom:8px}
 .shopPage__listItem__labels{position:absolute;z-index:1;left:21px;top:6px;line-height:1;display:-webkit-box;display:-ms-flexbox;display:flex;margin:0 -4px;-ms-flex-wrap:wrap;flex-wrap:wrap}
 .shopPage__listItem__labels span.shopPage__listItem__badge{position:static;min-width:0;min-height:0;line-height:1;border-radius:20px;padding:4px 8px;display:block;margin:0 4px;font-weight:500;font-size:16px;margin-bottom:6px}
@@ -396,6 +393,8 @@ a.text-dark:hover,a.text-dark:focus{color:#121416 !important}
 .shopPage__listItem__labels span.shopPage__listItem__badge.last-chance{background-color:#3e4a56;color:#fff}
 .shopPage__listItem__labels span.shopPage__listItem__badge.limited-edition{background-color:#ffd700;color:#fff}
 .shopPage__listItem__content{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;height:100%}
+.shopPage__listItem__content:hover .shopPage__listItem__image.has-hover img{opacity:0;visibility:hidden}
+.shopPage__listItem__content:hover .shopPage__listItem__image.has-hover img.hover-image{opacity:1;visibility:visible}
 .shopPage__listItem__price{font-size:22px;font-weight:700;margin-top:auto;line-height:1;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}
 .shopPage__listItem__price ins{text-decoration:none}
 .shopPage__listItem__price.sale del{font-weight:500;color:#3e4a56;text-decoration:none;-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;font-size:16px}
