@@ -383,6 +383,10 @@ a.text-dark:hover,a.text-dark:focus{color:#121416 !important}
 .shopPage__listItem{margin-bottom:52px}
 .shopPage__listItem__image{position:relative;padding-bottom:85%;margin-bottom:32px}
 .shopPage__listItem__image img{height:100%;-o-object-fit:contain;object-fit:contain;-o-object-position:top;object-position:top}
+.shopPage__listItem__image.has-hover img{-webkit-transition:.5s;transition:.5s}
+.shopPage__listItem__image.has-hover img.hover-image{opacity:0;visibility:hidden}
+.shopPage__listItem__image.has-hover:hover img{opacity:0;visibility:hidden}
+.shopPage__listItem__image.has-hover:hover img.hover-image{opacity:1;visibility:visible}
 .shopPage__listItem__tax{font-weight:700;text-transform:uppercase;font-size:14px;margin-bottom:8px}
 .shopPage__listItem__labels{position:absolute;z-index:1;left:21px;top:6px;line-height:1;display:-webkit-box;display:-ms-flexbox;display:flex;margin:0 -4px;-ms-flex-wrap:wrap;flex-wrap:wrap}
 .shopPage__listItem__labels span.shopPage__listItem__badge{position:static;min-width:0;min-height:0;line-height:1;border-radius:20px;padding:4px 8px;display:block;margin:0 4px;font-weight:500;font-size:16px;margin-bottom:6px}

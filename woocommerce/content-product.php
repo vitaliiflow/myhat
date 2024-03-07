@@ -97,9 +97,17 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	else: 
 		$image = get_template_directory_uri() . '/assets/images/elementor-placeholder-image.webp';
 	endif;
+	$gallery_images = $product->get_gallery_image_ids();
+
+	if ( $gallery_images ) {
+		$first_image_url = wp_get_attachment_image_url( $gallery_images[0], 'full' );
+	}
 	?>
-	<div class="shopPage__listItem__image">
+	<div class="shopPage__listItem__image<?php if(!empty($first_image_url)){echo ' has-hover';} ?>">
 		<img src="<?php echo $image; ?>" class="img-absoolute" alt="">
+		<?php if(!empty($first_image_url)): ?>
+			<img src="<?php echo $first_image_url; ?>" alt="" class="img-absoolute hover-image">
+		<?php endif; ?>
 	</div>
 	<?php if($categories && ! is_wp_error( $categories )): ?>
 		<div class="shopPage__listItem__tax"><?php echo $categories[0]->name; ?></div>
