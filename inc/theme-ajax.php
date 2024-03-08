@@ -384,6 +384,7 @@ function products_pagination() {
 }
 
 
+
 //Ajax Search Brands
 add_action('wp_ajax_nopriv_search_brands', 'search_brands');
 add_action('wp_ajax_search_brands', 'search_brands');

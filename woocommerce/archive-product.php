@@ -28,10 +28,16 @@ get_header( 'shop' );
  */
 
 ?>
+<div class="shopPage__top">
+    <div class="container">
+        <div class="shopPage__breadcrumbs"><?php do_action( 'woocommerce_before_main_content' ); ?></div></div>
+    </div>
+</div>
+<?php get_template_part('template-parts/acf-blocks/block-seo-text'); ?>
 <div class="shopPage">
     <div class="container">
         <div class="shopPage__content">
-            <div class="shopPage__top">
+            <!-- <div class="shopPage__top">
                 <div class="shopPage__breadcrumbs"><?php do_action( 'woocommerce_before_main_content' ); ?></div></div>
                 <?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
                     <h1 class="shopPage__title"><?php woocommerce_page_title(); ?></h1>
@@ -41,7 +47,7 @@ get_header( 'shop' );
                     $page_content = get_post_field( 'post_content', $page_id );
                 ?>
                 <div class="shopPage__text"><?php echo wpautop($page_content); ?></div>
-            </div>
+            </div> -->
             <?php 
             if(!empty($_GET['varumarke_cat'])):
                 $varumarke = explode(',', $_GET['varumarke_cat']);
@@ -253,3 +259,4 @@ get_header( 'shop' );
 
 <?php 
 get_footer( 'shop' );
+

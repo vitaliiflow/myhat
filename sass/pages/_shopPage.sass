@@ -275,3 +275,29 @@
                 svg 
                     line 
                         stroke: $color-disabled !important
+.archive.woocommerce-page 
+    .seo-text
+        background: $color-background-main
+        padding: 0
+        margin-bottom: 20px
+        .seo-text__opener 
+            height: 42px 
+            background-color: $color-background-main
+            background-image: url("data:image/svg+xml,%3Csvg fill='%23' height='40px' width='40px' version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 407.437 407.437' xml:space='preserve'%3E%3Cpolygon points='386.258,91.567 203.718,273.512 21.179,91.567 0,112.815 203.718,315.87 407.437,112.815 '%3E%3C/polygon%3E%3C/svg%3E")
+            +max-screen(1200px)
+                height: 32px 
+                background-size: 28px 
+            +max-screen($breakpoint-md)
+                height: 24px 
+                background-size: 20px 
+        &.seo-text__content--long-opened
+            max-height: 100%            
+        &__content--long
+            max-height: 292px 
+            padding-bottom: 42px 
+            +max-screen(1200px)
+                padding-bottom: 32px
+                max-height: 242px 
+            +max-screen($breakpoint-md)
+                max-height: 224px
+                padding-bottom: 24px
