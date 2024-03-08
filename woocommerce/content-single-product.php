@@ -31,12 +31,12 @@ if ( post_password_required() ) {
 	return;
 }
 $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
-$attachment_ids = $product->get_gallery_image_ids();
-$post_image = get_the_post_thumbnail_url(  );
+
 ?>
+
 <section id="product-<?php the_ID(); ?>" <?php wc_product_class( 'singleProduct', $product ); ?>>
 	<div class="container">
-		<div class="singleProduct__breadcrumbs"><?php woocommerce_breadcrumb(); ?></div>
+		<div class="singleProduct__breadcrumbs"><?php get_template_part('template-parts/parts/breadcrumbs'); ?></div>
 		<div class="singleProduct__content">
 			<div class="singleProduct__galleryWrapper">
 				<div class="singleProduct__gallery">
@@ -97,7 +97,6 @@ $post_image = get_the_post_thumbnail_url(  );
 								$attributelabel = wc_attribute_label( $attribute['name'] );
 								if($attributelabel == 'Colors'):
 									$results = woocommerce_get_product_terms($product->id, $attribute['name']);
-									if(count($results) > 1):
 										foreach($results as $result):?>
 											<?php 
 											$color = get_field('color', 'pa_colors_' . $result->term_id); 
@@ -107,7 +106,6 @@ $post_image = get_the_post_thumbnail_url(  );
 												</div>
 											</div>
 										<?php endforeach; ?>
-									<?php endif; ?>
 								<?php endif; ?>
 							<?php endforeach; ?>
 						</div>
@@ -120,19 +118,35 @@ $post_image = get_the_post_thumbnail_url(  );
 								<?php $attributelabel = wc_attribute_label( $attribute['name'] ); ?>
 								<?php if($attributelabel == 'Storlek'): ?>
 									<?php $results = woocommerce_get_product_terms($product->id, $attribute['name']); ?>
-									<?php if(count($results) > 1): ?>
 										<div class="singleProduct__sizeTitle">Välj storlek</div>
 										<div class="singleProduct__sizeList attributes-picker-list" data-attribute-name="<?php echo $attribute['name']; ?>">
 											<?php foreach($results as $result): ?>
 												<div class="singleProduct__sizeList__item attributes-picker-item" data-attribute="<?php echo $result->slug; ?>"><?php echo $result->name; ?></div>
 											<?php endforeach; ?>
 										</div>
-									<?php endif; ?>
 								<?php endif; ?>
 							<?php endforeach; ?>
 						</div>
 					<?php endif; ?>
 					<div class="singleProduct__purchase">
+						<input
+							type="<?php echo esc_attr( $type ); ?>"
+							<?php echo $readonly ? 'readonly="readonly"' : ''; ?>
+							id="<?php echo esc_attr( $input_id ); ?>"
+							class="<?php echo esc_attr( join( ' ', (array) $classes ) ); ?>"
+							name="<?php echo esc_attr( $input_name ); ?>"
+							value="<?php echo esc_attr( $input_value ); ?>"
+							aria-label="<?php esc_attr_e( 'Product quantity', 'woocommerce' ); ?>"
+							size="4"
+							min="<?php echo esc_attr( $min_value ); ?>"
+							max="<?php echo esc_attr( 0 < $max_value ? $max_value : '' ); ?>"
+							<?php if ( ! $readonly ) : ?>
+								step="<?php echo esc_attr( $step ); ?>"
+								placeholder="<?php echo esc_attr( $placeholder ); ?>"
+								inputmode="<?php echo esc_attr( $inputmode ); ?>"
+								autocomplete="<?php echo esc_attr( isset( $autocomplete ) ? $autocomplete : 'on' ); ?>"
+							<?php endif; ?>
+						/>
 						<?php do_action('woocommerce_product_add_to_cart'); ?>
 					</div>
 					<?php if(have_rows('product_features', 'options')): ?>
@@ -195,7 +209,7 @@ $link = get_field('related_products_link', 'options');
 			</div>
 		<?php endif; ?>
 		<?php 
-		
+		$product_per_page = 5;
 		$related_products = array_filter( array_map( 'wc_get_product', wc_get_related_products( $product->get_id(), $product_per_page, $product->get_upsell_ids() ) ), 'wc_products_array_filter_visible' );
 		$products = wc_products_array_orderby( $related_products, 'rand', 'desc' );
 		?>
@@ -205,7 +219,7 @@ $link = get_field('related_products_link', 'options');
 			$post_object = get_post( $product_id->get_id() );
 			setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found ?>
 
-			<div class="shopPage__listItem latest-products__item<?php if ($slider) : echo ' col-lg-auto'; else : echo ' col-6 col-sm-4 col-md-3'; endif;?>">
+			<div class="shopPage__listItem latest-products__item col-lg-auto">
 
 				<?php wc_get_template_part('content', 'product'); ?>
 
