@@ -2,6 +2,12 @@
     &__item
         padding-top: 1rem
         padding-bottom: 1rem
+        &.col-sm-auto
+            +min-screen($breakpoint-sm)
+                max-width: 25%
+        img
+            +max-screen($breakpoint-sm)
+                max-height: 140px
         &-wrapper
             padding-left: 5px
             padding-right: 5px

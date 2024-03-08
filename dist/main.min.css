@@ -830,6 +830,7 @@ body .woocommerce-message a.button{color:#fff;background:#000;border-radius:0;fo
 .product-cat.product-cat--model .product-cat__item-link{padding-left:0;padding-right:0}
 .contact-us input,.contact-us button{height:54px}
 .contact-us textarea{min-height:160px}
+.features__item.col-sm-auto{max-width:25%}
 }@media(min-width:576px){.container{max-width:540px}
 .container,.container-sm{max-width:540px}
 .col-sm{-ms-flex-preferred-size:0;flex-basis:0;-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;max-width:100%}
@@ -1903,6 +1904,7 @@ body .woocommerce-message a.button{margin-left:12px}
 .shopPage__filters.filters-wrapper{width:calc(50% + 20px);margin-left:-20px}
 .cta--product-customizer{aspect-ratio:370 / 310;padding-left:15px;padding-right:15px}
 .block-image{aspect-ratio:4 / 3}
+.features__item img{max-height:140px}
 }@media print{.d-print-none{display:none !important}
 .d-print-inline{display:inline !important}
 .d-print-inline-block{display:inline-block !important}
