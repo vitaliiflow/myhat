@@ -154,6 +154,7 @@ if(empty($_GET['orderby'])){
                                     <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term->slug; ?>">
                                         <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
                                         <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term->name; ?></div>
+                                        <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php echo category_description($term->term_id); ?></div>
                                     </div>
                                 <?php endforeach; ?>
                             </div>

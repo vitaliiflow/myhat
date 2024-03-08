@@ -31,6 +31,9 @@
                     border: 0
                 &__item 
                     &Title 
+                        cursor: pointer
+                        +max-screen($breakpoint-lg)
+                            width: 100%
                         +min-screen(993px)
                             justify-content: flex-end
                             padding: 0
@@ -66,7 +69,6 @@
                         right: 16px 
             &__item 
                 position: relative
-                cursor: pointer
                 width: 100%
                 &Title 
                     justify-content: center
@@ -96,6 +98,8 @@
                             height: 16px 
                             left: -24px
                 &.sort 
+                    display: flex 
+                    justify-content: flex-end
                     .shopPage__filtersRow__list
                         +max-screen($breakpoint-md)
                             width: 100%
@@ -110,6 +114,7 @@
                             widthL fit-content
                             right: -32px 
                             display: none 
+                            box-shadow: $shadow-default
                             +max-screen(1200px)
                                 padding: 20px 
                                 right: -20px 
@@ -125,6 +130,7 @@
                                 padding: 64px 32px
                                 display: flex 
                                 flex-direction: column 
+                                box-shadow: none 
                             +max-screen($breakpoint-md)
                                 width: 100%
                                 left: -100%
@@ -132,6 +138,7 @@
                             display: flex 
                             margin-bottom: 16px
                             align-items: center
+                            cursor: pointer
                             +max-screen(1200px)
                                 margin-bottom: 8px
                             +max-screen($breakpoint-md)
@@ -142,6 +149,7 @@
                                 position: relative
                                 border: 1px solid $color-text
                                 margin-right: 12px
+                                border-radius: 50%
                                 +max-screen(1200px)
                                     width: 12px 
                                     height: 12px 
@@ -155,18 +163,22 @@
                                     left: 50%
                                     top: 50%
                                     transform: translate(-50%, -50%)
-                                    width: 12px 
-                                    height: 12px 
-                                    background-image: url('../assets/images/icons/tick.svg')
+                                    width: 8px 
+                                    height: 8px 
                                     background-size: contain
                                     background-repeat: no-repeat
                                     background-position: center
                                     opacity: 0
                                     visibility: hidden 
                                     transition: .3s
+                                    background-color: $color-text
+                                    border-radius: 50%
                                     +max-screen(1200px)
-                                        width: 10px 
-                                        height: 10px 
+                                        width: 6px 
+                                        height: 6px 
+                                    +max-screen($breakpoint-md)
+                                        width: 8px 
+                                        height: 8px 
                             &__name 
                                 font-size: 16px
                                 +max-screen(1200px)
@@ -238,8 +250,11 @@
                                         margin-bottom: 4px
                                         position: relative
                                     &__name 
+                                        cursor: pointer
                                         +max-screen($breakpoint-lg)
                                             padding-left: 16px
+                                    &__description 
+                                        display: none
                                     &__checkbox 
                                         +max-screen($breakpoint-lg)
                                             position: absolute
@@ -272,6 +287,7 @@
                                                 opacity: 1
                                     
                             &__title 
+                                cursor: pointer
                                 +max-screen($breakpoint-lg)
                                     position: relative
                                 &::after 

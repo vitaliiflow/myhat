@@ -222,6 +222,7 @@
                     &.has-mobile-icon
                         +max-screen($breakpoint-lg)
                             width: 16.6667%
+                            justify-content: space-between
                         +max-screen($breakpoint-md)
                             width: 33.3% 
                             &:last-child
@@ -251,6 +252,11 @@
                             margin-bottom: 0
                         +max-screen($breakpoint-md)
                             margin-top: 1.56rem
+                        img 
+                            +max-screen($breakpoint-lg)
+                                margin-bottom: 12px
+                            +max-screen($breakpoint-md)
+                                margin-bottom: 8px
                     &:nth-child(1),
                     &:nth-child(2),
                     &:nth-child(3)
@@ -375,6 +381,8 @@
                                 overflow: hidden
                     &__btn 
                         z-index: 1
+                        display: flex 
+                        align-items: center
                         input 
                             font-size: 0
                             width: 2rem 
@@ -467,7 +475,9 @@
             transition: .3s 
             z-index: 999
         +max-screen($breakpoint-md)
-            padding: 1.1112rem 
+            padding: 9px 30px 
+        +max-screen($breakpoint-sm)
+            padding: 9px 20px 
         .header
             &__menu 
                 +max-screen($breakpoint-lg)

@@ -177,6 +177,9 @@ jQuery(document).ready(function ($) {
       sublist.stop().slideToggle();
     });
     $('.shopPage__filtersRow__listItem__sublistItem').click(function () {
+      if ($(this).closest('.shopPage__filtersRow__listItem').attr('data-attr-name') == 'kategori') {
+        $(this).closest('.shopPage__filtersRow__listItem').find('.shopPage__filtersRow__listItem__sublistItem').not($(this)).removeClass('active');
+      }
       $(this).toggleClass('active');
     });
     $('.shopPage__filtersRow__listItem').click(function () {
@@ -376,6 +379,9 @@ jQuery(document).ready(function ($) {
     window.history.pushState('', '', pageLink);
     if (w < 993) {
       $('.shopPage__filtersRow__item.filter').removeClass('opened');
+    }
+    if ($('.shopPage__filtersRow__listItem[data-attr-name="kategori"] .shopPage__filtersRow__listItem__sublistItem.active').length > 0) {
+      $('.seo-text__content').html($('.shopPage__filtersRow__listItem[data-attr-name="kategori"] .shopPage__filtersRow__listItem__sublistItem.active .shopPage__filtersRow__listItem__sublistItem__description').html());
     }
   });
 });
@@ -686,6 +692,12 @@ jQuery(document).ready(function ($) {
 "use strict";
 
 jQuery(document).ready(function ($) {
+  var w = $(window).width();
+  if (w > 769) {
+    $('.singleProduct__accordionItem').first().find('.singleProduct__accordionItem__title').addClass('opened');
+    $('.singleProduct__accordionItem').first().find('.singleProduct__accordionItem__content').slideDown();
+  }
+
   //Product Slider
   $('.singleProduct__gallery .woocommerce-product-gallery__wrapper').slick({
     slidesToShow: 1,

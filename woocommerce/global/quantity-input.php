@@ -19,6 +19,7 @@
  */
 
 defined( 'ABSPATH' ) || exit; ?> 
+	<span class="quantity-btn decrease">-</span>
 	<input
 		type="<?php echo esc_attr( $type ); ?>"
 		<?php echo $readonly ? 'readonly="readonly"' : ''; ?>
@@ -35,5 +36,5 @@ defined( 'ABSPATH' ) || exit; ?>
 			placeholder="<?php echo esc_attr( $placeholder ); ?>"
 			inputmode="<?php echo esc_attr( $inputmode ); ?>"
 			autocomplete="<?php echo esc_attr( isset( $autocomplete ) ? $autocomplete : 'on' ); ?>"
-		<?php endif; ?>
-	/>
+		<?php endif; ?> >
+	<span class="quantity-btn increase">+</span>

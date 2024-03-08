@@ -3,6 +3,7 @@ add_action('woocommerce_product_add_to_cart', 'woocommerce_template_single_add_t
 
 
 
+
 add_filter('term_link', 'remove_product_category_slug', 10, 3);
 
 function remove_product_category_slug($url, $term, $taxonomy) {
@@ -83,3 +84,8 @@ function custom_default_catalog_orderby($sortby) {
 add_filter('woocommerce_default_catalog_orderby', 'custom_default_catalog_orderby');
 
 
+
+
+add_filter('woocommerce_resize_images', static function() {
+   return false;
+});
