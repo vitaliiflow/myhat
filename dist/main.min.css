@@ -1740,9 +1740,10 @@ h6,.h6{font-size:calc(14px + 2 * ((100vw - 320px) / 1040))}
 .header__menu .menu-item .sub-menu .menu-item:last-child{margin-bottom:-1rem}
 .header__menu .menu-item .sub-menu .menu-item a{padding:0;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:reverse;-ms-flex-direction:column-reverse;flex-direction:column-reverse;font-size:.889rem;font-weight:400;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;height:100%}
 .header__menu .menu-item .sub-menu .menu-item a img{margin-bottom:auto;max-width:110px;width:100%;display:block}
-.header__menu .menu-item .sub-menu .menu-item.has-mobile-icon{width:16.6667%}
+.header__menu .menu-item .sub-menu .menu-item.has-mobile-icon{width:16.6667%;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
 .header__menu .menu-item .sub-menu .menu-item.has-mobile-icon a{font-size:.667rem}
 .header__menu .menu-item .sub-menu .menu-item.has-mobile-icon{margin-top:.889rem;margin-bottom:0}
+.header__menu .menu-item .sub-menu .menu-item.has-mobile-icon img{margin-bottom:12px}
 .header__menu .menu-item .sub-menu .menu-item.see-all-items{text-align:center;margin-bottom:0;padding-top:22px}
 .header__menu .menu-item .sub-menu .menu-item.see-all-items a{font-size:.667rem;position:relative;font-weight:700;text-transform:uppercase;display:inline;padding-right:1.1112rem}
 .header__menu .menu-item .sub-menu .menu-item.see-all-items a::after{width:.667rem;height:.556rem;right:0}
@@ -1884,6 +1885,7 @@ h6,.h6{font-size:calc(14px + 2 * ((100vw - 320px) / 1040))}
 .header__menu .menu-item .sub-menu .menu-item.has-mobile-icon:last-child{margin-bottom:0}
 .header__menu .menu-item .sub-menu .menu-item.has-mobile-icon a{font-size:.556rem}
 .header__menu .menu-item .sub-menu .menu-item.has-mobile-icon{margin-top:1.56rem}
+.header__menu .menu-item .sub-menu .menu-item.has-mobile-icon img{margin-bottom:8px}
 .header__menu .menu-item .sub-menu .menu-item:nth-child(1).has-mobile-icon,.header__menu .menu-item .sub-menu .menu-item:nth-child(2).has-mobile-icon,.header__menu .menu-item .sub-menu .menu-item:nth-child(3).has-mobile-icon{margin-top:.889rem;margin-bottom:0}
 .header__menu .menu-item .sub-menu .menu-item.see-all-items a{font-size:.556rem;padding-right:.889rem}
 .header__menu .menu-item .sub-menu .menu-item.see-all-items a::after{width:.556rem;height:.445rem}
