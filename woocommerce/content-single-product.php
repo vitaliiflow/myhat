@@ -104,6 +104,12 @@ $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
 
 				</div>
 				<div class="singleProduct__gallery">
+
+					<div class="product-customizer__wrapper">
+						<?php echo do_shortcode('[fpd]'); ?>
+					</div>
+					
+
 					<?php 
 					global $product;
 
@@ -214,19 +220,18 @@ $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
 						<?php do_action('woocommerce_product_add_to_cart'); ?>
 					</div>
 
-					<div class="product-customizer__wrapper">
-						<a href="#product-customizer-popup" class=" d-block button--black mt-4 mb-4"><?php _e('Customize','myhat');?></a>
-						
+					<div class="product-customizer__trigger-wrapper">
+						<a href="#product-customizer-popup" class="product-customizer__trigger d-block button--black mt-4 mb-4"><?php _e('Customize','myhat');?></a>
 					</div>
 
-					<div id="product-customizer-popup" class="popup-block">
+					<!-- <div id="product-customizer-popup" class="popup-block">
 						<div class="popup-block__wrapper">
 							<div class="popup-block__inner">
 								<div class="popup-block__close"></div>
-								<?php echo do_shortcode('[fpd]'); ?>
+								
 							</div>
 						</div>
-					</div>
+					</div> -->
 					
 					<?php if(have_rows('product_features', 'options')): ?>
 						<div class="singleProduct__featuresList">

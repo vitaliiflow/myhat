@@ -22,4 +22,9 @@ jQuery(document).ready(function ($) {
         });
 
     });
+
+    $(".product-customizer__trigger").on("click", function(){
+        $(".product-customizer__wrapper").toggleClass("active");
+        $(this).text('Hide Customizer');
+    });
 });

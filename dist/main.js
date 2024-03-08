@@ -435,6 +435,10 @@ jQuery(document).ready(function ($) {
       event.stopPropagation();
     });
   });
+  $(".product-customizer__trigger").on("click", function () {
+    $(".product-customizer__wrapper").toggleClass("active");
+    $(this).text('Hide Customizer');
+  });
 });
 "use strict";
 
