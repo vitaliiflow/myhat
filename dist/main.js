@@ -696,6 +696,12 @@ jQuery(document).ready(function ($) {
 "use strict";
 
 jQuery(document).ready(function ($) {
+  var w = $(window).width();
+  if (w > 769) {
+    $('.singleProduct__accordionItem').first().find('.singleProduct__accordionItem__title').addClass('opened');
+    $('.singleProduct__accordionItem').first().find('.singleProduct__accordionItem__content').slideDown();
+  }
+
   //Product Slider
   $('.singleProduct__gallery .woocommerce-product-gallery__wrapper').slick({
     slidesToShow: 1,

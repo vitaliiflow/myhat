@@ -194,17 +194,29 @@
                         text-decoration: none 
                         order: 1
                         font-size: 16px
+                        display: inline-block
+                        width: fit-content
+                        position: relative
                         +max-screen(1200px)
                             font-size: 14px
                         +max-screen($breakpoint-lg)
                             font-size: 12px
                         &::before 
                             content: "Ord pris "
+                        &::after 
+                            content: ""
+                            position: absolute
+                            top: 50%
+                            left: 0
+                            width: 100%
+                            height: 1px
+                            background: $color-background-dark
+                            opacity: 0.5
                     ins 
                         color: $color-red
+                        width: 100% 
                     del,
                     ins
-                        width: 100% 
                         bdi 
                             span  
                                 display: inline-block 
