@@ -68,9 +68,7 @@ jQuery(document).ready(function($){
                             var image = $('<img>').attr('src', brand.logo).attr('alt', brand.name);
                             imgWrapper.append(image);
                             brandLink.append(imgWrapper);
-                        } else {
-                            brandLink.text(brand.name);
-                        }
+                        } 
 
                         brandsList.append(brandItem);
                     });
@@ -124,8 +122,6 @@ jQuery(document).ready(function($){
                             var image = $('<img>').attr('src', brand.logo).attr('alt', brand.name);
                             imgWrapper.append(image);
                             brandLink.append(imgWrapper);
-                        } else {
-                            brandLink.text(brand.name);
                         }
 
                         brandItem.append(brandLink);

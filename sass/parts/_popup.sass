@@ -1,0 +1,56 @@
+.popup-block
+    display: none
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: rgba(255,255,255,0.8)
+    z-index: 1000
+    &__wrapper
+        display: flex
+        flex-direction: column
+        justify-content: center
+        height: 100%
+    &__inner
+        position: relative
+        max-height: 80vh
+        width: 800px
+        max-width: 100%
+        margin-left: auto
+        margin-right: auto
+        padding: 40px
+        box-shadow: $shadow-default
+        background: white
+    &__close
+        position: absolute
+        top: 10px
+        right: 10px
+        width: 32px
+        height: 32px
+        border-radius: 50%
+        // background-color: $color-primary
+        cursor: pointer
+        z-index: 3
+        transition: 0.3s
+        z-index: 100
+        +max-screen($breakpoint-md)
+            width: 40px
+            height: 40px
+            top: -20px
+            right: -10px
+        &:hover
+            transform: rotate(90deg)
+        &:before,&:after
+            content: ''
+            background: #302633
+            height: 2px
+            border-radius: 3px
+            width: 70%
+            top: 50%
+            left: 15%
+            position: absolute
+        &:before
+            transform: translateY(-50%) rotate(45deg)
+        &:after
+            transform: translateY(-50%) rotate(-45deg)
