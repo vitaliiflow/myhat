@@ -51,8 +51,9 @@ function my_wp_nav_menu_objects( $items, $args ) {
 			$item->classes[] .= 'has-mobile-icon';
             
         }
-
-            // $item->title .= $item->object_id;
+        $image_id = get_term_meta( $item->object_id, 'thumbnail_id', true );
+        $post_thumbnail_img = wp_get_attachment_image_src( $image_id, 'thumbnail' );
+        // $item->title .= '<img src="' . $post_thumbnail_img[0] . '"/>';
         
     }
     

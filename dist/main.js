@@ -104,7 +104,16 @@ jQuery(document).ready(function ($) {
       }
     });
   }
+  function removePills() {
+    $('.shopPage__filtersRow__pillsList__itemRemove').click(function () {
+      $(".shopPage__filtersRow__listItem__sublistItem[data-slug=\"".concat($(this).parent().attr('data-term'), "\"]")).removeClass('active');
+      $('.filters-wrapper .shopPage__filtersRow__list__apply .btn').click();
+    });
+  }
   paginationActionUpdate();
+  $(window).on('load', function () {
+    removePills();
+  });
   $(document).ajaxSend(function (event, xhr, settings) {
     if (settings.data.includes('action')) {
       var action = settings.data ? settings.data.split('action=')[1].split('&paged')[0] : '';
@@ -121,6 +130,7 @@ jQuery(document).ready(function ($) {
       var action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
       if (action === 'products_filter') {
         paginationActionUpdate();
+        removePills();
       }
     }
   });
@@ -271,24 +281,28 @@ jQuery(document).ready(function ($) {
     varumarke = varumarke.split(',');
     varumarke.forEach(function (i) {
       $(".shopPage__filtersRow__listItem[data-attr-name=\"varumarke\"] .shopPage__filtersRow__listItem__sublistItem[data-slug=\"".concat(i, "\"]")).addClass('active').css('order', -1);
+      $("<div class=\"shopPage__filtersRow__pillsList__item\" data-term=\"".concat(i, "\"><div class=\"shopPage__filtersRow__pillsList__itemRemove\"></div><div class=\"shopPage__filtersRow__pillsList__itemLabel\">").concat($(".shopPage__filtersRow__listItem[data-attr-name=\"varumarke\"] .shopPage__filtersRow__listItem__sublistItem[data-slug=\"".concat(i, "\"] .shopPage__filtersRow__listItem__sublistItem__name")).html(), "</div></div>")).appendTo('.shopPage__filtersRow__pillsList');
     });
   }
   if (storek != '' && storek != undefined) {
     storek = storek.split(',');
     storek.forEach(function (i) {
       $(".shopPage__filtersRow__listItem[data-attr-name=\"storek\"] .shopPage__filtersRow__listItem__sublistItem[data-slug=\"".concat(i, "\"]")).addClass('active').css('order', -1);
+      $("<div class=\"shopPage__filtersRow__pillsList__item\" data-term=\"".concat(i, "\"><div class=\"shopPage__filtersRow__pillsList__itemRemove\"></div><div class=\"shopPage__filtersRow__pillsList__itemLabel\">").concat($(".shopPage__filtersRow__listItem[data-attr-name=\"storek\"] .shopPage__filtersRow__listItem__sublistItem[data-slug=\"".concat(i, "\"] .shopPage__filtersRow__listItem__sublistItem__name")).html(), "</div></div>")).appendTo('.shopPage__filtersRow__pillsList');
     });
   }
   if (taggar != '' && taggar != undefined) {
     taggar = taggar.split(',');
     taggar.forEach(function (i) {
       $(".shopPage__filtersRow__listItem[data-attr-name=\"taggar\"] .shopPage__filtersRow__listItem__sublistItem[data-slug=\"".concat(i, "\"]")).addClass('active').css('order', -1);
+      $("<div class=\"shopPage__filtersRow__pillsList__item\" data-term=\"".concat(i, "\"><div class=\"shopPage__filtersRow__pillsList__itemRemove\"></div><div class=\"shopPage__filtersRow__pillsList__itemLabel\">").concat($(".shopPage__filtersRow__listItem[data-attr-name=\"taggar\"] .shopPage__filtersRow__listItem__sublistItem[data-slug=\"".concat(i, "\"] .shopPage__filtersRow__listItem__sublistItem__name")).html(), "</div></div>")).appendTo('.shopPage__filtersRow__pillsList');
     });
   }
   if (kategori != '' && kategori != undefined) {
     kategori = kategori.split(',');
     kategori.forEach(function (i) {
       $(".shopPage__filtersRow__listItem[data-attr-name=\"kategori\"] .shopPage__filtersRow__listItem__sublistItem[data-slug=\"".concat(i, "\"]")).addClass('active').css('order', -1);
+      $("<div class=\"shopPage__filtersRow__pillsList__item\" data-term=\"".concat(i, "\"><div class=\"shopPage__filtersRow__pillsList__itemRemove\"></div><div class=\"shopPage__filtersRow__pillsList__itemLabel\">").concat($(".shopPage__filtersRow__listItem[data-attr-name=\"kategori\"] .shopPage__filtersRow__listItem__sublistItem[data-slug=\"".concat(i, "\"] .shopPage__filtersRow__listItem__sublistItem__name")).html(), "</div></div>")).appendTo('.shopPage__filtersRow__pillsList');
     });
   }
 
@@ -328,10 +342,12 @@ jQuery(document).ready(function ($) {
         order = 'DESC';
         break;
     }
+    $('.shopPage__filtersRow__pillsList').html('');
     $('.shopPage__filtersRow__listItem__sublist').each(function () {
       var attrName = $(this).closest('.shopPage__filtersRow__listItem').attr('data-attr-name');
       $(this).find('.shopPage__filtersRow__listItem__sublistItem').each(function () {
         if ($(this).hasClass('active')) {
+          $("<div class=\"shopPage__filtersRow__pillsList__item\" data-term=\"".concat($(this).attr('data-slug'), "\"><div class=\"shopPage__filtersRow__pillsList__itemRemove\"></div><div class=\"shopPage__filtersRow__pillsList__itemLabel\">").concat($(this).find('.shopPage__filtersRow__listItem__sublistItem__name').html(), "</div></div>")).appendTo('.shopPage__filtersRow__pillsList');
           switch (attrName) {
             case 'varumarke':
               varumarke_list.push($(this).attr('data-slug'));
@@ -371,7 +387,7 @@ jQuery(document).ready(function ($) {
     $('.shopPage__list').attr('data-storek', storek_list);
     $('.shopPage__list').attr('data-taggar', taggar_list);
     $('.shopPage__list').attr('data-kategori', kategori_list);
-    var pageLink = window.location['href'].split('?')[0] + "?paged=".concat(paged, "&orderby=").concat(sortType);
+    var pageLink = window.location['origin'] + "/butik/?paged=".concat(paged, "&orderby=").concat(sortType);
     pageLink = updateLink(varumarke_list, 'varumarke_cat=', pageLink);
     pageLink = updateLink(storek_list, 'storek=', pageLink);
     pageLink = updateLink(taggar_list, 'taggaк=', pageLink);
@@ -382,6 +398,14 @@ jQuery(document).ready(function ($) {
     }
     if ($('.shopPage__filtersRow__listItem[data-attr-name="kategori"] .shopPage__filtersRow__listItem__sublistItem.active').length > 0) {
       $('.seo-text__content').html($('.shopPage__filtersRow__listItem[data-attr-name="kategori"] .shopPage__filtersRow__listItem__sublistItem.active .shopPage__filtersRow__listItem__sublistItem__description').html());
+    }
+    if ($('.shopPage__filtersRow__listItem[data-attr-name="kategori"] .shopPage__filtersRow__listItem__sublistItem.active').length == 0) {
+      $('.seo-text__content').html($('.shopPage__filtersRow__itemTitle .shopPage__filtersRow__itemTitle__emptyContent').html());
+    }
+    if ($('.seo-text').prop('scrollHeight') <= Math.ceil($('.seo-text').outerHeight())) {
+      $('.seo-text').removeClass('seo-text__content--long');
+    } else {
+      $('.seo-text').addClass('seo-text__content--long');
     }
   });
 });
@@ -415,9 +439,12 @@ jQuery(document).ready(function ($) {
 
 jQuery(document).ready(function ($) {
   var seoText = $('.seo-text');
-  var seoTextHeight = seoText.height();
+  var seoTextHeight = seoText.prop('scrollHeight');
   console.log(seoTextHeight);
-  if (seoTextHeight > 300) {
+  if (seoTextHeight > 300 && !$('body').hasClass('archive')) {
+    seoText.addClass('seo-text__content--long');
+  }
+  if (seoTextHeight > Math.ceil(seoText.outerHeight()) && $('body').hasClass('archive')) {
     seoText.addClass('seo-text__content--long');
   }
   $(document).on('click', '.seo-text__opener', function () {

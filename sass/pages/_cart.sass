@@ -273,11 +273,15 @@
             order: 1
             +max-screen($breakpoint-lg)
                 order: 0
+            +max-screen($breakpoint-md)
+                margin-bottom: 12px
             & > .actions 
                 display: none 
             .coupon
                 display: flex 
                 padding: 12px 0
+                +max-screen($breakpoint-lg)
+                    padding-bottom: 0
                 button.button 
                     background-color: $color-text 
                     color: $color-white 

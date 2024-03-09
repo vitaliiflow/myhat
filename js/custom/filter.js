@@ -124,24 +124,28 @@ jQuery(document).ready(function($){
         varumarke = varumarke.split(',');
         varumarke.forEach(function(i){
             $(`.shopPage__filtersRow__listItem[data-attr-name="varumarke"] .shopPage__filtersRow__listItem__sublistItem[data-slug="${i}"]`).addClass('active').css('order', -1);
+            $(`<div class="shopPage__filtersRow__pillsList__item" data-term="${i}"><div class="shopPage__filtersRow__pillsList__itemRemove"></div><div class="shopPage__filtersRow__pillsList__itemLabel">${$(`.shopPage__filtersRow__listItem[data-attr-name="varumarke"] .shopPage__filtersRow__listItem__sublistItem[data-slug="${i}"] .shopPage__filtersRow__listItem__sublistItem__name`).html()}</div></div>`).appendTo('.shopPage__filtersRow__pillsList');
         })
     }
     if(storek != '' && storek != undefined){
         storek = storek.split(',');
         storek.forEach(function(i){
             $(`.shopPage__filtersRow__listItem[data-attr-name="storek"] .shopPage__filtersRow__listItem__sublistItem[data-slug="${i}"]`).addClass('active').css('order', -1);
+            $(`<div class="shopPage__filtersRow__pillsList__item" data-term="${i}"><div class="shopPage__filtersRow__pillsList__itemRemove"></div><div class="shopPage__filtersRow__pillsList__itemLabel">${$(`.shopPage__filtersRow__listItem[data-attr-name="storek"] .shopPage__filtersRow__listItem__sublistItem[data-slug="${i}"] .shopPage__filtersRow__listItem__sublistItem__name`).html()}</div></div>`).appendTo('.shopPage__filtersRow__pillsList');
         })
     }
     if(taggar != '' && taggar != undefined){
         taggar = taggar.split(',');
         taggar.forEach(function(i){
             $(`.shopPage__filtersRow__listItem[data-attr-name="taggar"] .shopPage__filtersRow__listItem__sublistItem[data-slug="${i}"]`).addClass('active').css('order', -1);
+            $(`<div class="shopPage__filtersRow__pillsList__item" data-term="${i}"><div class="shopPage__filtersRow__pillsList__itemRemove"></div><div class="shopPage__filtersRow__pillsList__itemLabel">${$(`.shopPage__filtersRow__listItem[data-attr-name="taggar"] .shopPage__filtersRow__listItem__sublistItem[data-slug="${i}"] .shopPage__filtersRow__listItem__sublistItem__name`).html()}</div></div>`).appendTo('.shopPage__filtersRow__pillsList');
         })
     }
     if(kategori != '' && kategori != undefined){
         kategori = kategori.split(',');
         kategori.forEach(function(i){
             $(`.shopPage__filtersRow__listItem[data-attr-name="kategori"] .shopPage__filtersRow__listItem__sublistItem[data-slug="${i}"]`).addClass('active').css('order', -1);
+            $(`<div class="shopPage__filtersRow__pillsList__item" data-term="${i}"><div class="shopPage__filtersRow__pillsList__itemRemove"></div><div class="shopPage__filtersRow__pillsList__itemLabel">${$(`.shopPage__filtersRow__listItem[data-attr-name="kategori"] .shopPage__filtersRow__listItem__sublistItem[data-slug="${i}"] .shopPage__filtersRow__listItem__sublistItem__name`).html()}</div></div>`).appendTo('.shopPage__filtersRow__pillsList');
         })
     }
 
@@ -189,10 +193,13 @@ jQuery(document).ready(function($){
                 break;
         }
 
+        $('.shopPage__filtersRow__pillsList').html('');
+
         $('.shopPage__filtersRow__listItem__sublist').each(function(){
             const attrName = $(this).closest('.shopPage__filtersRow__listItem').attr('data-attr-name');
             $(this).find('.shopPage__filtersRow__listItem__sublistItem').each(function(){
                 if($(this).hasClass('active')){
+                    $(`<div class="shopPage__filtersRow__pillsList__item" data-term="${$(this).attr('data-slug')}"><div class="shopPage__filtersRow__pillsList__itemRemove"></div><div class="shopPage__filtersRow__pillsList__itemLabel">${$(this).find('.shopPage__filtersRow__listItem__sublistItem__name').html()}</div></div>`).appendTo('.shopPage__filtersRow__pillsList');
                     switch(attrName){
                         case 'varumarke': 
                             varumarke_list.push($(this).attr('data-slug'));
@@ -237,8 +244,8 @@ jQuery(document).ready(function($){
         $('.shopPage__list').attr('data-kategori', kategori_list);
 
 
-
-        let pageLink = window.location['href'].split('?')[0] + `?paged=${paged}&orderby=${sortType}`;
+        
+        let pageLink = window.location['origin'] + `/butik/?paged=${paged}&orderby=${sortType}`;
         pageLink = updateLink(varumarke_list, 'varumarke_cat=', pageLink);
         pageLink =  updateLink(storek_list, 'storek=', pageLink);
         pageLink =  updateLink(taggar_list, 'taggaк=', pageLink);
@@ -253,7 +260,23 @@ jQuery(document).ready(function($){
         if($('.shopPage__filtersRow__listItem[data-attr-name="kategori"] .shopPage__filtersRow__listItem__sublistItem.active').length > 0){
             $('.seo-text__content').html($('.shopPage__filtersRow__listItem[data-attr-name="kategori"] .shopPage__filtersRow__listItem__sublistItem.active .shopPage__filtersRow__listItem__sublistItem__description').html());            
         }
+
+        if($('.shopPage__filtersRow__listItem[data-attr-name="kategori"] .shopPage__filtersRow__listItem__sublistItem.active').length == 0){
+            $('.seo-text__content').html($('.shopPage__filtersRow__itemTitle .shopPage__filtersRow__itemTitle__emptyContent').html());
+        }
+
+
+        if($('.seo-text').prop('scrollHeight') <= Math.ceil($('.seo-text').outerHeight())){
+            $('.seo-text').removeClass('seo-text__content--long');
+        } else {
+            $('.seo-text').addClass('seo-text__content--long');
+        }
+
+
+    
     })
+
+    
 });
 
 function updateLink(arr, tax, link){

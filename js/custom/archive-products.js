@@ -99,7 +99,20 @@ jQuery(document).ready(function($){
             }
         });
     }
+    function removePills(){
+        $('.shopPage__filtersRow__pillsList__itemRemove').click(function(){
+            $(`.shopPage__filtersRow__listItem__sublistItem[data-slug="${$(this).parent().attr('data-term')}"]`).removeClass('active');
+            $('.filters-wrapper .shopPage__filtersRow__list__apply .btn').click();
+        })
+    }
     paginationActionUpdate();
+
+
+    $(window).on('load', function(){
+        removePills();
+    })
+
+
     $(document).ajaxSend(function(event, xhr, settings) {
         if(settings.data.includes('action')){
             const action = settings.data ? settings.data.split('action=')[1].split('&paged')[0] : '';
@@ -119,6 +132,7 @@ jQuery(document).ready(function($){
             const action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
             if (action === 'products_filter') {
                 paginationActionUpdate();
+                removePills();
             }
         }
     })
