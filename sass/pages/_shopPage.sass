@@ -45,30 +45,6 @@
         +max-screen($breakpoint-md)
             max-width: 600px 
             margin: auto 
-        &.loading 
-            position: relative
-            &::before 
-                content: ""
-                position: absolute
-                left: -20px 
-                top: -20px 
-                width: calc( 100% + 40px )
-                height: calc( 100% + 20px )
-                background-color: rgba(255, 255, 255, 0.7)
-                z-index: 10
-            &::after 
-                content: ""
-                width: 64px 
-                height: 64px 
-                position: absolute 
-                left: 50% 
-                top: 50%
-                transform: translate(-50%, -50%)
-                background-image: url('../assets/images/loading-gif.gif')
-                background-size: contain
-                background-position: center
-                background-repeat: no-repeat
-                z-index: 11
         ul.products
             display: flex 
             flex-wrap: wrap
@@ -323,4 +299,27 @@
             +max-screen($breakpoint-md)
                 max-width: 600px
                 margin: auto
-            
+body.loading 
+    position: relative
+    &::before 
+        content: ""
+        position: fixed 
+        left: -20px 
+        top: -20px 
+        width: calc( 100% + 40px )
+        height: calc( 100% + 20px )
+        background-color: rgba(255, 255, 255, 0.7)
+        z-index: 100
+    &::after 
+        content: ""
+        width: 64px 
+        height: 64px 
+        position: fixed  
+        left: 50% 
+        top: 50%
+        transform: translate(-50%, -50%)
+        background-image: url('../assets/images/loading-gif.gif')
+        background-size: contain
+        background-position: center
+        background-repeat: no-repeat
+        z-index: 101

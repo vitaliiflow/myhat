@@ -385,6 +385,240 @@ function products_pagination() {
 
 
 
+//Change filters
+add_action('wp_ajax_nopriv_changing_filters', 'changing_filters');
+add_action('wp_ajax_changing_filters', 'changing_filters');
+function changing_filters() {
+    if(!empty($_POST['varumarke'])):
+        $varumarke = $_POST['varumarke'];
+    endif;
+    if(!empty($_POST['storek'])):
+        $storek = $_POST['storek'];
+    endif;
+    if(!empty($_POST['taggar'])):
+        $taggar = $_POST['taggar'];
+    endif;
+    if(!empty($_POST['kategori'])):
+        $kategori = $_POST['kategori'];
+    endif;
+
+    $args = array(
+        'post_type' => 'product',
+        'post_status'    => array( 'publish' ),
+        'posts_per_page' => -1,
+        'meta_query'     => array(
+            array(
+                'key'     => '_stock_status',
+                'value'   => 'instock',
+                'compare' => '=',
+            ),
+        ),
+        'tax_query' => array(),
+    );
+
+    if(!empty($metaKey)){
+        $args['meta_key'] = $metaKey;
+    }
+
+    if(!empty($varumarke)){
+        $varumarke_array = array(
+            'taxonomy' => 'varumarke',
+            'field' => 'slug',
+            'terms' => $varumarke,
+        );
+        array_push($args["tax_query"], $varumarke_array);
+    }
+    if(!empty($storek)){
+        $storek_array = array(
+            'taxonomy' => 'pa_storlek',
+            'field' => 'slug',
+            'terms' => $storek,
+        );
+        array_push($args["tax_query"], $storek_array);
+    }
+    if(!empty($taggar)){
+        $taggar_array = array(
+            'taxonomy' => 'product_tag',
+            'field' => 'slug',
+            'terms' => $taggar,
+        );
+        array_push($args["tax_query"], $taggar_array);
+    }
+    if(!empty($kategori)){
+        $kategori_array = array(
+            'taxonomy' => 'product_cat',
+            'field' => 'slug',
+            'terms' => $kategori,
+        );
+        array_push($args["tax_query"], $kategori_array);
+    }
+
+    $query = new WP_Query($args);
+    
+    $list_varumarke = array();
+    $list_storek = array();
+    $list_taggar = array();
+    $list_categories = array();
+    
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+    
+            $post_terms = wp_get_post_terms(get_the_ID(), 'varumarke'); // Замініть 'your_taxonomy' на вашу таксономію
+            $product_attributes = wc_get_product_terms(get_the_ID(), 'pa_storlek');
+            $product_taggar = wc_get_product_terms(get_the_ID(), 'product_tag');
+            $product_cat = wc_get_product_terms(get_the_ID(), 'product_cat');
+
+
+            foreach ($post_terms as $term) {
+                if(!in_array($term->slug, $varumarke)){
+                    $list_varumarke[$term->term_id] = array('name' => $term->name, 'slug' => $term->slug, 'id' => $term->term_id);
+                }
+            }
+            foreach ($product_attributes as $term) {
+                if(!in_array($term->slug, $storek)){
+                    $list_storek[$term->term_id] = array('name' => $term->name, 'slug' => $term->slug, 'id' => $term->term_id);
+                }
+            }
+            foreach ($product_taggar as $term) {
+                if(!in_array($term->slug, $taggar)){
+                    $list_taggar[$term->term_id] = array('name' => $term->name, 'slug' => $term->slug, 'id' => $term->term_id);
+                }
+            }
+            foreach ($product_cat as $term) {
+                if(!in_array($term->slug, $kategori)){
+                    $list_categories[$term->term_id] = array('name' => $term->name, 'slug' => $term->slug, 'id' => $term->term_id);
+                }
+            }
+        }
+        wp_reset_postdata();
+    }
+
+    ?>
+    <div class="shopPage__filtersRow__listClose mobile-toggler"></div>
+    <?php 
+    if ( (!empty($list_varumarke) && !is_wp_error( $list_varumarke )) || !empty($varumarke) ):
+    ?>
+        <div class="shopPage__filtersRow__listItem opened" data-attr-name="varumarke">
+            <div class="shopPage__filtersRow__listItem__title">VARUMÄRKE</div>
+            <div class="shopPage__filtersRow__listItem__sublist" style="display: block;">
+                <div class="shopPage__filtersRow__listItem__sublistItems">
+                    <?php if(!empty($varumarke)): ?>
+                        <?php foreach($varumarke as $term): ?>
+                            <?php 
+                            $full_term = get_term_by('slug', $term, 'varumarke');
+                            ?>
+                            <div class="shopPage__filtersRow__listItem__sublistItem active" data-slug="<?php echo $term; ?>">
+                                <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
+                                <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $full_term->name; ?></div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                    <?php foreach($list_varumarke as $term): ?>
+                        <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term['slug']; ?>">
+                            <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
+                            <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term['name']; ?></div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+    <?php 
+    if ( (!empty($list_storek) && !is_wp_error( $list_storek )) || !empty($storek) ):
+    ?>
+        <div class="shopPage__filtersRow__listItem" data-attr-name="storek">
+            <div class="shopPage__filtersRow__listItem__title">STORLEK</div>
+            <div class="shopPage__filtersRow__listItem__sublist">
+                <div class="shopPage__filtersRow__listItem__sublistItems">
+                    <?php if(!empty($storek)): ?>
+                        <?php foreach($storek as $term): ?>
+                            <?php 
+                            $full_term = get_term_by('slug', $term, 'pa_storlek');
+                            ?>
+                            <div class="shopPage__filtersRow__listItem__sublistItem active" data-slug="<?php echo $term; ?>">
+                                <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
+                                <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $full_term->name; ?></div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                    <?php foreach($list_storek as $term): ?>
+                        <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term['slug']; ?>">
+                            <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
+                            <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term['name']; ?></div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+    <?php 
+    if ( (!empty($list_taggar) && !is_wp_error( $list_taggar )) || !empty($taggar) ):
+    ?>
+        <div class="shopPage__filtersRow__listItem" data-attr-name="taggar">
+            <div class="shopPage__filtersRow__listItem__title">TAGGAR</div>
+            <div class="shopPage__filtersRow__listItem__sublist">
+                <div class="shopPage__filtersRow__listItem__sublistItems">
+                    <?php if(!empty($taggar)): ?>
+                        <?php foreach($taggar as $term): ?>
+                            <?php 
+                            $full_term = get_term_by('slug', $term, 'product_tag');
+                            ?>
+                            <div class="shopPage__filtersRow__listItem__sublistItem active" data-slug="<?php echo $term; ?>">
+                                <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
+                                <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $full_term->name; ?></div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                    <?php foreach($list_taggar as $term): ?>
+                        <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term['slug']; ?>">
+                            <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
+                            <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term['name']; ?></div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+    <?php 
+    if ( !empty($list_categories) && !is_wp_error( $list_categories ) ):
+    ?>
+        <div class="shopPage__filtersRow__listItem" data-attr-name="kategori">
+            <div class="shopPage__filtersRow__listItem__title">KATEGORI</div>
+            <div class="shopPage__filtersRow__listItem__sublist">
+                <div class="shopPage__filtersRow__listItem__sublistItems">
+                    <?php if(!empty($kategori)): ?>
+                        <?php foreach($kategori as $term): ?>
+                            <?php 
+                            $full_term = get_term_by('slug', $term, 'product_cat');
+                            ?>
+                            <div class="shopPage__filtersRow__listItem__sublistItem active" data-slug="<?php echo $term; ?>">
+                                <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
+                                <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $full_term->name; ?></div>
+                                <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php echo category_description($full_term->term_id); ?></div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                    <?php foreach($list_categories as $term): ?>
+                        <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term['slug']; ?>">
+                            <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
+                            <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term['name']; ?></div>
+                            <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php echo category_description($term['id']); ?></div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+    <div class="shopPage__filtersRow__list__apply">
+        <div class="btn button--black">APPLY</div>
+    </div>
+
+    
+    <?php die();
+}
+
+
 //Ajax Search Brands
 add_action('wp_ajax_nopriv_search_brands', 'search_brands');
 add_action('wp_ajax_search_brands', 'search_brands');

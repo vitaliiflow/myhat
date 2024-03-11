@@ -117,12 +117,17 @@ jQuery(document).ready(function($){
         if(settings.data.includes('action')){
             const action = settings.data ? settings.data.split('action=')[1].split('&paged')[0] : '';
             if (action && (action === 'products_pagination' || action === 'products_filter' || action === 'products_sorting')) {
-                $('.shopPage__list').addClass('loading');
+                $('body').addClass('loading');
             }
         }
     });
-    $(document).ajaxComplete(function(){
-        $('.shopPage__list').removeClass('loading');
+    $(document).ajaxComplete(function(event, xhr, settings){
+        if(settings.data.includes('action')){
+            const action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
+            if(action && (action === 'products_pagination' || action === 'changing_filters' || action === 'products_sorting')){
+                $('body').removeClass('loading');
+            }
+        }
     })
 
 

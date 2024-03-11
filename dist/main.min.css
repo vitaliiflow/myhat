@@ -378,9 +378,6 @@ a.text-dark:hover,a.text-dark:focus{color:#121416 !important}
 .shopPage__text{margin-bottom:56px}
 .shopPage__text .section{padding:0}
 .shopPage__list{width:75%}
-.shopPage__list.loading{position:relative}
-.shopPage__list.loading::before{content:"";position:absolute;left:-20px;top:-20px;width:calc(100% + 40px);height:calc(100% + 20px);background-color:rgba(255,255,255,0.7);z-index:10}
-.shopPage__list.loading::after{content:"";width:64px;height:64px;position:absolute;left:50%;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);background-image:url("../assets/images/loading-gif.gif");background-size:contain;background-position:center;background-repeat:no-repeat;z-index:11}
 .shopPage__list ul.products{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;margin:0 -15px;margin-bottom:-52px}
 .shopPage__listItem{margin-bottom:52px}
 .shopPage__listItem__image{position:relative;padding-bottom:85%;margin-bottom:32px}
@@ -419,6 +416,9 @@ a.text-dark:hover,a.text-dark:focus{color:#121416 !important}
 .archive.woocommerce-page .seo-text.seo-text__content--long-opened{max-height:100%}
 .archive.woocommerce-page .seo-text.seo-text__content--long-opened{-webkit-line-clamp:initial}
 .archive.woocommerce-page .seo-text__content--long{padding-bottom:42px}
+body.loading{position:relative}
+body.loading::before{content:"";position:fixed;left:-20px;top:-20px;width:calc(100% + 40px);height:calc(100% + 20px);background-color:rgba(255,255,255,0.7);z-index:100}
+body.loading::after{content:"";width:64px;height:64px;position:fixed;left:50%;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);background-image:url("../assets/images/loading-gif.gif");background-size:contain;background-position:center;background-repeat:no-repeat;z-index:101}
 .orderThanks{padding:80px 0;text-align:center}
 .orderThanks__subtitle{font-weight:400}
 .orderThanks__buttons{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;margin:auto;width:-webkit-min-content;width:-moz-min-content;width:min-content;margin-top:48px}
