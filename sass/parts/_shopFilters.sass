@@ -27,17 +27,21 @@
                 margin-right: -20px
             .shopPage__filtersRow
                 border-bottom: 1px solid $color-text
+                display: flex 
+                flex-direction: row 
                 +max-screen($breakpoint-lg)
                     border: 0
                 &__item 
                     &Title 
-                        cursor: pointer
+                        align-items: flex-end
                         +max-screen($breakpoint-lg)
                             width: 100%
                         +min-screen(993px)
                             justify-content: flex-end
                             padding: 0
                             padding-bottom: 16px
+                        span  
+                            cursor: pointer
                 &__list 
                     &Wrapper 
                         display: block
@@ -55,6 +59,37 @@
             +max-screen($breakpoint-lg)
                 flex-direction: row 
                 padding-right: 0
+            &__pillsList 
+                width: 70% 
+                display: flex 
+                margin: 0 -8px 
+                margin-bottom: 8px
+                align-items: flex-start
+                flex-wrap: wrap 
+                +max-screen($breakpoint-lg)
+                    display: none 
+                &__item 
+                    margin: 0 8px 
+                    margin-bottom: 8px
+                    position: relative
+                    &Label
+                        padding: 6px 12px 
+                        padding-left: 26px
+                        border-radius: 10px 
+                        border: 1px solid $color-text
+                        line-height: 1
+                    &Remove 
+                        width: 12px 
+                        height: 12px 
+                        background-image: url('../assets/images/icons/close.svg')
+                        background-size: contain
+                        background-repeat: no-repeat
+                        background-position: center
+                        position: absolute
+                        top: 50%
+                        left: 8px 
+                        transform: translateY(-50%)
+                        cursor: pointer
             &__list 
                 &Close 
                     +max-screen($breakpoint-lg)
@@ -100,6 +135,10 @@
                 &.sort 
                     display: flex 
                     justify-content: flex-end
+                    width: auto 
+                    margin-left: auto
+                    +max-screen($breakpoint-lg)
+                        width: 100%
                     .shopPage__filtersRow__list
                         +max-screen($breakpoint-md)
                             width: 100%
@@ -181,6 +220,7 @@
                                         height: 8px 
                             &__name 
                                 font-size: 16px
+                                white-space: nowrap 
                                 +max-screen(1200px)
                                     font-size: 14px
                             &.active .shopPage__filtersRow__listItem__checkbox 
@@ -192,6 +232,7 @@
                             display: block 
                             padding: 12px 24px
                             text-align: center
+                            cursor: pointer
                             +max-screen(1200px)
                                 font-size: 14px 
                                 padding: 8px 
@@ -215,6 +256,8 @@
                 &.filter 
                     .shopPage__filtersRow__itemTitle
                         +min-screen(993px)
+                            display: none 
+                        &__emptyContent 
                             display: none 
                     .shopPage__filtersRow__list
                         &Wrapper 
@@ -304,6 +347,7 @@
                                         background-position: center
                                         background-repeat: no-repeat
                         &__apply 
+                            cursor: pointer
                             +max-screen($breakpoint-lg)
                                 margin-top: auto
                             .btn

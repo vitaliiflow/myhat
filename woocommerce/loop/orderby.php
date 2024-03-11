@@ -52,6 +52,8 @@ if(empty($_GET['orderby'])){
 ?>
 <div class="shopPage__filters sort-wrapper desktop-lg">
     <div class="shopPage__filtersRow">  
+        <div class="shopPage__filtersRow__pillsList">
+        </div>
         <div class="shopPage__filtersRow__item sort">
             <div class="shopPage__filtersRow__itemTitle mobile-toggler"><span>Sortering</span></div>
             <div class="shopPage__filtersRow__itemOverlay mobile-toggler"></div>
@@ -88,7 +90,17 @@ if(empty($_GET['orderby'])){
 <div class="shopPage__filters filters-wrapper desktop-lg">
     <div class="shopPage__filtersRow">
         <div class="shopPage__filtersRow__item filter">
-            <div class="shopPage__filtersRow__itemTitle mobile-toggler"><span><img src="<?php echo get_template_directory_uri(  ) ?>/assets/images/icons/settings.png" alt="">Filter</span></div>
+            <div class="shopPage__filtersRow__itemTitle mobile-toggler">
+                <span><img src="<?php echo get_template_directory_uri(  ) ?>/assets/images/icons/settings.png" alt="">Filter</span>
+                <div class="shopPage__filtersRow__itemTitle__emptyContent">
+                    <?php 
+                    $page_id = get_option( 'woocommerce_shop_page_id' ); ;
+                    $page_content = get_post_field( 'post_content', $page_id );
+                    $content = '<h2>' . get_post_field( 'post_title', $page_id ) . '</h2>' . $page_content;
+                    echo $content;
+                    ?>
+                </div>
+            </div>
             <div class="shopPage__filtersRow__itemOverlay mobile-toggler"></div>
             <div class="shopPage__filtersRow__listWrapper">
                 <div class="shopPage__filtersRow__listClose mobile-toggler"></div>
