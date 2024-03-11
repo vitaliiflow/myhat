@@ -25,6 +25,10 @@ jQuery(document).ready(function ($) {
 
     $(".product-customizer__trigger").on("click", function(){
         $(".product-customizer__wrapper").toggleClass("active");
-        $(this).text('Hide Customizer');
+        if ($(this).text() === 'Hide Customizer') {
+            $(this).text('Show Customizer');
+        } else {
+            $(this).text('Hide Customizer');
+        }
     });
 });
