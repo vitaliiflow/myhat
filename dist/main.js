@@ -592,16 +592,16 @@ jQuery(document).ready(function ($) {
         brandsList.empty();
         if (response.success && response.data.length > 0) {
           response.data.forEach(function (brand) {
-            var brandItem = $('<li>').addClass('col-4 col-sm-3 col-md-2 brands-page__item');
-            var brandLink = $('<a>').attr('href', brand.url).addClass('brands-page__item-link');
             if (brand.logo) {
+              var brandItem = $('<li>').addClass('col-4 col-sm-3 col-md-2 brands-page__item');
+              var brandLink = $('<a>').attr('href', brand.url).addClass('brands-page__item-link');
               var imgWrapper = $('<div>').addClass('img-wrapper d-flex');
               var image = $('<img>').attr('src', brand.logo).attr('alt', brand.name);
               imgWrapper.append(image);
               brandLink.append(imgWrapper);
+              brandItem.append(brandLink);
+              brandsList.append(brandItem);
             }
-            brandItem.append(brandLink);
-            brandsList.append(brandItem);
           });
         } else {
           brandsList.html('<div>' + codelibry.strings.noBrandsFound + '</div>');
