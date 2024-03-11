@@ -184,6 +184,7 @@
                                 margin-bottom: 12px
                             &__checkbox 
                                 width: 14px 
+                                min-width: 14px 
                                 height: 14px 
                                 position: relative
                                 border: 1px solid $color-text
@@ -191,10 +192,12 @@
                                 border-radius: 50%
                                 +max-screen(1200px)
                                     width: 12px 
+                                    min-width: 12px 
                                     height: 12px 
                                     margin-right: 8px
                                 +max-screen($breakpoint-md)
                                     width: 14px 
+                                    min-width: 14px 
                                     height: 14px 
                                 &::after 
                                     content: ""
@@ -223,6 +226,8 @@
                                 white-space: nowrap 
                                 +max-screen(1200px)
                                     font-size: 14px
+                                +max-screen($breakpoint-md)
+                                    white-space: wrap 
                             &.active .shopPage__filtersRow__listItem__checkbox 
                                 &::after 
                                     opacity: 1 

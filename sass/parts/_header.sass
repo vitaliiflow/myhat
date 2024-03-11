@@ -468,7 +468,7 @@
             width: 100% 
             height: 100% 
             background-color: $color-background-main 
-            padding: 1.778rem 
+            padding: 1.1112rem 30px 
             display: flex 
             flex-direction: column 
             overflow: scroll 
@@ -478,6 +478,8 @@
             padding: 9px 30px 
         +max-screen($breakpoint-sm)
             padding: 9px 20px 
+        &__top 
+            position: relative
         .header
             &__menu 
                 +max-screen($breakpoint-lg)
@@ -498,11 +500,10 @@
                 +max-screen($breakpoint-lg)
                     width: 1.334rem 
                     height: 1.334rem 
-                    top: 42px 
-                    right: 1.778rem 
+                    top: 50% 
+                    right: 0 
+                    transform: translateY(-50%)
                 +max-screen($breakpoint-md)
-                    top: 2rem 
-                    right: 1.1112rem
                     width: 1.1112rem 
                     height: 1.1112rem 
                 &::before,

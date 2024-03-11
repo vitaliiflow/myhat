@@ -68,6 +68,114 @@
         position: relative
         img 
             width: 100%
+        
+        &Wrapper 
+            width: 50% 
+            padding: 0 20px
+            position: relative
+            +max-screen($breakpoint-lg)
+                width: 45%
+                padding: 0 15px 
+            +max-screen($breakpoint-md)
+                width: 100% 
+        &Slider 
+            position: fixed 
+            top: 0
+            left: 0
+            width: 100% 
+            height: 100%
+            z-index: 200
+            visibility: hidden
+            opacity: 0
+            transition: .5s 
+            &.active 
+                visibility: visible
+                opacity: 1
+            .woocommerce-product-gallery__wrapper
+                position: absolute
+                left: 50% 
+                z-index: 1
+                top: 50%
+                transform: translate(-50%, -50%)
+                width: 650px 
+                +max-screen(1440px)
+                    width: 600px 
+                +max-screen(1200px)
+                    width: 550px 
+                +max-screen($breakpoint-lg)
+                    width: 80vw 
+                    max-width: 550px 
+                +max-screen($breakpoint-md)
+                    width: 65vw 
+                img 
+                    width: 100%
+                ul.slick-dots 
+                    li 
+                        opacity: 0.9
+                        background-color: $color-white
+                        &.slick-active 
+                            opacity: 1
+                img 
+                    max-height: 75vh 
+                    object-fit: cover 
+                .slick-slide 
+                    padding: 0
+            &__close 
+                width: 32px 
+                height: 32px 
+                position: absolute 
+                top: 64px 
+                right: 64px 
+                background-image: url('../assets/images/icons/close.svg')
+                background-size: contain
+                background-position: center
+                background-repeat: no-repeat
+                cursor: pointer
+                +max-screen(1200px)
+                    top: 42px 
+                    right: 42px 
+                    width: 24px 
+                    height: 24px 
+
+        &Overlay
+            position: absolute
+            left: 0
+            top: 0
+            width: 100% 
+            height: 100%
+            background-color: rgba( 0, 0, 0, 0.3)
+    .woocommerce-product-gallery__wrapper
+        .slick-arrow 
+            position: absolute 
+            top: 50%
+            background-color: transparent 
+            font-size: 0
+            width: 32px 
+            height: 64px 
+            background-image: url('../assets/images/icons/white-arrow.png')
+            background-size: contain
+            background-repeat: no-repeat 
+            background-position: center
+            padding: 0
+            +max-screen(1200px)
+                width: 26px 
+                height: 48px 
+            +max-screen($breakpoint-md)
+                width: 22px 
+                height: 42px 
+            +max-screen($breakpoint-sm)
+                width: 18px 
+                height: 36px 
+        .slick-next 
+            right: -48px 
+            transform: translateY(-50%)
+            +max-screen($breakpoint-sm)
+                right: -42px
+        .slick-prev
+            left: -48px 
+            transform: translateY(-50%) rotate(180deg)
+            +max-screen($breakpoint-sm)
+                left: -42px
         .slick-dots
             display: flex
             justify-content: center
@@ -87,15 +195,6 @@
                     margin: 0 3px 
                 &.slick-active 
                     background-color: $color-text
-        &Wrapper 
-            width: 50% 
-            padding: 0 20px
-            position: relative
-            +max-screen($breakpoint-lg)
-                width: 45%
-                padding: 0 15px 
-            +max-screen($breakpoint-md)
-                width: 100% 
     &__data
         position: relative
         +max-screen($breakpoint-md)
