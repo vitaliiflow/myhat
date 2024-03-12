@@ -163,7 +163,6 @@ jQuery(document).ready(function ($) {
     $('#shipping_method > li').click(function () {
       $('#shipping_method > li').removeClass('checked');
       $(this).addClass('checked');
-      console.log($(this));
     });
   }
   $('.cart__couponToggler').click(function () {
@@ -173,7 +172,8 @@ jQuery(document).ready(function ($) {
   $(document).ajaxSend(function (event, xhr, settings) {
     if (settings.data !== undefined) {
       cartActions();
-      if (!settings.data.includes('shipping_method')) {
+      console.log(settings.data);
+      if (settings.data.includes('update_cart') || settings.data.includes('time')) {
         $('.cart__couponToggler').click(function () {
           $(this).parent().find('.actions').stop().slideToggle();
         });

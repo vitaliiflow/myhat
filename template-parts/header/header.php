@@ -40,9 +40,10 @@ $logo = get_field('header_logo', 'options');
         <div class="header__iconsList__item cart">
 
           <?php if ( class_exists( 'WooCommerce' ) ) : ?>
-            <a href="<?php echo wc_get_cart_url(); ?>"><img src="<?php echo get_template_directory_uri(  ) ?>/assets/images/icons/shopping-bag.png" alt=""></a>
+            <a href="<?php echo wc_get_cart_url(); ?>"><img src="<?php echo get_template_directory_uri(  ) ?>/assets/images/icons/shopping-bag.png" alt="">
+            <div class="header__iconsList__item cart__count"><?php echo count( WC()->cart->get_cart() ) ?></div>
+          </a>
           <?php endif; ?>
-
         </div>
       </div>
       <div class="header__burger header--toggler">
