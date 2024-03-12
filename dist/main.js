@@ -19,16 +19,13 @@ jQuery(document).ready(function ($) {
         varumarke = $('.shopPage__list').attr('data-varumarke'),
         storek = $('.shopPage__list').attr('data-storek'),
         taggar = $('.shopPage__list').attr('data-taggar'),
-        kategori = $('.shopPage__list').attr('data-kategori');
+        kategori = $('.shopPage__list').attr('data-kategori'),
+        searcText = $('.shopPage__list').attr('data-search');
       var paged = parseInt($('.shopPage__list').attr('data-paged')),
         orderby,
         order,
         metaKey = '',
-        separator,
-        searcText = '';
-      if ($('body').hasClass('search')) {
-        searcText = $('.shopPage__list').attr('data-search');
-      }
+        separator;
       if ($(this).hasClass('next')) {
         paged = ++paged;
       }
@@ -218,15 +215,12 @@ jQuery(document).ready(function ($) {
       varumarke = $('.shopPage__list').attr('data-varumarke'),
       storek = $('.shopPage__list').attr('data-storek'),
       taggar = $('.shopPage__list').attr('data-taggar'),
-      kategori = $('.shopPage__list').attr('data-kategori');
+      kategori = $('.shopPage__list').attr('data-kategori'),
+      searchText = $('.shopPage__list').attr('data-search');
     var order,
       orderby,
       separator,
-      metaKey = '',
-      searchText = '';
-    if ($('body').hasClass('search')) {
-      searchText = $('.shopPage__list').attr('data-search');
-    }
+      metaKey = '';
     switch (sortType) {
       case 'popularity':
         orderby = 'popularity';
@@ -346,7 +340,8 @@ jQuery(document).ready(function ($) {
         orderby = '',
         metaKey = '';
       var paged = $('.shopPage__list').attr('data-paged'),
-        sortType = $('.shopPage__list').attr('data-sort');
+        sortType = $('.shopPage__list').attr('data-sort'),
+        searchText = $('.shopPage__list').attr('data-search');
       switch (sortType) {
         case 'popularity':
           orderby = 'popularity';
@@ -407,7 +402,8 @@ jQuery(document).ready(function ($) {
           varumarke: varumarke_list,
           storek: storek_list,
           taggar: taggar_list,
-          kategori: kategori_list
+          kategori: kategori_list,
+          searchText: searchText
         },
         success: function success(response) {
           $('.shopPage__list').html(response);
@@ -418,6 +414,7 @@ jQuery(document).ready(function ($) {
       $('.shopPage__list').attr('data-taggar', taggar_list);
       $('.shopPage__list').attr('data-kategori', kategori_list);
       var pageLink = window.location['origin'] + "/butik/?paged=".concat(paged, "&orderby=").concat(sortType);
+      pageLink = updateLink(searchText, 's=', pageLink);
       pageLink = updateLink(varumarke_list, 'varumarke_cat=', pageLink);
       pageLink = updateLink(storek_list, 'storek=', pageLink);
       pageLink = updateLink(taggar_list, 'taggaк=', pageLink);
@@ -445,7 +442,8 @@ jQuery(document).ready(function ($) {
           varumarke: varumarke_list,
           storek: storek_list,
           taggar: taggar_list,
-          kategori: kategori_list
+          kategori: kategori_list,
+          searchText: searchText
         },
         success: function success(response) {
           $('.filter .shopPage__filtersRow__listWrapper').html(response);

@@ -68,6 +68,10 @@ $args = array(
 );
 
 
+if(!empty($_GET['s'])){
+    $args['s'] = $_GET['s'];
+}
+
 if(!empty($term_id) && !empty($taxonomy_slug)) {
     if(gettype($term_id) == 'string'){
         $term_id = [$term_id];

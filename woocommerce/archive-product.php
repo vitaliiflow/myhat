@@ -49,6 +49,9 @@ get_header( 'shop' );
                 <div class="shopPage__text"><?php echo wpautop($page_content); ?></div>
             </div> -->
             <?php 
+            if(!empty($_GET['s'])):
+                $searchText = $_GET['s'];
+            endif;
             if(!empty($_GET['varumarke_cat'])):
                 $varumarke = explode(',', $_GET['varumarke_cat']);
             else:
@@ -133,6 +136,9 @@ get_header( 'shop' );
                 'tax_query' => array(),
             );
 
+            if(!empty($searchText)){
+                $args['s'] = $searchText;
+            }
 
             if(!empty($metaKey)){
                 $args['meta_key'] = $metaKey;
@@ -220,7 +226,7 @@ get_header( 'shop' );
             if ( $the_query->have_posts() ) { ?>
                 <?php $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
                 <?php do_action( 'woocommerce_before_shop_loop' ); ?>
-                <div class="shopPage__list" data-paged="<?php echo $paged; ?>" data-sort="<?php echo $settedOrder; ?>"<?php if(sizeof($varumarke) > 1 || $varumarke[0] != ''): ?> data-varumarke="<?php echo implode(',', $varumarke); ?>"<?php endif; ?><?php if(sizeof($storek) > 1 || $storek[0] != ''): ?> data-storek="<?php echo implode(',', $storek); ?>"<?php endif; ?><?php if(sizeof($taggar) > 1 || $taggar[0] != ''): ?> data-taggar="<?php echo implode(',', $taggar); ?>"<?php endif; ?><?php if(sizeof($kategori) > 1 || $kategori[0] != ''): ?> data-kategori="<?php echo implode(',', $kategori); ?>"<?php endif; ?>>
+                <div class="shopPage__list" data-paged="<?php echo $paged; ?>" data-sort="<?php echo $settedOrder; ?>"<?php if(sizeof($varumarke) > 1 || $varumarke[0] != ''): ?> data-varumarke="<?php echo implode(',', $varumarke); ?>"<?php endif; ?><?php if(sizeof($storek) > 1 || $storek[0] != ''): ?> data-storek="<?php echo implode(',', $storek); ?>"<?php endif; ?><?php if(sizeof($taggar) > 1 || $taggar[0] != ''): ?> data-taggar="<?php echo implode(',', $taggar); ?>"<?php endif; ?><?php if(sizeof($kategori) > 1 || $kategori[0] != ''): ?> data-kategori="<?php echo implode(',', $kategori); ?>"<?php endif; ?><?php if($searchText): ?> data-search="<?php echo $searchText; ?>"<?php endif; ?>>
                     <?php 
                     	woocommerce_product_loop_start();
 
