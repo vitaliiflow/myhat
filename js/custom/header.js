@@ -12,8 +12,17 @@ jQuery(document).ready(function($){
     $(this).closest('.menu-item-has-children').toggleClass('closed');
     $(this).closest('.menu-item-has-children').children('.sub-menu').stop().slideToggle();
   });
-  $('.header__mobileMenu .menu-item-has-children .menu-item__parent a').click();
+
+  $('.header__mobileMenu .menu-item-has-children').addClass('closed');
+  $('.header__mobileMenu .menu-item-has-children .sub-menu').slideUp();
+
   $('.header--toggler').click(function(){
     $('.header__content').toggleClass('open');
+  });
+  $( window ).on( "resize", function() {
+    if($(window).width() < 994){
+      $('.header__mobileMenu .menu-item-has-children').addClass('closed');
+      $('.header__mobileMenu .menu-item-has-children .sub-menu').slideUp();
+    }
   });
 })

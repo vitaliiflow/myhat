@@ -187,9 +187,12 @@
                                 min-width: 14px 
                                 height: 14px 
                                 position: relative
-                                border: 1px solid $color-text
                                 margin-right: 12px
                                 border-radius: 50%
+                                background-image: url('../assets/images/icons/radio-btn.png')
+                                background-size: contain
+                                background-position: center
+                                background-repeat: no-repeat
                                 +max-screen(1200px)
                                     width: 12px 
                                     min-width: 12px 
@@ -199,28 +202,28 @@
                                     width: 14px 
                                     min-width: 14px 
                                     height: 14px 
-                                &::after 
-                                    content: ""
-                                    position: absolute
-                                    left: 50%
-                                    top: 50%
-                                    transform: translate(-50%, -50%)
-                                    width: 8px 
-                                    height: 8px 
-                                    background-size: contain
-                                    background-repeat: no-repeat
-                                    background-position: center
-                                    opacity: 0
-                                    visibility: hidden 
-                                    transition: .3s
-                                    background-color: $color-text
-                                    border-radius: 50%
-                                    +max-screen(1200px)
-                                        width: 6px 
-                                        height: 6px 
-                                    +max-screen($breakpoint-md)
-                                        width: 8px 
-                                        height: 8px 
+                                // &::after 
+                                //     content: ""
+                                //     position: absolute
+                                //     left: 50%
+                                //     top: 50%
+                                //     transform: translate(-50%, -50%)
+                                //     width: 8px 
+                                //     height: 8px 
+                                //     background-size: contain
+                                //     background-repeat: no-repeat
+                                //     background-position: center
+                                //     opacity: 0
+                                //     visibility: hidden 
+                                //     transition: .3s
+                                //     background-color: $color-text
+                                //     border-radius: 50%
+                                //     +max-screen(1200px)
+                                //         width: 6px 
+                                //         height: 6px 
+                                //     +max-screen($breakpoint-md)
+                                //         width: 8px 
+                                //         height: 8px 
                             &__name 
                                 font-size: 16px
                                 white-space: nowrap 
@@ -229,9 +232,7 @@
                                 +max-screen($breakpoint-md)
                                     white-space: wrap 
                             &.active .shopPage__filtersRow__listItem__checkbox 
-                                &::after 
-                                    opacity: 1 
-                                    visibility: visible 
+                                background-image: url('../assets/images/icons/radio-btn-filled.png')
                         &__apply 
                             margin-top: 24px
                             display: block 

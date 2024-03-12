@@ -114,26 +114,39 @@ jQuery(document).ready(function($){
 
 
     $(document).ajaxSend(function(event, xhr, settings) {
-        if(settings.data.includes('action')){
-            const action = settings.data ? settings.data.split('action=')[1].split('&paged')[0] : '';
-            if (action && (action === 'products_pagination' || action === 'products_filter' || action === 'products_sorting')) {
-                $('.shopPage__list').addClass('loading');
+        if(settings.data !== undefined){
+            if(settings.data.includes('action')){
+                const action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
+                if (action && (action === 'products_pagination' || action === 'products_filter' || action === 'products_sorting')) {
+                    $('body').addClass('loading');
+                }
             }
         }
+        
     });
-    $(document).ajaxComplete(function(){
-        $('.shopPage__list').removeClass('loading');
+    $(document).ajaxComplete(function(event, xhr, settings){
+        if(settings.data !== undefined){
+            if(settings.data.includes('action')){
+                const action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
+                if(action && (action === 'products_pagination' || action === 'changing_filters' || action === 'products_sorting')){
+                    $('body').removeClass('loading');
+                }
+            }
+        }
     })
 
 
 
     $(document).ajaxComplete(function(event, xhr, settings){
-        if(settings.data.includes('action')){
-            const action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
-            if (action === 'products_filter') {
-                paginationActionUpdate();
-                removePills();
+        if(settings.data !== undefined){
+            if(settings.data.includes('action')){
+                const action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
+                if (action === 'products_filter') {
+                    paginationActionUpdate();
+                    removePills();
+                }
             }
         }
+        
     })
 })

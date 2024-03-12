@@ -10,9 +10,6 @@ jQuery(document).ready(function($){
             $('.cart__hiddenContent button[name="update_cart"]').click();
             item.find('.qty').focus().submit();
         })
-        $('.cart__couponToggler').click(function(){
-            $(this).parent().find('.actions').stop().slideToggle();
-        });
 
         $('#shipping_method > li').click(function(){
             $('#shipping_method > li').removeClass('checked');
@@ -20,9 +17,23 @@ jQuery(document).ready(function($){
             console.log($(this));
         })
     }
+
+
+    $('.cart__couponToggler').click(function(){
+        $(this).parent().find('.actions').stop().slideToggle();
+    });
     cartActions();
+
+
     $(document).ajaxSend(function(event, xhr, settings) {
-        cartActions();
+        if(settings.data !== undefined){
+            cartActions();
+            if(!settings.data.includes('shipping_method')){
+                $('.cart__couponToggler').click(function(){
+                    $(this).parent().find('.actions').stop().slideToggle();
+                });
+            }
+        }
     });
 
 
