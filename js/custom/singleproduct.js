@@ -1,4 +1,10 @@
 jQuery(document).ready(function($){
+    if($('body').hasClass('single-product')){
+        $(window).on('load', function(){
+            $('body').addClass('loaded');
+        })
+    }
+
     const w = $(window).width();
 
     if(w > 769){

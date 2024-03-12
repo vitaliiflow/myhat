@@ -28,9 +28,15 @@ jQuery(document).ready(function($){
         if(settings.data !== undefined){
             cartActions();
             console.log(settings.data);
-            if(settings.data.includes('update_cart') || settings.data.includes('time')){
-                $('.cart__couponToggler').click(function(){
-                    $(this).parent().find('.actions').stop().slideToggle();
+            if(settings.data.includes('update_cart')){
+                $(document).ajaxSend(function(event, xhr, settings) {
+                    if(settings.data !== undefined){
+                        if(settings.data.includes('time')){
+                            $('.cart__couponToggler').click(function(){
+                                $(this).parent().find('.actions').stop().slideToggle();
+                            });
+                        }
+                    }
                 });
             }
         }
