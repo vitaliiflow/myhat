@@ -99,11 +99,12 @@ h6,.h6{font-size:16px}
 .content-block h2:last-child,.content-block .h2:last-child,.content-block h3:last-child,.content-block .h3:last-child,.content-block h4:last-child,.content-block .h4:last-child,.content-block h5:last-child,.content-block .h5:last-child,.content-block h6:last-child,.content-block .h6:last-child,.content-block p:last-child,.content-block ul:last-child,.content-block ol:last-child,.content-block blockquote:last-child,.content-block img:last-child,.content-block li:last-child{margin-bottom:0}
 .content-block h1,.content-block .h1,.content-block h2,.content-block .h2,.content-block h3,.content-block .h3,.content-block h4,.content-block .h4,.content-block h5,.content-block .h5,.content-block h6,.content-block .h6{margin-top:2rem}
 .content-block ol{counter-reset:item;list-style-type:none}
-.content-block ol>li{counter-increment:item}
+.content-block ol>li{counter-increment:item;margin-bottom:2rem}
 .content-block ol>li::before{content:counters(item,".") ".";margin-right:.5em}
-.content-block ol ol{padding-top:1rem;padding-bottom:1rem;padding-left:1rem;counter-reset:list-item}
+.content-block ol ol{padding-top:1rem;padding-left:1rem;counter-reset:list-item}
 .content-block ol ol>li{counter-increment:list-item}
 .content-block ol ol>li::before{content:counters(list-item,".");margin-right:.5em}
+.content-block ol p+ol{padding-top:0}
 .content-block ul{padding-left:1rem}
 .content-block ul li{list-style:disc}
 .content-block .list-style-none{padding-left:0}

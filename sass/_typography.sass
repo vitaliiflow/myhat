@@ -72,13 +72,13 @@ h6, .h6
     
         & > li
             counter-increment: item
+            margin-bottom: 2rem
             &::before
                 content: counters(item, ".") "."
                 margin-right: 0.5em
 
         ol
             padding-top: 1rem
-            padding-bottom: 1rem
             padding-left: 1rem
             counter-reset: list-item
             & > li
@@ -86,6 +86,8 @@ h6, .h6
                 &::before
                     content: counters(list-item, ".")
                     margin-right: 0.5em
+        p + ol
+            padding-top: 0
 
     ul
         padding-left: 1rem
