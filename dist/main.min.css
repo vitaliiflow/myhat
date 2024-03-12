@@ -54,6 +54,7 @@ input,textarea{-webkit-appearance:none;-moz-appearance:none;appearance:none;bord
 body{background-color:#f1f1ef}
 header{background:#000}
 img{max-width:100%}
+a{cursor:pointer}
 .section{padding-top:90px;padding-bottom:90px}
 .section__title{margin-bottom:40px}
 .bg-color.bg-color--white{background-color:white}
