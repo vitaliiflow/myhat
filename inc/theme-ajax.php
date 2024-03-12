@@ -89,6 +89,9 @@ function products_sorting() {
 
     $order = $_POST['order'];
     $orderby = $_POST['orderby'];
+
+    $search = $_POST['searchText'];
+    
     if(!empty($_POST['metaKey'])):
         $metaKey = $_POST['metaKey'];
     endif;
@@ -123,6 +126,11 @@ function products_sorting() {
         ),
         'tax_query' => array(),
     );
+
+    if(!empty($search)){
+        $args['s'] = $search;
+    }
+
     if(!empty($metaKey)){
         $args['meta_key'] = $metaKey;
     }
@@ -289,6 +297,9 @@ function products_pagination() {
 
     $order = $_POST['order'];
     $orderby = $_POST['orderby'];
+
+    $searchText = $_POST['searchText'];
+
     if(!empty($_POST['metaKey'])):
         $metaKey = $_POST['metaKey'];
     endif;
@@ -329,6 +340,10 @@ function products_pagination() {
     endif;
     if(!empty($metaKey)): 
         $args['meta_key'] = $metaKey;
+    endif;
+
+    if(!empty($searchText)): 
+        $args['s'] = $searchText;
     endif;
 
 
@@ -392,6 +407,10 @@ function products_pagination() {
 add_action('wp_ajax_nopriv_changing_filters', 'changing_filters');
 add_action('wp_ajax_changing_filters', 'changing_filters');
 function changing_filters() {
+    $varumarke = '';
+    $storek = '';
+    $taggar = '';
+    $kategori = '';
     if(!empty($_POST['varumarke'])):
         $varumarke = $_POST['varumarke'];
     endif;
@@ -474,22 +493,40 @@ function changing_filters() {
 
 
             foreach ($post_terms as $term) {
-                if(!in_array($term->slug, $varumarke)){
+                if(is_array($varumarke)){
+                    if(!in_array($term->slug, $varumarke)){
+                        $list_varumarke[$term->term_id] = array('name' => $term->name, 'slug' => $term->slug, 'id' => $term->term_id);
+                    }
+                } else{
                     $list_varumarke[$term->term_id] = array('name' => $term->name, 'slug' => $term->slug, 'id' => $term->term_id);
                 }
+                
             }
             foreach ($product_attributes as $term) {
-                if(!in_array($term->slug, $storek)){
+                if(is_array($storek)){
+                    if(!in_array($term->slug, $storek)){
+                        $list_storek[$term->term_id] = array('name' => $term->name, 'slug' => $term->slug, 'id' => $term->term_id);
+                    }
+                } else{
                     $list_storek[$term->term_id] = array('name' => $term->name, 'slug' => $term->slug, 'id' => $term->term_id);
                 }
+                
             }
             foreach ($product_taggar as $term) {
-                if(!in_array($term->slug, $taggar)){
+                if(is_array($taggar)){
+                    if(!in_array($term->slug, $taggar)){
+                        $list_taggar[$term->term_id] = array('name' => $term->name, 'slug' => $term->slug, 'id' => $term->term_id);
+                    }
+                } else {
                     $list_taggar[$term->term_id] = array('name' => $term->name, 'slug' => $term->slug, 'id' => $term->term_id);
                 }
             }
             foreach ($product_cat as $term) {
-                if(!in_array($term->slug, $kategori)){
+                if(is_array($kategori)){
+                    if(!in_array($term->slug, $kategori)){
+                        $list_categories[$term->term_id] = array('name' => $term->name, 'slug' => $term->slug, 'id' => $term->term_id);
+                    }
+                } else{
                     $list_categories[$term->term_id] = array('name' => $term->name, 'slug' => $term->slug, 'id' => $term->term_id);
                 }
             }

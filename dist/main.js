@@ -24,7 +24,11 @@ jQuery(document).ready(function ($) {
         orderby,
         order,
         metaKey = '',
-        separator;
+        separator,
+        searcText = '';
+      if ($('body').hasClass('search')) {
+        searcText = $('.shopPage__list').attr('data-search');
+      }
       if ($(this).hasClass('next')) {
         paged = ++paged;
       }
@@ -68,7 +72,8 @@ jQuery(document).ready(function ($) {
           varumarke: varumarke,
           storek: storek,
           taggar: taggar,
-          kategori: kategori
+          kategori: kategori,
+          searchText: searcText
         },
         success: function success(result) {
           $('.shopPage__list .products').html(result);
@@ -217,7 +222,11 @@ jQuery(document).ready(function ($) {
     var order,
       orderby,
       separator,
-      metaKey = '';
+      metaKey = '',
+      searchText = '';
+    if ($('body').hasClass('search')) {
+      searchText = $('.shopPage__list').attr('data-search');
+    }
     switch (sortType) {
       case 'popularity':
         orderby = 'popularity';
@@ -255,7 +264,8 @@ jQuery(document).ready(function ($) {
         varumarke: varumarke,
         storek: storek,
         taggar: taggar,
-        kategori: kategori
+        kategori: kategori,
+        searchText: searchText
       },
       success: function success(response) {
         $('.products').html(response);

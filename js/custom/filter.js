@@ -45,7 +45,12 @@ jQuery(document).ready(function($){
               kategori = $('.shopPage__list').attr('data-kategori');
 
         let order, orderby, separator,
-            metaKey = '';
+            metaKey = '',
+            searchText = '';
+
+        if($('body').hasClass('search')){
+            searchText = $('.shopPage__list').attr('data-search');
+        }
         switch(sortType){
             case 'popularity':
                 orderby = 'popularity';
@@ -84,6 +89,7 @@ jQuery(document).ready(function($){
                 storek: storek,
                 taggar: taggar,
                 kategori: kategori,
+                searchText: searchText,
             },
             success: function(response){
                 $('.products').html(response);

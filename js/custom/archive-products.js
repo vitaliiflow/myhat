@@ -10,7 +10,12 @@ jQuery(document).ready(function($){
             let paged = parseInt($('.shopPage__list').attr('data-paged')),
                 orderby, order,
                 metaKey = '',
-                separator;
+                separator,
+                searcText = '';
+
+            if($('body').hasClass('search')){
+                searcText = $('.shopPage__list').attr('data-search');
+            }
     
             if($(this).hasClass('next')){
                 paged = ++paged;
@@ -58,6 +63,7 @@ jQuery(document).ready(function($){
                     storek: storek,
                     taggar: taggar,
                     kategori: kategori,
+                    searchText: searcText,
                 },
                 success: function success(result) {
                     $('.shopPage__list .products').html(result);

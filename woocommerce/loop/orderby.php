@@ -185,31 +185,6 @@ if ($the_query->have_posts()) {
     wp_reset_postdata();
 }
 
-
-// $varumarke_terms = get_terms(
-//     array(
-//         'taxonomy' => 'varumarke',
-//         'hide_empty' => true,
-//     )
-// );
-// $pa_storlek = get_terms(array(
-//     'taxonomy' => 'pa_storlek',
-//     'hide_empty' => true,
-// ));
-
-// $tags = get_terms(
-//     array(
-//         'taxonomy' => 'product_tag',
-//         'hide_empty' => true,
-//     )
-// );
-// $categories = get_terms(
-//     array(
-//         'taxonomy' => 'product_cat',
-//         'hide_empty' => true,
-//     )
-// );
-
 if(empty($_GET['orderby'])){
     $_GET['orderby'] = 'popularity';
 }
