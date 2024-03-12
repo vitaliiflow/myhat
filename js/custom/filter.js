@@ -145,6 +145,10 @@ jQuery(document).ready(function($){
         })
     }
 
+    if(w < 994 ){
+        $('.shopPage').css('padding-top', $('.shopPage__filtersRow__pillsList').outerHeight() + 10);
+    }
+
 
     //Product Filters 
     function filters(){
@@ -232,7 +236,9 @@ jQuery(document).ready(function($){
                     }
                 });
             });
-    
+            if(w < 994 ){
+                $('.shopPage').css('padding-top', $('.shopPage__filtersRow__pillsList').outerHeight() + 10);
+            }
     
     
             $.ajax({

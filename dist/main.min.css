@@ -1825,12 +1825,13 @@ body.single-product:not(.loaded)::after{width:42px;height:42px}
 .button--arrow.sm,.btn--arrow.sm{font-size:14px;margin-top:6px}
 .button--arrow.sm svg,.btn--arrow.sm svg{margin-bottom:0;margin-left:.25rem;width:13px;height:100%}
 .button--black,.button--white,.btn--black,.btn--white{padding:12px 32px}
+.shopPage{position:relative}
 .shopPage__filters{margin-bottom:42px;width:calc(100% + 60px);margin-left:-30px;margin-right:-30px}
 .shopPage__filters.sort-wrapper{width:calc(50% + 30px);margin-right:-30px;margin-left:0;-webkit-box-ordinal-group:5;-ms-flex-order:4;order:4}
 .shopPage__filters.sort-wrapper .shopPage__filtersRow{border:0}
 .shopPage__filters.sort-wrapper .shopPage__filtersRow__itemTitle{width:100%}
 .shopPage__filtersRow{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;padding-right:0}
-.shopPage__filtersRow__pillsList{display:none}
+.shopPage__filtersRow__pillsList{position:absolute;top:0;left:0;width:calc(100% - 60px);left:30px}
 .shopPage__filtersRow__listClose{width:20px;height:20px;background-image:url("../assets/images/icons/close.svg");background-size:contain;background-position:center;background-repeat:no-repeat;position:absolute;top:16px;right:16px}
 .shopPage__filtersRow__itemTitle{padding:12px;font-size:15px;border:1px solid #000;border-left:0;border-right:0}
 .shopPage__filtersRow__itemTitle{padding:10px}
@@ -1964,6 +1965,9 @@ body.single-product:not(.loaded)::after{width:42px;height:42px}
 .button--arrow.sm svg,.btn--arrow.sm svg{width:12px}
 .button--black,.button--white,.btn--black,.btn--white{padding:10px 24px}
 .shopPage__filters{margin-bottom:36px}
+.shopPage__filtersRow__pillsList__item{margin-left:4px;margin-right:4px}
+.shopPage__filtersRow__pillsList__itemLabel{padding:4px 8px;font-size:12px;padding-left:18px}
+.shopPage__filtersRow__pillsList__itemRemove{width:10px;heigth:10px;left:6px}
 .shopPage__filtersRow__item.sort .shopPage__filtersRow__list{width:100%}
 .shopPage__filtersRow__item.sort .shopPage__filtersRow__listWrapper{width:100%;left:-100%}
 .shopPage__filtersRow__item.sort .shopPage__filtersRow__listItem{margin-bottom:12px}
@@ -1991,6 +1995,7 @@ body .woocommerce-message a.button{margin-left:12px}
 .single-hero{aspect-ratio:4 / 3}
 .shopPage__filters{margin-left:-20px;margin-right:-20px;width:calc(100% + 40px)}
 .shopPage__filters.sort-wrapper{width:calc(50% + 20px);margin-right:-20px}
+.shopPage__filtersRow__pillsList{left:20px;width:calc(100% - 40px);margin-left:-4px;margin-right:-4px}
 .shopPage__filters.filters-wrapper{width:calc(50% + 20px);margin-left:-20px}
 body .woocommerce-message{width:calc(100% - 40px)}
 .cta--product-customizer{aspect-ratio:370 / 310;padding-left:15px;padding-right:15px}
