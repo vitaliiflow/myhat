@@ -414,7 +414,8 @@ jQuery(document).ready(function ($) {
       $('.shopPage__list').attr('data-taggar', taggar_list);
       $('.shopPage__list').attr('data-kategori', kategori_list);
       var pageLink = window.location['origin'] + "/butik/?paged=".concat(paged, "&orderby=").concat(sortType);
-      pageLink = updateLink(searchText, 's=', pageLink);
+      var searchArr = [searchText];
+      pageLink = updateLink(searchArr, 's=', pageLink);
       pageLink = updateLink(varumarke_list, 'varumarke_cat=', pageLink);
       pageLink = updateLink(storek_list, 'storek=', pageLink);
       pageLink = updateLink(taggar_list, 'taggaк=', pageLink);
