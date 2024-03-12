@@ -116,9 +116,12 @@ jQuery(document).ready(function ($) {
   });
   $(document).ajaxSend(function (event, xhr, settings) {
     if (settings.data.includes('action')) {
-      var action = settings.data ? settings.data.split('action=')[1].split('&paged')[0] : '';
+      var action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
       if (action && (action === 'products_pagination' || action === 'products_filter' || action === 'products_sorting')) {
         $('body').addClass('loading');
+      }
+      if (action && action === 'filters_initial') {
+        $('.shopPage__filtersRow__listWrapper').addClass('loading');
       }
     }
   });
@@ -127,6 +130,9 @@ jQuery(document).ready(function ($) {
       var action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
       if (action && (action === 'products_pagination' || action === 'changing_filters' || action === 'products_sorting')) {
         $('body').removeClass('loading');
+      }
+      if (action && action === 'filters_initial') {
+        $('.shopPage__filtersRow__listWrapper').removeClass('loading');
       }
     }
   });
@@ -170,6 +176,24 @@ jQuery(document).ready(function ($) {
 
 jQuery(document).ready(function ($) {
   var w = $(window).width();
+  var varumarke = $('.shopPage__list').attr('data-varumarke'),
+    storek = $('.shopPage__list').attr('data-storek'),
+    taggar = $('.shopPage__list').attr('data-taggar'),
+    kategori = $('.shopPage__list').attr('data-kategori');
+  $.ajax({
+    url: codelibry.ajax_url,
+    type: 'post',
+    data: {
+      action: 'filters_initial',
+      varumarke: varumarke,
+      storek: storek,
+      taggar: taggar,
+      kategori: kategori
+    },
+    success: function success(response) {
+      $('.filter .shopPage__filtersRow__listWrapper').html(response);
+    }
+  });
   $(window).on('load', function () {
     if (w >= 994) {
       $('.shopPage__filtersRow__item.sort .shopPage__filtersRow__itemTitle').click(function () {
@@ -264,10 +288,7 @@ jQuery(document).ready(function ($) {
   });
 
   //Product Attributes Load
-  var varumarke = $('.shopPage__list').attr('data-varumarke'),
-    storek = $('.shopPage__list').attr('data-storek'),
-    taggar = $('.shopPage__list').attr('data-taggar'),
-    kategori = $('.shopPage__list').attr('data-kategori');
+
   if (varumarke != '' && varumarke != undefined) {
     varumarke = varumarke.split(',');
     varumarke.forEach(function (i) {
@@ -433,7 +454,7 @@ jQuery(document).ready(function ($) {
   $(document).ajaxComplete(function (event, xhr, settings) {
     if (settings.data.includes('action')) {
       var action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
-      if (action === 'changing_filters') {
+      if (action === 'changing_filters' || action === 'filters_initial') {
         filters();
       }
     }

@@ -1,5 +1,24 @@
 jQuery(document).ready(function($){
     const w = $(window).width();
+    let varumarke = $('.shopPage__list').attr('data-varumarke'),
+        storek = $('.shopPage__list').attr('data-storek'),
+        taggar = $('.shopPage__list').attr('data-taggar'),
+        kategori = $('.shopPage__list').attr('data-kategori');
+    $.ajax({
+        url: codelibry.ajax_url,
+        type: 'post',
+        data: {
+            action: 'filters_initial',
+            varumarke: varumarke,
+            storek: storek,
+            taggar: taggar,
+            kategori: kategori,
+        },
+        success: function(response){
+            $('.filter .shopPage__filtersRow__listWrapper').html(response);
+        }
+    })
+
     $(window).on('load', function(){
         if(w >= 994){
             $('.shopPage__filtersRow__item.sort .shopPage__filtersRow__itemTitle').click(function(){
@@ -104,10 +123,7 @@ jQuery(document).ready(function($){
     })
 
     //Product Attributes Load
-    let varumarke = $('.shopPage__list').attr('data-varumarke'),
-        storek = $('.shopPage__list').attr('data-storek'),
-        taggar = $('.shopPage__list').attr('data-taggar'),
-        kategori = $('.shopPage__list').attr('data-kategori');
+    
     if(varumarke != '' && varumarke != undefined){
         varumarke = varumarke.split(',');
         varumarke.forEach(function(i){
@@ -300,7 +316,7 @@ jQuery(document).ready(function($){
     $(document).ajaxComplete(function(event, xhr, settings){
         if(settings.data.includes('action')){
             const action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
-            if (action === 'changing_filters') {
+            if (action === 'changing_filters' || action === 'filters_initial') {
                 filters();
             }
         }

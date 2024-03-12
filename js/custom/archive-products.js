@@ -115,9 +115,12 @@ jQuery(document).ready(function($){
 
     $(document).ajaxSend(function(event, xhr, settings) {
         if(settings.data.includes('action')){
-            const action = settings.data ? settings.data.split('action=')[1].split('&paged')[0] : '';
+            const action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
             if (action && (action === 'products_pagination' || action === 'products_filter' || action === 'products_sorting')) {
                 $('body').addClass('loading');
+            }
+            if (action && action === 'filters_initial') {
+                $('.shopPage__filtersRow__listWrapper').addClass('loading');
             }
         }
     });
@@ -126,6 +129,9 @@ jQuery(document).ready(function($){
             const action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
             if(action && (action === 'products_pagination' || action === 'changing_filters' || action === 'products_sorting')){
                 $('body').removeClass('loading');
+            }
+            if(action && action === 'filters_initial'){
+                $('.shopPage__filtersRow__listWrapper').removeClass('loading');
             }
         }
     })
