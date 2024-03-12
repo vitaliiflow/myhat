@@ -42,15 +42,13 @@ jQuery(document).ready(function($){
               varumarke = $('.shopPage__list').attr('data-varumarke'),
               storek = $('.shopPage__list').attr('data-storek'),
               taggar = $('.shopPage__list').attr('data-taggar'),
-              kategori = $('.shopPage__list').attr('data-kategori');
+              kategori = $('.shopPage__list').attr('data-kategori'),
+              searchText = $('.shopPage__list').attr('data-search');
 
         let order, orderby, separator,
-            metaKey = '',
-            searchText = '';
+            metaKey = '';
 
-        if($('body').hasClass('search')){
-            searchText = $('.shopPage__list').attr('data-search');
-        }
+
         switch(sortType){
             case 'popularity':
                 orderby = 'popularity';
@@ -177,7 +175,8 @@ jQuery(document).ready(function($){
                 metaKey = '';
             
             const paged = $('.shopPage__list').attr('data-paged'),
-                  sortType = $('.shopPage__list').attr('data-sort');
+                  sortType = $('.shopPage__list').attr('data-sort'),
+                  searchText = $('.shopPage__list').attr('data-search');
     
             switch(sortType){
                 case 'popularity':
@@ -249,6 +248,7 @@ jQuery(document).ready(function($){
                     storek: storek_list,
                     taggar: taggar_list,
                     kategori: kategori_list,
+                    searchText: searchText,
                 },
                 success: function(response){
                     $('.shopPage__list').html(response);
@@ -262,6 +262,8 @@ jQuery(document).ready(function($){
     
             
             let pageLink = window.location['origin'] + `/butik/?paged=${paged}&orderby=${sortType}`;
+            let searchArr = [searchText];
+            pageLink = updateLink(searchArr, 's=', pageLink);
             pageLink = updateLink(varumarke_list, 'varumarke_cat=', pageLink);
             pageLink =  updateLink(storek_list, 'storek=', pageLink);
             pageLink =  updateLink(taggar_list, 'taggaк=', pageLink);
@@ -297,6 +299,7 @@ jQuery(document).ready(function($){
                     storek: storek_list,
                     taggar: taggar_list,
                     kategori: kategori_list,
+                    searchText: searchText,
                 },
                 success: function(response){
                     $('.filter .shopPage__filtersRow__listWrapper').html(response);

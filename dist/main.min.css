@@ -637,6 +637,8 @@ body.woocommerce-order-received #breadcrumbs{display:none}
 .header__iconsList{display:-webkit-box;display:-ms-flexbox;display:flex;margin:0 -0.445rem;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
 .header__iconsList__item{padding:0 .445rem}
 .header__iconsList__item img{display:block;width:1.334rem;height:1.334rem}
+.header__iconsList__item.cart a{position:relative}
+.header__iconsList__item.cart__count{position:absolute;top:0;right:0;-webkit-transform:translate(30%,-50%);transform:translate(30%,-50%);background:#f1f1ef;text-align:center;border-radius:50%;border:1px solid #000;font-size:12px;width:18.8px;text-align:center;padding:0}
 .header__iconsList__item.search{position:relative;z-index:999}
 .header__iconsList__item.search img{width:1.1112rem;height:1.1112rem;cursor:pointer}
 .header__iconsList__item.search .search__bar{margin-left:-2rem}
@@ -1946,6 +1948,7 @@ body.loading::after,.shopPage__filtersRow__listWrapper.loading::after{width:42px
 .header__menu .menu-item .sub-menu .menu-item:nth-child(1).has-mobile-icon,.header__menu .menu-item .sub-menu .menu-item:nth-child(2).has-mobile-icon,.header__menu .menu-item .sub-menu .menu-item:nth-child(3).has-mobile-icon{margin-top:.889rem;margin-bottom:0}
 .header__menu .menu-item .sub-menu .menu-item.see-all-items a{font-size:.556rem;padding-right:.889rem}
 .header__menu .menu-item .sub-menu .menu-item.see-all-items a::after{width:.556rem;height:.445rem}
+.header__iconsList__item.cart__count{font-size:10px;width:16px}
 .header__iconsList__item.search .search__bar{width:100%}
 .header__iconsList__item.search .search__bar input{width:100%}
 .header__iconsList__item.search .search__barWrapper{width:100%;top:calc(100% + 0.5rem)}

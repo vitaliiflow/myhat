@@ -227,6 +227,10 @@ function products_filter() {
         'tax_query' => array(),
     );
 
+    if(!empty($_POST['searchText'])):
+        $args['s'] = $_POST['searchText'];
+    endif;
+
     if(!empty($metaKey)){
         $args['meta_key'] = $metaKey;
     }
@@ -473,6 +477,10 @@ function changing_filters() {
             'terms' => $kategori,
         );
         array_push($args["tax_query"], $kategori_array);
+    }
+
+    if(!empty($_POST['searchText'])){
+        $args['s'] = $_POST['searchText'];
     }
 
     $query = new WP_Query($args);

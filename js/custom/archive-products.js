@@ -6,16 +6,12 @@ jQuery(document).ready(function($){
                   varumarke = $('.shopPage__list').attr('data-varumarke'),
                   storek = $('.shopPage__list').attr('data-storek'),
                   taggar = $('.shopPage__list').attr('data-taggar'),
-                  kategori = $('.shopPage__list').attr('data-kategori');
+                  kategori = $('.shopPage__list').attr('data-kategori'),
+                  searcText = $('.shopPage__list').attr('data-search');
             let paged = parseInt($('.shopPage__list').attr('data-paged')),
                 orderby, order,
                 metaKey = '',
-                separator,
-                searcText = '';
-
-            if($('body').hasClass('search')){
-                searcText = $('.shopPage__list').attr('data-search');
-            }
+                separator;
     
             if($(this).hasClass('next')){
                 paged = ++paged;

@@ -116,6 +116,9 @@ $args = array(
     'tax_query' => array(),
 );
 
+if(!empty($_GET['s'])):
+    $args['s'] = $_GET['s'];
+endif;
 
 if(!empty($metaKey)){
     $args['meta_key'] = $metaKey;
