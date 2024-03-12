@@ -75,8 +75,8 @@ jQuery(document).ready(function ($) {
         success: function success(result) {
           $('.shopPage__list .products').html(result);
           $("html, body").animate({
-            scrollTop: 0
-          }, 300);
+            scrollTop: $('.shopPage').offset().top - 100
+          }, 600);
         }
       });
       $('.shopPage__list').attr('data-paged', paged);
