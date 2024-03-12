@@ -270,9 +270,28 @@
         margin-bottom: 20px
         overflow: hidden
         display: -webkit-box
-        -webkit-line-clamp: 4
         -webkit-box-orient: vertical
         max-height: 100%
+        .yrm-content-gradient-1
+            background: none !important
+        .yrm-toggle-expand
+            width: 100px
+            height: 40px
+            border: 0
+            color: transparent
+            transition: .3s 
+            background-image: url("data:image/svg+xml,%3Csvg fill='%23' height='40px' width='40px' version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 407.437 407.437' xml:space='preserve'%3E%3Cpolygon points='386.258,91.567 203.718,273.512 21.179,91.567 0,112.815 203.718,315.87 407.437,112.815 '%3E%3C/polygon%3E%3C/svg%3E")
+            background-size: contain
+            background-repeat: no-repeat
+            background-position: center
+            +max-screen($breakpoint-lg)
+                width: 80px 
+                height: 40px 
+            +max-screen($breakpoint-md)
+                width: 60px 
+                height: 30px 
+        .yrm-less-button-wrapper .yrm-toggle-expand
+            transform: rotate(180deg)
         .seo-text__opener 
             height: 42px 
             background-color: $color-background-main

@@ -114,24 +114,23 @@ jQuery(document).ready(function($){
 
 
     $(document).ajaxSend(function(event, xhr, settings) {
-        if(settings.data.includes('action')){
-            const action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
-            if (action && (action === 'products_pagination' || action === 'products_filter' || action === 'products_sorting')) {
-                $('body').addClass('loading');
-            }
-            if (action && action === 'filters_initial') {
-                $('.shopPage__filtersRow__listWrapper').addClass('loading');
+        if(settings.data !== undefined){
+            if(settings.data.includes('action')){
+                const action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
+                if (action && (action === 'products_pagination' || action === 'products_filter' || action === 'products_sorting')) {
+                    $('body').addClass('loading');
+                }
             }
         }
+        
     });
     $(document).ajaxComplete(function(event, xhr, settings){
-        if(settings.data.includes('action')){
-            const action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
-            if(action && (action === 'products_pagination' || action === 'changing_filters' || action === 'products_sorting')){
-                $('body').removeClass('loading');
-            }
-            if(action && action === 'filters_initial'){
-                $('.shopPage__filtersRow__listWrapper').removeClass('loading');
+        if(settings.data !== undefined){
+            if(settings.data.includes('action')){
+                const action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
+                if(action && (action === 'products_pagination' || action === 'changing_filters' || action === 'products_sorting')){
+                    $('body').removeClass('loading');
+                }
             }
         }
     })
@@ -139,12 +138,15 @@ jQuery(document).ready(function($){
 
 
     $(document).ajaxComplete(function(event, xhr, settings){
-        if(settings.data.includes('action')){
-            const action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
-            if (action === 'products_filter') {
-                paginationActionUpdate();
-                removePills();
+        if(settings.data !== undefined){
+            if(settings.data.includes('action')){
+                const action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
+                if (action === 'products_filter') {
+                    paginationActionUpdate();
+                    removePills();
+                }
             }
         }
+        
     })
 })

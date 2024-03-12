@@ -4,20 +4,8 @@ jQuery(document).ready(function($){
         storek = $('.shopPage__list').attr('data-storek'),
         taggar = $('.shopPage__list').attr('data-taggar'),
         kategori = $('.shopPage__list').attr('data-kategori');
-    $.ajax({
-        url: codelibry.ajax_url,
-        type: 'post',
-        data: {
-            action: 'filters_initial',
-            varumarke: varumarke,
-            storek: storek,
-            taggar: taggar,
-            kategori: kategori,
-        },
-        success: function(response){
-            $('.filter .shopPage__filtersRow__listWrapper').html(response);
-        }
-    })
+
+
 
     $(window).on('load', function(){
         if(w >= 994){
@@ -314,10 +302,12 @@ jQuery(document).ready(function($){
 
     filters();
     $(document).ajaxComplete(function(event, xhr, settings){
-        if(settings.data.includes('action')){
-            const action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
-            if (action === 'changing_filters' || action === 'filters_initial') {
-                filters();
+        if(settings.data !== undefined){
+            if(settings.data.includes('action')){
+                const action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
+                if (action === 'changing_filters' || action === 'filters_initial') {
+                    filters();
+                }
             }
         }
     })
