@@ -74,6 +74,9 @@ jQuery(document).ready(function ($) {
         },
         success: function success(result) {
           $('.shopPage__list .products').html(result);
+          $("html, body").animate({
+            scrollTop: 0
+          }, 300);
         }
       });
       $('.shopPage__list').attr('data-paged', paged);
@@ -173,9 +176,15 @@ jQuery(document).ready(function ($) {
     if (settings.data !== undefined) {
       cartActions();
       console.log(settings.data);
-      if (settings.data.includes('update_cart') || settings.data.includes('time')) {
-        $('.cart__couponToggler').click(function () {
-          $(this).parent().find('.actions').stop().slideToggle();
+      if (settings.data.includes('update_cart')) {
+        $(document).ajaxSend(function (event, xhr, settings) {
+          if (settings.data !== undefined) {
+            if (settings.data.includes('time')) {
+              $('.cart__couponToggler').click(function () {
+                $(this).parent().find('.actions').stop().slideToggle();
+              });
+            }
+          }
         });
       }
     }
@@ -414,8 +423,11 @@ jQuery(document).ready(function ($) {
       $('.shopPage__list').attr('data-taggar', taggar_list);
       $('.shopPage__list').attr('data-kategori', kategori_list);
       var pageLink = window.location['origin'] + "/butik/?paged=".concat(paged, "&orderby=").concat(sortType);
-      var searchArr = [searchText];
-      pageLink = updateLink(searchArr, 's=', pageLink);
+      console.log(searchText);
+      if (searchText != '' && searchText != undefined) {
+        var searchArr = [searchText];
+        pageLink = updateLink(searchArr, 's=', pageLink);
+      }
       pageLink = updateLink(varumarke_list, 'varumarke_cat=', pageLink);
       pageLink = updateLink(storek_list, 'storek=', pageLink);
       pageLink = updateLink(taggar_list, 'taggaк=', pageLink);
@@ -814,6 +826,11 @@ jQuery(document).ready(function ($) {
 "use strict";
 
 jQuery(document).ready(function ($) {
+  if ($('body').hasClass('single-product')) {
+    $(window).on('load', function () {
+      $('body').addClass('loaded');
+    });
+  }
   var w = $(window).width();
   if (w > 769) {
     $('.singleProduct__accordionItem').first().find('.singleProduct__accordionItem__title').addClass('opened');

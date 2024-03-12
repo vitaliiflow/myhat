@@ -262,8 +262,11 @@ jQuery(document).ready(function($){
     
             
             let pageLink = window.location['origin'] + `/butik/?paged=${paged}&orderby=${sortType}`;
-            let searchArr = [searchText];
-            pageLink = updateLink(searchArr, 's=', pageLink);
+            console.log(searchText);
+            if(searchText != '' && searchText != undefined){
+                let searchArr = [searchText];
+                pageLink = updateLink(searchArr, 's=', pageLink);
+            }
             pageLink = updateLink(varumarke_list, 'varumarke_cat=', pageLink);
             pageLink =  updateLink(storek_list, 'storek=', pageLink);
             pageLink =  updateLink(taggar_list, 'taggaк=', pageLink);

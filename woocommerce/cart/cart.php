@@ -34,11 +34,12 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 					
 					$product_name = apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key );
-					$thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
+
+					$thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($product_id), 'full');
 					?>
 					<div class="cart__item">
 						<div class="cart__itemImage">
-							<?php echo $thumbnail; ?>
+							<img src="<?php echo $thumbnail[0]; ?>" alt="">
 						</div>
 						<div class="cart__itemContent">
 							<?php $categories = get_the_terms( $product_id, 'varumarke' ); ?>
