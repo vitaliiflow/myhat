@@ -138,7 +138,16 @@ $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
 					
 							echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', $html, $post_thumbnail_id ); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
 					
-							do_action( 'woocommerce_product_thumbnails' );
+							$attachment_ids = $product->get_gallery_image_ids();
+							if ( $attachment_ids && count( $attachment_ids ) > 0 ) {
+							    foreach ( $attachment_ids as $attachment_id ) {
+							        $image_url = wp_get_attachment_image_url( $attachment_id, 'full' ); ?>
+									<div data-thumb="<?php echo esc_url( $image_url ); ?>" class="woocommerce-product-gallery__image">
+										<?php echo '<img src="' . esc_url( $image_url ) . '" alt="' . esc_attr( get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ) ) . '" />'; ?>
+									</div>
+									<?php
+							    }
+							}
 							?>
 						</div>
 					</div>
