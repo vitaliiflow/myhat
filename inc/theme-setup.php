@@ -43,22 +43,17 @@ function my_wp_nav_menu_objects( $items, $args ) {
         // vars
         $icon = get_field('menu_item_icon_checkbox', $item);
         
-        
         // append icon
         if( $icon ) {
-            
             $image_id = get_term_meta( $item->object_id, 'thumbnail_id', true );
             $post_thumbnail_img = wp_get_attachment_image_src( $image_id, 'full' );
-            $item->title .= '<img src="' . $post_thumbnail_img[0] . '"/>';
-			      $item->classes[] .= 'has-mobile-icon';
-            
+            if (is_array($post_thumbnail_img)) { // Check if $post_thumbnail_img is an array
+                $item->title .= '<img src="' . $post_thumbnail_img[0] . '"/>';
+                $item->classes[] = 'has-mobile-icon'; // No need for `.=` here
+            }
         }
-        
-        
     }
-    
     
     // return
     return $items;
-    
 }
