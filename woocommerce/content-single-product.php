@@ -246,9 +246,9 @@ $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
 						<?php do_action('woocommerce_product_add_to_cart'); ?>
 					</div>
 
-					<div class="product-customizer__trigger-wrapper">
+					<!-- <div class="product-customizer__trigger-wrapper">
 						<a href="#product-customizer-popup" class="product-customizer__trigger d-block button--black mt-4 mb-4"><?php _e('Customize','myhat');?></a>
-					</div>
+					</div> -->
 
 					<!-- <div id="product-customizer-popup" class="popup-block">
 						<div class="popup-block__wrapper">

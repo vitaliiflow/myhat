@@ -64,11 +64,31 @@ h6, .h6
     h4, .h4,
     h5, .h5,
     h6, .h6,
-        margin-top: 1rem
+        margin-top: 2rem
     ol
-        padding-left: 1rem
-        li
-            list-style: decimal
+        // padding-left: 1rem
+        counter-reset: item
+        list-style-type: none
+    
+        & > li
+            counter-increment: item
+            margin-bottom: 2rem
+            &::before
+                content: counters(item, ".") "."
+                margin-right: 0.5em
+
+        ol
+            padding-top: 1rem
+            padding-left: 1rem
+            counter-reset: list-item
+            & > li
+                counter-increment: list-item
+                &::before
+                    content: counters(list-item, ".")
+                    margin-right: 0.5em
+        p + ol
+            padding-top: 0
+
     ul
         padding-left: 1rem
         li
