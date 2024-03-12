@@ -75,8 +75,8 @@ jQuery(document).ready(function ($) {
         success: function success(result) {
           $('.shopPage__list .products').html(result);
           $("html, body").animate({
-            scrollTop: 0
-          }, 300);
+            scrollTop: $('.shopPage').offset().top - 100
+          }, 600);
         }
       });
       $('.shopPage__list').attr('data-paged', paged);
@@ -323,6 +323,9 @@ jQuery(document).ready(function ($) {
       $("<div class=\"shopPage__filtersRow__pillsList__item\" data-term=\"".concat(i, "\"><div class=\"shopPage__filtersRow__pillsList__itemRemove\"></div><div class=\"shopPage__filtersRow__pillsList__itemLabel\">").concat($(".shopPage__filtersRow__listItem[data-attr-name=\"kategori\"] .shopPage__filtersRow__listItem__sublistItem[data-slug=\"".concat(i, "\"] .shopPage__filtersRow__listItem__sublistItem__name")).html(), "</div></div>")).appendTo('.shopPage__filtersRow__pillsList');
     });
   }
+  if (w < 994) {
+    $('.shopPage').css('padding-top', $('.shopPage__filtersRow__pillsList').outerHeight() + 10);
+  }
 
   //Product Filters 
   function filters() {
@@ -399,6 +402,9 @@ jQuery(document).ready(function ($) {
           }
         });
       });
+      if (w < 994) {
+        $('.shopPage').css('padding-top', $('.shopPage__filtersRow__pillsList').outerHeight() + 10);
+      }
       $.ajax({
         url: codelibry.ajax_url,
         type: 'post',

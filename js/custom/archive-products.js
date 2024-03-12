@@ -63,7 +63,7 @@ jQuery(document).ready(function($){
                 },
                 success: function success(result) {
                     $('.shopPage__list .products').html(result);
-                    $("html, body").animate({ scrollTop: 0 }, 300);
+                    $("html, body").animate({ scrollTop: $('.shopPage').offset().top - 100 }, 600);
                 }
             });
     
