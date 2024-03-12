@@ -580,9 +580,9 @@ body.woocommerce-order-received #breadcrumbs{display:none}
 .cart__couponWrapper{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}
 .cart__couponWrapper>.actions{display:none}
 .cart__couponWrapper .coupon{display:-webkit-box;display:-ms-flexbox;display:flex;padding:12px 0}
-.cart__couponWrapper .coupon button.button{background-color:#000;color:#fff;-webkit-transition:.3s;transition:.3s;border:1px solid #000;border-radius:20px;font-weight:400;padding:6px 12px;font-size:16px}
+.cart__couponWrapper .coupon button.button{background-color:#000;color:#fff;-webkit-transition:.3s;transition:.3s;border:1px solid #000;border-radius:0;font-weight:400;padding:6px 12px;font-size:16px}
 .cart__couponWrapper .coupon button.button:hover{color:#000;background-color:#fff}
-.cart__couponWrapper #coupon_code{height:auto;min-height:1px;line-height:1;color:#c7bdb1;font-weight:400;color:#000;margin-right:-36px;padding-right:42px}
+.cart__couponWrapper #coupon_code{height:auto;min-height:1px;line-height:1;color:#c7bdb1;font-weight:400;color:#000;margin-right:-36px;padding-right:42px;border-radius:0}
 .cart__couponWrapper #coupon_code::-webkit-input-placeholder{color:#000}
 .cart__couponWrapper #coupon_code::-moz-placeholder{color:#000}
 .cart__couponWrapper #coupon_code:-ms-input-placeholder{color:#000}

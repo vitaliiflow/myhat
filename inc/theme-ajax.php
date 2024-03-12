@@ -717,7 +717,7 @@ add_action('wp_ajax_search_teams', 'search_teams');
 
 function search_teams() {
     $search_query = isset($_POST['search_query']) ? sanitize_text_field($_POST['search_query']) : '';
-    $list = get_field('leagues-list', 44997);
+    $list = get_field('leagues-list', get_field('teams_page','option'));
 
     //    error_log('List: ' . print_r($list, true));
 
