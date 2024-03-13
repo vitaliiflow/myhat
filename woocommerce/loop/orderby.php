@@ -45,7 +45,7 @@ $categories = get_terms(
 );
 
 if(empty($_GET['orderby'])){
-    $_GET['orderby'] = 'popularity';
+    $_GET['orderby'] = 'date';
 }
 ?>
 <div class="shopPage__filters sort-wrapper desktop-lg">
@@ -58,17 +58,17 @@ if(empty($_GET['orderby'])){
             <div class="shopPage__filtersRow__listWrapper">
                 <div class="shopPage__filtersRow__listClose mobile-toggler"></div>
                 <div class="shopPage__filtersRow__list">
-                    <div class="shopPage__filtersRow__listItem<?php if(!isset($_GET['orderby']) || $_GET['orderby'] == 'popularity'){echo ' active';} ?>">
+                    <div class="shopPage__filtersRow__listItem<?php if(!isset($_GET['orderby']) || $_GET['orderby'] == 'date'){echo ' active';} ?>">
+                        <div class="shopPage__filtersRow__listItem__checkbox"></div>
+                        <div class="shopPage__filtersRow__listItem__name" data-slug="date"><?php _e('Sortera efter senast', 'woocommerce'); ?></div>
+                    </div>
+                    <div class="shopPage__filtersRow__listItem<?php if($_GET['orderby'] == 'popularity'){echo ' active';} ?>">
                         <div class="shopPage__filtersRow__listItem__checkbox"></div>
                         <div class="shopPage__filtersRow__listItem__name" data-slug="popularity"><?php _e('Sortera efter popularitet', 'woocommerce'); ?></div>
                     </div>
                     <div class="shopPage__filtersRow__listItem<?php if($_GET['orderby'] == 'rating'){echo ' active';} ?>">
                         <div class="shopPage__filtersRow__listItem__checkbox"></div>
                         <div class="shopPage__filtersRow__listItem__name" data-slug="rating"><?php _e('Sortera efter genomsnittligt betyg', 'woocommerce'); ?></div>
-                    </div>
-                    <div class="shopPage__filtersRow__listItem<?php if($_GET['orderby'] == 'date'){echo ' active';} ?>">
-                        <div class="shopPage__filtersRow__listItem__checkbox"></div>
-                        <div class="shopPage__filtersRow__listItem__name" data-slug="date"><?php _e('Sortera efter senast', 'woocommerce'); ?></div>
                     </div>
                     <div class="shopPage__filtersRow__listItem<?php if($_GET['orderby'] == 'price'){echo ' active';} ?>">
                         <div class="shopPage__filtersRow__listItem__checkbox"></div>
@@ -101,13 +101,13 @@ if(empty($_GET['orderby'])){
             </div>
             <div class="shopPage__filtersRow__itemOverlay mobile-toggler"></div>
             <div class="shopPage__filtersRow__listWrapper">
-                <div class="shopPage__filtersRow__listClose mobile-toggler"></div>
+                <div class="shopPage__filtersRow__listClose mobile-toggler refreshed"></div>
                 <?php 
                 if ( !empty($varumarke_terms) && !is_wp_error( $varumarke_terms ) ):
                 ?>
-                    <div class="shopPage__filtersRow__listItem opened" data-attr-name="varumarke">
+                    <div class="shopPage__filtersRow__listItem" data-attr-name="varumarke">
                         <div class="shopPage__filtersRow__listItem__title">VARUMÄRKE</div>
-                        <div class="shopPage__filtersRow__listItem__sublist" style="display: block;">
+                        <div class="shopPage__filtersRow__listItem__sublist">
                             <div class="shopPage__filtersRow__listItem__sublistItems">
                                 <?php foreach($varumarke_terms as $term): ?>
                                     <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term->slug; ?>">
