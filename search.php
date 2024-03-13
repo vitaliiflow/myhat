@@ -355,6 +355,7 @@ $searchText=get_search_query();
                             <div class="shopPage__filtersRow__list__apply">
                                 <div class="btn button--black">APPLY</div>
                             </div>
+                            <div class="shopPage__filtersRow__list__clear">Rensa filter</div>
                         </div>
                     </div>
                 </div>

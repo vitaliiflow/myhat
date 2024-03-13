@@ -3,9 +3,25 @@ jQuery(document).ready(function($){
     let varumarke = $('.shopPage__list').attr('data-varumarke'),
         storek = $('.shopPage__list').attr('data-storek'),
         taggar = $('.shopPage__list').attr('data-taggar'),
-        kategori = $('.shopPage__list').attr('data-kategori');
+        kategori = $('.shopPage__list').attr('data-kategori'),
+        searchText = $('.shopPage__list').attr('data-search');
 
-
+    $.ajax({
+        url: codelibry.ajax_url,
+        type: 'post',
+        data: {
+            action: 'filters_init',
+            varumarke: varumarke,
+            storek: storek,
+            taggar: taggar,
+            kategori: kategori,
+            searchText: searchText,
+        },
+        success: function(response){
+            $('.filter .shopPage__filtersRow__listWrapper').html(response);
+        }
+    });
+    $('.shopPage__filtersRow__listWrapper').addClass('loading');
 
     $(window).on('load', function(){
         if(w >= 994){
@@ -17,7 +33,7 @@ jQuery(document).ready(function($){
             });
 
         } else{
-            $('.shopPage__filtersRow__item .mobile-toggler').click(function(){
+            $('.sort-wrapper .shopPage__filtersRow__item .mobile-toggler').click(function(){
                 $(this).closest('.shopPage__filtersRow__item').toggleClass('opened');
             })
         }
@@ -32,7 +48,6 @@ jQuery(document).ready(function($){
             $(this).addClass('active');
         });
     });
-    
 
 
     //Products Sorting
@@ -152,6 +167,11 @@ jQuery(document).ready(function($){
 
     //Product Filters 
     function filters(){
+
+        $('.filters-wrapper .shopPage__filtersRow__item .mobile-toggler').click(function(){
+            $(this).closest('.shopPage__filtersRow__item').toggleClass('opened');
+        })
+
         $('.shopPage__filtersRow__listItem__title').click(function(){
             const item = $(this).parent(),
                   sublist = $(this).parent().find('.shopPage__filtersRow__listItem__sublist');
@@ -169,7 +189,14 @@ jQuery(document).ready(function($){
             $(this).toggleClass('active');
         })
 
-        $('.shopPage__filtersRow__list__apply .btn').click(function(){
+        //Restore Filters 
+        $('.shopPage__filtersRow__list__clear').click(function(){
+            $('.shopPage__filtersRow__listItem__sublistItem').removeClass('active');
+            $('.filters-wrapper .shopPage__filtersRow__list__apply .btn').click();
+        })
+
+
+        $('.shopPage__filtersRow__listItem__sublistItem, .shopPage__filtersRow__list__apply .btn').click(function(){
             let varumarke_list = [],
                 storek_list = [],
                 taggar_list = [],
@@ -238,6 +265,11 @@ jQuery(document).ready(function($){
             });
             if(w < 994 ){
                 $('.shopPage').css('padding-top', $('.shopPage__filtersRow__pillsList').outerHeight() + 10);
+            }
+            if(varumarke_list.length > 0 || storek_list.length > 0 || taggar_list.length > 0 || kategori_list.length > 0){
+                $('.shopPage__filtersRow__list__clear').addClass('show');
+            } else {
+                $('.shopPage__filtersRow__list__clear').removeClass('show');
             }
     
     
@@ -319,16 +351,26 @@ jQuery(document).ready(function($){
     }
 
     filters();
+
+
+
+
+
     $(document).ajaxComplete(function(event, xhr, settings){
         if(settings.data !== undefined){
             if(settings.data.includes('action')){
                 const action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
-                if (action === 'changing_filters' || action === 'filters_initial') {
+                if (action === 'changing_filters' || action === 'filters_init') {
                     filters();
+                }
+                if (action === 'filters_init') {
+                    $('.shopPage__filtersRow__listWrapper').removeClass('loading');
                 }
             }
         }
     })
+
+   
 
     
 });

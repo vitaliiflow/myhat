@@ -417,7 +417,7 @@ a.text-dark:hover,a.text-dark:focus{color:#121416 !important}
 .shopPage__paginationButton.prev svg{-webkit-transform:rotate(180deg);transform:rotate(180deg)}
 .shopPage__paginationButton.disabled{pointer-events:none;color:#7e736b;background-color:#c0b1a2}
 .shopPage__paginationButton.disabled svg line{stroke:#7e736b !important}
-.archive.woocommerce-page .seo-text{background:#f1f1ef;padding:0;margin-bottom:20px;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;max-height:100%}
+.archive.woocommerce-page .seo-text{background:#f1f1ef;padding:0;margin-bottom:20px;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;max-height:100%}
 .archive.woocommerce-page .seo-text .yrm-content-gradient-1{background:none !important}
 .archive.woocommerce-page .seo-text .yrm-toggle-expand{width:100px;height:40px;border:0;color:transparent;-webkit-transition:.3s;transition:.3s;background-image:url("data:image/svg+xml,%3Csvg fill='%23' height='40px' width='40px' version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 407.437 407.437' xml:space='preserve'%3E%3Cpolygon points='386.258,91.567 203.718,273.512 21.179,91.567 0,112.815 203.718,315.87 407.437,112.815 '%3E%3C/polygon%3E%3C/svg%3E");background-size:contain;background-repeat:no-repeat;background-position:center}
 .archive.woocommerce-page .seo-text .yrm-less-button-wrapper .yrm-toggle-expand{-webkit-transform:rotate(180deg);transform:rotate(180deg)}
@@ -801,11 +801,14 @@ section.search{margin-top:2rem;margin-bottom:2rem}
 .shopPage__filtersRow__item.filter .shopPage__filtersRow__listItem__sublistItem__name{cursor:pointer}
 .shopPage__filtersRow__item.filter .shopPage__filtersRow__listItem__sublistItem__description{display:none}
 .shopPage__filtersRow__item.filter .shopPage__filtersRow__listItem__title{cursor:pointer}
-.shopPage__filtersRow__item.filter .shopPage__filtersRow__list__apply{cursor:pointer}
+.shopPage__filtersRow__item.filter .shopPage__filtersRow__list__apply{cursor:pointer;opacity:0;visibility:hidden;width:0;height:0;padding:0;border:0}
 .shopPage__filtersRow__item.filter.opened .shopPage__filtersRow__listWrapper{left:0}
 .shopPage__filtersRow__item.filter.opened .shopPage__filtersRow__listWrapper,.shopPage__filtersRow__item.filter.opened .shopPage__filtersRow__itemOverlay{opacity:1;visibility:visible}
 .shopPage__filtersRow__itemOverlay{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.3);z-index:199;opacity:0;visibility:hidden;-webkit-transition:.3s;transition:.3s}
 .shopPage__filters.filters-wrapper .shopPage__filtersRow__itemTitle{display:none}
+.shopPage__filters.filters-wrapper .shopPage__filtersRow__list__clear{padding-left:24px;font-size:18px;position:relative;cursor:pointer;opacity:0;visibility:hidden;width:0;height:0}
+.shopPage__filters.filters-wrapper .shopPage__filtersRow__list__clear::before{content:"";position:absolute;left:0;top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%);width:18px;height:18px;border-radius:50%;background-image:url("../assets/images/icons/restore-icon.png");background-size:22px;background-position:center;background-repeat:no-repeat}
+.shopPage__filters.filters-wrapper .shopPage__filtersRow__list__clear.show{opacity:1;visibility:visible;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;height:auto}
 .shopPage__filters.filters-wrapper .shopPage__filtersRow__listItem{margin-bottom:32px}
 .shopPage__filters.filters-wrapper .shopPage__filtersRow__listItem__title{font-weight:500;position:relative}
 .shopPage__filters.filters-wrapper .shopPage__filtersRow__listItem__title::after{content:"";position:absolute;top:50%;right:0;width:12px;height:10px;background-image:url("../assets/images/icons/accordion__arrow.svg");background-size:contain;background-repeat:no-repeat;background-position:center;-webkit-transform:translateY(-50%);transform:translateY(-50%);-webkit-transition:.3s;transition:.3s}
@@ -1687,7 +1690,7 @@ h6,.h6{font-size:calc(14px + 2 * ((100vw - 320px) / 1040))}
 .shopPage__listItem__price{font-size:19px}
 .shopPage__listItem__title{font-size:15px;margin-bottom:8px}
 .shopPage__pagination{margin-top:48px}
-.archive.woocommerce-page .seo-text .seo-text__opener{height:32px;background-size:28px}
+.archive.woocommerce-page .seo-text .seo-text__opener{height:32px;background-size:28px;bottom:-1px}
 .archive.woocommerce-page .seo-text__content--long{padding-bottom:32px;max-height:242px}
 .orderThanks{padding:64px 0}
 .orderThanks__buttons{margin-top:42px}
@@ -1851,10 +1854,11 @@ body.single-product:not(.loaded)::after{width:42px;height:42px}
 .shopPage__filtersRow__item.filter .shopPage__filtersRow__listItem__sublistItem.active .shopPage__filtersRow__listItem__sublistItem__checkbox::after{visibility:visible;opacity:1}
 .shopPage__filtersRow__item.filter .shopPage__filtersRow__listItem__title{position:relative}
 .shopPage__filtersRow__item.filter .shopPage__filtersRow__listItem__title::after{content:"";position:absolute;right:0;top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%);width:14px;height:10px;background-image:url("../assets/images/icons/accordion__arrow.svg");background-size:contain;background-position:center;background-repeat:no-repeat}
-.shopPage__filtersRow__item.filter .shopPage__filtersRow__list__apply{margin-top:auto}
 .shopPage__filtersRow__item.filter .shopPage__filtersRow__list__apply .btn{width:100%;text-align:center}
 .shopPage__filters.filters-wrapper{width:calc(50% + 30px);margin-left:-30px;margin-right:0;-webkit-box-ordinal-group:4;-ms-flex-order:3;order:3}
 .shopPage__filters.filters-wrapper .shopPage__filtersRow__itemTitle{display:-webkit-box;display:-ms-flexbox;display:flex;border-right:1px solid #000}
+.shopPage__filters.filters-wrapper .shopPage__filtersRow__list__clear{font-size:16px;padding-left:20px}
+.shopPage__filters.filters-wrapper .shopPage__filtersRow__list__clear::before{width:16px;height:16px;background-size:20px}
 .block-image{aspect-ratio:5 / 2}
 }@media only screen and (max-width:769px){.content-block br{display:none}
 .shopPage{padding-bottom:42px}

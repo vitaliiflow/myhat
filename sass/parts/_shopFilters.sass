@@ -376,8 +376,12 @@
                                         background-repeat: no-repeat
                         &__apply 
                             cursor: pointer
-                            +max-screen($breakpoint-lg)
-                                margin-top: auto
+                            opacity: 0
+                            visibility: hidden
+                            width: 0
+                            height: 0
+                            padding: 0
+                            border: 0
                             .btn
                                 +max-screen($breakpoint-lg)
                                     width: 100%
@@ -418,6 +422,40 @@
                             display: flex
                             border-right: 1px solid $color-text
                 &__list 
+                    &__clear 
+                        padding-left: 24px
+                        font-size: 18px
+                        position: relative
+                        cursor: pointer
+                        opacity: 0
+                        visibility: hidden 
+                        width: 0 
+                        height: 0
+                        +max-screen($breakpoint-lg)
+                            font-size: 16px
+                            padding-left: 20px
+                        &::before 
+                            content: ""
+                            position: absolute
+                            left: 0
+                            top: 50%
+                            transform: translateY(-50%)
+                            width: 18px 
+                            height: 18px 
+                            border-radius: 50%
+                            background-image: url('../assets/images/icons/restore-icon.png')
+                            background-size: 22px
+                            background-position: center
+                            background-repeat: no-repeat
+                            +max-screen($breakpoint-lg)
+                                width: 16px 
+                                height: 16px 
+                                background-size: 20px 
+                        &.show 
+                            opacity: 1 
+                            visibility: visible
+                            width: fit-content 
+                            height: auto
                     &Item 
                         margin-bottom: 32px
                         +max-screen(1200px)
