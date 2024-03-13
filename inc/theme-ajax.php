@@ -407,6 +407,10 @@ function products_pagination() {
 add_action('wp_ajax_nopriv_filters_init', 'filters_init');
 add_action('wp_ajax_filters_init', 'filters_init');
 function filters_init() {
+    $varumarke = '';
+    $storek = '';
+    $taggar = '';
+    $kategori = '';
     $clear = false;
 
     if(!empty($_POST['varumarke'])):
@@ -873,12 +877,12 @@ function changing_filters() {
     <?php 
     if ( !empty($categories) && !is_wp_error( $categories ) ):
     ?>
-        <div class="shopPage__filtersRow__listItem<?php if(!empty($kategori) && $kategori != ''){ echo ' opened'; } ?>" data-attr-name="kategori">
+        <div class="shopPage__filtersRow__listItem<?php if(!empty($kategori) && $kategori[0] != ''){echo ' opened';} ?>" data-attr-name="kategori">
             <div class="shopPage__filtersRow__listItem__title">KATEGORI</div>
-            <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($kategori) && $kategori != ''){ echo ' style="display:block;"'; } ?>>
+            <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($kategori) && $kategori[0] != ''){echo ' style="display:block;"';} ?>>
                 <div class="shopPage__filtersRow__listItem__sublistItems">
                     <?php foreach($categories as $term): ?>
-                        <div class="shopPage__filtersRow__listItem__sublistItem<?php if(in_array($term->slug,$kategori)){echo ' active';} ?>" data-slug="<?php echo $term->slug; ?>"<?php if(in_array($term->slug,$kategori)){echo ' style="order:-1;"';} ?>>
+                        <div class="shopPage__filtersRow__listItem__sublistItem<?php if(!empty($kategori) && $kategori[0] != ''){ if(in_array($term->slug,$kategori)){ echo ' active'; } } ?>" data-slug="<?php echo $term->slug; ?>"<?php if(!empty($kategori) && $kategori[0] != ''){ if(in_array($term->slug,$kategori)){ echo ' style="order: -1;"'; } } ?>>
                             <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
                             <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term->name; ?></div>
                             <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php echo category_description($term->term_id); ?></div>

@@ -215,7 +215,7 @@ $searchText=get_search_query();
                                     <div class="shopPage__filtersRow__listItem__name" data-slug="price-desc"><?php _e('Sortera efter pris: högt till lågt', 'woocommerce'); ?></div>
                                 </div>
                             </div>
-                            <div class="shopPage__filtersRow__list__apply button button--black mobile-toggle"><?php _e('APPLY', 'woocommerce'); ?></div>
+                            <div class="shopPage__filtersRow__list__apply button button--black mobile-toggler"><?php _e('APPLY', 'woocommerce'); ?></div>
                             <div class="shopPage__filtersRow__itemClose mobile-toggle"></div>
                         </div>
                     </div>
