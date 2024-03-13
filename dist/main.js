@@ -224,7 +224,7 @@ jQuery(document).ready(function ($) {
         $('.shopPage__filtersRow__item.sort .shopPage__filtersRow__listWrapper').slideUp();
       });
     } else {
-      $('.shopPage__filtersRow__item .mobile-toggler').click(function () {
+      $('.sort-wrapper .shopPage__filtersRow__item .mobile-toggler').click(function () {
         $(this).closest('.shopPage__filtersRow__item').toggleClass('opened');
       });
     }
@@ -346,6 +346,9 @@ jQuery(document).ready(function ($) {
 
   //Product Filters 
   function filters() {
+    $('.filters-wrapper .shopPage__filtersRow__item .mobile-toggler').click(function () {
+      $(this).closest('.shopPage__filtersRow__item').toggleClass('opened');
+    });
     $('.shopPage__filtersRow__listItem__title').click(function () {
       var item = $(this).parent(),
         sublist = $(this).parent().find('.shopPage__filtersRow__listItem__sublist');
