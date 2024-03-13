@@ -49,6 +49,7 @@ get_header( 'shop' );
                 <div class="shopPage__text"><?php echo wpautop($page_content); ?></div>
             </div> -->
             <?php 
+            $searchText = '';
             if(!empty($_GET['s'])):
                 $searchText = $_GET['s'];
             endif;
@@ -136,7 +137,7 @@ get_header( 'shop' );
                 'tax_query' => array(),
             );
 
-            if(!empty($searchText)){
+            if(!empty($searchText) || $searchText != ''){
                 $args['s'] = $searchText;
             }
 

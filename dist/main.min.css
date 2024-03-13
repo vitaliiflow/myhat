@@ -423,7 +423,7 @@ a.text-dark:hover,a.text-dark:focus{color:#121416 !important}
 .archive.woocommerce-page .seo-text .yrm-less-button-wrapper .yrm-toggle-expand{-webkit-transform:rotate(180deg);transform:rotate(180deg)}
 .archive.woocommerce-page .seo-text .seo-text__opener{height:42px;background-color:#f1f1ef;background-image:url("data:image/svg+xml,%3Csvg fill='%23' height='40px' width='40px' version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 407.437 407.437' xml:space='preserve'%3E%3Cpolygon points='386.258,91.567 203.718,273.512 21.179,91.567 0,112.815 203.718,315.87 407.437,112.815 '%3E%3C/polygon%3E%3C/svg%3E")}
 .archive.woocommerce-page .seo-text.seo-text__content--long-opened{max-height:100%}
-.archive.woocommerce-page .seo-text.seo-text__content--long-opened{-webkit-line-clamp:initial}
+.archive.woocommerce-page .seo-text.seo-text__content--long-opened{-webkit-line-clamp:initial;display:block}
 .archive.woocommerce-page .seo-text__content--long{padding-bottom:42px}
 body.loading,.shopPage__filtersRow__listWrapper.loading{position:relative}
 body.loading::before,.shopPage__filtersRow__listWrapper.loading::before{content:"";position:fixed;left:-20px;top:-20px;width:calc(100% + 40px);height:calc(100% + 20px);background-color:rgba(255,255,255,0.7);z-index:100}

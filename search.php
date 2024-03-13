@@ -427,7 +427,7 @@ $searchText=get_search_query();
                             <span>/</span>
                             <span class="total"><?php echo $the_query->max_num_pages; ?></span>
                         </div>
-                        <div class="shopPage__paginationButton next<?php if($the_query->max_num_pages <= 1 || $current == $the_query->max_num_pages){echo ' disabled';} ?>">Nästa<?php echo get_inline_svg('pagination-arrow-right.svg'); ?></div>
+                        <div class="shopPage__paginationButton next<?php if($the_query->max_num_pages <= 1 || $paged == $the_query->max_num_pages){echo ' disabled';} ?>">Nästa<?php echo get_inline_svg('pagination-arrow-right.svg'); ?></div>
                     </div>
                 </div>
             <?php endif; ?>

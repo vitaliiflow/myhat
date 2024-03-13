@@ -89,8 +89,11 @@ function products_sorting() {
 
     $order = $_POST['order'];
     $orderby = $_POST['orderby'];
+    
 
-    $search = $_POST['searchText'];
+    if(!empty($_POST['searchText'])):
+        $search = $_POST['searchText'];
+    endif;
     
     if(!empty($_POST['metaKey'])):
         $metaKey = $_POST['metaKey'];
@@ -302,7 +305,9 @@ function products_pagination() {
     $order = $_POST['order'];
     $orderby = $_POST['orderby'];
 
-    $searchText = $_POST['searchText'];
+    if(!empty($_POST['searchText'])):
+        $searchText = $_POST['searchText'];
+    endif;
 
     if(!empty($_POST['metaKey'])):
         $metaKey = $_POST['metaKey'];
