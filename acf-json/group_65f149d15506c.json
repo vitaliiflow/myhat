@@ -1,0 +1,105 @@
+{
+    "key": "group_65f149d15506c",
+    "title": "Scripts",
+    "fields": [
+        {
+            "key": "field_65f149d1adcdf",
+            "label": "Header scripts",
+            "name": "header_scripts",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Add custom scripts inside HEAD tag. You need to have a SCRIPT tag around scripts.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_65f14a11adce1",
+            "label": "Body scripts - Top",
+            "name": "body_scripts_top",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Add custom scripts just after the BODY tag opened. You need to have a SCRIPT tag around scripts.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_65f14a3cadce2",
+            "label": "Body scripts - Bottom",
+            "name": "body_scripts_bottom",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Add custom scripts just before the BODY tag closed. You need to have a SCRIPT tag around scripts.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_65f149fcadce0",
+            "label": "Footer scripts",
+            "name": "footer_scripts",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Add custom scripts you might want to be loaded in the footer of your website. You need to have a SCRIPT tag around scripts.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-scripts"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1710318009
+}
