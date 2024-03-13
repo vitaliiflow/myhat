@@ -167,7 +167,7 @@ jQuery(document).ready(function($){
     $('.filters-wrapper .shopPage__filtersRow__item .mobile-toggler').click(function(){
         $(this).closest('.shopPage__filtersRow__item').toggleClass('opened');
     })
-    
+
     //Product Filters 
     function filters(){
 
@@ -324,12 +324,13 @@ jQuery(document).ready(function($){
                 $('.seo-text__content').html($('.shopPage__filtersRow__itemTitle .shopPage__filtersRow__itemTitle__emptyContent').html());
             }
     
-    
+            
             if($('.seo-text').prop('scrollHeight') <= Math.ceil($('.seo-text').outerHeight())){
                 $('.seo-text').removeClass('seo-text__content--long');
             } else {
                 $('.seo-text').addClass('seo-text__content--long');
             }
+
     
             $.ajax({
                 url: codelibry.ajax_url,

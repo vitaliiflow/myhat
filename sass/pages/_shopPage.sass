@@ -300,22 +300,20 @@
             +max-screen(1200px)
                 height: 32px 
                 background-size: 28px 
-                bottom: -1px 
+                bottom: 0 
             +max-screen($breakpoint-md)
                 height: 24px 
                 background-size: 20px 
         &.seo-text__content--long-opened
             max-height: 100%            
         &.seo-text__content--long-opened 
-            -webkit-line-clamp: initial 
             display: block 
         &__content--long
             padding-bottom: 42px 
+            max-height: 100% 
             +max-screen(1200px)
                 padding-bottom: 32px
-                max-height: 242px 
             +max-screen($breakpoint-md)
-                max-height: 224px
                 padding-bottom: 24px
         &__content
             +max-screen($breakpoint-md)
