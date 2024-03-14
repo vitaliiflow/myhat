@@ -362,6 +362,9 @@ jQuery(document).ready(function ($) {
       sublist.stop().slideToggle();
     });
     $('.shopPage__filtersRow__listItem__sublistItem').click(function () {
+      if ($(this).closest('.shopPage__filtersRow__listItem').attr('data-attr-name') == 'kategori') {
+        $(this).closest('.shopPage__filtersRow__listItem').find('.shopPage__filtersRow__listItem__sublistItem').not($(this)).removeClass('active');
+      }
       $(this).toggleClass('active');
     });
 

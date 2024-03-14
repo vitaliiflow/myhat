@@ -495,20 +495,17 @@ function filters_init() {
     $list_varumarke = array();
     $list_storek = array();
     $list_taggar = array();
-    $categories = get_terms(
-        array(
-            'taxonomy' => 'product_cat',
-            'hide_empty' => true,
-        )
-    );
+    $list_categories = array();
     
     if ($query->have_posts()) {
         while ($query->have_posts()) {
             $query->the_post();
     
-            $post_terms = wp_get_post_terms(get_the_ID(), 'varumarke'); // Замініть 'your_taxonomy' на вашу таксономію
+            $post_terms = wp_get_post_terms(get_the_ID(), 'varumarke'); 
             $product_attributes = wc_get_product_terms(get_the_ID(), 'pa_storlek');
             $product_taggar = wc_get_product_terms(get_the_ID(), 'product_tag');
+            $product_cat = wc_get_product_terms(get_the_ID(), 'product_cat');
+
 
 
             foreach ($post_terms as $term) {
@@ -538,6 +535,15 @@ function filters_init() {
                     }
                 } else {
                     $list_taggar[$term->term_id] = array('name' => $term->name, 'slug' => $term->slug, 'id' => $term->term_id);
+                }
+            }
+            foreach ($product_cat as $term) {
+                if(is_array($kategori)){
+                    if(!in_array($term->slug, $kategori)){
+                        $list_categories[$term->term_id] = array('name' => $term->name, 'slug' => $term->slug, 'id' => $term->term_id);
+                    }
+                } else{
+                    $list_categories[$term->term_id] = array('name' => $term->name, 'slug' => $term->slug, 'id' => $term->term_id);
                 }
             }
         }
@@ -631,17 +637,28 @@ function filters_init() {
         </div>
     <?php endif; ?>
     <?php 
-    if ( !empty($categories) && !is_wp_error( $categories ) ):
+    if ( (!empty($list_categories) && !is_wp_error( $list_categories )) || !empty($kategori) ):
     ?>
-        <div class="shopPage__filtersRow__listItem<?php if(!empty($kategori) && $kategori[0] != ''){echo ' opened';} ?>" data-attr-name="kategori">
+        <div class="shopPage__filtersRow__listItem<?php if(!empty($kategori) && $kategori[0] != ''){ echo ' opened'; } ?>" data-attr-name="kategori">
             <div class="shopPage__filtersRow__listItem__title">KATEGORI</div>
-            <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($kategori) && $kategori[0] != ''){echo ' style="display:block;"';} ?>>
+            <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($kategori) && $kategori[0] != ''){ echo ' style="display:block;"'; } ?>>
                 <div class="shopPage__filtersRow__listItem__sublistItems">
-                    <?php foreach($categories as $term): ?>
-                        <div class="shopPage__filtersRow__listItem__sublistItem<?php if(!empty($kategori) && $kategori[0] != ''){ if(in_array($term->slug,$kategori)){ echo ' active'; } } ?>" data-slug="<?php echo $term->slug; ?>"<?php if(!empty($kategori) && $kategori[0] != ''){ if(in_array($term->slug,$kategori)){ echo ' style="order: -1;"'; } } ?>>
+                    <?php if(!empty($kategori) && $kategori[0] != ''): ?>
+                        <?php foreach($kategori as $term): ?>
+                            <?php 
+                            $full_term = get_term_by('slug', $term, 'product_cat');
+                            ?>
+                            <div class="shopPage__filtersRow__listItem__sublistItem active" data-slug="<?php echo $term; ?>">
+                                <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
+                                <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $full_term->name; ?></div>
+                                <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php echo category_description($full_term->term_id); ?></div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                    <?php foreach($list_categories as $term): ?>
+                        <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term['slug']; ?>">
                             <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
-                            <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term->name; ?></div>
-                            <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php echo category_description($term->term_id); ?></div>
+                            <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term['name']; ?></div>
                         </div>
                     <?php endforeach; ?>
                 </div>
@@ -744,12 +761,7 @@ function changing_filters() {
     $list_varumarke = array();
     $list_storek = array();
     $list_taggar = array();
-    $categories = get_terms(
-        array(
-            'taxonomy' => 'product_cat',
-            'hide_empty' => true,
-        )
-    );
+    $list_categories = array();
     
     if ($query->have_posts()) {
         while ($query->have_posts()) {
@@ -758,6 +770,7 @@ function changing_filters() {
             $post_terms = wp_get_post_terms(get_the_ID(), 'varumarke'); // Замініть 'your_taxonomy' на вашу таксономію
             $product_attributes = wc_get_product_terms(get_the_ID(), 'pa_storlek');
             $product_taggar = wc_get_product_terms(get_the_ID(), 'product_tag');
+            $product_cat = wc_get_product_terms(get_the_ID(), 'product_cat');
 
 
             foreach ($post_terms as $term) {
@@ -787,6 +800,15 @@ function changing_filters() {
                     }
                 } else {
                     $list_taggar[$term->term_id] = array('name' => $term->name, 'slug' => $term->slug, 'id' => $term->term_id);
+                }
+            }
+            foreach ($product_cat as $term) {
+                if(is_array($kategori)){
+                    if(!in_array($term->slug, $kategori)){
+                        $list_categories[$term->term_id] = array('name' => $term->name, 'slug' => $term->slug, 'id' => $term->term_id);
+                    }
+                } else{
+                    $list_categories[$term->term_id] = array('name' => $term->name, 'slug' => $term->slug, 'id' => $term->term_id);
                 }
             }
         }
@@ -880,17 +902,28 @@ function changing_filters() {
         </div>
     <?php endif; ?>
     <?php 
-    if ( !empty($categories) && !is_wp_error( $categories ) ):
+    if ( (!empty($list_categories) && !is_wp_error( $list_categories )) || !empty($kategori) ):
     ?>
-        <div class="shopPage__filtersRow__listItem<?php if(!empty($kategori) && $kategori[0] != ''){echo ' opened';} ?>" data-attr-name="kategori">
+        <div class="shopPage__filtersRow__listItem<?php if(!empty($kategori) && $kategori[0] != ''){ echo ' opened'; } ?>" data-attr-name="kategori">
             <div class="shopPage__filtersRow__listItem__title">KATEGORI</div>
-            <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($kategori) && $kategori[0] != ''){echo ' style="display:block;"';} ?>>
+            <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($kategori) && $kategori[0] != ''){ echo ' style="display:block;"'; } ?>>
                 <div class="shopPage__filtersRow__listItem__sublistItems">
-                    <?php foreach($categories as $term): ?>
-                        <div class="shopPage__filtersRow__listItem__sublistItem<?php if(!empty($kategori) && $kategori[0] != ''){ if(in_array($term->slug,$kategori)){ echo ' active'; } } ?>" data-slug="<?php echo $term->slug; ?>"<?php if(!empty($kategori) && $kategori[0] != ''){ if(in_array($term->slug,$kategori)){ echo ' style="order: -1;"'; } } ?>>
+                    <?php if(!empty($kategori) && $kategori[0] != ''): ?>
+                        <?php foreach($kategori as $term): ?>
+                            <?php 
+                            $full_term = get_term_by('slug', $term, 'product_cat');
+                            ?>
+                            <div class="shopPage__filtersRow__listItem__sublistItem active" data-slug="<?php echo $term; ?>">
+                                <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
+                                <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $full_term->name; ?></div>
+                                <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php echo category_description($full_term->term_id); ?></div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                    <?php foreach($list_categories as $term): ?>
+                        <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term['slug']; ?>">
                             <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
-                            <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term->name; ?></div>
-                            <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php echo category_description($term->term_id); ?></div>
+                            <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term['name']; ?></div>
                         </div>
                     <?php endforeach; ?>
                 </div>
