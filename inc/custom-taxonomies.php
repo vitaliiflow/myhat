@@ -44,3 +44,113 @@ function custom_taxonomy_brands()  {
 }
 
 add_action( 'init', 'custom_taxonomy_brands', 0 );
+
+
+function cptui_register_my_taxes() {
+
+	/**
+	 * Taxonomy: Colors.
+	 */
+
+	$labels = [
+		"name" => esc_html__( "Colors", "codelibry" ),
+		"singular_name" => esc_html__( "Color", "codelibry" ),
+	];
+
+	
+	$args = [
+		"label" => esc_html__( "Colors", "codelibry" ),
+		"labels" => $labels,
+		"public" => true,
+		"publicly_queryable" => true,
+		"hierarchical" => true,
+		"show_ui" => true,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"query_var" => true,
+		"rewrite" => [ 'slug' => 'color', 'with_front' => true, ],
+		"show_admin_column" => true,
+		"show_in_rest" => true,
+		"show_tagcloud" => false,
+		"rest_base" => "color",
+		"rest_controller_class" => "WP_REST_Terms_Controller",
+		"rest_namespace" => "wp/v2",
+		"show_in_quick_edit" => false,
+		"sort" => true,
+		"show_in_graphql" => false,
+	];
+	register_taxonomy( "color", [ "product" ], $args );
+
+	/**
+	 * Taxonomy: Teams.
+	 */
+
+	$labels = [
+		"name" => esc_html__( "Teams", "codelibry" ),
+		"singular_name" => esc_html__( "Team", "codelibry" ),
+	];
+
+	
+	$args = [
+		"label" => esc_html__( "Teams", "codelibry" ),
+		"labels" => $labels,
+		"public" => true,
+		"publicly_queryable" => true,
+		"hierarchical" => true,
+		"show_ui" => true,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"query_var" => true,
+		"rewrite" => [ 'slug' => 'team', 'with_front' => true, ],
+		"show_admin_column" => true,
+		"show_in_rest" => true,
+		"show_tagcloud" => false,
+		"rest_base" => "team",
+		"rest_controller_class" => "WP_REST_Terms_Controller",
+		"rest_namespace" => "wp/v2",
+		"show_in_quick_edit" => false,
+		"sort" => true,
+		"show_in_graphql" => false,
+	];
+	register_taxonomy( "team", [ "product" ], $args );
+}
+add_action( 'init', 'cptui_register_my_taxes' );
+
+
+
+function cptui_register_my_taxes_color() {
+
+	/**
+	 * Taxonomy: Colors.
+	 */
+
+	$labels = [
+		"name" => esc_html__( "Colors", "codelibry" ),
+		"singular_name" => esc_html__( "Color", "codelibry" ),
+	];
+
+	
+	$args = [
+		"label" => esc_html__( "Colors", "codelibry" ),
+		"labels" => $labels,
+		"public" => true,
+		"publicly_queryable" => true,
+		"hierarchical" => true,
+		"show_ui" => true,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"query_var" => true,
+		"rewrite" => [ 'slug' => 'color', 'with_front' => true, ],
+		"show_admin_column" => true,
+		"show_in_rest" => true,
+		"show_tagcloud" => false,
+		"rest_base" => "color",
+		"rest_controller_class" => "WP_REST_Terms_Controller",
+		"rest_namespace" => "wp/v2",
+		"show_in_quick_edit" => false,
+		"sort" => true,
+		"show_in_graphql" => false,
+	];
+	register_taxonomy( "color", [ "product" ], $args );
+}
+add_action( 'init', 'cptui_register_my_taxes_color' );
