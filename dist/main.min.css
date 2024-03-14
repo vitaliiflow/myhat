@@ -497,11 +497,12 @@ body.single-product:not(.loaded)::after{content:"";width:64px;height:64px;positi
 .singleProduct__price:not(.sale){line-height:1.2}
 .singleProduct__price .woocommerce-Price-currencySymbol{margin-left:4.5px;display:inline-block}
 .singleProduct__price ins{text-decoration:none;line-height:1.2}
-.singleProduct__price.sale{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}
-.singleProduct__price.sale del{font-weight:500;color:#3e4a56;text-decoration:none;-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;font-size:15px;display:inline-block;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;position:relative}
+.singleProduct__price.sale{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;margin:0 -3px}
+.singleProduct__price.sale>.amount{margin:0 3px}
+.singleProduct__price.sale del{font-weight:500;color:#3e4a56;text-decoration:none;-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;font-size:15px;display:inline-block;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;position:relative;margin-left:3px}
 .singleProduct__price.sale del::before{content:"Ord pris "}
 .singleProduct__price.sale del::after{content:"";position:absolute;top:50%;left:0;width:100%;height:1px;background:#3e4a56;opacity:.5}
-.singleProduct__price.sale ins{color:#e40d68}
+.singleProduct__price.sale ins{color:#e40d68;margin-left:3px}
 .singleProduct__price.sale ins{width:100%}
 .singleProduct__sizeWrapper{margin-bottom:24px;font-size:18px}
 .singleProduct__sizeTitle{text-align:center;background-color:#f1f1ef;position:relative;cursor:pointer;padding:15px 24px}
@@ -511,7 +512,13 @@ body.single-product:not(.loaded)::after{content:"";width:64px;height:64px;positi
 .singleProduct__sizeList__item{text-align:center;-webkit-transition:.3s;transition:.3s;cursor:pointer;padding:8px 12px}
 .singleProduct__sizeList__item.active{background-color:#000;color:#fff}
 .singleProduct__purchase>input{display:none}
-.singleProduct__purchase .single_variation{margin-bottom:12px;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;font-weight:700;margin-top:-8px;font-size:20px}
+.singleProduct__purchase .woocommerce-variation-price .price{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}
+.singleProduct__purchase .woocommerce-variation-price del{font-weight:500;color:#3e4a56;text-decoration:none;-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;font-size:15px;display:-webkit-box;display:-ms-flexbox;display:flex;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;position:relative}
+.singleProduct__purchase .woocommerce-variation-price del::before{content:"Ord pris ";padding-right:3px}
+.singleProduct__purchase .woocommerce-variation-price del::after{content:"";position:absolute;top:50%;left:0;width:100%;height:1px;background:#3e4a56;opacity:.5}
+.singleProduct__purchase .woocommerce-variation-price ins{color:#e40d68;text-decoration:none}
+.singleProduct__purchase .woocommerce-variation-price ins{width:100%}
+.singleProduct__purchase .single_variation{margin-bottom:12px;font-weight:700;margin-top:-8px;font-size:20px}
 .singleProduct__purchase .single_variation .woocommerce-variation-availability{display:none}
 .singleProduct__purchase .single_variation_wrap *{display:-webkit-box;display:-ms-flexbox;display:flex}
 .singleProduct__purchase .variations_form table{opacity:0;visibility:hidden;display:block;width:0;height:0}
@@ -1900,6 +1907,7 @@ body.single-product:not(.loaded)::after{width:42px;height:42px}
 .singleProduct__price{font-size:22px}
 .singleProduct__price.sale del{font-size:13px;color:#000}
 .singleProduct__sizeWrapper{margin-bottom:16px}
+.singleProduct__purchase .woocommerce-variation-price del{font-size:13px;color:#000}
 .singleProduct__purchase .single_variation{margin-bottom:8px;font-size:16px}
 .singleProduct__purchase input.qty{width:50px;padding:4px}
 .singleProduct__purchase .single_add_to_cart_button{padding-left:12px;padding-right:12px;width:calc(70% - 6px);margin-left:12px;-webkit-box-flex:1;-ms-flex:1;flex:1}
