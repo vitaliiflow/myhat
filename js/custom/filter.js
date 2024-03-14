@@ -164,28 +164,28 @@ jQuery(document).ready(function($){
         $('.shopPage').css('padding-top', $('.shopPage__filtersRow__pillsList').outerHeight() + 10);
     }
 
+    $('.filters-wrapper .shopPage__filtersRow__item .mobile-toggler').click(function(){
+        $(this).closest('.shopPage__filtersRow__item').toggleClass('opened');
+    })
 
     //Product Filters 
     function filters(){
 
-        $('.filters-wrapper .shopPage__filtersRow__item .mobile-toggler').click(function(){
+        $('.filters-wrapper .shopPage__filtersRow__item .mobile-toggler.refreshed').click(function(){
             $(this).closest('.shopPage__filtersRow__item').toggleClass('opened');
         })
 
         $('.shopPage__filtersRow__listItem__title').click(function(){
             const item = $(this).parent(),
                   sublist = $(this).parent().find('.shopPage__filtersRow__listItem__sublist');
-            $(this).closest('.shopPage__filtersRow__listWrapper').find('.shopPage__filtersRow__listItem__sublist').not(sublist).stop().slideUp();
-            $(this).closest('.shopPage__filtersRow__listWrapper').find('.shopPage__filtersRow__listItem').not(item).removeClass('opened');
+            // $(this).closest('.shopPage__filtersRow__listWrapper').find('.shopPage__filtersRow__listItem__sublist').not(sublist).stop().slideUp();
+            // $(this).closest('.shopPage__filtersRow__listWrapper').find('.shopPage__filtersRow__listItem').not(item).removeClass('opened');
             
             item.toggleClass('opened');
             sublist.stop().slideToggle();
         });
 
         $('.shopPage__filtersRow__listItem__sublistItem').click(function(){
-            if($(this).closest('.shopPage__filtersRow__listItem').attr('data-attr-name') == 'kategori'){
-                $(this).closest('.shopPage__filtersRow__listItem').find('.shopPage__filtersRow__listItem__sublistItem').not($(this)).removeClass('active');
-            }
             $(this).toggleClass('active');
         })
 
@@ -324,12 +324,13 @@ jQuery(document).ready(function($){
                 $('.seo-text__content').html($('.shopPage__filtersRow__itemTitle .shopPage__filtersRow__itemTitle__emptyContent').html());
             }
     
-    
+            
             if($('.seo-text').prop('scrollHeight') <= Math.ceil($('.seo-text').outerHeight())){
                 $('.seo-text').removeClass('seo-text__content--long');
             } else {
                 $('.seo-text').addClass('seo-text__content--long');
             }
+
     
             $.ajax({
                 url: codelibry.ajax_url,

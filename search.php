@@ -180,7 +180,7 @@ $searchText=get_search_query();
             }
 
             if(empty($_GET['orderby'])){
-                $_GET['orderby'] = 'popularity';
+                $_GET['orderby'] = 'date';
             }
 
             ?>
@@ -194,17 +194,17 @@ $searchText=get_search_query();
                         <div class="shopPage__filtersRow__listWrapper">
                             <div class="shopPage__filtersRow__listClose mobile-toggler"></div>
                             <div class="shopPage__filtersRow__list">
-                                <div class="shopPage__filtersRow__listItem<?php if(!isset($_GET['orderby']) || $_GET['orderby'] == 'popularity'){echo ' active';} ?>">
+                                <div class="shopPage__filtersRow__listItem<?php if(!isset($_GET['orderby']) || $_GET['orderby'] == 'date'){echo ' active';} ?>">
+                                    <div class="shopPage__filtersRow__listItem__checkbox"></div>
+                                    <div class="shopPage__filtersRow__listItem__name" data-slug="date"><?php _e('Sortera efter senast', 'woocommerce'); ?></div>
+                                </div>
+                                <div class="shopPage__filtersRow__listItem<?php if($_GET['orderby'] == 'popularity'){echo ' active';} ?>">
                                     <div class="shopPage__filtersRow__listItem__checkbox"></div>
                                     <div class="shopPage__filtersRow__listItem__name" data-slug="popularity"><?php _e('Sortera efter popularitet', 'woocommerce'); ?></div>
                                 </div>
                                 <div class="shopPage__filtersRow__listItem<?php if($_GET['orderby'] == 'rating'){echo ' active';} ?>">
                                     <div class="shopPage__filtersRow__listItem__checkbox"></div>
                                     <div class="shopPage__filtersRow__listItem__name" data-slug="rating"><?php _e('Sortera efter genomsnittligt betyg', 'woocommerce'); ?></div>
-                                </div>
-                                <div class="shopPage__filtersRow__listItem<?php if($_GET['orderby'] == 'date'){echo ' active';} ?>">
-                                    <div class="shopPage__filtersRow__listItem__checkbox"></div>
-                                    <div class="shopPage__filtersRow__listItem__name" data-slug="date"><?php _e('Sortera efter senast', 'woocommerce'); ?></div>
                                 </div>
                                 <div class="shopPage__filtersRow__listItem<?php if($_GET['orderby'] == 'price'){echo ' active';} ?>">
                                     <div class="shopPage__filtersRow__listItem__checkbox"></div>
@@ -237,7 +237,7 @@ $searchText=get_search_query();
                         </div>
                         <div class="shopPage__filtersRow__itemOverlay mobile-toggler"></div>
                         <div class="shopPage__filtersRow__listWrapper">
-                            <div class="shopPage__filtersRow__listClose mobile-toggler"></div>
+                            <div class="shopPage__filtersRow__listClose mobile-toggler refreshed"></div>
                             <?php 
                             if ( (!empty($list_varumarke) && !is_wp_error( $list_varumarke )) || (sizeof($varumarke) > 1 || $varumarke[0] != '') ):
                             ?>
@@ -386,9 +386,9 @@ $searchText=get_search_query();
                 $kategori = array('');
             endif;
 
-            $orderby = 'popularity';
-            $order = 'ASC';
-            $settedOrder = 'popularity';
+            $orderby = 'publish_date';
+            $order = 'DESC';
+            $settedOrder = 'date';
 
             $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
             
@@ -427,7 +427,7 @@ $searchText=get_search_query();
                             <span>/</span>
                             <span class="total"><?php echo $the_query->max_num_pages; ?></span>
                         </div>
-                        <div class="shopPage__paginationButton next<?php if($the_query->max_num_pages <= 1 || $current == $the_query->max_num_pages){echo ' disabled';} ?>">Nästa<?php echo get_inline_svg('pagination-arrow-right.svg'); ?></div>
+                        <div class="shopPage__paginationButton next<?php if($the_query->max_num_pages <= 1 || $paged == $the_query->max_num_pages){echo ' disabled';} ?>">Nästa<?php echo get_inline_svg('pagination-arrow-right.svg'); ?></div>
                     </div>
                 </div>
             <?php endif; ?>

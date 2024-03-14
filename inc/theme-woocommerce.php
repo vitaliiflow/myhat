@@ -79,7 +79,7 @@ function dw_product_totals() {
 
 //Change Default Products Ordering 
 function custom_default_catalog_orderby($sortby) {
-   return 'popularity';
+   return 'date';
 }
 add_filter('woocommerce_default_catalog_orderby', 'custom_default_catalog_orderby');
 

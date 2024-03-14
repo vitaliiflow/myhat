@@ -92,10 +92,10 @@ if(isset($_GET['orderby'])):
     endswitch;
     $settedOrder = $_GET['orderby'];
 else:
-    $orderby = 'popularity';
+    $orderby = 'publish_date';
     $metaKey = '';
-    $order = 'ASC';
-    $settedOrder = 'popularity';
+    $order = 'DESC';
+    $settedOrder = 'date';
 endif;
 
 
