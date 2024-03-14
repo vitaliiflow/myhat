@@ -37,6 +37,18 @@ $tags = get_terms(
         'hide_empty' => true,
     )
 );
+$color = get_terms(
+    array(
+        'taxonomy' => 'color',
+        'hide_empty' => true,
+    )
+);
+$team = get_terms(
+    array(
+        'taxonomy' => 'team',
+        'hide_empty' => true,
+    )
+);
 $categories = get_terms(
     array(
         'taxonomy' => 'product_cat',
@@ -144,6 +156,40 @@ if(empty($_GET['orderby'])){
                         <div class="shopPage__filtersRow__listItem__sublist">
                             <div class="shopPage__filtersRow__listItem__sublistItems">
                                 <?php foreach($tags as $term): ?>
+                                    <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term->slug; ?>">
+                                        <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
+                                        <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term->name; ?></div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <?php 
+                if ( !empty($color) && !is_wp_error( $color ) ):
+                ?>
+                    <div class="shopPage__filtersRow__listItem" data-attr-name="color">
+                        <div class="shopPage__filtersRow__listItem__title">FÄRG</div>
+                        <div class="shopPage__filtersRow__listItem__sublist">
+                            <div class="shopPage__filtersRow__listItem__sublistItems">
+                                <?php foreach($color as $term): ?>
+                                    <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term->slug; ?>">
+                                        <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
+                                        <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term->name; ?></div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <?php 
+                if ( !empty($team) && !is_wp_error( $team ) ):
+                ?>
+                    <div class="shopPage__filtersRow__listItem" data-attr-name="team">
+                        <div class="shopPage__filtersRow__listItem__title">TEAM</div>
+                        <div class="shopPage__filtersRow__listItem__sublist">
+                            <div class="shopPage__filtersRow__listItem__sublistItems">
+                                <?php foreach($team as $term): ?>
                                     <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term->slug; ?>">
                                         <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
                                         <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term->name; ?></div>

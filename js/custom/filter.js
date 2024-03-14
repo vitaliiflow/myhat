@@ -3,6 +3,8 @@ jQuery(document).ready(function($){
     let varumarke = $('.shopPage__list').attr('data-varumarke'),
         storek = $('.shopPage__list').attr('data-storek'),
         taggar = $('.shopPage__list').attr('data-taggar'),
+        color = $('.shopPage__list').attr('data-color'),
+        team = $('.shopPage__list').attr('data-team'),
         kategori = $('.shopPage__list').attr('data-kategori'),
         searchText = $('.shopPage__list').attr('data-search');
 
@@ -14,6 +16,8 @@ jQuery(document).ready(function($){
             varumarke: varumarke,
             storek: storek,
             taggar: taggar,
+            team: team,
+            color: color,
             kategori: kategori,
             searchText: searchText,
         },
@@ -57,6 +61,8 @@ jQuery(document).ready(function($){
               varumarke = $('.shopPage__list').attr('data-varumarke'),
               storek = $('.shopPage__list').attr('data-storek'),
               taggar = $('.shopPage__list').attr('data-taggar'),
+              color = $('.shopPage__list').attr('data-color'),
+              team = $('.shopPage__list').attr('data-team'),
               kategori = $('.shopPage__list').attr('data-kategori'),
               searchText = $('.shopPage__list').attr('data-search');
 
@@ -101,6 +107,8 @@ jQuery(document).ready(function($){
                 varumarke: varumarke,
                 storek: storek,
                 taggar: taggar,
+                team: team,
+                color: color,
                 kategori: kategori,
                 searchText: searchText,
             },
@@ -150,6 +158,20 @@ jQuery(document).ready(function($){
         taggar.forEach(function(i){
             $(`.shopPage__filtersRow__listItem[data-attr-name="taggar"] .shopPage__filtersRow__listItem__sublistItem[data-slug="${i}"]`).addClass('active').css('order', -1);
             $(`<div class="shopPage__filtersRow__pillsList__item" data-term="${i}"><div class="shopPage__filtersRow__pillsList__itemRemove"></div><div class="shopPage__filtersRow__pillsList__itemLabel">${$(`.shopPage__filtersRow__listItem[data-attr-name="taggar"] .shopPage__filtersRow__listItem__sublistItem[data-slug="${i}"] .shopPage__filtersRow__listItem__sublistItem__name`).html()}</div></div>`).appendTo('.shopPage__filtersRow__pillsList');
+        })
+    }
+    if(color != '' && color != undefined){
+        color = color.split(',');
+        color.forEach(function(i){
+            $(`.shopPage__filtersRow__listItem[data-attr-name="color"] .shopPage__filtersRow__listItem__sublistItem[data-slug="${i}"]`).addClass('active').css('order', -1);
+            $(`<div class="shopPage__filtersRow__pillsList__item" data-term="${i}"><div class="shopPage__filtersRow__pillsList__itemRemove"></div><div class="shopPage__filtersRow__pillsList__itemLabel">${$(`.shopPage__filtersRow__listItem[data-attr-name="color"] .shopPage__filtersRow__listItem__sublistItem[data-slug="${i}"] .shopPage__filtersRow__listItem__sublistItem__name`).html()}</div></div>`).appendTo('.shopPage__filtersRow__pillsList');
+        })
+    }
+    if(team != '' && team != undefined){
+        team = team.split(',');
+        team.forEach(function(i){
+            $(`.shopPage__filtersRow__listItem[data-attr-name="team"] .shopPage__filtersRow__listItem__sublistItem[data-slug="${i}"]`).addClass('active').css('order', -1);
+            $(`<div class="shopPage__filtersRow__pillsList__item" data-term="${i}"><div class="shopPage__filtersRow__pillsList__itemRemove"></div><div class="shopPage__filtersRow__pillsList__itemLabel">${$(`.shopPage__filtersRow__listItem[data-attr-name="team"] .shopPage__filtersRow__listItem__sublistItem[data-slug="${i}"] .shopPage__filtersRow__listItem__sublistItem__name`).html()}</div></div>`).appendTo('.shopPage__filtersRow__pillsList');
         })
     }
     if(kategori != '' && kategori != undefined){
@@ -203,6 +225,8 @@ jQuery(document).ready(function($){
             let varumarke_list = [],
                 storek_list = [],
                 taggar_list = [],
+                color_list = [],
+                team_list = [],
                 kategori_list = [],
                 order = '',
                 orderby = '',
@@ -259,6 +283,12 @@ jQuery(document).ready(function($){
                             case 'taggar': 
                                 taggar_list.push($(this).attr('data-slug'));
                                 break;
+                            case 'team': 
+                                team_list.push($(this).attr('data-slug'));
+                                break;
+                            case 'color': 
+                                color_list.push($(this).attr('data-slug'));
+                                break;
                             case 'kategori': 
                                 kategori_list.push($(this).attr('data-slug'));
                                 break;
@@ -288,6 +318,8 @@ jQuery(document).ready(function($){
                     varumarke: varumarke_list,
                     storek: storek_list,
                     taggar: taggar_list,
+                    team: team_list,
+                    color: color_list,
                     kategori: kategori_list,
                     searchText: searchText,
                 },
@@ -298,6 +330,8 @@ jQuery(document).ready(function($){
             $('.shopPage__list').attr('data-varumarke', varumarke_list);
             $('.shopPage__list').attr('data-storek', storek_list);
             $('.shopPage__list').attr('data-taggar', taggar_list);
+            $('.shopPage__list').attr('data-team', team_list);
+            $('.shopPage__list').attr('data-color', color_list);
             $('.shopPage__list').attr('data-kategori', kategori_list);
     
     
@@ -310,7 +344,9 @@ jQuery(document).ready(function($){
             }
             pageLink = updateLink(varumarke_list, 'varumarke_cat=', pageLink);
             pageLink =  updateLink(storek_list, 'storek=', pageLink);
-            pageLink =  updateLink(taggar_list, 'taggaк=', pageLink);
+            pageLink =  updateLink(taggar_list, 'taggar=', pageLink);
+            pageLink =  updateLink(color_list, 'colors=', pageLink);
+            pageLink =  updateLink(team_list, 'teams=', pageLink);
             pageLink =  updateLink(kategori_list, 'kategori=', pageLink);
     
             
@@ -343,6 +379,8 @@ jQuery(document).ready(function($){
                     varumarke: varumarke_list,
                     storek: storek_list,
                     taggar: taggar_list,
+                    team: team_list,
+                    color: color_list,
                     kategori: kategori_list,
                     searchText: searchText,
                 },

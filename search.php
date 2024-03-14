@@ -26,6 +26,16 @@ $searchText=get_search_query();
             else:
                 $taggar = array('');
             endif;
+            if(!empty($_GET['team'])):
+                $team = explode(',', $_GET['team']);
+            else:
+                $team = array('');
+            endif;
+            if(!empty($_GET['color'])):
+                $color = explode(',', $_GET['color']);
+            else:
+                $color = array('');
+            endif;
             if(!empty($_GET['kategori'])):
                 $kategori = explode(',', $_GET['kategori']);
             else:
@@ -88,6 +98,20 @@ $searchText=get_search_query();
                     $taggar = $term_id;
                 }
                 
+                if($taxonomy_slug == 'color' && (sizeof($color) > 1 || $color[0] != '')){
+                    $term_id = array_merge( $term_id, $color );
+                }
+                if($taxonomy_slug == 'color'){
+                    $color = $term_id;
+                }
+
+                if($taxonomy_slug == 'team' && (sizeof($team) > 1 || $team[0] != '')){
+                    $term_id = array_merge( $term_id, $team );
+                }
+                if($taxonomy_slug == 'team'){
+                    $team = $term_id;
+                }
+
                 if($taxonomy_slug == 'product_cat' && (sizeof($kategori) > 1 || $kategori[0] != '')){
                     $term_id = array_merge( $term_id, $kategori );
                 }
@@ -131,6 +155,22 @@ $searchText=get_search_query();
                 );
                 array_push($args["tax_query"], $taggar__arr);
             }
+            if((sizeof($color) > 1 || $color[0] != '') && $taxonomy_slug != 'color'){
+                $color__arr = array(
+                    'taxonomy' => 'color', 
+                    'field' => 'slug',
+                    'terms' => $color 
+                );
+                array_push($args["tax_query"], $color__arr);
+            }
+            if((sizeof($team) > 1 || $team[0] != '') && $taxonomy_slug != 'team'){
+                $team__arr = array(
+                    'taxonomy' => 'team', 
+                    'field' => 'slug',
+                    'terms' => $team 
+                );
+                array_push($args["tax_query"], $team__arr);
+            }
             if((sizeof($kategori) > 1 || $kategori[0] != '') && $taxonomy_slug != 'product_cat'){
                 $kategori_arr = array(
                     'taxonomy' => 'product_cat', 
@@ -144,6 +184,8 @@ $searchText=get_search_query();
             $list_varumarke = array();
             $list_storek = array();
             $list_taggar = array();
+            $list_color = array();
+            $list_team = array();
             $list_categories = array();
                 
             if ($the_query->have_posts()) {
@@ -153,6 +195,8 @@ $searchText=get_search_query();
                     $post_terms = wp_get_post_terms(get_the_ID(), 'varumarke'); // Замініть 'your_taxonomy' на вашу таксономію
                     $product_attributes = wc_get_product_terms(get_the_ID(), 'pa_storlek');
                     $product_taggar = wc_get_product_terms(get_the_ID(), 'product_tag');
+                    $product_color = wc_get_product_terms(get_the_ID(), 'color');
+                    $product_team = wc_get_product_terms(get_the_ID(), 'team');
                     $product_cat = wc_get_product_terms(get_the_ID(), 'product_cat');
 
                     foreach ($post_terms as $term) {
@@ -168,6 +212,16 @@ $searchText=get_search_query();
                     foreach ($product_taggar as $term) {
                         if(!in_array($term->slug, $taggar)){
                             $list_taggar[$term->term_id] = array('name' => $term->name, 'slug' => $term->slug, 'id' => $term->term_id);
+                        }
+                    }
+                    foreach ($product_color as $term) {
+                        if(!in_array($term->slug, $color)){
+                            $list_color[$term->term_id] = array('name' => $term->name, 'slug' => $term->slug, 'id' => $term->term_id);
+                        }
+                    }
+                    foreach ($product_team as $term) {
+                        if(!in_array($term->slug, $team)){
+                            $list_team[$term->term_id] = array('name' => $term->name, 'slug' => $term->slug, 'id' => $term->term_id);
                         }
                     }
                     foreach ($product_cat as $term) {
@@ -241,9 +295,9 @@ $searchText=get_search_query();
                             <?php 
                             if ( (!empty($list_varumarke) && !is_wp_error( $list_varumarke )) || (sizeof($varumarke) > 1 || $varumarke[0] != '') ):
                             ?>
-                                <div class="shopPage__filtersRow__listItem opened" data-attr-name="varumarke">
+                                <div class="shopPage__filtersRow__listItem" data-attr-name="varumarke">
                                     <div class="shopPage__filtersRow__listItem__title">VARUMÄRKE</div>
-                                    <div class="shopPage__filtersRow__listItem__sublist" style="display: block;">
+                                    <div class="shopPage__filtersRow__listItem__sublist">
                                         <div class="shopPage__filtersRow__listItem__sublistItems">
                                             <?php if((sizeof($varumarke) > 1 || $varumarke[0] != '')): ?>
                                                 <?php foreach($varumarke as $term): ?>
@@ -313,6 +367,62 @@ $searchText=get_search_query();
                                                 <?php endforeach; ?>
                                             <?php endif; ?>
                                             <?php foreach($list_taggar as $term): ?>
+                                                <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term['slug']; ?>">
+                                                    <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
+                                                    <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term['name']; ?></div>
+                                                </div>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                            <?php 
+                            if ( (!empty($list_color) && !is_wp_error( $list_color )) || (sizeof($color) > 1 || $color[0] != '') ):
+                            ?>
+                                <div class="shopPage__filtersRow__listItem" data-attr-name="color">
+                                    <div class="shopPage__filtersRow__listItem__title">FÄRG</div>
+                                    <div class="shopPage__filtersRow__listItem__sublist">
+                                        <div class="shopPage__filtersRow__listItem__sublistItems">
+                                            <?php if((sizeof($color) > 1 || $color[0] != '')): ?>
+                                                <?php foreach($color as $term): ?>
+                                                    <?php 
+                                                    $full_term = get_term_by('slug', $term, 'product_cat');
+                                                    ?>
+                                                    <div class="shopPage__filtersRow__listItem__sublistItem active" data-slug="<?php echo $term; ?>">
+                                                        <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
+                                                        <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $full_term->name; ?></div>
+                                                    </div>
+                                                <?php endforeach; ?>
+                                            <?php endif; ?>
+                                            <?php foreach($list_color as $term): ?>
+                                                <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term['slug']; ?>">
+                                                    <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
+                                                    <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term['name']; ?></div>
+                                                </div>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                            <?php 
+                            if ( (!empty($list_team) && !is_wp_error( $list_team )) || (sizeof($team) > 1 || $team[0] != '') ):
+                            ?>
+                                <div class="shopPage__filtersRow__listItem" data-attr-name="team">
+                                    <div class="shopPage__filtersRow__listItem__title">TEAM</div>
+                                    <div class="shopPage__filtersRow__listItem__sublist">
+                                        <div class="shopPage__filtersRow__listItem__sublistItems">
+                                            <?php if((sizeof($team) > 1 || $team[0] != '')): ?>
+                                                <?php foreach($team as $term): ?>
+                                                    <?php 
+                                                    $full_term = get_term_by('slug', $term, 'product_cat');
+                                                    ?>
+                                                    <div class="shopPage__filtersRow__listItem__sublistItem active" data-slug="<?php echo $term; ?>">
+                                                        <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
+                                                        <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $full_term->name; ?></div>
+                                                    </div>
+                                                <?php endforeach; ?>
+                                            <?php endif; ?>
+                                            <?php foreach($list_team as $term): ?>
                                                 <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term['slug']; ?>">
                                                     <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
                                                     <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term['name']; ?></div>

@@ -68,6 +68,16 @@ get_header( 'shop' );
             else:
                 $taggar = array('');
             endif;
+            if(!empty($_GET['teams'])):
+                $team = explode(',', $_GET['teams']);
+            else:
+                $team = array('');
+            endif;
+            if(!empty($_GET['colors'])):
+                $color = explode(',', $_GET['colors']);
+            else:
+                $color = array('');
+            endif;
             if(!empty($_GET['kategori'])):
                 $kategori = explode(',', $_GET['kategori']);
             else:
@@ -172,6 +182,20 @@ get_header( 'shop' );
                     $taggar = $term_id;
                 }
                 
+                if($taxonomy_slug == 'team' && (sizeof($team) > 1 || $team[0] != '')){
+                    $term_id = array_merge( $term_id, $team );
+                }
+                if($taxonomy_slug == 'team'){
+                    $team = $term_id;
+                }
+
+                if($taxonomy_slug == 'color' && (sizeof($color) > 1 || $color[0] != '')){
+                    $term_id = array_merge( $term_id, $color );
+                }
+                if($taxonomy_slug == 'color'){
+                    $color = $term_id;
+                }
+
                 if($taxonomy_slug == 'product_cat' && (sizeof($kategori) > 1 || $kategori[0] != '')){
                     $term_id = array_merge( $term_id, $kategori );
                 }
@@ -215,6 +239,22 @@ get_header( 'shop' );
                 );
                 array_push($args["tax_query"], $taggar__arr);
             }
+            if((sizeof($team) > 1 || $team[0] != '') && $taxonomy_slug != 'team'){
+                $team_arr = array(
+                    'taxonomy' => 'team', 
+                    'field' => 'slug',
+                    'terms' => $team 
+                );
+                array_push($args["tax_query"], $team_arr);
+            }
+            if((sizeof($color) > 1 || $color[0] != '') && $taxonomy_slug != 'color'){
+                $color_arr = array(
+                    'taxonomy' => 'color', 
+                    'field' => 'slug',
+                    'terms' => $color 
+                );
+                array_push($args["tax_query"], $color_arr);
+            }
             if((sizeof($kategori) > 1 || $kategori[0] != '') && $taxonomy_slug != 'product_cat'){
                 $kategori_arr = array(
                     'taxonomy' => 'product_cat', 
@@ -227,7 +267,7 @@ get_header( 'shop' );
             if ( $the_query->have_posts() ) { ?>
                 <?php $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
                 <?php do_action( 'woocommerce_before_shop_loop' ); ?>
-                <div class="shopPage__list" data-paged="<?php echo $paged; ?>" data-sort="<?php echo $settedOrder; ?>"<?php if(sizeof($varumarke) > 1 || $varumarke[0] != ''): ?> data-varumarke="<?php echo implode(',', $varumarke); ?>"<?php endif; ?><?php if(sizeof($storek) > 1 || $storek[0] != ''): ?> data-storek="<?php echo implode(',', $storek); ?>"<?php endif; ?><?php if(sizeof($taggar) > 1 || $taggar[0] != ''): ?> data-taggar="<?php echo implode(',', $taggar); ?>"<?php endif; ?><?php if(sizeof($kategori) > 1 || $kategori[0] != ''): ?> data-kategori="<?php echo implode(',', $kategori); ?>"<?php endif; ?><?php if($searchText): ?> data-search="<?php echo $searchText; ?>"<?php endif; ?>>
+                <div class="shopPage__list" data-paged="<?php echo $paged; ?>" data-sort="<?php echo $settedOrder; ?>"<?php if(sizeof($varumarke) > 1 || $varumarke[0] != ''): ?> data-varumarke="<?php echo implode(',', $varumarke); ?>"<?php endif; ?><?php if(sizeof($storek) > 1 || $storek[0] != ''): ?> data-storek="<?php echo implode(',', $storek); ?>"<?php endif; ?><?php if(sizeof($taggar) > 1 || $taggar[0] != ''): ?> data-taggar="<?php echo implode(',', $taggar); ?>"<?php endif; ?><?php if(sizeof($kategori) > 1 || $kategori[0] != ''): ?> data-kategori="<?php echo implode(',', $kategori); ?>"<?php endif; ?><?php if(sizeof($team) > 1 || $team[0] != ''): ?> data-team="<?php echo implode(',', $team); ?>"<?php endif; ?><?php if(sizeof($color) > 1 || $color[0] != ''): ?> data-color="<?php echo implode(',', $color); ?>"<?php endif; ?><?php if($searchText): ?> data-search="<?php echo $searchText; ?>"<?php endif; ?>>
                     <?php 
                     	woocommerce_product_loop_start();
 

@@ -46,12 +46,21 @@ if(!empty($_GET['taggar'])):
 else:
     $taggar = array('');
 endif;
+if(!empty($_GET['teams'])):
+    $team = explode(',', $_GET['teams']);
+else:
+    $team = array('');
+endif;
+if(!empty($_GET['colors'])):
+    $color = explode(',', $_GET['colors']);
+else:
+    $color = array('');
+endif;
 if(!empty($_GET['kategori'])):
     $kategori = explode(',', $_GET['kategori']);
 else:
     $kategori = array('');
 endif;
-
 
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 $current_term = get_queried_object();
@@ -116,9 +125,9 @@ $args = array(
     'tax_query' => array(),
 );
 
-if(!empty($_GET['s'])):
-    $args['s'] = $_GET['s'];
-endif;
+if(!empty($searchText) || $searchText != ''){
+    $args['s'] = $searchText;
+}
 
 if(!empty($metaKey)){
     $args['meta_key'] = $metaKey;
@@ -150,7 +159,21 @@ if(!empty($term_id) && !empty($taxonomy_slug)) {
     if($taxonomy_slug == 'product_tag'){
         $taggar = $term_id;
     }
-                
+    
+    if($taxonomy_slug == 'team' && (sizeof($team) > 1 || $team[0] != '')){
+        $term_id = array_merge( $term_id, $team );
+    }
+    if($taxonomy_slug == 'team'){
+        $team = $term_id;
+    }
+
+    if($taxonomy_slug == 'color' && (sizeof($color) > 1 || $color[0] != '')){
+        $term_id = array_merge( $term_id, $color );
+    }
+    if($taxonomy_slug == 'color'){
+        $color = $term_id;
+    }
+
     if($taxonomy_slug == 'product_cat' && (sizeof($kategori) > 1 || $kategori[0] != '')){
         $term_id = array_merge( $term_id, $kategori );
     }
@@ -186,7 +209,6 @@ if((sizeof($storek) > 1 || $storek[0] != '') && $taxonomy_slug != 'pa_storlek'){
     );
     array_push($args["tax_query"], $storek__arr);
 }
-
 if((sizeof($taggar) > 1 || $taggar[0] != '') && $taxonomy_slug != 'product_tag'){
     $taggar__arr = array(
         'taxonomy' => 'product_tag', 
@@ -194,6 +216,22 @@ if((sizeof($taggar) > 1 || $taggar[0] != '') && $taxonomy_slug != 'product_tag')
         'terms' => $taggar 
     );
     array_push($args["tax_query"], $taggar__arr);
+}
+if((sizeof($team) > 1 || $team[0] != '') && $taxonomy_slug != 'team'){
+    $team_arr = array(
+        'taxonomy' => 'team', 
+        'field' => 'slug',
+        'terms' => $team 
+    );
+    array_push($args["tax_query"], $team_arr);
+}
+if((sizeof($color) > 1 || $color[0] != '') && $taxonomy_slug != 'color'){
+    $color_arr = array(
+        'taxonomy' => 'color', 
+        'field' => 'slug',
+        'terms' => $color 
+    );
+    array_push($args["tax_query"], $color_arr);
 }
 if((sizeof($kategori) > 1 || $kategori[0] != '') && $taxonomy_slug != 'product_cat'){
     $kategori_arr = array(
