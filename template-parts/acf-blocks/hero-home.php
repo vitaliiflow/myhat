@@ -58,9 +58,6 @@ if ($slides) : ?>
                         </div>
                     </a>
                 
-                <?php else : ?>
-
-                    Same markup as above
                 
                 <?php endif; ?> 
                 </li>

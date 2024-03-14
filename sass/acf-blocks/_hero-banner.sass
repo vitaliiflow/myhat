@@ -1,0 +1,17 @@
+.hero-banner
+    position: relative
+    aspect-ratio: 1920 / 500
+    +max-screen($breakpoint-sm)
+        aspect-ratio: 370 / 310
+        padding-left: 15px
+        padding-right: 15px
+    &__content-wrapper
+        position: relative
+        z-index: 10
+    .section
+        display: flex
+        height: 100%
+        align-items: flex-end
+        +max-screen($breakpoint-sm)
+            align-items: center
+            text-align: center

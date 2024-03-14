@@ -49,6 +49,38 @@
                     "min": "",
                     "max": ""
                 },
+                "layout_65f298ae19617": {
+                    "key": "layout_65f298ae19617",
+                    "name": "hero-banner",
+                    "label": "Block: Hero Banner",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_65f298ae19619",
+                            "label": "",
+                            "name": "",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_65f2979e181cf"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
                 "layout_65cb654181765": {
                     "key": "layout_65cb654181765",
                     "name": "product-categories-list",
@@ -491,5 +523,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1709289070
+    "modified": 1710397648
 }
