@@ -228,6 +228,7 @@ jQuery(document).ready(function($){
                 color_list = [],
                 team_list = [],
                 kategori_list = [],
+                openedItems = [],
                 order = '',
                 orderby = '',
                 metaKey = '';
@@ -305,7 +306,7 @@ jQuery(document).ready(function($){
                 $('.shopPage__filtersRow__list__clear').removeClass('show');
             }
     
-    
+            
             $.ajax({
                 url: codelibry.ajax_url,
                 type: 'post',
@@ -370,7 +371,12 @@ jQuery(document).ready(function($){
                 $('.seo-text').addClass('seo-text__content--long');
             }
 
-    
+            $('.shopPage__filtersRow__listItem').each(function(){
+                if($(this).hasClass('opened')){
+                    openedItems.push($(this).attr('data-attr-name'));
+                }
+                
+            })
             $.ajax({
                 url: codelibry.ajax_url,
                 type: 'post',
@@ -382,6 +388,7 @@ jQuery(document).ready(function($){
                     team: team_list,
                     color: color_list,
                     kategori: kategori_list,
+                    openedItems: openedItems,
                     searchText: searchText,
                 },
                 success: function(response){

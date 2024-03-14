@@ -859,6 +859,7 @@ function changing_filters() {
     $color = '';
     $team = '';
     $kategori = '';
+    $openedItems = '';
     $clear = false;
     if(!empty($_POST['varumarke'])):
         $varumarke = $_POST['varumarke'];
@@ -883,6 +884,9 @@ function changing_filters() {
     if(!empty($_POST['kategori'])):
         $kategori = $_POST['kategori'];
         $clear = true;
+    endif;
+    if(!empty($_POST['openedItems'])):
+        $openedItems = $_POST['openedItems'];
     endif;
 
     $args = array(
@@ -1042,9 +1046,9 @@ function changing_filters() {
     <?php 
     if ( (!empty($list_varumarke) && !is_wp_error( $list_varumarke )) || !empty($varumarke) ):
     ?>
-        <div class="shopPage__filtersRow__listItem<?php if(!empty($varumarke) && $varumarke != ''){ echo ' opened'; } ?>" data-attr-name="varumarke">
+        <div class="shopPage__filtersRow__listItem<?php if(!empty($openedItems) && is_array($openedItems) && in_array('varumarke',$openedItems)){ echo ' opened'; } ?>" data-attr-name="varumarke">
             <div class="shopPage__filtersRow__listItem__title">VARUMÄRKE</div>
-            <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($varumarke) && $varumarke != ''){ echo '  style="display: block;"'; } ?>>
+            <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($openedItems) && is_array($openedItems) && in_array('varumarke',$openedItems)){ echo '  style="display: block;"'; } ?>>
                 <div class="shopPage__filtersRow__listItem__sublistItems">
                     <?php if(!empty($varumarke)): ?>
                         <?php foreach($varumarke as $term): ?>
@@ -1070,9 +1074,9 @@ function changing_filters() {
     <?php 
     if ( (!empty($list_storek) && !is_wp_error( $list_storek )) || !empty($storek) ):
     ?>
-        <div class="shopPage__filtersRow__listItem<?php if(!empty($storek) && $storek != ''){ echo ' opened'; } ?>" data-attr-name="storek">
+        <div class="shopPage__filtersRow__listItem<?php if(!empty($openedItems) && is_array($openedItems) && in_array('storek',$openedItems)){ echo ' opened'; } ?>" data-attr-name="storek">
             <div class="shopPage__filtersRow__listItem__title">STORLEK</div>
-            <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($storek) && $storek != ''){ echo '  style="display: block;"'; } ?>>
+            <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($openedItems) && is_array($openedItems) && in_array('storek',$openedItems)){ echo '  style="display: block;"'; } ?>>
                 <div class="shopPage__filtersRow__listItem__sublistItems">
                     <?php if(!empty($storek)): ?>
                         <?php foreach($storek as $term): ?>
@@ -1098,9 +1102,9 @@ function changing_filters() {
     <?php 
     if ( (!empty($list_taggar) && !is_wp_error( $list_taggar )) || !empty($taggar) ):
     ?>
-        <div class="shopPage__filtersRow__listItem<?php if(!empty($taggar) && $taggar != ''){ echo ' opened'; } ?>" data-attr-name="taggar">
+        <div class="shopPage__filtersRow__listItem<?php if(!empty($openedItems) && is_array($openedItems) && in_array('taggar',$openedItems)){ echo ' opened'; } ?>" data-attr-name="taggar">
             <div class="shopPage__filtersRow__listItem__title">TAGGAR</div>
-            <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($taggar) && $taggar != ''){ echo '  style="display: block;"'; } ?>>
+            <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($openedItems) && is_array($openedItems) && in_array('taggar',$openedItems)){ echo '  style="display: block;"'; } ?>>
                 <div class="shopPage__filtersRow__listItem__sublistItems">
                     <?php if(!empty($taggar)): ?>
                         <?php foreach($taggar as $term): ?>
@@ -1126,9 +1130,9 @@ function changing_filters() {
     <?php 
     if ( (!empty($list_color) && !is_wp_error( $list_color )) || !empty($color) ):
     ?>
-        <div class="shopPage__filtersRow__listItem<?php if(!empty($color) && $color != ''){ echo ' opened'; } ?>" data-attr-name="color">
+        <div class="shopPage__filtersRow__listItem<?php if(!empty($openedItems) && is_array($openedItems) && in_array('color',$openedItems)){ echo ' opened'; } ?>" data-attr-name="color">
             <div class="shopPage__filtersRow__listItem__title">FÄRG</div>
-            <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($color) && $color != ''){ echo ' style="display:block;"'; } ?>>
+            <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($openedItems) && is_array($openedItems) && in_array('color',$openedItems)){ echo ' style="display:block;"'; } ?>>
                 <div class="shopPage__filtersRow__listItem__sublistItems">
                     <?php if(!empty($color)): ?>
                         <?php foreach($color as $term): ?>
@@ -1154,9 +1158,9 @@ function changing_filters() {
     <?php 
     if ( (!empty($list_team) && !is_wp_error( $list_team )) || !empty($team) ):
     ?>
-        <div class="shopPage__filtersRow__listItem<?php if(!empty($team) && $team != ''){ echo ' opened'; } ?>" data-attr-name="team">
+        <div class="shopPage__filtersRow__listItem<?php if(!empty($openedItems) && is_array($openedItems) && in_array('team',$openedItems)){ echo ' opened'; } ?>" data-attr-name="team">
             <div class="shopPage__filtersRow__listItem__title">TEAM</div>
-            <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($team) && $team != ''){ echo ' style="display:block;"'; } ?>>
+            <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($openedItems) && is_array($openedItems) && in_array('team',$openedItems)){ echo ' style="display:block;"'; } ?>>
                 <div class="shopPage__filtersRow__listItem__sublistItems">
                     <?php if(!empty($team)): ?>
                         <?php foreach($team as $term): ?>
@@ -1182,9 +1186,9 @@ function changing_filters() {
     <?php 
     if ( (!empty($list_categories) && !is_wp_error( $list_categories )) || !empty($kategori) ):
     ?>
-        <div class="shopPage__filtersRow__listItem<?php if(!empty($kategori) && $kategori[0] != ''){ echo ' opened'; } ?>" data-attr-name="kategori">
+        <div class="shopPage__filtersRow__listItem<?php if(!empty($openedItems) && is_array($openedItems) && in_array('kategori',$openedItems)){ echo ' opened'; } ?>" data-attr-name="kategori">
             <div class="shopPage__filtersRow__listItem__title">KATEGORI</div>
-            <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($kategori) && $kategori[0] != ''){ echo ' style="display:block;"'; } ?>>
+            <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($openedItems) && is_array($openedItems) && in_array('kategori',$openedItems)){ echo ' style="display:block;"'; } ?>>
                 <div class="shopPage__filtersRow__listItem__sublistItems">
                     <?php if(!empty($kategori) && $kategori[0] != ''): ?>
                         <?php foreach($kategori as $term): ?>
