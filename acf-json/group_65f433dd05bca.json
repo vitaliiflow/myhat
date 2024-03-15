@@ -1,13 +1,13 @@
 {
-    "key": "group_65db9666a1976",
-    "title": "Attribute: Colors",
+    "key": "group_65f433dd05bca",
+    "title": "Taxonomy: Team",
     "fields": [
         {
-            "key": "field_65db9666cc437",
-            "label": "Color",
-            "name": "color",
+            "key": "field_65f433dd6331b",
+            "label": "Taxonomy image",
+            "name": "taxonomy-image",
             "aria-label": "",
-            "type": "color_picker",
+            "type": "image",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -16,9 +16,16 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "enable_opacity": 0,
-            "return_format": "string"
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
         }
     ],
     "location": [
@@ -26,7 +33,7 @@
             {
                 "param": "taxonomy",
                 "operator": "==",
-                "value": "color"
+                "value": "team"
             }
         ]
     ],
@@ -39,5 +46,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1710502862
+    "modified": 1710502931
 }
