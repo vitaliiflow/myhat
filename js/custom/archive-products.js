@@ -7,6 +7,8 @@ jQuery(document).ready(function($){
                   storek = $('.shopPage__list').attr('data-storek'),
                   taggar = $('.shopPage__list').attr('data-taggar'),
                   kategori = $('.shopPage__list').attr('data-kategori'),
+                  team = $('.shopPage__list').attr('data-team'),
+                  color = $('.shopPage__list').attr('data-color'),
                   searcText = $('.shopPage__list').attr('data-search');
             let paged = parseInt($('.shopPage__list').attr('data-paged')),
                 orderby, order,
@@ -59,6 +61,8 @@ jQuery(document).ready(function($){
                     storek: storek,
                     taggar: taggar,
                     kategori: kategori,
+                    team: team,
+                    color: color,
                     searchText: searcText,
                 },
                 success: function success(result) {
