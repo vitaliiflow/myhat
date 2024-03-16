@@ -63,7 +63,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 			$newness_days = 30; 
 			$created = strtotime( $product->get_date_created() );
 			if ( ( time() - ( 60 * 60 * 24 * $newness_days ) ) < $created  || $new) {
-				echo '<span class="new-badge shopPage__listItem__badge">' . esc_html__( 'NEW', 'woocommerce' ) . '</span>';
+				echo '<span class="new-badge shopPage__listItem__badge">' . esc_html__( 'NEW', 'codelibry' ) . '</span>';
 			}
 
 			//Last Chance Label
@@ -78,13 +78,13 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 				$total_stock = $product->get_stock_quantity();
 			}
 			if($total_stock <= 1 || $last){
-				echo '<span class="last-chance shopPage__listItem__badge">' . esc_html__( 'Last Chance', 'woocommerce' ) . '</span>';
+				echo '<span class="last-chance shopPage__listItem__badge">' . esc_html__( 'Last Chance', 'codelibry' ) . '</span>';
 			}
 			if(dw_product_totals() > 50 || $top){
-				echo '<span class="top-seller shopPage__listItem__badge">' . esc_html__( 'Top seller', 'woocommerce' ) . '</span>';
+				echo '<span class="top-seller shopPage__listItem__badge">' . esc_html__( 'Top seller', 'codelibry' ) . '</span>';
 			}
 			if($limited):
-				echo '<span class="limited-edition shopPage__listItem__badge">' . esc_html__( 'Limited Edition', 'woocommerce' ) . '</span>';
+				echo '<span class="limited-edition shopPage__listItem__badge">' . esc_html__( 'Limited Edition', 'codelibry' ) . '</span>';
 			endif;
 		endif;
 		?>
@@ -113,5 +113,5 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 		<div class="shopPage__listItem__tax"><?php echo $categories[0]->name; ?></div>
 	<?php endif; ?>
 	<div class="shopPage__listItem__title"><?php echo $product->get_title(); ?></div>
-	<div class="shopPage__listItem__price<?php if($product->is_on_sale()){ echo ' sale';} ?>"><?php echo $product->get_price_html(); ?></div>
+	<div class="shopPage__listItem__price<?php if($product->is_on_sale()){ _e(' Sale','codelibry');} ?>"><?php echo $product->get_price_html(); ?></div>
 </a>
