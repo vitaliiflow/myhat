@@ -61,8 +61,12 @@ if ($list) : ?>
                                         <h3 class="mb-2"><?php echo $title; ?></h3>
 
                                     <?php endif; ?>
+
+                                    <?php if ($link['title']) : ?>
                                     
-                                    <div class="h6 cards-list__link"><?php echo $link['title'];?><?php echo get_inline_svg('arrow-right.svg');?></div>
+                                        <div class="h6 cards-list__link"><?php echo $link['title'];?><?php echo get_inline_svg('arrow-right.svg');?></div>
+
+                                    <?php endif; ?>
                                 
                                 </div>
 

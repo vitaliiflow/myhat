@@ -68,7 +68,7 @@ function cptui_register_my_taxes_team() {
 		"show_in_menu" => true,
 		"show_in_nav_menus" => true,
 		"query_var" => true,
-		"rewrite" => [ 'slug' => 'team', 'with_front' => true, ],
+		"rewrite" => [ 'slug' => 'team', 'with_front' => true, 'hierarchical' => true],
 		"show_admin_column" => true,
 		"show_in_rest" => true,
 		"show_tagcloud" => false,
@@ -121,3 +121,5 @@ function cptui_register_my_taxes_color() {
 	register_taxonomy( "color", [ "product" ], $args );
 }
 add_action( 'init', 'cptui_register_my_taxes_color' );
+
+

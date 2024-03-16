@@ -65,7 +65,7 @@ if ($list ) : ?>
                     'return' => 'ids', // Optional: If you only need IDs, or 'objects' for product objects
                     'tax_query' => array(
                         array(
-                            'taxonomy' => 'product_cat',
+                            'taxonomy' => 'team',
                             'field' => 'term_id',
                             'terms' => $id,
                             'operator' => 'IN'
