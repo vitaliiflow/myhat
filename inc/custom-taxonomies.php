@@ -121,3 +121,5 @@ function cptui_register_my_taxes_color() {
 	register_taxonomy( "color", [ "product" ], $args );
 }
 add_action( 'init', 'cptui_register_my_taxes_color' );
+
+

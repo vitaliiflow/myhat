@@ -21,7 +21,7 @@ global $product;
 
 // Ensure visibility.
 if ( empty( $product ) || ! $product->is_visible() ) {
-	echo ' product invisible inside';
+	// echo ' product invisible inside';
 	// return;
 }
 ?>
@@ -77,7 +77,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 			} else {
 				$total_stock = $product->get_stock_quantity();
 			}
-			if($total_stock <= 3 || $last){
+			if($total_stock <= 1 || $last){
 				echo '<span class="last-chance shopPage__listItem__badge">' . esc_html__( 'Last Chance', 'woocommerce' ) . '</span>';
 			}
 			if(dw_product_totals() > 50 || $top){

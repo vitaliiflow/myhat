@@ -19,6 +19,6 @@
     <?php wp_footer(); ?>
 
     <?php if ($footerScripts) : echo $footerScripts; endif; ?>
-    <?php echo do_shortcode('[lightbox id="popup-new" width="500px" padding="0px" auto_open="true" auto_timer="30000" auto_show="once"][block id="popup-newsletter"][/lightbox]');?>
+   
   </body>
 </html> 
