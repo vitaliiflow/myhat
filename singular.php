@@ -17,7 +17,7 @@ get_header(); ?>
         
     </div>
 </div>
-<?php if( is_page( 'cart' ) || is_cart() ): ?>
+<?php if( (is_page( 'cart' ) || is_cart()) && wc_get_page_id( 'shop' ) <= 0 ): ?>
     <?php echo get_template_part('template-parts/acf-blocks/block-latest-products'); ?>
 <?php endif; ?>
 
