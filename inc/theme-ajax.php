@@ -825,7 +825,7 @@ function filters_init() {
                             <div class="shopPage__filtersRow__listItem__sublistItem active" data-slug="<?php echo $term; ?>">
                                 <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
                                 <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $full_term->name; ?></div>
-                                <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php echo category_description($full_term->term_id); ?></div>
+                                <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php //echo category_description($full_term->term_id); ?></div>
                             </div>
                         <?php endforeach; ?>
                     <?php endif; ?>
@@ -1198,7 +1198,7 @@ function changing_filters() {
                             <div class="shopPage__filtersRow__listItem__sublistItem active" data-slug="<?php echo $term; ?>">
                                 <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
                                 <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $full_term->name; ?></div>
-                                <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php echo category_description($full_term->term_id); ?></div>
+                                <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php //echo category_description($full_term->term_id); ?></div>
                             </div>
                         <?php endforeach; ?>
                     <?php endif; ?>

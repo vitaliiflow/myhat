@@ -447,7 +447,7 @@ $searchText=get_search_query();
                                                     <div class="shopPage__filtersRow__listItem__sublistItem active" data-slug="<?php echo $term; ?>">
                                                         <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
                                                         <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $full_term->name; ?></div>
-                                                        <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php echo category_description($full_term->term_id); ?></div>
+                                                        <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php //echo category_description($full_term->term_id); ?></div>
                                                     </div>
                                                 <?php endforeach; ?>
                                             <?php endif; ?>
@@ -455,7 +455,7 @@ $searchText=get_search_query();
                                                 <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term['slug']; ?>">
                                                     <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
                                                     <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term['name']; ?></div>
-                                                    <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php echo category_description($term['id']); ?></div>
+                                                    <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php //echo category_description($term['id']); ?></div>
                                                 </div>
                                             <?php endforeach; ?>
                                         </div>
