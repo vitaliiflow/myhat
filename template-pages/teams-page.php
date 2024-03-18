@@ -11,7 +11,7 @@ $title = get_field('page_title') ? get_field('page_title') : get_the_title();
 $description = get_field('page_description');
 
 $list = get_field('leagues-list'); /*repeater: category, custom name*/
-$taxonomy_name = 'product_cat';
+$taxonomy_name = 'team';
 ?>
 
 
@@ -75,8 +75,11 @@ $taxonomy_name = 'product_cat';
 
                         $category = $item['category'];
 
+                        echo $category->term_id;
+                       
+
                         $terms = get_terms( array(
-                            'taxonomy' => 'product_cat',
+                            'taxonomy' => 'team',
                             'orderby' => 'name',
 			                'order' => 'ASC',
                             'hide_empty' => true,
@@ -94,8 +97,8 @@ $taxonomy_name = 'product_cat';
 
                                     <?php foreach ( $terms as $term ) : 
 
-                                        $thumbnail_id = get_term_meta( $term->term_id, 'thumbnail_id', true );
-                                        $image = wp_get_attachment_url( $thumbnail_id );
+                                        //$thumbnail_id = get_term_meta( $term->term_id, 'thumbnail_id', true );
+                                        $image = get_field('taxonomy-image', $term);
                                         $name = $term->name;
                                         $link = get_term_link($term);
                         
@@ -106,7 +109,7 @@ $taxonomy_name = 'product_cat';
                                                     <?php if ( $image ) : ?>
 
                                                         <div class="teams-page__logo-wrapper mb-3">
-                                                            <img class="teams-page__logo" src="<?php echo $image; ?>" alt="<?php echo $name . ' logo'; ?>" />
+                                                            <img class="teams-page__logo" src="<?php echo $image['url']; ?>" alt="<?php echo $name . ' logo'; ?>" />
                                                         </div>
                         
                                                     <?php endif; ?>
