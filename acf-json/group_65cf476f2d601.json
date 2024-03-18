@@ -133,9 +133,9 @@
                         "id": ""
                     },
                     "choices": {
-                        "facebook": "Facebook",
-                        "instagram": "Instagram",
-                        "google": "Google+"
+                        "Facebook": "Facebook",
+                        "Instagram": "Instagram",
+                        "Google": "Google+"
                     },
                     "default_value": "",
                     "return_format": "value",
@@ -184,5 +184,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1709233746
+    "modified": 1710745426
 }
