@@ -112,7 +112,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "taxonomy": "product_cat",
+                    "taxonomy": "team",
                     "add_term": 1,
                     "save_terms": 0,
                     "load_terms": 0,
@@ -168,5 +168,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1708718529
+    "modified": 1710742850
 }

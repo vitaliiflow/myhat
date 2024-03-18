@@ -1477,6 +1477,7 @@ body .woocommerce-message a.button{color:#fff;background:#000;border-radius:0;fo
 }@media only screen and (max-width:992px) and (min-width:576px){.footer__nav::before{display:none}
 }@media only screen and (min-width:992px){.footer__newsletter-inner{margin-top:-2rem}
 .product-cat__item img{opacity:.65}
+.tabs.product-cat--team .shopPage__listItem:nth-child(6){display:none}
 .product-cat.product-cat--model .product-cat__item{width:calc(100% / 6);margin-bottom:0}
 .cta__content{margin-bottom:-2rem}
 .latest-products__item{max-width:20%}

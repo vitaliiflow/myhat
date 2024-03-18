@@ -6,6 +6,7 @@
 
 $title = get_sub_field('section_title');
 $list = get_sub_field('product_team_list');
+$link = get_sub_field('link');
 
 if ($list ) : ?>
 
@@ -16,6 +17,17 @@ if ($list ) : ?>
 
             <?php if ($title) : ?>
                 <h2 class="text-center"><?php echo $title; ?></h2>
+            <?php endif; ?>
+
+            <?php if ($link) :
+                        
+                $link_url = $link['url'];
+                $link_title = $link['title'];
+                $link_target = $link['target'] ? $link['target'] : '_self';
+                ?>
+
+                <a class="button button--arrow mt-3 mb-4" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?><?php echo get_inline_svg('arrow-right.svg');?></a>
+
             <?php endif; ?>
 
             <ul class="row justify-content-between tabs__labels-slider mt-3">
