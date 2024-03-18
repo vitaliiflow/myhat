@@ -37,17 +37,6 @@ get_header( 'shop' );
 <div class="shopPage">
     <div class="container">
         <div class="shopPage__content">
-            <!-- <div class="shopPage__top">
-                <div class="shopPage__breadcrumbs"><?php do_action( 'woocommerce_before_main_content' ); ?></div></div>
-                <?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-                    <h1 class="shopPage__title"><?php woocommerce_page_title(); ?></h1>
-                <?php endif; ?>
-                <?php 
-                    $page_id = get_option( 'woocommerce_shop_page_id' ); ;
-                    $page_content = get_post_field( 'post_content', $page_id );
-                ?>
-                <div class="shopPage__text"><?php echo wpautop($page_content); ?></div>
-            </div> -->
             <?php 
             $searchText = '';
             if(!empty($_GET['s'])):
