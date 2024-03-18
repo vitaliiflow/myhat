@@ -31,6 +31,11 @@ $prev = $current - 1;
 $next = $current + 1;
 
 
+$searchText = '';
+if(!empty($_GET['s'])):
+    $searchText = $_GET['s'];
+endif;
+
 if(!empty($_GET['varumarke_cat'])):
     $varumarke = explode(',', $_GET['varumarke_cat']);
 else:

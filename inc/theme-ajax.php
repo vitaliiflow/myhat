@@ -351,6 +351,8 @@ function products_pagination() {
     $order = $_POST['order'];
     $orderby = $_POST['orderby'];
 
+    $searchText = '';
+
     if(!empty($_POST['searchText'])):
         $searchText = $_POST['searchText'];
     endif;
