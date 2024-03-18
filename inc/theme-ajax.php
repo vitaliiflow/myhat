@@ -329,13 +329,13 @@ function products_filter() {
         </ul>
         </div>
         <div class="shopPage__pagination">
-            <div class="shopPage__paginationButton prev<?php if($paged == 1){ echo ' disabled';} ?>"><?php echo get_inline_svg('pagination-arrow-right.svg'); ?>Föregående</div>
+            <a href="#" rel="previous" class="shopPage__paginationButton prev<?php if($paged == 1){ echo ' disabled';} ?>"><?php echo get_inline_svg('pagination-arrow-right.svg'); ?>Föregående</a>
             <div class="shopPage__paginationPage">
                 <span class="current"><?php echo $paged; ?></span>
                 <span>/</span>
                 <span class="total"><?php echo $the_query->max_num_pages; ?></span>
             </div>
-            <div class="shopPage__paginationButton next<?php if($the_query->max_num_pages <= 1 || $paged == $the_query->max_num_pages){echo ' disabled';} ?>">Nästa<?php echo get_inline_svg('pagination-arrow-right.svg'); ?></div>
+            <a href="#" rel="next" class="shopPage__paginationButton next<?php if($the_query->max_num_pages <= 1 || $paged == $the_query->max_num_pages){echo ' disabled';} ?>">Nästa<?php echo get_inline_svg('pagination-arrow-right.svg'); ?></a>
     <?php else: 
         echo '<h4>Inget hittades...</h4>';
     endif;
