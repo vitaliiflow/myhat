@@ -302,11 +302,34 @@ $link = get_field('related_products_link', 'options');
 			</div>
 		<?php endif; ?>
 		<?php 
-		$product_per_page = 5;
-		$related_products = array_filter( array_map( 'wc_get_product', wc_get_related_products( $product->get_id(), $product_per_page, $product->get_upsell_ids() ) ), 'wc_products_array_filter_visible' );
+		$chosen_products = $product->get_upsell_ids();
+		if(count($chosen_products) <= 5){
+			$product_per_page = 5 - count($chosen_products);	
+		}
+		else{
+			$product_per_page = 0;
+		}
+		
+		$related_products = array_filter( array_map( 'wc_get_product', wc_get_related_products( $product->get_id(), $product_per_page, $chosen_products ) ), 'wc_products_array_filter_visible' );
 		$products = wc_products_array_orderby( $related_products, 'rand', 'desc' );
 		?>
         <ul class="row products latest-products__list latest-products__list-slider">
+		<?php $i = 0; foreach($chosen_products as $product_id): ?>
+			<?php 
+				if($i < 5):
+				$post_object = get_post( $product_id );
+				setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found ?>
+	
+				<div class="shopPage__listItem latest-products__item col-lg-auto">
+	
+					<?php wc_get_template_part('content', 'product'); ?>
+	
+				</div>
+				<?php endif; $i++ ?>
+				<?php 
+				// Reset the global post data
+				wp_reset_postdata();
+			endforeach; ?>
         <?php foreach ($products as $product_id) :
             
 			$post_object = get_post( $product_id->get_id() );
