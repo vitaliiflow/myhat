@@ -143,7 +143,9 @@ $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
 							    foreach ( $attachment_ids as $attachment_id ) {
 							        $image_url = wp_get_attachment_image_url( $attachment_id, 'full' ); ?>
 									<div data-thumb="<?php echo esc_url( $image_url ); ?>" class="woocommerce-product-gallery__image">
-										<?php echo '<img src="' . esc_url( $image_url ) . '" alt="' . esc_attr( get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ) ) . '" />'; ?>
+										<a href="<?php echo esc_url( $image_url ); ?>">
+											<?php echo '<img src="' . esc_url( $image_url ) . '" alt="' . esc_attr( get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ) ) . '" />'; ?>
+										</a>
 									</div>
 									<?php
 							    }
@@ -165,7 +167,16 @@ $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
 						$html .= '</div>';
 					}
 					echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', $html, $post_thumbnail_id ); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
-					do_action( 'woocommerce_product_thumbnails' );
+					$attachment_ids = $product->get_gallery_image_ids();
+					if ( $attachment_ids && count( $attachment_ids ) > 0 ) {
+					    foreach ( $attachment_ids as $attachment_id ) {
+					        $image_url = wp_get_attachment_image_url( $attachment_id, 'full' ); ?>
+							<div data-thumb="<?php echo esc_url( $image_url ); ?>" class="woocommerce-product-gallery__image">
+								<?php echo '<img src="' . esc_url( $image_url ) . '" alt="' . esc_attr( get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ) ) . '" />'; ?>
+							</div>
+							<?php
+					    }
+					}
 					?>
 				</div>
 				<div class="singleProduct__galleryOverlay"></div>
@@ -302,11 +313,34 @@ $link = get_field('related_products_link', 'options');
 			</div>
 		<?php endif; ?>
 		<?php 
-		$product_per_page = 5;
-		$related_products = array_filter( array_map( 'wc_get_product', wc_get_related_products( $product->get_id(), $product_per_page, $product->get_upsell_ids() ) ), 'wc_products_array_filter_visible' );
+		$chosen_products = $product->get_upsell_ids();
+		if(count($chosen_products) <= 5){
+			$product_per_page = 5 - count($chosen_products);	
+		}
+		else{
+			$product_per_page = 0;
+		}
+		
+		$related_products = array_filter( array_map( 'wc_get_product', wc_get_related_products( $product->get_id(), $product_per_page, $chosen_products ) ), 'wc_products_array_filter_visible' );
 		$products = wc_products_array_orderby( $related_products, 'rand', 'desc' );
 		?>
         <ul class="row products latest-products__list latest-products__list-slider">
+		<?php $i = 0; foreach($chosen_products as $product_id): ?>
+			<?php 
+				if($i < 5):
+				$post_object = get_post( $product_id );
+				setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found ?>
+	
+				<div class="shopPage__listItem latest-products__item col-lg-auto">
+	
+					<?php wc_get_template_part('content', 'product'); ?>
+	
+				</div>
+				<?php endif; $i++ ?>
+				<?php 
+				// Reset the global post data
+				wp_reset_postdata();
+			endforeach; ?>
         <?php foreach ($products as $product_id) :
             
 			$post_object = get_post( $product_id->get_id() );
