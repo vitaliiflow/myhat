@@ -8,6 +8,21 @@ jQuery(document).ready(function($){
         kategori = $('.shopPage__list').attr('data-kategori'),
         searchText = $('.shopPage__list').attr('data-search');
 
+    function updateBreadcrumbs(arr){
+        $.ajax({
+            url: codelibry.ajax_url,
+            type: 'post',
+            data: {
+                action: 'breadcrumbs_changing',
+                kategori: arr,
+            },
+            success: function(response) {
+                $('#main .woocommerce-breadcrumb').html(response);
+            }
+        })
+    }
+
+
     $.ajax({
         url: codelibry.ajax_url,
         type: 'post',
@@ -396,9 +411,14 @@ jQuery(document).ready(function($){
                 }
             })
         
+
+
+            updateBreadcrumbs(kategori_list);
         })
     }
 
+    
+    updateBreadcrumbs(kategori);
     filters();
 
 

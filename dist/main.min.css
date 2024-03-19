@@ -711,6 +711,11 @@ body.single-product:not(.loaded){position:relative}
 .single-hero__img{position:absolute;inset:0;width:100%;height:100%;-o-object-fit:cover;object-fit:cover;z-index:1}
 .single-hero h1{position:relative;z-index:10;color:white}
 .breadcrumbs__wrapper+.section{padding-top:0}
+.archive.woocommerce .woocommerce-breadcrumb .updated{font-size:0}
+.archive.woocommerce .woocommerce-breadcrumb .updated a{font-size:19px}
+.archive.woocommerce .woocommerce-breadcrumb .updated a::after{content:" / ";font-weight:400}
+.archive.woocommerce .woocommerce-breadcrumb .updated a:last-child{font-weight:400}
+.archive.woocommerce .woocommerce-breadcrumb .updated a:last-child::after{content:none}
 .button,.wpcf7-submit{cursor:pointer;-webkit-transition:.3s all;transition:.3s all}
 .button,.btn{display:inline-block;background-color:#000;text-decoration:none;color:white}
 .button:hover,.btn:hover{background-color:#3e4a56}

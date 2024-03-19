@@ -205,6 +205,19 @@ jQuery(document).ready(function ($) {
     team = $('.shopPage__list').attr('data-team'),
     kategori = $('.shopPage__list').attr('data-kategori'),
     searchText = $('.shopPage__list').attr('data-search');
+  function updateBreadcrumbs(arr) {
+    $.ajax({
+      url: codelibry.ajax_url,
+      type: 'post',
+      data: {
+        action: 'breadcrumbs_changing',
+        kategori: arr
+      },
+      success: function success(response) {
+        $('#main .woocommerce-breadcrumb').html(response);
+      }
+    });
+  }
   $.ajax({
     url: codelibry.ajax_url,
     type: 'post',
@@ -552,8 +565,10 @@ jQuery(document).ready(function ($) {
           $('.filter .shopPage__filtersRow__listWrapper').html(response);
         }
       });
+      updateBreadcrumbs(kategori_list);
     });
   }
+  updateBreadcrumbs(kategori);
   filters();
   $(document).ajaxComplete(function (event, xhr, settings) {
     if (settings.data !== undefined) {

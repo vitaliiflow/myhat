@@ -1,3 +1,17 @@
 .breadcrumbs
     &__wrapper + .section
         padding-top: 0
+
+.archive.woocommerce 
+    .woocommerce-breadcrumb
+        .updated 
+            font-size: 0
+            a 
+                font-size: 19px
+                &::after 
+                    content: " / "
+                    font-weight: 400
+                &:last-child
+                    font-weight: 400
+                    &::after 
+                        content: none 

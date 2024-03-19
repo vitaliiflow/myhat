@@ -1240,6 +1240,31 @@ function changing_filters() {
 }
 
 
+//Update Breadcrumbs 
+add_action('wp_ajax_nopriv_breadcrumbs_changing', 'breadcrumbs_changing');
+add_action('wp_ajax_breadcrumbs_changing', 'breadcrumbs_changing');
+function breadcrumbs_changing() { ?>
+    <div class="updated">
+
+    <?php if(!empty($_POST['kategori'])){ 
+        $taxonomy = 'product_cat'; 
+        $categories = implode(',', $_POST['kategori']);
+            
+        $term_id = get_term_by( 'slug', $categories, $taxonomy );
+
+        $term_parents = get_term_parents_list($term_id->term_id, $taxonomy);
+
+        echo '<a href="' . get_home_url() . '">Hem</a> / ' . $term_parents;     
+    } else {
+
+
+        echo '<a href="' . get_home_url() . '">Hem</a> / <a href="' . wc_get_page_permalink( 'shop' ) . '">Webbutik</a>'; 
+    } ?>
+    </div>
+    <?php 
+    die();
+}
+
 //Ajax Search Brands
 add_action('wp_ajax_nopriv_search_brands', 'search_brands');
 add_action('wp_ajax_search_brands', 'search_brands');

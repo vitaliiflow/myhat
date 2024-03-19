@@ -33,19 +33,6 @@ if ( post_password_required() ) {
 $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
 
 ?>
-<div class="notices">
-<?php
-// Виводимо всі повідомлення WooCommerce
-$notices = wc_get_notices();
-if (!empty($notices)) {
-    foreach ($notices as $notice) {
-        echo $notice;
-    }
-}
-// Очищаємо повідомлення
-wc_clear_notices();
-?>
-</div>
 <section id="product-<?php the_ID(); ?>" <?php wc_product_class( 'singleProduct', $product ); ?>>
 	<div class="container">
 		<div class="singleProduct__breadcrumbs"><?php get_template_part('template-parts/parts/breadcrumbs'); ?></div>
