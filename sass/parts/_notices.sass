@@ -1,0 +1,31 @@
+.woocommerce-notices-wrapper
+    .woocommerce-message,
+    .woocommerce-error
+        display: flex
+        flex-direction: row-reverse
+        justify-content: flex-end 
+        background: #fff
+        padding: 16px 18px
+        border: 1px solid #000
+        border-radius: 25px
+        align-items: center
+        font-size: 18px
+        +max-screen(1200px)
+            font-size: 16px
+        +max-screen($breakpoint-lg)
+            font-size: 14px 
+        +max-screen($breakpoint-md)
+            font-size: 12px
+    .woocommerce-error 
+        border-color: red 
+        margin-bottom: 18px !important
+        li 
+            list-style-type: none 
+    .button
+        padding: 6px 24px
+        white-space: nowrap
+        display: flex
+        align-items: center
+        height: auto
+        border-radius: 10px
+        margin-left: auto

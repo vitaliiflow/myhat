@@ -1,4 +1,21 @@
 <?php 
+// add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
+// Відміна фільтра для сторінки оформлення замовлення
+add_action('wp', 'remove_woocommerce_styles_filter');
+function remove_woocommerce_styles_filter() {
+    if (is_checkout()) {
+        remove_filter('woocommerce_enqueue_styles', '__return_empty_array');
+    }
+}
+
+// Додавання фільтра знову, виключаючи сторінку оформлення замовлення
+add_action('wp', 'add_woocommerce_styles_filter');
+function add_woocommerce_styles_filter() {
+    if (!is_checkout()) {
+        add_filter('woocommerce_enqueue_styles', '__return_empty_array');
+    }
+}
+
 add_action('wp_ajax_nopriv_ajax_search', 'ajax_search');
 add_action('wp_ajax_ajax_search', 'ajax_search');
 
