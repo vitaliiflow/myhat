@@ -853,6 +853,9 @@ body .woocommerce-message a.button{color:#fff;background:#000;border-radius:0;fo
 .woocommerce-notices-wrapper .woocommerce-error{border-color:red;margin-bottom:18px !important}
 .woocommerce-notices-wrapper .woocommerce-error li{list-style-type:none}
 .woocommerce-notices-wrapper .button{padding:6px 24px;white-space:nowrap;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:auto;border-radius:10px;margin-left:auto}
+.wac-qty-button{display:inline;text-decoration:none !important;font-weight:bold;width:30px;color:#808b94;border:1px solid lightgray;-webkit-box-sizing:border-box;box-sizing:border-box;padding:5px}
+.wac-quantity{width:100%;font-weight:bold}
+.shop_table .quantity{min-width:120px}
 .hero-home .container{margin-bottom:3rem}
 .hero-home__item-inner{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}
 .hero-home__content-wrapper{-ms-flex-item-align:end;align-self:flex-end}
