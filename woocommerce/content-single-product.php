@@ -191,7 +191,7 @@ $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
 						?>
 						<div class="singleProduct__tax"><?php echo $tax; ?></div>
 					<?php endif; ?>
-					<h2 class="singleProduct__title"><?php the_title(); ?></h2>
+					<h1 class="singleProduct__title h2"><?php the_title(); ?></h1>
 					<div class="singleProduct__price<?php if($product->is_on_sale()){ echo ' sale'; } ?>"><?php echo $product->get_price_html(); ?></div>
 					<?php 
 					$attributes = $product->get_attributes();
