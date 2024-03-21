@@ -47,9 +47,11 @@ function my_wp_nav_menu_objects( $items, $args ) {
         if( $icon ) {
             $image_id = get_term_meta( $item->object_id, 'thumbnail_id', true );
             $post_thumbnail_img = wp_get_attachment_image_src( $image_id, 'full' );
+
+            $item->classes[] = 'has-mobile-icon'; // No need for `.=` here
             if (is_array($post_thumbnail_img)) { // Check if $post_thumbnail_img is an array
-                $item->title .= '<img src="' . $post_thumbnail_img[0] . '"/>';
-                $item->classes[] = 'has-mobile-icon'; // No need for `.=` here
+                $item->title .= '<img fetchPriority="low" src="' . $post_thumbnail_img[0] . '"/>';
+                
             }
         }
     }
