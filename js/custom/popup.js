@@ -25,10 +25,12 @@ jQuery(document).ready(function ($) {
 
     $(".product-customizer__trigger").on("click", function(){
         $(".product-customizer__wrapper").toggleClass("active");
-        if ($(this).text() === 'Hide Customizer') {
-            $(this).text('Show Customizer');
+        // $(".fpd-add-image").remove();
+        // $("fpd-module-images").remove();
+        if ($(this).text() === 'Gallery') {
+            $(this).text('Customize');
         } else {
-            $(this).text('Hide Customizer');
+            $(this).text('Gallery');
         }
     });
 });

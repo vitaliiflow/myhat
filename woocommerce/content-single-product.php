@@ -216,32 +216,42 @@ $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
 							<?php endforeach; ?>
 						</div>
 					<?php endif; ?>
-					<?php 
-					if(is_a( $product, 'WC_Product_Variable' )):
-					?>
-						<div class="singleProduct__sizeWrapper">
-							<?php foreach($attributes as $attribute): ?>
-								<?php $attributelabel = wc_attribute_label( $attribute['name'] ); ?>
-								<?php if($attributelabel == 'Storlek'): ?>
-									<?php $results = woocommerce_get_product_terms($product->id, $attribute['name']); ?>
-										<div class="singleProduct__sizeTitle">Välj storlek</div>
-										<div class="singleProduct__sizeList attributes-picker-list" data-attribute-name="<?php echo $attribute['name']; ?>">
-											<?php foreach($results as $result): ?>
-												<div class="singleProduct__sizeList__item attributes-picker-item" data-attribute="<?php echo $result->slug; ?>"><?php echo $result->name; ?></div>
-											<?php endforeach; ?>
-										</div>
-								<?php endif; ?>
-							<?php endforeach; ?>
-						</div>
-					<?php endif; ?>
-					<div class="singleProduct__purchase">
 
+					<div class="singleProduct__before-purchase row">
+					
+						<?php 
+						if(is_a( $product, 'WC_Product_Variable' )):
+						?>
+							<div class="singleProduct__sizeWrapper col-sm-6">
+								<?php foreach($attributes as $attribute): ?>
+									<?php $attributelabel = wc_attribute_label( $attribute['name'] ); ?>
+									<?php if($attributelabel == 'Storlek'): ?>
+										<?php $results = woocommerce_get_product_terms($product->id, $attribute['name']); ?>
+											<div class="singleProduct__sizeTitle">Välj storlek</div>
+											<div class="singleProduct__sizeList attributes-picker-list" data-attribute-name="<?php echo $attribute['name']; ?>">
+												<?php foreach($results as $result): ?>
+													<div class="singleProduct__sizeList__item attributes-picker-item" data-attribute="<?php echo $result->slug; ?>"><?php echo $result->name; ?></div>
+												<?php endforeach; ?>
+											</div>
+									<?php endif; ?>
+								<?php endforeach; ?>
+							</div>
+						<?php endif; ?>
+
+						<div class="product-customizer__trigger-wrapper col-sm-6">
+							<a href="#product-customizer-popup" class="product-customizer__trigger d-block button--black"><?php _e('Customize','myhat');?></a>
+						</div>
+
+					</div>
+					<div class="singleProduct__purchase">
 						<?php do_action('woocommerce_product_add_to_cart'); ?>
+
+						<!-- <div class="product-customizer__trigger-wrapper">
+							<a href="#product-customizer-popup" class="product-customizer__trigger d-block button--black"><?php _e('Customize','myhat');?></a>
+						</div> -->
 					</div>
 
-					<!-- <div class="product-customizer__trigger-wrapper">
-						<a href="#product-customizer-popup" class="product-customizer__trigger d-block button--black mt-4 mb-4"><?php _e('Customize','myhat');?></a>
-					</div> -->
+					
 
 					<!-- <div id="product-customizer-popup" class="popup-block">
 						<div class="popup-block__wrapper">

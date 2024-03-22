@@ -1834,7 +1834,7 @@ body.loading::after,.shopPage__filtersRow__listWrapper.loading::after{width:42px
 .header__menu .menu-item .sub-menu .menu-item a{padding:0;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:reverse;-ms-flex-direction:column-reverse;flex-direction:column-reverse;font-size:.889rem;font-weight:400;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;height:100%;white-space:wrap}
 .header__menu .menu-item .sub-menu .menu-item a img{margin-bottom:auto;max-width:110px;width:100%;display:block}
 .header__menu .menu-item .sub-menu .menu-item.has-mobile-icon{width:16.6667%}
-.header__menu .menu-item .sub-menu .menu-item.has-mobile-icon a{font-size:.667rem;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
+.header__menu .menu-item .sub-menu .menu-item.has-mobile-icon a{font-size:.667rem}
 .header__menu .menu-item .sub-menu .menu-item.has-mobile-icon{margin-top:.889rem;margin-bottom:0}
 .header__menu .menu-item .sub-menu .menu-item.has-mobile-icon img{margin-bottom:12px}
 .header__menu .menu-item .sub-menu .menu-item.see-all-items{text-align:center;margin-bottom:0;padding-top:22px}
