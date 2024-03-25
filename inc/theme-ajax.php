@@ -1336,7 +1336,7 @@ function search_teams() {
         // Looking for child terms, if there is a search request
         if (!empty($search_query)) {
             $terms = get_terms(array(
-                'taxonomy' => 'product_cat',
+                'taxonomy' => 'team',
                 'orderby' => 'name',
                 'order' => 'ASC',
                 'hide_empty' => true,
@@ -1348,7 +1348,8 @@ function search_teams() {
                 $terms_array[] = array(
                     'name' => $term->name,
                     'url' => get_term_link($term),
-                    'logo' => wp_get_attachment_url(get_term_meta($term->term_id, 'thumbnail_id', true))
+                    'logo' => get_field('taxonomy-image', $term)['url'],
+                    // 'logo' => wp_get_attachment_url(get_term_meta($term->term_id, 'thumbnail_id', true))
                 );
             }
         }
