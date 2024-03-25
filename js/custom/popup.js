@@ -23,8 +23,18 @@ jQuery(document).ready(function ($) {
 
     });
 
+    function checkWidthAndScroll() {
+        var windowWidth = $(window).width();
+        console.log(windowWidth);
+        if (windowWidth < 768) {
+          $('html, body').animate({scrollTop: $('header').offset().top}, 'slow');
+          console.log('scrolled');
+        }
+      }
+
     $(".product-customizer__trigger").on("click", function(){
         $(".product-customizer__wrapper").toggleClass("active");
+        checkWidthAndScroll();
         // $(".fpd-add-image").remove();
         // $("fpd-module-images").remove();
         if ($(this).text() === 'Gallery') {
@@ -33,4 +43,11 @@ jQuery(document).ready(function ($) {
             $(this).text('Gallery');
         }
     });
+    
+
+    if ($('.fpd-product-designer-wrapper').length) {
+        $('.product-customizer__trigger-wrapper').show();
+    } else {
+        $('.product-customizer__trigger-wrapper').hide();
+    }
 });
