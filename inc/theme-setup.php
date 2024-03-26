@@ -50,18 +50,27 @@ function my_wp_nav_menu_objects( $items, $args ) {
             $image_id = get_term_meta( $item->object_id, 'thumbnail_id', true );
             $post_thumbnail_img = wp_get_attachment_image_src( $image_id, 'full' );
             
-            $item->classes[] = 'has-mobile-icon ' . ' ' . $item->object_id;; // No need for `.=` here
+            
             if (is_array($post_thumbnail_img)) { // Check if $post_thumbnail_img is an array
+                $item->classes[] = 'has-mobile-icon '; // No need for `.=` here
                 $item->title .= '<img src="' . $post_thumbnail_img[0] . '"/>';
                 
             } else  {
               $term = get_term($item->object_id);
               $team_thumbnail = get_field('taxonomy-image', $term );
 
+              $brand_thumbnail = get_field('logo', $term);
+
               //var_dump($team_thumbnail)
 
               if (!empty($team_thumbnail)) {
+                $item->classes[] = 'has-mobile-icon '; // No need for `.=` here
                 $item->title .= '<img src="' . $team_thumbnail['url'] . '"/>';
+              }
+
+              if (!empty($brand_thumbnail)) {
+                $item->classes[] = 'has-mobile-icon '; // No need for `.=` here
+                $item->title .= '<img src="' . $brand_thumbnail['url'] . '"/>';
               }
               
             }
