@@ -94,7 +94,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	$categories = get_the_terms( $product->get_id(), 'varumarke' );
 	if(!empty(wp_get_attachment_url( $product->get_image_id() ))):
 		// $image = wp_get_attachment_url( $product->get_image_id() );
-		$image = wp_get_attachment_image_src( $product->get_image_id(), 'woocommerce_single' );
+		$image = wp_get_attachment_image_src( $product->get_image_id(), 'woocommerce_single' )[0];
 	else: 
 		$image = get_template_directory_uri() . '/assets/images/elementor-placeholder-image.webp';
 	endif;
@@ -105,7 +105,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	}
 	?>
 	<div class="shopPage__listItem__image<?php if(!empty($first_image_url)){echo ' has-hover';} ?>">
-		<img src="<?php echo $image[0]; ?>" class="img-absoolute" alt="">
+		<img src="<?php echo $image; ?>" class="img-absoolute" alt="">
 		<?php if(!empty($first_image_url)): ?>
 			<img src="<?php echo $first_image_url; ?>" alt="" class="img-absoolute hover-image">
 		<?php endif; ?>
