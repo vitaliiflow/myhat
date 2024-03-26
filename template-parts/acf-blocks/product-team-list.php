@@ -84,6 +84,13 @@ if ($list ) : ?>
                         )
                     ),
                     'meta_key' => 'total_sales', // Sorting by total sales
+                    'meta_query' => array(
+                        array(
+                            'key' => '_stock_status',
+                            'value' => 'instock',
+                            'compare' => '='
+                        )
+                    )
                 );
 
                 // The Query
@@ -102,17 +109,21 @@ if ($list ) : ?>
                             <ul class="latest-products__list products row" data-category="<?php echo $category->name;?>">
 
                                 <?php foreach ($products as $product_id) :
+                                
                                     // Load product
                                     $product = wc_get_product($product_id);
+
                                     if (!$product) {
                                         continue;
                                     }
                                     
-                                    // Setup global product data
+                                    
+                                    if ($product && $product->get_stock_status() == 'instock') :
+
+                                    //Setup global product data
                                     global $post, $product;
                                     $post = get_post($product_id);
                                     setup_postdata($post);
-
                                     ?>
 
 
@@ -122,7 +133,7 @@ if ($list ) : ?>
 
                                         </div>
 
-
+                                    <?php endif; ?>
                                     <?php  wp_reset_postdata();
 
                                 endforeach; ?>
