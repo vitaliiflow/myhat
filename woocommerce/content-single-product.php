@@ -90,13 +90,13 @@ $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
 							$total_stock = $product->get_stock_quantity();
 						}
 						if($total_stock <= 3 || $last){
-							echo '<span class="last-chance shopPage__listItem__badge">' . esc_html__( 'Last Chance', 'woocommerce' ) . '</span>';
+							echo '<span class="last-chance shopPage__listItem__badge">' . esc_html__( 'Last Chance', 'codelibry' ) . '</span>';
 						}
 						if(dw_product_totals() > 50 || $top){
-							echo '<span class="top-seller shopPage__listItem__badge">' . esc_html__( 'Top seller', 'woocommerce' ) . '</span>';
+							echo '<span class="top-seller shopPage__listItem__badge">' . esc_html__( 'Top seller', 'codelibry' ) . '</span>';
 						}
 						if($limited):
-							echo '<span class="limited-edition shopPage__listItem__badge">' . esc_html__( 'Limited Edition', 'woocommerce' ) . '</span>';
+							echo '<span class="limited-edition shopPage__listItem__badge">' . esc_html__( 'Limited Edition', 'codelibry' ) . '</span>';
 						endif;
 					endif;
 					?>
@@ -192,7 +192,7 @@ $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
 						<div class="singleProduct__tax"><?php echo $tax; ?></div>
 					<?php endif; ?>
 					<h1 class="singleProduct__title h2"><?php the_title(); ?></h1>
-					<div class="singleProduct__price<?php if($product->is_on_sale()){ echo ' sale'; } ?>"><?php echo $product->get_price_html(); ?></div>
+					<div class="singleProduct__price<?php if($product->is_on_sale()){ _e(' Sale','codelibry'); } ?>"><?php echo $product->get_price_html(); ?></div>
 					<?php 
 					$attributes = $product->get_attributes();
 					if(is_a( $product, 'WC_Product_Variable' )):
