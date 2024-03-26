@@ -27,6 +27,8 @@ function codelibry_setup(){
       'languages-menu' => __('Languages Menu', 'theme-name'),
     )
   );
+  add_image_size( 'home-category-icons', 180 ); 
+	add_image_size( 'home-banner', 850, 700, true );
 }
 
 add_action( 'after_setup_theme', 'codelibry_setup', 0 );
@@ -46,7 +48,7 @@ function my_wp_nav_menu_objects( $items, $args ) {
         // append icon
         if( $icon ) {
             $image_id = get_term_meta( $item->object_id, 'thumbnail_id', true );
-            $post_thumbnail_img = wp_get_attachment_image_src( $image_id, 'full' );
+            $post_thumbnail_img = wp_get_attachment_image_src( $image_id, 'home-category-icons' );
 
             $item->classes[] = 'has-mobile-icon'; // No need for `.=` here
             if (is_array($post_thumbnail_img)) { // Check if $post_thumbnail_img is an array
