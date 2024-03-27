@@ -11,7 +11,7 @@ if(!is_shop()):
     $content = get_sub_field('seo_text');
 endif;
 if ($content || !empty(category_description(get_queried_object_id())) || !empty($_GET['kategori'])) : ?>
-<section class="section seo-text content-block bg-color bg-color--white">
+<section class="section seo-text content-block bg-color bg-color--white"<?php if(!empty($_GET['kategori']) || !empty(category_description(get_queried_object_id()))): ?> style="display: -webkit-box;"<?php endif; ?>>
     <div class="container">
         <div class="seo-text__content">
             <?php if(is_tax()): ?>
