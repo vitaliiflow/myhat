@@ -262,7 +262,7 @@ $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
 								?>
 								<div class="singleProduct__featuresList__item">
 									<?php if($icon): ?>
-										<div class="singleProduct__featuresList__itemIcon"><img src="<?php echo $icon['url']; ?>" alt="<?php echo $icon['title']; ?>"></div>
+										<div class="singleProduct__featuresList__itemIcon"><img src="<?php echo $icon; ?>"></div>
 									<?php endif; ?>
 									<?php if($text): ?>
 										<div class="singleProduct__featuresList__itemLabel"><?php echo $text; ?></div>
