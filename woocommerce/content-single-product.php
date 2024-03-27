@@ -223,7 +223,7 @@ $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
 							<?php foreach($attributes as $attribute): ?>
 								<?php $attributelabel = wc_attribute_label( $attribute['name'] ); ?>
 								<?php if($attributelabel == 'Storlek'): ?>
-									<?php $results = woocommerce_get_product_terms($product->id, $attribute['name']); ?>
+										<?php $results = wc_get_product_terms($product->get_id(), $attribute['name']); ?>
 										<div class="singleProduct__sizeTitle">Välj storlek</div>
 										<div class="singleProduct__sizeList attributes-picker-list" data-attribute-name="<?php echo $attribute['name']; ?>">
 											<?php foreach($results as $result): ?>
