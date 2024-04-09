@@ -565,6 +565,18 @@ jQuery(document).ready(function ($) {
           $('.filter .shopPage__filtersRow__listWrapper').html(response);
         }
       });
+      $(document).ajaxComplete(function (event, xhr, settings) {
+        if (settings.data !== undefined) {
+          if (settings.data.includes('action')) {
+            var action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
+            if (action && action === 'changing_filters') {
+              if ($('.filter .shopPage__filtersRow__listClose').attr('data-cat-link') != '' && $('.filter .shopPage__filtersRow__listClose').attr('data-cat-link') != undefined) {
+                window.history.pushState('', '', $('.filter .shopPage__filtersRow__listClose').attr('data-cat-link'));
+              }
+            }
+          }
+        }
+      });
       updateBreadcrumbs(kategori_list);
     });
   }
