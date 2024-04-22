@@ -149,6 +149,7 @@ jQuery(document).ready(function($){
             if(settings.data.includes('action')){
                 const action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
                 if (action === 'products_filter') {
+                    $('.shopPage__list').attr('data-paged', '1');
                     paginationActionUpdate();
                     removePills();
                 }

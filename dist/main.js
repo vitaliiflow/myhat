@@ -148,6 +148,7 @@ jQuery(document).ready(function ($) {
       if (settings.data.includes('action')) {
         var action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
         if (action === 'products_filter') {
+          $('.shopPage__list').attr('data-paged', '1');
           paginationActionUpdate();
           removePills();
         }
@@ -423,7 +424,7 @@ jQuery(document).ready(function ($) {
         order = '',
         orderby = '',
         metaKey = '';
-      var paged = $('.shopPage__list').attr('data-paged'),
+      var paged = 1,
         sortType = $('.shopPage__list').attr('data-sort'),
         searchText = $('.shopPage__list').attr('data-search');
       switch (sortType) {

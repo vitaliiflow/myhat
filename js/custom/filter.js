@@ -248,7 +248,7 @@ jQuery(document).ready(function($){
                 orderby = '',
                 metaKey = '';
             
-            const paged = $('.shopPage__list').attr('data-paged'),
+            const paged = 1,
                   sortType = $('.shopPage__list').attr('data-sort'),
                   searchText = $('.shopPage__list').attr('data-search');
     
@@ -322,6 +322,7 @@ jQuery(document).ready(function($){
             }
     
             
+            
             $.ajax({
                 url: codelibry.ajax_url,
                 type: 'post',
@@ -340,6 +341,7 @@ jQuery(document).ready(function($){
                     searchText: searchText,
                 },
                 success: function(response){
+                    
                     $('.shopPage__list').html(response);
                 }
             });
@@ -349,6 +351,7 @@ jQuery(document).ready(function($){
             $('.shopPage__list').attr('data-team', team_list);
             $('.shopPage__list').attr('data-color', color_list);
             $('.shopPage__list').attr('data-kategori', kategori_list);
+
     
     
             

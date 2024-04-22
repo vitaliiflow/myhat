@@ -264,7 +264,7 @@ function products_filter() {
         'post_type' => 'product',
         'post_status'    => array( 'publish' ),
         'posts_per_page' => 16,
-        'paged' => $paged,
+        'paged' => 1,
         'order' => $order,
         'orderby' => $orderby,
         'meta_query'     => array(
