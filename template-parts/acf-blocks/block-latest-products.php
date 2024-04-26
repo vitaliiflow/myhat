@@ -20,6 +20,13 @@ $args = array(
     'order' => 'DESC',
     'status' => 'publish',
     'return' => 'ids', // Optional: If you only need IDs, or 'objects' for product objects
+    'meta_query' => array(
+        array(
+            'key' => '_stock_status',
+            'value' => 'instock',
+            'compare' => '='
+        )
+    )
 );
 
 // The Query

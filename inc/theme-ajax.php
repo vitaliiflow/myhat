@@ -1060,8 +1060,11 @@ function changing_filters() {
         wp_reset_postdata();
     }
 
-    ?>
-    <div class="shopPage__filtersRow__listClose mobile-toggler refreshed"></div>
+    if(empty($varumarke) && empty($storek) && empty($taggar) && empty($team) && empty($color) && !empty($kategori) && $kategori[0] != ''): 
+        $term = get_term_by('slug', $kategori[0], 'product_cat');
+        $cat_link = get_term_link($term);
+    endif; ?>
+    <div class="shopPage__filtersRow__listClose mobile-toggler refreshed"<?php if(empty($varumarke) && empty($storek) && empty($taggar) && empty($team) && empty($color) && !empty($kategori) && $kategori[0] != ''): ?> data-cat-link="<?php echo $cat_link; ?>"<?php endif; ?>></div>
     <?php 
     if ( (!empty($list_varumarke) && !is_wp_error( $list_varumarke )) || !empty($varumarke) ):
     ?>
@@ -1336,7 +1339,7 @@ function search_teams() {
         // Looking for child terms, if there is a search request
         if (!empty($search_query)) {
             $terms = get_terms(array(
-                'taxonomy' => 'product_cat',
+                'taxonomy' => 'team',
                 'orderby' => 'name',
                 'order' => 'ASC',
                 'hide_empty' => true,
@@ -1348,7 +1351,8 @@ function search_teams() {
                 $terms_array[] = array(
                     'name' => $term->name,
                     'url' => get_term_link($term),
-                    'logo' => wp_get_attachment_url(get_term_meta($term->term_id, 'thumbnail_id', true))
+                    'logo' => get_field('taxonomy-image', $term)['url'],
+                    // 'logo' => wp_get_attachment_url(get_term_meta($term->term_id, 'thumbnail_id', true))
                 );
             }
         }

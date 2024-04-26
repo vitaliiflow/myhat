@@ -565,6 +565,18 @@ jQuery(document).ready(function ($) {
           $('.filter .shopPage__filtersRow__listWrapper').html(response);
         }
       });
+      $(document).ajaxComplete(function (event, xhr, settings) {
+        if (settings.data !== undefined) {
+          if (settings.data.includes('action')) {
+            var action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
+            if (action && action === 'changing_filters') {
+              if ($('.filter .shopPage__filtersRow__listClose').attr('data-cat-link') != '' && $('.filter .shopPage__filtersRow__listClose').attr('data-cat-link') != undefined) {
+                window.history.pushState('', '', $('.filter .shopPage__filtersRow__listClose').attr('data-cat-link'));
+              }
+            }
+          }
+        }
+      });
       updateBreadcrumbs(kategori_list);
     });
   }
@@ -641,32 +653,14 @@ jQuery(document).ready(function ($) {
       event.stopPropagation();
     });
   });
-  function checkWidthAndScroll() {
-    var windowWidth = $(window).width();
-    console.log(windowWidth);
-    if (windowWidth < 768) {
-      $('html, body').animate({
-        scrollTop: $('header').offset().top
-      }, 'slow');
-      console.log('scrolled');
-    }
-  }
   $(".product-customizer__trigger").on("click", function () {
     $(".product-customizer__wrapper").toggleClass("active");
-    checkWidthAndScroll();
-    // $(".fpd-add-image").remove();
-    // $("fpd-module-images").remove();
-    if ($(this).text() === 'Gallery') {
-      $(this).text('Customize');
+    if ($(this).text() === 'Hide Customizer') {
+      $(this).text('Show Customizer');
     } else {
-      $(this).text('Gallery');
+      $(this).text('Hide Customizer');
     }
   });
-  if ($('.fpd-product-designer-wrapper').length) {
-    $('.product-customizer__trigger-wrapper').show();
-  } else {
-    $('.product-customizer__trigger-wrapper').hide();
-  }
 });
 "use strict";
 

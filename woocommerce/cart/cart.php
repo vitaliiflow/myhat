@@ -40,11 +40,6 @@ do_action( 'woocommerce_before_cart' ); ?>
 					$product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
 					?>
 					<div class="cart__item">
-						<div class="fpd_wc_get_order_item_meta">
-						<?php 
-						echo wc_get_order_item_meta( $cart_item, 'fpd_data' );
-						?>
-						</div>
 						<div class="cart__itemImage" style="width: 150px; height: 150px;display: flex; justify-content: center; align-items: center; border: 1px solid white;">
 							<style>
 								.cart__itemImage img {

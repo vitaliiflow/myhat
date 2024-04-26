@@ -93,20 +93,21 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	<?php 
 	$categories = get_the_terms( $product->get_id(), 'varumarke' );
 	if(!empty(wp_get_attachment_url( $product->get_image_id() ))):
-		$image = wp_get_attachment_url( $product->get_image_id() );
+		// $image = wp_get_attachment_url( $product->get_image_id() );
+		$image = wp_get_attachment_image_src( $product->get_image_id(), 'woocommerce_single' )[0];
 	else: 
 		$image = get_template_directory_uri() . '/assets/images/elementor-placeholder-image.webp';
 	endif;
 	$gallery_images = $product->get_gallery_image_ids();
 
 	if ( $gallery_images ) {
-		$first_image_url = wp_get_attachment_image_url( $gallery_images[0], 'full' );
+		$first_image_url = wp_get_attachment_image_url( $gallery_images[0], 'woocommerce_single' );
 	}
 	?>
 	<div class="shopPage__listItem__image<?php if(!empty($first_image_url)){echo ' has-hover';} ?>">
-		<img src="<?php echo $image; ?>" class="img-absoolute" alt="<?php echo $product->get_title(); ?>">
+		<img src="<?php echo $image; ?>" class="img-absoolute" alt="">
 		<?php if(!empty($first_image_url)): ?>
-			<img src="<?php echo $first_image_url; ?>" alt="<?php echo $product->get_title(); ?>" class="img-absoolute hover-image">
+			<img src="<?php echo $first_image_url; ?>" alt="" class="img-absoolute hover-image">
 		<?php endif; ?>
 	</div>
 	<?php if($categories && ! is_wp_error( $categories )): ?>

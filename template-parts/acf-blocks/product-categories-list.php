@@ -27,7 +27,8 @@ if ($list ) : ?>
                 $link = get_term_link($id);
 
                 $thumbnail_id = get_term_meta( $id, 'thumbnail_id', true );
-                $image = wp_get_attachment_url( $thumbnail_id );
+                $image = wp_get_attachment_image_src( $thumbnail_id, 'home-category-icons' );
+                //$image = wp_get_attachment_url( $thumbnail_id );
 
                 if ($image) : ?>
 
@@ -36,7 +37,7 @@ if ($list ) : ?>
 
                             <?php if ( $image ) : ?>
 
-                                <img class="product-cat__img mb-2" src="<?php echo $image; ?>" alt="<?php echo $name . ' image'; ?>" />
+                                <img class="product-cat__img mb-2" src="<?php echo $image[0]; ?>" alt="<?php echo $name . ' image'; ?>" />
 
                              <?php endif; ?>
 
