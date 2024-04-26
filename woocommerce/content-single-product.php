@@ -94,13 +94,13 @@ if (!$full_customizer) :
 							$total_stock = $product->get_stock_quantity();
 						}
 						if($total_stock <= 3 || $last){
-							echo '<span class="last-chance shopPage__listItem__badge">' . esc_html__( 'Last Chance', 'codelibry' ) . '</span>';
+							echo '<span class="last-chance shopPage__listItem__badge">' . esc_html__( 'Last Chance', 'woocommerce' ) . '</span>';
 						}
 						if(dw_product_totals() > 50 || $top){
-							echo '<span class="top-seller shopPage__listItem__badge">' . esc_html__( 'Top seller', 'codelibry' ) . '</span>';
+							echo '<span class="top-seller shopPage__listItem__badge">' . esc_html__( 'Top seller', 'woocommerce' ) . '</span>';
 						}
 						if($limited):
-							echo '<span class="limited-edition shopPage__listItem__badge">' . esc_html__( 'Limited Edition', 'codelibry' ) . '</span>';
+							echo '<span class="limited-edition shopPage__listItem__badge">' . esc_html__( 'Limited Edition', 'woocommerce' ) . '</span>';
 						endif;
 					endif;
 					?>
@@ -196,7 +196,7 @@ if (!$full_customizer) :
 						<div class="singleProduct__tax"><?php echo $tax; ?></div>
 					<?php endif; ?>
 					<h1 class="singleProduct__title h2"><?php the_title(); ?></h1>
-					<div class="singleProduct__price<?php if($product->is_on_sale()){ _e(' Sale','codelibry'); } ?>"><?php echo $product->get_price_html(); ?></div>
+					<div class="singleProduct__price<?php if($product->is_on_sale()){ echo ' sale'; } ?>"><?php echo $product->get_price_html(); ?></div>
 					<?php 
 					$attributes = $product->get_attributes();
 					if(is_a( $product, 'WC_Product_Variable' )):
@@ -220,25 +220,6 @@ if (!$full_customizer) :
 							<?php endforeach; ?>
 						</div>
 					<?php endif; ?>
-					<?php 
-					if(is_a( $product, 'WC_Product_Variable' )):
-					?>
-						<div class="singleProduct__sizeWrapper">
-							<?php foreach($attributes as $attribute): ?>
-								<?php $attributelabel = wc_attribute_label( $attribute['name'] ); ?>
-								<?php if($attributelabel == 'Storlek'): ?>
-										<?php $results = wc_get_product_terms($product->get_id(), $attribute['name']); ?>
-										<div class="singleProduct__sizeTitle">Välj storlek</div>
-										<div class="singleProduct__sizeList attributes-picker-list" data-attribute-name="<?php echo $attribute['name']; ?>">
-											<?php foreach($results as $result): ?>
-												<div class="singleProduct__sizeList__item attributes-picker-item" data-attribute="<?php echo $result->slug; ?>"><?php echo $result->name; ?></div>
-											<?php endforeach; ?>
-										</div>
-								<?php endif; ?>
-							<?php endforeach; ?>
-						</div>
-					<?php endif; ?>
-					<div class="singleProduct__purchase">
 
 					<div class="singleProduct__before-purchase row">
 					
@@ -270,26 +251,7 @@ if (!$full_customizer) :
 						<?php do_action('woocommerce_product_add_to_cart'); ?>
 					</div>
 					
-					<?php if(have_rows('product_features', 'options')): ?>
-						<div class="singleProduct__featuresList">
-							<?php while(have_rows('product_features', 'options')): the_row(); ?>
-								<?php 
-								$icon = get_sub_field('icon');
-								$text = get_sub_field('text');
-								if($icon || $text):
-								?>
-								<div class="singleProduct__featuresList__item">
-									<?php if($icon): ?>
-										<div class="singleProduct__featuresList__itemIcon"><img src="<?php echo $icon; ?>"></div>
-									<?php endif; ?>
-									<?php if($text): ?>
-										<div class="singleProduct__featuresList__itemLabel"><?php echo $text; ?></div>
-									<?php endif; ?>
-								</div>
-								<?php endif; ?>
-							<?php endwhile; ?>
-						</div>
-					<?php endif; ?>
+					
 					<?php if(!empty($product_tabs)): ?>
 						<div class="singleProduct__accordionList">
 							<?php foreach($product_tabs as $key => $product_tab): ?>
