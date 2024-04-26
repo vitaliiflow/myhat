@@ -104,9 +104,9 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	}
 	?>
 	<div class="shopPage__listItem__image<?php if(!empty($first_image_url)){echo ' has-hover';} ?>">
-		<img src="<?php echo $image; ?>" class="img-absoolute" alt="">
+		<img src="<?php echo $image; ?>" class="img-absoolute" alt="<?php echo $product->get_title(); ?>">
 		<?php if(!empty($first_image_url)): ?>
-			<img src="<?php echo $first_image_url; ?>" alt="" class="img-absoolute hover-image">
+			<img src="<?php echo $first_image_url; ?>" alt="<?php echo $product->get_title(); ?>" class="img-absoolute hover-image">
 		<?php endif; ?>
 	</div>
 	<?php if($categories && ! is_wp_error( $categories )): ?>
