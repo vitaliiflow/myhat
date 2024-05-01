@@ -654,6 +654,9 @@ jQuery(document).ready(function ($) {
       event.stopPropagation();
     });
   });
+  if ($('.product-customizer__wrapper').length && $.trim($('.product-customizer__wrapper').html()) != '') {
+    $('.product-customizer__trigger-wrapper').show();
+  }
   $(".product-customizer__trigger").on("click", function () {
     $(".product-customizer__wrapper").toggleClass("active");
     if ($(this).text() === 'Hide Customizer') {
