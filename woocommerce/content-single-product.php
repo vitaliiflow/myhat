@@ -241,6 +241,7 @@ if (!$full_customizer) :
 								<?php endforeach; ?>
 							</div>
 						<?php endif; ?>
+						
 
 						<div class="product-customizer__trigger-wrapper col-sm-6">
 							<a href="#product-customizer-popup" class="product-customizer__trigger d-block button--black"><?php _e('Customize','myhat');?></a>
@@ -537,7 +538,7 @@ $link = get_field('related_products_link', 'options');
                                                     <?php if ( $image ) : ?>
 
                                                         <div class="teams-page__logo-wrapper mb-3">
-                                                            <img class="teams-page__logo" src="<?php echo $image; ?>" alt="<?php echo $name . ' logo'; ?>" />
+                                                            <img class="teams-page__logo" src="<?php echo $image; ?>" alt="<?php echo $name . ' logo'; ?>"  style="height: auto;"/>
                                                         </div>
                         
                                                     <?php endif; ?>
