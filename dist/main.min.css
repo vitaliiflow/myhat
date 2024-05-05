@@ -651,23 +651,25 @@ body.single-product:not(.loaded){position:relative}
 .header__menu .menu-item.has-magic-icon a::after{content:"";position:absolute;top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%);width:1.1112rem;height:1.1112rem;right:0;background-image:url("../assets/images/icons/magic-wand.png");background-size:contain;background-repeat:no-repeat;background-position:center}
 .header__iconsList{display:-webkit-box;display:-ms-flexbox;display:flex;margin:0 -0.445rem;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
 .header__iconsList__item{padding:0 .445rem}
+.header__iconsList__item button.search-toggle{background-image:url("../assets/images/icons/search.png");background-size:contain;background-repeat:no-repeat;background-position:center;display:block;width:20px;height:20px;padding:0;border-radius:0}
+.header__iconsList__item button.search-toggle:focus ~ .search__barWrapper input{opacity:1;visibility:visible}
 .header__iconsList__item img{display:block;width:1.334rem;height:1.334rem}
 .header__iconsList__item.cart a{position:relative}
 .header__iconsList__item.cart__count{position:absolute;top:0;right:0;-webkit-transform:translate(30%,-50%);transform:translate(30%,-50%);background:#f1f1ef;text-align:center;border-radius:50%;border:1px solid #000;font-size:12px;width:18.8px;text-align:center;padding:0}
 .header__iconsList__item.search{position:relative;z-index:999}
 .header__iconsList__item.search img{width:1.1112rem;height:1.1112rem;cursor:pointer}
-.header__iconsList__item.search .search__bar{margin-left:-2rem}
 .header__iconsList__item.search .search__bar input{padding-left:2.3rem;color:#000}
 .header__iconsList__item.search .search__bar input::-webkit-input-placeholder{color:#000}
 .header__iconsList__item.search .search__bar input::-moz-placeholder{color:#000}
 .header__iconsList__item.search .search__bar input:-ms-input-placeholder{color:#000}
 .header__iconsList__item.search .search__bar input::-ms-input-placeholder{color:#000}
 .header__iconsList__item.search .search__bar input::placeholder{color:#000}
-.header__iconsList__item.search .search__barWrapper{position:absolute;top:calc(100% + 1.1112rem);right:.445rem;opacity:0;visibility:hidden;-webkit-transform:translateY(30px);transform:translateY(30px);-webkit-transition:.3s;transition:.3s}
-.header__iconsList__item.search .search__barWrapper.opened{opacity:1;visibility:visible;-webkit-transform:none;transform:none}
+.header__iconsList__item.search .search__barWrapper{position:absolute;top:calc(100% + 1.1112rem);right:.445rem;-webkit-transition:.3s;transition:.3s}
 .header__iconsList__item.search .search__barWrapper form{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse;border-radius:20px;overflow:hidden}
-.header__iconsList__item.search .search__btn{z-index:1;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
-.header__iconsList__item.search .search__btn input{font-size:0;width:2rem;height:2rem;background-image:url("../assets/images/icons/search.png");background-size:.834rem;background-repeat:no-repeat;background-position:center;display:block;background-color:transparent;margin-left:-1px;border:0}
+.header__iconsList__item.search .search__barWrapper input{opacity:0;visibility:hidden;-webkit-transition:.3s;transition:.3s}
+.header__iconsList__item.search .search__barWrapper input:focus,.header__iconsList__item.search .search__barWrapper input:focus+input{opacity:1;visibility:visible}
+.header__iconsList__item.search .search__barWrapper .search-form{position:relative}
+.header__iconsList__item.search .search__barWrapper input[type="submit"]{font-size:0;width:2rem;height:2rem;background-image:url("../assets/images/icons/search.png");background-size:.834rem;background-repeat:no-repeat;background-position:center;display:block;background-color:transparent;margin-left:-1px;border:0;padding:0;position:absolute;top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%)}
 .header__iconsList__item.search .search__resultsList{background-color:#fff;margin-top:8px;opacity:0;visibility:hidden;-webkit-transition:.3s;transition:.3s;border-radius:20px}
 .header__iconsList__item.search .search__resultsList__content{padding:10px 20px}
 .header__iconsList__item.search .search__resultsList.show{opacity:1;visibility:visible}
