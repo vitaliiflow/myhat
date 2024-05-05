@@ -35,11 +35,27 @@ do_action( 'woocommerce_before_cart' ); ?>
 					
 					$product_name = apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key );
 
-					$thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($product_id), 'full');
+					// $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($product_id), 'full');
+					//$thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
+					$product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
 					?>
 					<div class="cart__item">
-						<div class="cart__itemImage">
-							<img src="<?php echo $thumbnail[0]; ?>" alt="">
+						<div class="cart__itemImage" style="width: 150px; height: 150px;display: flex; justify-content: center; align-items: center; border: 1px solid white;">
+							<style>
+								.cart__itemImage img {
+									width: auto;
+									height: auto;
+								}
+							</style>
+							<?php
+							$thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
+
+							if ( ! $product_permalink ) {
+								echo $thumbnail; // PHPCS: XSS ok.
+							} else {
+								printf( '<a href="%s">%s</a>', esc_url( $product_permalink ), $thumbnail ); // PHPCS: XSS ok.
+							}
+							?>
 						</div>
 						<div class="cart__itemContent">
 							<?php $categories = get_the_terms( $product_id, 'varumarke' ); ?>

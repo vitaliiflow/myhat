@@ -21,11 +21,11 @@
 .slick-dots button{display:none}
 .slick-dots li{width:10px;height:10px;background-color:white;border-radius:50%;opacity:.7;-webkit-transition:.3s all;transition:.3s all;margin-left:7px;margin-right:7px;cursor:pointer}
 .slick-dots li.slick-active{opacity:1}
-@font-face{font-family:"Lora";font-style:normal;font-weight:700;src:url("../assets/fonts/Lora/Lora-Bold.ttf") format("truetype")}
-@font-face{font-family:"Lora";font-style:normal;font-weight:400;src:url("../assets/fonts/Lora/Lora-Medium.ttf") format("truetype")}
-@font-face{font-family:"Karla";font-style:normal;font-weight:400;src:url("../assets/fonts/Karla/Karla-Regular.ttf") format("truetype")}
-@font-face{font-family:"Karla";font-style:normal;font-weight:700;src:url("../assets/fonts/Karla/Karla-Bold.ttf") format("truetype")}
-@font-face{font-family:"Karla";font-style:normal;font-weight:500;src:url("../assets/fonts/Karla/Karla-Medium.ttf") format("truetype")}
+@font-face{font-family:"Lora";font-style:normal;font-weight:700;src:url("../assets/fonts/Lora/Lora-Bold.ttf") format("truetype");font-display:swap}
+@font-face{font-family:"Lora";font-style:normal;font-weight:400;src:url("../assets/fonts/Lora/Lora-Medium.ttf") format("truetype");font-display:swap}
+@font-face{font-family:"Karla";font-style:normal;font-weight:400;src:url("../assets/fonts/Karla/Karla-Regular.ttf") format("truetype");font-display:swap}
+@font-face{font-family:"Karla";font-style:normal;font-weight:700;src:url("../assets/fonts/Karla/Karla-Bold.ttf") format("truetype");font-display:swap}
+@font-face{font-family:"Karla";font-style:normal;font-weight:500;src:url("../assets/fonts/Karla/Karla-Medium.ttf") format("truetype");font-display:swap}
 *{padding:0;margin:0;-webkit-tap-highlight-color:rgba(0,0,0,0)}
 *:focus{outline:0}
 html,body{width:100%;cursor:default}
