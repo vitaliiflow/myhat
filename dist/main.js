@@ -115,7 +115,11 @@ jQuery(document).ready(function ($) {
   }
   function removePills() {
     $('.shopPage__filtersRow__pillsList__itemRemove').click(function () {
-      $(".shopPage__filtersRow__listItem__sublistItem[data-slug=\"".concat($(this).parent().attr('data-term'), "\"]")).removeClass('active');
+      if ($(this).hasClass('search-remove')) {
+        $('.shopPage__list').removeAttr('data-search');
+      } else {
+        $(".shopPage__filtersRow__listItem__sublistItem[data-slug=\"".concat($(this).parent().attr('data-term'), "\"]")).removeClass('active');
+      }
       $('.filters-wrapper .shopPage__filtersRow__list__apply .btn').click();
     });
   }
@@ -380,6 +384,9 @@ jQuery(document).ready(function ($) {
       $("<div class=\"shopPage__filtersRow__pillsList__item\" data-term=\"".concat(i, "\"><div class=\"shopPage__filtersRow__pillsList__itemRemove\"></div><div class=\"shopPage__filtersRow__pillsList__itemLabel\">").concat($(".shopPage__filtersRow__listItem[data-attr-name=\"kategori\"] .shopPage__filtersRow__listItem__sublistItem[data-slug=\"".concat(i, "\"] .shopPage__filtersRow__listItem__sublistItem__name")).html(), "</div></div>")).appendTo('.shopPage__filtersRow__pillsList');
     });
   }
+  if (searchText != '' && searchText != undefined) {
+    $("<div class=\"shopPage__filtersRow__pillsList__item\"><div class=\"shopPage__filtersRow__pillsList__itemRemove search-remove\"></div><div class=\"shopPage__filtersRow__pillsList__itemLabel\">S\xF6k: ".concat(searchText, "</div></div>")).appendTo('.shopPage__filtersRow__pillsList');
+  }
   if (w < 994) {
     $('.shopPage').css('padding-top', $('.shopPage__filtersRow__pillsList').outerHeight() + 10);
   }
@@ -481,6 +488,9 @@ jQuery(document).ready(function ($) {
           }
         });
       });
+      if (searchText != '' && searchText != undefined) {
+        $("<div class=\"shopPage__filtersRow__pillsList__item\"><div class=\"shopPage__filtersRow__pillsList__itemRemove search-remove\"></div><div class=\"shopPage__filtersRow__pillsList__itemLabel\">S\xF6k: ".concat(searchText, "</div></div>")).appendTo('.shopPage__filtersRow__pillsList');
+      }
       if (w < 994) {
         $('.shopPage').css('padding-top', $('.shopPage__filtersRow__pillsList').outerHeight() + 10);
       }
@@ -516,19 +526,6 @@ jQuery(document).ready(function ($) {
       $('.shopPage__list').attr('data-team', team_list);
       $('.shopPage__list').attr('data-color', color_list);
       $('.shopPage__list').attr('data-kategori', kategori_list);
-      var pageLink = window.location['origin'] + "/butik/?paged=".concat(paged, "&orderby=").concat(sortType);
-      console.log(searchText);
-      if (searchText != '' && searchText != undefined) {
-        var searchArr = [searchText];
-        pageLink = updateLink(searchArr, 's=', pageLink);
-      }
-      pageLink = updateLink(varumarke_list, 'varumarke_cat=', pageLink);
-      pageLink = updateLink(storek_list, 'storek=', pageLink);
-      pageLink = updateLink(taggar_list, 'taggar=', pageLink);
-      pageLink = updateLink(color_list, 'colors=', pageLink);
-      pageLink = updateLink(team_list, 'teams=', pageLink);
-      pageLink = updateLink(kategori_list, 'kategori=', pageLink);
-      window.history.pushState('', '', pageLink);
       if (w < 993) {
         $('.shopPage__filtersRow__item.filter').removeClass('opened');
       }
@@ -571,9 +568,23 @@ jQuery(document).ready(function ($) {
           if (settings.data.includes('action')) {
             var action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
             if (action && action === 'changing_filters') {
+              var pageLink;
               if ($('.filter .shopPage__filtersRow__listClose').attr('data-cat-link') != '' && $('.filter .shopPage__filtersRow__listClose').attr('data-cat-link') != undefined) {
-                window.history.pushState('', '', $('.filter .shopPage__filtersRow__listClose').attr('data-cat-link'));
+                pageLink = $('.filter .shopPage__filtersRow__listClose').attr('data-cat-link') + "?paged=".concat(paged, "&orderby=").concat(sortType);
+              } else {
+                pageLink = window.location['origin'] + "/butik/?paged=".concat(paged, "&orderby=").concat(sortType);
               }
+              console.log(searchText);
+              if (searchText != '' && searchText != undefined) {
+                var searchArr = [searchText];
+                pageLink = updateLink(searchArr, 's=', pageLink);
+              }
+              pageLink = updateLink(varumarke_list, 'varumarke_cat=', pageLink);
+              pageLink = updateLink(storek_list, 'storek=', pageLink);
+              pageLink = updateLink(taggar_list, 'taggar=', pageLink);
+              pageLink = updateLink(color_list, 'colors=', pageLink);
+              pageLink = updateLink(team_list, 'teams=', pageLink);
+              window.history.pushState('', '', pageLink);
             }
           }
         }

@@ -412,8 +412,8 @@
                                 opacity: 0
                                 visibility: hidden
                                 transition: .3s
-                                &:focus,
-                                &:focus + input
+                                &[type="search"]:focus,
+                                &[type="search"]:focus + input
                                     opacity: 1
                                     visibility: visible
                             .search-form

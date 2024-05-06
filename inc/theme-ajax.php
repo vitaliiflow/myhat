@@ -1060,11 +1060,11 @@ function changing_filters() {
         wp_reset_postdata();
     }
 
-    if(empty($varumarke) && empty($storek) && empty($taggar) && empty($team) && empty($color) && !empty($kategori) && $kategori[0] != ''): 
+    if(!empty($kategori) && $kategori[0] != ''): 
         $term = get_term_by('slug', $kategori[0], 'product_cat');
         $cat_link = get_term_link($term);
     endif; ?>
-    <div class="shopPage__filtersRow__listClose mobile-toggler refreshed"<?php if(empty($varumarke) && empty($storek) && empty($taggar) && empty($team) && empty($color) && !empty($kategori) && $kategori[0] != ''): ?> data-cat-link="<?php echo $cat_link; ?>"<?php endif; ?>></div>
+    <div class="shopPage__filtersRow__listClose mobile-toggler refreshed"<?php if(!empty($kategori) && $kategori[0] != ''): ?> data-cat-link="<?php echo $cat_link; ?>"<?php endif; ?>></div>
     <?php 
     if ( (!empty($list_varumarke) && !is_wp_error( $list_varumarke )) || !empty($varumarke) ):
     ?>
