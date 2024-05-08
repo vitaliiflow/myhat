@@ -24,20 +24,15 @@ jQuery(document).ready(function($){
     cartActions();
 
 
-    $(document).ajaxSend(function(event, xhr, settings) {
-        console.log(settings.data);
+    $(document).ajaxComplete(function(event, xhr, settings) {
         if(settings.data !== undefined){
             cartActions();
             console.log(settings.data);
             if(settings.data.includes('update_cart')){
-                $(document).ajaxSend(function(event, xhr, settings) {
-                    if(settings.data !== undefined){
-                        if(settings.data.includes('time')){
-                            $('.cart__couponToggler').click(function(){
-                                $(this).parent().find('.actions').stop().slideToggle();
-                            });
-                        }
-                    }
+                console.log(312);
+                $('.cart__couponToggler').click(function(){
+                    console.log(123);
+                    $(this).parent().find('.actions').stop().slideToggle();
                 });
             }
         }
