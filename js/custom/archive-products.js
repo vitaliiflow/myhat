@@ -108,7 +108,15 @@ jQuery(document).ready(function($){
     }
     function removePills(){
         $('.shopPage__filtersRow__pillsList__itemRemove').click(function(){
-            $(`.shopPage__filtersRow__listItem__sublistItem[data-slug="${$(this).parent().attr('data-term')}"]`).removeClass('active');
+            if($(this).hasClass('search-remove')){
+                $('.shopPage__list').removeAttr('data-search');
+            } else{
+                const item = $(`.shopPage__filtersRow__listItem__sublistItem[data-slug="${$(this).parent().attr('data-term')}"]`);
+                item.removeClass('active');
+                if(item.attr('data-parent') != '' && item.attr('data-parent') != undefined){
+                    $(`.shopPage__filtersRow__listItem__sublistItem[data-slug="${item.attr('data-parent')}"]`).addClass('active');
+                }
+            }
             $('.filters-wrapper .shopPage__filtersRow__list__apply .btn').click();
         })
     }
