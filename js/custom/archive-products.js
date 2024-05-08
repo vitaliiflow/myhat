@@ -111,7 +111,11 @@ jQuery(document).ready(function($){
             if($(this).hasClass('search-remove')){
                 $('.shopPage__list').removeAttr('data-search');
             } else{
-                $(`.shopPage__filtersRow__listItem__sublistItem[data-slug="${$(this).parent().attr('data-term')}"]`).removeClass('active');
+                const item = $(`.shopPage__filtersRow__listItem__sublistItem[data-slug="${$(this).parent().attr('data-term')}"]`);
+                item.removeClass('active');
+                if(item.attr('data-parent') != '' && item.attr('data-parent') != undefined){
+                    $(`.shopPage__filtersRow__listItem__sublistItem[data-slug="${item.attr('data-parent')}"]`).addClass('active');
+                }
             }
             $('.filters-wrapper .shopPage__filtersRow__list__apply .btn').click();
         })
