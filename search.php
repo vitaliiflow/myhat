@@ -443,6 +443,7 @@ $searchText=get_search_query();
                                                 <?php foreach($kategori as $term): ?>
                                                     <?php 
                                                     $full_term = get_term_by('slug', $term, 'product_cat');
+                                                    $category_description = $full_term->description;
 
                                                     $parent_term_slug = '';
                                                     if ($full_term->parent != 0) {
@@ -453,13 +454,16 @@ $searchText=get_search_query();
                                                     <div class="shopPage__filtersRow__listItem__sublistItem active" data-slug="<?php echo $term; ?>"<?php if(!empty($parent_term_slug)): ?> data-parent="<?php echo $parent_term_slug; ?>"<?php endif; ?>>
                                                         <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
                                                         <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $full_term->name; ?></div>
-                                                        <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php //echo category_description($full_term->term_id); ?></div>
+                                                        <?php if(!empty($category_description)): ?>
+                                                            <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php echo wpautop($category_description); ?></div>
+                                                        <?php endif; ?>
                                                     </div>
                                                 <?php endforeach; ?>
                                             <?php endif; ?>
                                             <?php foreach($list_categories as $term): ?>
                                                 <?php 
                                                 $full_term = get_term_by('slug', $term['slug'], 'product_cat');
+                                                $category_description = $full_term->description;
 
                                                 $parent_term_slug = '';
                                                 if ($full_term->parent != 0) {
@@ -470,7 +474,9 @@ $searchText=get_search_query();
                                                 <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term['slug']; ?>"<?php if(!empty($parent_term_slug)): ?> data-parent="<?php echo $parent_term_slug; ?>"<?php endif; ?>>
                                                     <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
                                                     <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term['name']; ?></div>
-                                                    <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php //echo category_description($term['id']); ?></div>
+                                                    <?php if(!empty($category_description)): ?>
+                                                        <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php echo wpautop($category_description); ?></div>
+                                                    <?php endif; ?>
                                                 </div>
                                             <?php endforeach; ?>
                                         </div>

@@ -25,6 +25,7 @@ jQuery(document).ready(function($){
 
 
     $(document).ajaxSend(function(event, xhr, settings) {
+        console.log(settings.data);
         if(settings.data !== undefined){
             cartActions();
             console.log(settings.data);

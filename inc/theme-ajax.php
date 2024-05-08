@@ -832,7 +832,7 @@ function filters_init() {
     <?php 
     if ( (!empty($list_categories) && !is_wp_error( $list_categories )) || !empty($kategori) ):
     ?>
-        <div class="shopPage__filtersRow__listItem<?php if(!empty($kategori) && $kategori[0] != ''){ echo ' opened'; } ?>" data-attr-name="kategori">
+        <div class="shopPage__filtersRow__listItem category__item<?php if(!empty($kategori) && $kategori[0] != ''){ echo ' opened'; } ?>" data-attr-name="kategori">
             <div class="shopPage__filtersRow__listItem__title">KATEGORI</div>
             <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($kategori) && $kategori[0] != ''){ echo ' style="display:block;"'; } ?>>
                 <div class="shopPage__filtersRow__listItem__sublistItems">
@@ -840,7 +840,7 @@ function filters_init() {
                         <?php foreach($kategori as $term): ?>
                             <?php 
                             $full_term = get_term_by('slug', $term, 'product_cat');
-
+                            $category_description = $full_term->description;
                             $parent_term_slug = '';
                             if ($full_term->parent != 0) {
                                 $parent_term = get_term($full_term->parent, 'product_cat');
@@ -850,7 +850,9 @@ function filters_init() {
                             <div class="shopPage__filtersRow__listItem__sublistItem active" data-slug="<?php echo $term; ?>"<?php if(!empty($parent_term_slug)): ?> data-parent="<?php echo $parent_term_slug; ?>"<?php endif; ?>>
                                 <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
                                 <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $full_term->name; ?></div>
-                                <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php //echo category_description($full_term->term_id); ?></div>
+                                <?php if(!empty($category_description)): ?>
+                                    <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php echo wpautop($category_description); ?></div>
+                                <?php endif; ?>
                             </div>
                         <?php endforeach; ?>
                     <?php endif; ?>
@@ -1223,7 +1225,7 @@ function changing_filters() {
     <?php 
     if ( (!empty($list_categories) && !is_wp_error( $list_categories )) || !empty($kategori) ):
     ?>
-        <div class="shopPage__filtersRow__listItem<?php if(!empty($openedItems) && is_array($openedItems) && in_array('kategori',$openedItems)){ echo ' opened'; } ?>" data-attr-name="kategori">
+        <div class="shopPage__filtersRow__listItem category__item<?php if(!empty($openedItems) && is_array($openedItems) && in_array('kategori',$openedItems)){ echo ' opened'; } ?>" data-attr-name="kategori">
             <div class="shopPage__filtersRow__listItem__title">KATEGORI</div>
             <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($openedItems) && is_array($openedItems) && in_array('kategori',$openedItems)){ echo ' style="display:block;"'; } ?>>
                 <div class="shopPage__filtersRow__listItem__sublistItems">
@@ -1231,6 +1233,7 @@ function changing_filters() {
                         <?php foreach($kategori as $term): ?>
                             <?php 
                             $full_term = get_term_by('slug', $term, 'product_cat');
+                            $category_description = $full_term->description;
 
                             $parent_term_slug = '';
                             if ($full_term->parent != 0) {
@@ -1241,7 +1244,9 @@ function changing_filters() {
                             <div class="shopPage__filtersRow__listItem__sublistItem active" data-slug="<?php echo $term; ?>"<?php if(!empty($parent_term_slug)): ?> data-parent="<?php echo $parent_term_slug; ?>"<?php endif; ?>>
                                 <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
                                 <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $full_term->name; ?></div>
-                                <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php //echo category_description($full_term->term_id); ?></div>
+                                <?php if(!empty($category_description)): ?>
+                                    <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php echo wpautop($category_description); ?></div>
+                                <?php endif; ?>
                             </div>
                         <?php endforeach; ?>
                     <?php endif; ?>

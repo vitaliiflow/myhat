@@ -348,7 +348,6 @@ jQuery(document).ready(function($){
                     searchText: searchText,
                 },
                 success: function(response){
-                    
                     $('.shopPage__list').html(response);
                 }
             });
@@ -367,20 +366,10 @@ jQuery(document).ready(function($){
                 $('.shopPage__filtersRow__item.filter').removeClass('opened');
             }
     
-            if($('.shopPage__filtersRow__listItem[data-attr-name="kategori"] .shopPage__filtersRow__listItem__sublistItem.active').length > 0){
-                $('.seo-text__content').html($('.shopPage__filtersRow__listItem[data-attr-name="kategori"] .shopPage__filtersRow__listItem__sublistItem.active .shopPage__filtersRow__listItem__sublistItem__description').html());            
-            }
-    
-            if($('.shopPage__filtersRow__listItem[data-attr-name="kategori"] .shopPage__filtersRow__listItem__sublistItem.active').length == 0){
-                $('.seo-text__content').html($('.shopPage__filtersRow__itemTitle .shopPage__filtersRow__itemTitle__emptyContent').html());
-            }
+            
     
             
-            if($('.seo-text').prop('scrollHeight') <= Math.ceil($('.seo-text').outerHeight())){
-                $('.seo-text').removeClass('seo-text__content--long');
-            } else {
-                $('.seo-text').addClass('seo-text__content--long');
-            }
+            
 
             $('.shopPage__filtersRow__listItem').each(function(){
                 if($(this).hasClass('opened')){
@@ -404,6 +393,25 @@ jQuery(document).ready(function($){
                 },
                 success: function(response){
                     $('.filter .shopPage__filtersRow__listWrapper').html(response);
+
+                    if($('.shopPage__filtersRow__listItem[data-attr-name="kategori"] .shopPage__filtersRow__listItem__sublistItem.active').length > 0){
+                        if($('.shopPage__filtersRow__listItem[data-attr-name="kategori"] .shopPage__filtersRow__listItem__sublistItem.active .shopPage__filtersRow__listItem__sublistItem__description').html() != undefined && $('.shopPage__filtersRow__listItem[data-attr-name="kategori"] .shopPage__filtersRow__listItem__sublistItem.active .shopPage__filtersRow__listItem__sublistItem__description').html() != ''){
+                            $('.seo-text__content').html($('.shopPage__filtersRow__listItem[data-attr-name="kategori"] .shopPage__filtersRow__listItem__sublistItem.active .shopPage__filtersRow__listItem__sublistItem__description').html());
+                        }
+                        else{ 
+                            $('.seo-text__content').html('');
+                        }
+                    }
+            
+                    if($('.shopPage__filtersRow__listItem[data-attr-name="kategori"] .shopPage__filtersRow__listItem__sublistItem.active').length == 0){
+                        $('.seo-text__content').html($('.shopPage__filtersRow__itemTitle .shopPage__filtersRow__itemTitle__emptyContent').html());
+                    }
+                    $('.seo-text').removeClass('seo-text__content--long-opened');
+                    if($('.seo-text').prop('scrollHeight') <= Math.ceil($('.seo-text').outerHeight())){
+                        $('.seo-text').removeClass('seo-text__content--long');
+                    } else {
+                        $('.seo-text').addClass('seo-text__content--long');
+                    }
                 }
             })
             $(document).ajaxComplete(function(event, xhr, settings){

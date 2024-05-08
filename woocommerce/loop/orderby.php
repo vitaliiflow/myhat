@@ -217,7 +217,12 @@ if(empty($_GET['orderby'])){
                                     <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term->slug; ?>">
                                         <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
                                         <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term->name; ?></div>
-                                        <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php //echo category_description($term->term_id); ?></div>
+                                        <?php 
+                                            $category_description = $term->description;
+                                        ?>
+                                        <?php if(!empty($category_description)): ?>
+                                            <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php echo wpautop($category_description); ?></div>
+                                        <?php endif; ?>
                                     </div>
                                 <?php endforeach; ?>
                             </div>
