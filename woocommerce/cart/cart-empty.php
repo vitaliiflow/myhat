@@ -25,6 +25,7 @@ do_action( 'woocommerce_cart_is_empty' );
 if ( wc_get_page_id( 'shop' ) > 0 ) : ?>
 	<div class="emptyCart">
         <div class="emptyCart__container">
+            
             <h1 class="emptyCart__title">Din varukorg är för närvarande tom</h1>
             <div class="emptyCart__subtitle">Innan du går vidare till kassan måste du lägga till några produkter i din varukorg. Du hittar många intressanta produkter på vår "Shop"-sida.</div>
             <div class="emptyCart__button">

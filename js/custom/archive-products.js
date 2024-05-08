@@ -108,15 +108,7 @@ jQuery(document).ready(function($){
     }
     function removePills(){
         $('.shopPage__filtersRow__pillsList__itemRemove').click(function(){
-            if($(this).hasClass('search-remove')){
-                $('.shopPage__list').removeAttr('data-search');
-            } else{
-                const item = $(`.shopPage__filtersRow__listItem__sublistItem[data-slug="${$(this).parent().attr('data-term')}"]`);
-                item.removeClass('active');
-                if(item.attr('data-parent') != '' && item.attr('data-parent') != undefined){
-                    $(`.shopPage__filtersRow__listItem__sublistItem[data-slug="${item.attr('data-parent')}"]`).addClass('active');
-                }
-            }
+            $(`.shopPage__filtersRow__listItem__sublistItem[data-slug="${$(this).parent().attr('data-term')}"]`).removeClass('active');
             $('.filters-wrapper .shopPage__filtersRow__list__apply .btn').click();
         })
     }
@@ -157,7 +149,6 @@ jQuery(document).ready(function($){
             if(settings.data.includes('action')){
                 const action = settings.data ? settings.data.split('action=')[1].split('&')[0] : '';
                 if (action === 'products_filter') {
-                    $('.shopPage__list').attr('data-paged', '1');
                     paginationActionUpdate();
                     removePills();
                 }

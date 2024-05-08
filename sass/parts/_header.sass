@@ -237,7 +237,7 @@
                                 align-items: center
                             +max-screen($breakpoint-lg)
                                 font-size: 0.667rem
-                                // justify-content: space-between
+                                justify-content: space-between
                             +max-screen($breakpoint-md)
                                 font-size: 0.556rem 
                         img 
@@ -330,20 +330,6 @@
         align-items: center
         &__item
             padding: 0 0.445rem 
-            button.search-toggle
-                background-image: url('../assets/images/icons/search.png')
-                background-size: contain
-                background-repeat: no-repeat
-                background-position: center
-                display: block 
-                width: 20px 
-                height: 20px
-                padding: 0
-                border-radius: 0 
-                &:focus ~ .search__barWrapper input 
-                    opacity: 1
-                    visibility: visible
-
             img 
                 display: block 
                 width: 1.334rem 
@@ -379,6 +365,7 @@
                     cursor: pointer
                 .search
                     &__bar 
+                        margin-left: -2rem
                         +max-screen($breakpoint-md)
                             width: 100% 
                         input 
@@ -396,6 +383,9 @@
                             position: absolute
                             top: calc( 100% + 1.1112rem )
                             right: 0.445rem 
+                            opacity: 0
+                            visibility: hidden 
+                            transform: translateY(30px)
                             transition: .3s 
                             +max-screen($breakpoint-lg)
                                 right: 0 
@@ -403,37 +393,31 @@
                             +max-screen($breakpoint-md)
                                 width: 100% 
                                 top: calc( 100% + 0.5rem )
+                            &.opened 
+                                opacity: 1
+                                visibility: visible 
+                                transform: none 
                             form 
                                 display: flex 
                                 flex-direction: row-reverse
                                 border-radius: 20px
                                 overflow: hidden
-                            input 
-                                opacity: 0
-                                visibility: hidden
-                                transition: .3s
-                                &[type="search"]:focus,
-                                &[type="search"]:focus + input
-                                    opacity: 1
-                                    visibility: visible
-                            .search-form
-                                position: relative
-                            input[type="submit"]
-                                font-size: 0
-                                width: 2rem 
-                                height: 2rem
-                                background-image: url('../assets/images/icons/search.png')
-                                background-size: 0.834rem 
-                                background-repeat: no-repeat 
-                                background-position: center
-                                display: block 
-                                background-color: transparent
-                                margin-left: -1px
-                                border: 0
-                                padding: 0
-                                position: absolute
-                                top: 50%
-                                transform: translateY(-50%)
+                    &__btn 
+                        z-index: 1
+                        display: flex 
+                        align-items: center
+                        input 
+                            font-size: 0
+                            width: 2rem 
+                            height: 2rem
+                            background-image: url('../assets/images/icons/search.png')
+                            background-size: 0.834rem 
+                            background-repeat: no-repeat 
+                            background-position: center
+                            display: block 
+                            background-color: transparent
+                            margin-left: -1px
+                            border: 0
                     &__resultsList 
                         background-color: $color-white
                         margin-top: 8px

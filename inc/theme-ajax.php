@@ -264,7 +264,7 @@ function products_filter() {
         'post_type' => 'product',
         'post_status'    => array( 'publish' ),
         'posts_per_page' => 16,
-        'paged' => 1,
+        'paged' => $paged,
         'order' => $order,
         'orderby' => $orderby,
         'meta_query'     => array(
@@ -840,14 +840,8 @@ function filters_init() {
                         <?php foreach($kategori as $term): ?>
                             <?php 
                             $full_term = get_term_by('slug', $term, 'product_cat');
-
-                            $parent_term_slug = '';
-                            if ($full_term->parent != 0) {
-                                $parent_term = get_term($full_term->parent, 'product_cat');
-                                $parent_term_slug = $parent_term->slug;
-                            }
                             ?>
-                            <div class="shopPage__filtersRow__listItem__sublistItem active" data-slug="<?php echo $term; ?>"<?php if(!empty($parent_term_slug)): ?> data-parent="<?php echo $parent_term_slug; ?>"<?php endif; ?>>
+                            <div class="shopPage__filtersRow__listItem__sublistItem active" data-slug="<?php echo $term; ?>">
                                 <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
                                 <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $full_term->name; ?></div>
                                 <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php //echo category_description($full_term->term_id); ?></div>
@@ -855,16 +849,7 @@ function filters_init() {
                         <?php endforeach; ?>
                     <?php endif; ?>
                     <?php foreach($list_categories as $term): ?>
-                        <?php 
-                        $full_term = get_term_by('slug', $term['slug'], 'product_cat');
-
-                        $parent_term_slug = '';
-                        if ($full_term->parent != 0) {
-                            $parent_term = get_term($full_term->parent, 'product_cat');
-                            $parent_term_slug = $parent_term->slug;
-                        }  
-                        ?>
-                        <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term['slug']; ?>"<?php if(!empty($parent_term_slug)): ?> data-parent="<?php echo $parent_term_slug; ?>"<?php endif; ?>>
+                        <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term['slug']; ?>">
                             <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
                             <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term['name']; ?></div>
                         </div>
@@ -1075,11 +1060,8 @@ function changing_filters() {
         wp_reset_postdata();
     }
 
-    if(!empty($kategori) && $kategori[0] != ''): 
-        $term = get_term_by('slug', $kategori[0], 'product_cat');
-        $cat_link = get_term_link($term);
-    endif; ?>
-    <div class="shopPage__filtersRow__listClose mobile-toggler refreshed"<?php if(!empty($kategori) && $kategori[0] != ''): ?> data-cat-link="<?php echo $cat_link; ?>"<?php endif; ?>></div>
+    ?>
+    <div class="shopPage__filtersRow__listClose mobile-toggler refreshed"></div>
     <?php 
     if ( (!empty($list_varumarke) && !is_wp_error( $list_varumarke )) || !empty($varumarke) ):
     ?>
@@ -1231,14 +1213,8 @@ function changing_filters() {
                         <?php foreach($kategori as $term): ?>
                             <?php 
                             $full_term = get_term_by('slug', $term, 'product_cat');
-
-                            $parent_term_slug = '';
-                            if ($full_term->parent != 0) {
-                                $parent_term = get_term($full_term->parent, 'product_cat');
-                                $parent_term_slug = $parent_term->slug;
-                            }
                             ?>
-                            <div class="shopPage__filtersRow__listItem__sublistItem active" data-slug="<?php echo $term; ?>"<?php if(!empty($parent_term_slug)): ?> data-parent="<?php echo $parent_term_slug; ?>"<?php endif; ?>>
+                            <div class="shopPage__filtersRow__listItem__sublistItem active" data-slug="<?php echo $term; ?>">
                                 <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
                                 <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $full_term->name; ?></div>
                                 <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php //echo category_description($full_term->term_id); ?></div>
@@ -1246,16 +1222,7 @@ function changing_filters() {
                         <?php endforeach; ?>
                     <?php endif; ?>
                     <?php foreach($list_categories as $term): ?>
-                        <?php 
-                        $full_term = get_term_by('slug', $term['slug'], 'product_cat');
-
-                        $parent_term_slug = '';
-                        if ($full_term->parent != 0) {
-                            $parent_term = get_term($full_term->parent, 'product_cat');
-                            $parent_term_slug = $parent_term->slug;
-                        }
-                        ?>
-                        <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term['slug']; ?>"<?php if(!empty($parent_term_slug)): ?> data-parent="<?php echo $parent_term_slug; ?>"<?php endif; ?>>
+                        <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term['slug']; ?>">
                             <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
                             <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term['name']; ?></div>
                         </div>

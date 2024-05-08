@@ -14,14 +14,8 @@ const injectChanges = true;
 // Path to main .sass file.
 const styleSRC = "./sass/main.sass";
 
-// Path to additional .sass file (cart).
-const additionalStyleSRC = "./sass/cart.sass";
-
 // Path to place the compiled CSS file. Default set to root folder.
 const styleDestination = "./dist/";
-
-// Path to place the compiled additional CSS file.
-const additionalStyleDestination = "./dist/";
 
 // Available options → 'compact' or 'compressed' or 'nested' or 'expanded'
 const outputStyle = "compact";
@@ -62,11 +56,7 @@ const imgDST = "./assets/images/";
 
 // >>>>> Watch files paths.
 // Path to all *.sass files inside css folder and inside them.
-
-// Watch files paths.
-const watchStyles = [
-  "./sass/**/*.sass", // Main Sass files
-];
+const watchStyles = "./sass/**/*.sass";
 
 // Path to all vendor JS files.
 const watchJsVendor = "./js/vendor/*.js";
@@ -142,9 +132,7 @@ module.exports = {
   browserAutoOpen,
   injectChanges,
   styleSRC,
-  styleDestination, 
-  additionalStyleSRC, // New variable for cart
-  additionalStyleDestination, // New variable for cart
+  styleDestination,
   outputStyle,
   errLogToConsole,
   precision,

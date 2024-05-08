@@ -1,8 +1,7 @@
 jQuery(document).ready(function($){
 
-    $('.search .search-toggle, #search-input').focus(function(){
-        console.log(1234);
-        // $(this).closest('.header__iconsList__item.search').find('.search__barWrapper').addClass('opened');
+    $('.header__searchIcon').click(function(){
+        $(this).parent().find('.search__barWrapper').toggleClass('opened');
     });
     $('.search__barWrapper input.search-input').bind("change paste keyup", function () {
         setTimeout(() => {
@@ -26,7 +25,9 @@ jQuery(document).ready(function($){
     $('.search__barWrapper input.search-input').on('focus', function () {
         $('.search__resultsList').addClass('show');
         $(this).focusout(function () {
-            $('.search__resultsList').removeClass('show');
+            if (!$('.search__resultsList').is(":hover")) {
+                $('.search__resultsList').removeClass('show');
+            }
         });
     });
     $('.header__iconsList__item.search > img').click(function(){

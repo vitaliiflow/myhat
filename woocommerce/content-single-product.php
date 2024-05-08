@@ -538,7 +538,7 @@ $link = get_field('related_products_link', 'options');
                                                     <?php if ( $image ) : ?>
 
                                                         <div class="teams-page__logo-wrapper mb-3">
-                                                            <img class="teams-page__logo" src="<?php echo $image; ?>" alt="<?php echo $name . ' logo'; ?>"  style="height: auto;"/>
+                                                            <img class="teams-page__logo" src="<?php echo $image; ?>" alt="<?php echo $name . ' logo'; ?>" />
                                                         </div>
                         
                                                     <?php endif; ?>

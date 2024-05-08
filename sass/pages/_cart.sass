@@ -155,7 +155,6 @@
                     width: 50px 
                     padding: 6px 
                     font-size: 16px
-                    text-align: center
                     +max-screen($breakpoint-md)
                         font-size: 14px
                         padding: 4px 6px 
@@ -169,7 +168,6 @@
                 width: fit-content
                 font-weight: 400
                 line-height: 1
-                text-decoration: none !important
             .wac-btn-sub
                 font-size: 22px
                 +max-screen($breakpoint-md)
@@ -245,7 +243,6 @@
             margin-top: 0
         ul#shipping_method
             margin-top: 12px
-            padding-left: 0
             +max-screen($breakpoint-md)
                 margin-top: 3px
             li 
@@ -314,7 +311,6 @@
             display: flex 
             flex-direction: column 
             padding-bottom: 52px
-            padding-top: 1em
             +max-screen($breakpoint-lg)
                 padding-bottom: 0
             +max-screen($breakpoint-md)
@@ -342,34 +338,7 @@
                         background-image: url('../assets/images/icons/checkout__btn-black__arrow.png')
                 &:last-child
                     margin-bottom: 0
-.emptyCart
-    &__container 
-        max-width: 800px 
-        display: flex 
-        flex-direction: column 
-        align-items: center
-        text-align: center
-    &__icon 
-        img 
-            width: 240px
-            +max-screen($breakpoint-lg)
-                width: 200px 
-            +max-screen($breakpoint-md)
-                width: 164px 
-    &__button 
-        margin-top: 64px
-        +max-screen(1200px)
-            margin-top: 56px
-        +max-screen($breakpoint-lg)
-            margin-top: 42px
-        +max-screen($breakpoint-md)
-            margin-top: 32px
 .woocommerce-cart 
-    .woocommerce
-        flex-wrap: wrap
-        justify-content: center
-    .wc-empty-cart-message
-        width: 100% 
     .latest-products
         padding-bottom: 0
         +max-screen($breakpoint-md)

@@ -443,14 +443,8 @@ $searchText=get_search_query();
                                                 <?php foreach($kategori as $term): ?>
                                                     <?php 
                                                     $full_term = get_term_by('slug', $term, 'product_cat');
-
-                                                    $parent_term_slug = '';
-                                                    if ($full_term->parent != 0) {
-                                                        $parent_term = get_term($full_term->parent, 'product_cat');
-                                                        $parent_term_slug = $parent_term->slug;
-                                                    }
                                                     ?>
-                                                    <div class="shopPage__filtersRow__listItem__sublistItem active" data-slug="<?php echo $term; ?>"<?php if(!empty($parent_term_slug)): ?> data-parent="<?php echo $parent_term_slug; ?>"<?php endif; ?>>
+                                                    <div class="shopPage__filtersRow__listItem__sublistItem active" data-slug="<?php echo $term; ?>">
                                                         <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
                                                         <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $full_term->name; ?></div>
                                                         <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php //echo category_description($full_term->term_id); ?></div>
@@ -458,16 +452,7 @@ $searchText=get_search_query();
                                                 <?php endforeach; ?>
                                             <?php endif; ?>
                                             <?php foreach($list_categories as $term): ?>
-                                                <?php 
-                                                $full_term = get_term_by('slug', $term['slug'], 'product_cat');
-
-                                                $parent_term_slug = '';
-                                                if ($full_term->parent != 0) {
-                                                    $parent_term = get_term($full_term->parent, 'product_cat');
-                                                    $parent_term_slug = $parent_term->slug;
-                                                }
-                                                ?>
-                                                <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term['slug']; ?>"<?php if(!empty($parent_term_slug)): ?> data-parent="<?php echo $parent_term_slug; ?>"<?php endif; ?>>
+                                                <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term['slug']; ?>">
                                                     <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
                                                     <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term['name']; ?></div>
                                                     <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php //echo category_description($term['id']); ?></div>
@@ -546,13 +531,13 @@ $searchText=get_search_query();
                         <?php endwhile;?> 
                     </ul>
                     <div class="shopPage__pagination">
-                        <a href="#" rel="previous" class="shopPage__paginationButton prev<?php if($paged == 1){ echo ' disabled';} ?>"><?php echo get_inline_svg('pagination-arrow-right.svg'); ?>Föregående</a>
+                        <div class="shopPage__paginationButton prev<?php if($paged == 1){ echo ' disabled';} ?>"><?php echo get_inline_svg('pagination-arrow-right.svg'); ?>Föregående</div>
                         <div class="shopPage__paginationPage">
                             <span class="current"><?php echo $paged ?></span>
                             <span>/</span>
                             <span class="total"><?php echo $the_query->max_num_pages; ?></span>
                         </div>
-                        <a href="#" rel="next" class="shopPage__paginationButton next<?php if($the_query->max_num_pages <= 1 || $paged == $the_query->max_num_pages){echo ' disabled';} ?>">Nästa<?php echo get_inline_svg('pagination-arrow-right.svg'); ?></a>
+                        <div class="shopPage__paginationButton next<?php if($the_query->max_num_pages <= 1 || $paged == $the_query->max_num_pages){echo ' disabled';} ?>">Nästa<?php echo get_inline_svg('pagination-arrow-right.svg'); ?></div>
                     </div>
                 </div>
             <?php endif; ?>

@@ -122,14 +122,7 @@ if(empty($_GET['orderby'])){
                         <div class="shopPage__filtersRow__listItem__sublist">
                             <div class="shopPage__filtersRow__listItem__sublistItems">
                                 <?php foreach($varumarke_terms as $term): ?>
-                                    <?php 
-                                    $parent_term_slug = '';
-                                    if ($term->parent != 0) {
-                                        $parent_term = get_term($term->parent, 'product_cat');
-                                        $parent_term_slug = $parent_term->slug;
-                                    }
-                                    ?>
-                                    <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term->slug; ?>"<?php if(!empty($parent_term_slug)): ?> data-parent="<?php echo $parent_term_slug; ?>"<?php endif; ?>>
+                                    <div class="shopPage__filtersRow__listItem__sublistItem" data-slug="<?php echo $term->slug; ?>">
                                         <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
                                         <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $term->name; ?></div>
                                     </div>

@@ -12,7 +12,10 @@
     ?>
 
 
-    <?php get_template_part('template-parts/footer/footer'); ?>
+    <?php 
+	if (!is_cart() && !is_checkout()) {
+		get_template_part('template-parts/footer/footer');
+	} ?>
 
     </div> <!-- THE END OF WRAPPER -->
 

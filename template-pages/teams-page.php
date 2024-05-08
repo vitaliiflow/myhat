@@ -75,9 +75,6 @@ $taxonomy_name = 'team';
 
                         $category = $item['category'];
 
-                        echo $category->term_id;
-                       
-
                         $terms = get_terms( array(
                             'taxonomy' => 'team',
                             'orderby' => 'name',

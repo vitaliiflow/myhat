@@ -29,6 +29,8 @@ if ($list ) : ?>
                 $thumbnail_id = get_term_meta( $id, 'thumbnail_id', true );
                 $image = wp_get_attachment_image_src( $thumbnail_id, 'home-category-icons' );
                 //$image = wp_get_attachment_url( $thumbnail_id );
+                //
+                $logo = get_field('taxonomy-image', $category );
 
                 if ($image) : ?>
 
@@ -38,6 +40,21 @@ if ($list ) : ?>
                             <?php if ( $image ) : ?>
 
                                 <img class="product-cat__img mb-2" src="<?php echo $image[0]; ?>" alt="<?php echo $name . ' image'; ?>" />
+
+                             <?php endif; ?>
+
+                            <h6><?php echo $name; ?></h6>
+                        </a>
+                    </li>
+			
+				<?php elseif ( $logo) : ?>
+			
+				<li class="product-cat__item col-auto">
+                        <a href="<?php echo $link; ?>" class="product-cat__item-link text-center">
+
+                            <?php if ( $logo ) : ?>
+
+                                <img class="product-cat__img mb-2" src="<?php echo $logo['sizes']['home-category-icons']; ?>" alt="<?php echo $name . ' image'; ?>" />
 
                              <?php endif; ?>
 
