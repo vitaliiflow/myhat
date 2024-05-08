@@ -28,9 +28,22 @@ function codelibry_enqueue () {
 
   }
 
-  wp_enqueue_style( 'main', "{$DIST}/main.min.css", array(), $style_version, 'all' ); // main css
+  if (is_cart()) : 
+
+    // Separate CSS for cart page to fix render blocking speed
+
+    wp_enqueue_style( 'cart', "{$DIST}/cart.min.css", array(), $style_version, 'all' ); // main css
+
+  else : 
+
+    wp_enqueue_style( 'main', "{$DIST}/main.min.css", array(), $style_version, 'all' ); // main css
+
+  endif; 
+
+
   wp_enqueue_script( 'vendor', "{$DIST}/vendor.min.js", array('jquery'), $vendor_version, true ); // vendor js
   wp_enqueue_script( 'main', "{$DIST}/main.min.js", array('vendor'), $custom_version, true ); // main js
+
 
   $localized_strings = array(
        'searching' => __('Search...', 'codelibry'),
