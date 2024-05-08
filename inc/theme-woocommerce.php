@@ -201,3 +201,98 @@ function add_shipping_note_on_order_creation( $order_id ) {
 	endif;
 }
 add_action( 'woocommerce_thankyou', 'add_shipping_note_on_order_creation', 10, 1 );
+
+// Check if any product variation is in stock
+
+function is_any_variation_in_stock($product_id) {
+    // Get the product object
+    $product = wc_get_product($product_id);
+
+    // Check if the product is a variable product
+    if ($product->is_type('variable')) {
+        // Get the product variations
+        $variations = $product->get_available_variations();
+
+        // Check if any variation is in stock
+        foreach ($variations as $variation) {
+            $variation_obj = wc_get_product($variation['variation_id']);
+            if ($variation_obj->is_in_stock()) {
+                return true; // Return true if any variation is in stock
+            }
+        }
+
+        return false; // Return false if none of the variations are in stock
+    } else {
+        // Product is not a variable product
+        return false;
+    }
+}
+
+// Add customziation yes/no for each product based on FPD functions
+add_action('woocommerce_before_order_itemmeta', 'display_custom_order_item_data', 10, 3);
+
+function display_custom_order_item_data($item_id, $item, $product)
+{
+    // Get the meta data of the item
+    $item_meta_data = $item->get_meta_data();
+	
+	if (!$item instanceof WC_Order_Item_Product) {
+		return;
+	}
+	
+    $customization = "No";
+
+    // Check if the custom information exists in the meta data
+    foreach ($item_meta_data as $meta) {
+        if ($meta->key === '_fpd_data') {
+            $custom_info = $meta->value;
+
+            // Proceed with custom information logic if the necessary keys exist
+            $fpd_data = json_decode(stripslashes($custom_info), true);
+
+            if (isset($fpd_data['product']) && $fpd_data['product']) {
+                $myhat_products = $fpd_data['product'];
+
+                foreach ($myhat_products as $myhat_product) {
+                    $elements = $myhat_product['elements'];
+
+                    if (isset($myhat_product['elements'])) {
+
+                        foreach($elements as $element) {
+                            $parameters = $element['parameters'];
+
+                            if (isset($parameters)) {
+
+                                if (isset($parameters['_initialText'])) {
+                                    $customization = "Yes";
+                                } elseif (isset($parameters['originParams'])) {
+                                    $url = $parameters['originParams']['source'];
+
+                                    // Define the pattern to search for
+                                    $patternUploads = '/fancy_products_uploads/';
+                                    $patterncloudfront = '/cloudfront\.net/';
+                                    $patternForProductAssets = '/fpd-product/';
+
+                                    // Use preg_match to search for the pattern
+                                    if (preg_match($patternUploads, $url)) {
+                                        $customization = "Yes";
+                                    } elseif (preg_match($patterncloudfront, $url)) {
+                                        $customization = "Yes";
+                                    } elseif (!preg_match($patternForProductAssets, $url)) {
+                                        $customization = "Yes";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    // Display the custom information below the SKU on the order edit screen
+    echo '<div class="custom-order-item-data">';
+    echo '<p>Customization: ' . $customization . '</p>';
+    echo '</div>';
+}
