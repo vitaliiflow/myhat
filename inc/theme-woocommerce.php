@@ -106,6 +106,15 @@ function add_product_json_ld() {
         $review_count = ceil($product->get_id() / 10000);
 		$availability = $product->is_in_stock() ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock';
 		$price_valid_until = date('Y-m-d', strtotime('+3 months'));
+
+        // Get the selected country from WooCommerce settings
+        $store_country = get_option( 'woocommerce_default_country' );
+
+        // Split the country value into country code and name
+        $store_country_parts = explode( ':', $store_country );
+
+        // Extract the country code and name
+        $store_country_code = isset( $store_country_parts[0] ) ? trim( $store_country_parts[0] ) : '';
 		
         if ($product_image_url) {
             $json_ld_markup = '
@@ -121,7 +130,15 @@ function add_product_json_ld() {
                     "priceCurrency": "' . get_option('woocommerce_currency') .'",
                     "price": "' . esc_attr($product_price) . '",
 					"priceValidUntil": "' . esc_attr($price_valid_until) . '",
-					"availability": "' . esc_url($availability) . '"
+					"availability": "' . esc_url($availability) . '",
+                    "hasMerchantReturnPolicy": {
+                        "@type": "MerchantReturnPolicy",
+                        "applicableCountry": "' . $store_country_code . '",
+                        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                        "merchantReturnDays": 100,
+                        "returnMethod": "https://schema.org/ReturnByMail",
+                        "returnFees": "https://schema.org/FreeReturn"
+                    }
                 },
                 "aggregateRating": {
                     "@type": "AggregateRating",
