@@ -14,3 +14,5 @@ require get_template_directory().'/inc/custom-functions-from-old-theme.php';
 require get_template_directory().'/inc/theme-ajax.php';
 require get_template_directory().'/inc/theme-woocommerce.php';
 
+require get_template_directory().'/inc/theme-optimization.php';
+require get_template_directory().'/inc/theme-permalinks.php'; // Redirects for products and product cat

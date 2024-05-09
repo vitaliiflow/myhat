@@ -85,3 +85,23 @@ function my_wp_nav_menu_objects( $items, $args ) {
 		// return
 		return $items;
 }
+
+
+/*
+ * Remove a link from the Yoast SEO breadcrumbs
+ * Credit: https://timersys.com/remove-link-yoast-breadcrumbs/
+ * Last Tested: Mar 12 2017 using Yoast SEO 4.4 on WordPress 4.7.3
+ */
+
+ add_filter( 'wpseo_breadcrumb_single_link' ,'wpseo_remove_breadcrumb_link', 10 ,2);
+
+ function wpseo_remove_breadcrumb_link( $link_output , $link ){
+	 $text_to_remove = 'Webbutik';
+   
+	 if( $link['text'] == $text_to_remove ) {
+	   $link_output = '';
+	 }
+  
+	 return $link_output;
+ }
+ 
