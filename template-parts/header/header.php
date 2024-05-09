@@ -11,24 +11,28 @@ $logo = get_field('header_logo', 'options');
       <div class="header__menu">
 
         <?php 
-        if (has_nav_menu('header-menu')) :
-          wp_nav_menu(array('theme_location' => 'header-menu')); 
-        endif; 
+		  if (!is_cart() && !is_checkout()) {
+			if (has_nav_menu('header-menu')) :
+			  wp_nav_menu(array('theme_location' => 'header-menu')); 
+			endif; 
 
-        if (has_nav_menu('languages-menu')) :
-          wp_nav_menu(array('theme_location' => 'languages-menu'));
-        endif; 
+			if (has_nav_menu('languages-menu')) :
+			  wp_nav_menu(array('theme_location' => 'languages-menu'));
+			endif; 
+		  }
         ?>
         
       </div>
       <div class="header__iconsList">
         <div class="header__iconsList__item search">
-          <button class="search-toggle"></button>
+          <img src="<?php echo get_template_directory_uri(  ) ?>/assets/images/icons/search.png" alt="">
           <div class="search__barWrapper">
             <form class="search-form" method="get" role="search" action="<?php echo get_home_url(); ?>">
                 <div class="search__bar">
                   <input type="search" id="search-input" name="s" value="" class="search-input" placeholder="Search...">
-                  <input type="submit" name="id">
+                </div>
+                <div class="search__btn">
+                    <input type="submit" name="id">
                 </div>
             </form>
             <div class="search__resultsList">
@@ -54,11 +58,15 @@ $logo = get_field('header_logo', 'options');
           <?php if($logo): ?>
             <div class="header__logo"><a href="<?php echo get_home_url(); ?>"><img src="<?php echo $logo['url'] ?>" alt="<?php echo $logo['title']; ?>"></a></div>
           <?php endif; ?>
-          <div class="header__close header--toggler"></div>
+			<?php if (!is_cart() && !is_checkout()) : ?>
+          		<div class="header__close header--toggler"></div>
+		    <?php endif; ?>
         </div>
+		<?php if (!is_cart() && !is_checkout()) : ?>
         <div class="header__menu">
           <?php wp_nav_menu(array('theme_location' => 'header-menu')); ?>
         </div>
+		<?php endif; ?>
         <?php if(have_rows('mobile_after_menu_links', 'options')): ?>
           <div class="header__linksList">
             <?php while(have_rows('mobile_after_menu_links', 'options')): the_row(); ?>

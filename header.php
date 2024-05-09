@@ -3,8 +3,17 @@
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width initial-scale=1">
+	
+	
+	
     <?php wp_head(); ?>
-    <link rel="preload" as="image" src="https://myhat.se/wp-content/uploads/2024/03/Webbanner2.webp">
+	
+	<?php if (is_front_page()) : ?>
+	
+<!-- 	<link rel="preload" href="https://yourdomain.com/your-lcp-image-mobile.jpg" as="image" media="(min-width: 768px)">
+	<link rel="preload" href="https://myhat.se/wp-content/uploads/2024/03/Webbanner2-2-1.webp" as="image" media="(max-width: 768px)"> -->
+	
+	<?php endif;?>
 
     <?php 
 
@@ -17,6 +26,7 @@
 
 	if ($headScripts) : echo $headScripts; endif; 
 
+	
 	?>
 
 </head>
