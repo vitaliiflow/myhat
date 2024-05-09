@@ -23,20 +23,25 @@ if ($link || $bg_desktop) :
 
     <a class="section" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>">
 
-        <picture class="img-absoolute hero-banner__img">
+        <picture class="img-absoolute hero-banner__img" fetchpriority="high">
 
             <!-- For screens 768px and larger -->
-            <source media="(min-width: 768px)" srcset="<?php echo $bg_desktop['url'];?>" fetchpriority="high">
+            <source media="(min-width: 768px)" srcset="<?php echo $bg_desktop['url'];?>">
 
             <?php if ($bg_mobile) : ?>
 
                 <!-- For screens smaller than 768px -->
                 <source media="(max-width: 767px)" srcset="<?php echo $bg_mobile['url'];?>" fetchpriority="high">
+			
+			<?php else : ?>
+			
+				<!-- For screens smaller than 768px -->
+                <source media="(max-width: 767px)" srcset="<?php echo $bg_desktop['sizes']['home-banner'];?>">
 
             <?php endif; ?>
 
             <!-- Fallback image for browsers that do not support srcset -->
-            <img src="<?php echo $bg_desktop['url'];?>" alt="<?php echo $bg_desktop['alt'];?>" class="img-absoolute cta__img" fetchpriority="high">
+            <img src="<?php echo $bg_desktop['url'];?>" alt="<?php echo $bg_desktop['alt'];?>" class="img-absoolute cta__img">
 
         </picture>
 
