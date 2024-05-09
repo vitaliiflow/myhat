@@ -66,7 +66,17 @@ do_action( 'woocommerce_before_cart' ); ?>
 							?>
 								<div class="cart__itemTax"><?php echo $tax; ?></div>
 							<?php endif; ?>
-							<div class="cart__itemName"><?php echo $product_name; ?></div>
+							<div class="cart__itemName">
+								<?php echo $product_name; ?>
+								<?php 
+
+								// Meta data.
+								if (wc_get_formatted_cart_item_data( $cart_item )) : // PHPCS: XSS ok.
+									echo '<div class="badge-wrapper"><div class="badge" 
+									style="line-height: 1; border-radius: 20px; padding: 4px 8px; display: inline-block; margin-top: 6px;font-weight: 500;background-color: #3e4a56;color: #fff;">+ Customization</div></div>';
+								endif; 
+								?>
+							</div>
 							<div class="cart__itemData">
 								<div class="cart__itemQuantity ">
 									<?php 
