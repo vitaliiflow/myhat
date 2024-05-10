@@ -216,3 +216,15 @@ function acf_link_attrs(array $link) {
   echo 'href="' . esc_url($url) . '" target="' . esc_attr($target) . '"';
 }
 
+
+
+// Make search by title
+add_filter( 'posts_where', 'wpse18703_posts_where', 10, 2 );
+function wpse18703_posts_where( $where, &$wp_query )
+{
+    global $wpdb;
+    if ( $wpse18703_title = $wp_query->get( 'wpse18703_title' ) ) {
+        $where .= ' AND ' . $wpdb->posts . '.post_title LIKE \'' . esc_sql( $wpdb->esc_like( $wpse18703_title ) ) . '%\'';
+    }
+    return $where;
+}
