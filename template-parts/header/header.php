@@ -25,14 +25,12 @@ $logo = get_field('header_logo', 'options');
       </div>
       <div class="header__iconsList">
         <div class="header__iconsList__item search">
-          <img src="<?php echo get_template_directory_uri(  ) ?>/assets/images/icons/search.png" alt="">
+          <button class="search-toggle"></button>
           <div class="search__barWrapper">
             <form class="search-form" method="get" role="search" action="<?php echo get_home_url(); ?>">
                 <div class="search__bar">
                   <input type="search" id="search-input" name="s" value="" class="search-input" placeholder="Search...">
-                </div>
-                <div class="search__btn">
-                    <input type="submit" name="id">
+                  <input type="submit" name="id">
                 </div>
             </form>
             <div class="search__resultsList">
