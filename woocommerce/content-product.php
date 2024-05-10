@@ -35,6 +35,20 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 		$last = false;
 		$hide = false;
 		$limited = false;
+		$label_new = 'NEW';
+		$label_top = 'Top seller';
+		$label_last = 'Last Chance';
+		$label_limited = 'Limited Edition';
+
+		$locale = get_locale();
+
+		if ($locale == 'sv_SE') :
+			$label_new = 'NYHET';
+			$label_top = 'Toppsäljare';
+			$label_last = 'Sista Chansen';
+			$label_limited = 'Limited Edition';
+		endif;
+
 		if(!empty($badges)):
 			foreach($badges as $badge):
 				switch($badge['value']):
@@ -63,7 +77,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 			$newness_days = 30; 
 			$created = strtotime( $product->get_date_created() );
 			if ( ( time() - ( 60 * 60 * 24 * $newness_days ) ) < $created  || $new) {
-				echo '<span class="new-badge shopPage__listItem__badge">' . esc_html__( 'NEW', 'codelibry' ) . '</span>';
+				echo '<span class="new-badge shopPage__listItem__badge">' . $label_new . '</span>';
 			}
 
 			//Last Chance Label
@@ -78,13 +92,13 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 				$total_stock = $product->get_stock_quantity();
 			}
 			if($total_stock <= 1 || $last){
-				echo '<span class="last-chance shopPage__listItem__badge">' . esc_html__( 'Last Chance', 'codelibry' ) . '</span>';
+				echo '<span class="last-chance shopPage__listItem__badge">' . $label_last . '</span>';
 			}
 			if(dw_product_totals() > 50 || $top){
-				echo '<span class="top-seller shopPage__listItem__badge">' . esc_html__( 'Top seller', 'codelibry' ) . '</span>';
+				echo '<span class="top-seller shopPage__listItem__badge">' . $label_top . '</span>';
 			}
 			if($limited):
-				echo '<span class="limited-edition shopPage__listItem__badge">' . esc_html__( 'Limited Edition', 'codelibry' ) . '</span>';
+				echo '<span class="limited-edition shopPage__listItem__badge">' . $label_limited . '</span>';
 			endif;
 		endif;
 		?>
