@@ -115,6 +115,14 @@ function add_product_json_ld() {
 
         // Extract the country code and name
         $store_country_code = isset( $store_country_parts[0] ) ? trim( $store_country_parts[0] ) : '';
+
+
+        // Fields from theme settings
+
+        $returnDays = get_field('merchant_return_days','option');
+        $shippingMaxValue = get_field('shipping_max_value','option');
+        $shippingMinValue = get_field('shipping_min_value','option');
+        $addressCountry = get_field('addressCountry','option');
 		
         if ($product_image_url) {
             $json_ld_markup = '
@@ -135,9 +143,22 @@ function add_product_json_ld() {
                         "@type": "MerchantReturnPolicy",
                         "applicableCountry": "' . $store_country_code . '",
                         "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-                        "merchantReturnDays": 100,
+                        "merchantReturnDays":' . $returnDays . ',
                         "returnMethod": "https://schema.org/ReturnByMail",
                         "returnFees": "https://schema.org/FreeReturn"
+                    },
+                    "shippingDetails": {
+                        "@type": "OfferShippingDetails",
+                        "shippingRate": {
+                            "@type": "MonetaryAmount",
+                            "maxValue": "' . esc_attr($shippingMaxValue) . '",
+                            "minValue": "' . esc_attr($shippingMinValue) . '",
+                            "currency": "' . get_option('woocommerce_currency') .'"
+                        },
+                        "shippingDestination": {
+                            "@type": "DefinedRegion",
+                            "addressCountry": ' . $addressCountry . '
+                        }
                     }
                 },
                 "aggregateRating": {
