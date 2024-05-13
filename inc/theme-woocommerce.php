@@ -199,3 +199,68 @@ function is_any_variation_in_stock($product_id) {
 }
 
 
+function add_shipping_note_on_order_creation( $order_id ) {
+	
+	$order = wc_get_order( $order_id );
+	$products = $order->get_items();
+	foreach($products as $product):
+		 // Get the meta data of the item
+		$item_meta_data = $product->get_meta_data();
+
+		$isCustomProduct = 0;
+
+		// Check if the custom information exists in the meta data
+		foreach ($item_meta_data as $meta) {
+			if ($meta->key === '_fpd_data') {
+				$custom_info = $meta->value;
+
+				// Proceed with custom information logic if the necessary keys exist
+				$fpd_data = json_decode(stripslashes($custom_info), true);
+
+				if (isset($fpd_data['product']) && $fpd_data['product']) {
+					$myhat_products = $fpd_data['product'];
+
+					foreach ($myhat_products as $myhat_product) {
+						$elements = $myhat_product['elements'];
+
+						if (isset($myhat_product['elements'])) {
+
+							foreach($elements as $element) {
+								$parameters = $element['parameters'];
+								if (isset($parameters)) {
+									if (isset($parameters['_initialText'])) {
+										$isCustomProduct++;
+									} elseif (isset($parameters['originParams'])) {
+										$url = $parameters['originParams']['source'];
+
+										// Define the pattern to search for
+										$patternUploads = '/fancy_products_uploads/';
+										$patterncloudfront = '/cloudfront\.net/';
+										$patternForProductAssets = '/fpd-product/';
+
+										// Use preg_match to search for the pattern
+										if (preg_match($patternUploads, $url)) {
+											$isCustomProduct++;
+										} elseif (preg_match($patterncloudfront, $url)) {
+											$isCustomProduct++;
+										} elseif (!preg_match($patternForProductAssets, $url)) {
+											$isCustomProduct++;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	
+	
+	endforeach; 
+	if($isCustomProduct > 0):
+		$order = wc_get_order( $order_id );
+		$note = "Customization: Yes";
+		$order->add_order_note( $note );
+	endif;
+}
+add_action( 'woocommerce_thankyou', 'add_shipping_note_on_order_creation', 10, 1 );
