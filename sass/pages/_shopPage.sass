@@ -269,10 +269,7 @@
         padding: 0
         margin-bottom: 20px
         overflow: hidden
-        display: -webkit-box
-        -webkit-box-orient: vertical
-        -webkit-line-clamp: 4
-        max-height: 100%
+        max-height: 200px
         .yrm-content-gradient-1
             background: none !important
         .yrm-toggle-expand
@@ -310,7 +307,6 @@
             display: block !important
         &__content--long
             padding-bottom: 42px 
-            max-height: 100% 
             +max-screen(1200px)
                 padding-bottom: 32px
             +max-screen($breakpoint-md)
@@ -319,6 +315,15 @@
             +max-screen($breakpoint-md)
                 max-width: 600px
                 margin: auto
+        &__opener 
+            &::before 
+                content: ""
+                position: absolute
+                top: -60px
+                left: 0
+                width: 100%
+                height: 60px
+                background-image: linear-gradient(transparent 8%, #f1f1ef 100%)
 body,
 .shopPage__filtersRow__listWrapper
     &.loading

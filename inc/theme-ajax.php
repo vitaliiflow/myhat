@@ -36,7 +36,7 @@ function ajax_search(){
             foreach ( $post_types  as $post_type ) {
                 $args = array(
                     'posts_per_page' => 5,
-                    's'     => $searchText,
+                    'specific_chars'     => $searchText,
                 );
                 $pt_name = get_post_type_object($post_type);
                 ?>
@@ -75,7 +75,7 @@ function ajax_search(){
 
             $args = array(
                 'posts_per_page' => -1,
-                's'     => $searchText,
+                'specific_chars'     => $searchText,
             );
             $the_query = new WP_Query($args);
             $num = 0;
@@ -154,7 +154,7 @@ function products_sorting() {
     );
 
     if(!empty($search)){
-        $args['s'] = $search;
+        $args['specific_chars'] = $search;
     }
 
     if(!empty($metaKey)){
@@ -278,7 +278,7 @@ function products_filter() {
     );
 
     if(!empty($_POST['searchText'])):
-        $args['s'] = $_POST['searchText'];
+        $args['specific_chars'] = $_POST['searchText'];
     endif;
 
     if(!empty($metaKey)){
@@ -423,7 +423,7 @@ function products_pagination() {
     endif;
 
     if(!empty($searchText)): 
-        $args['s'] = $searchText;
+        $args['specific_chars'] = $searchText;
     endif;
 
 
@@ -602,7 +602,7 @@ function filters_init() {
     }
 
     if(!empty($_POST['searchText'])){
-        $args['s'] = $_POST['searchText'];
+        $args['specific_chars'] = $_POST['searchText'];
     }
 
     $query = new WP_Query($args);
@@ -993,7 +993,7 @@ function changing_filters() {
     }
 
     if(!empty($_POST['searchText'])){
-        $args['s'] = $_POST['searchText'];
+        $args['specific_chars'] = $_POST['searchText'];
     }
 
     $query = new WP_Query($args);

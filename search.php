@@ -69,7 +69,7 @@ $searchText=get_search_query();
 
 
             if(!empty($_GET['s'])){
-                $args['s'] = $_GET['s'];
+                $args['specific_chars'] = $_GET['s'];
             }
 
             if(!empty($term_id) && !empty($taxonomy_slug)) {
@@ -527,7 +527,7 @@ $searchText=get_search_query();
                 'post_type' => 'product',
                 'post_status'    => array( 'publish' ),
                 'posts_per_page' => 16,
-                's'     => $searchText,
+                'specific_chars'     => $searchText,
                 'paged' => $paged,
                 'orderby' => $orderby,
                 'order' => $order,
@@ -560,6 +560,10 @@ $searchText=get_search_query();
                         </div>
                         <a href="#" rel="next" class="shopPage__paginationButton next<?php if($the_query->max_num_pages <= 1 || $paged == $the_query->max_num_pages){echo ' disabled';} ?>">Nästa<?php echo get_inline_svg('pagination-arrow-right.svg'); ?></a>
                     </div>
+                </div>
+            <?php else: ?>
+                <div class="no-products-message">
+                    <h4>Nothing was found</h4>
                 </div>
             <?php endif; ?>
         </div>

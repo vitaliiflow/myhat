@@ -131,7 +131,7 @@ $args = array(
 );
 
 if(!empty($searchText) || $searchText != ''){
-    $args['s'] = $searchText;
+    $args['specific_chars'] = $searchText;
 }
 
 if(!empty($metaKey)){
