@@ -840,7 +840,6 @@ function filters_init() {
                         <?php foreach($kategori as $term): ?>
                             <?php 
                             $full_term = get_term_by('slug', $term, 'product_cat');
-                            $category_description = $full_term->description;
                             $parent_term_slug = '';
                             if ($full_term->parent != 0) {
                                 $parent_term = get_term($full_term->parent, 'product_cat');
@@ -850,9 +849,6 @@ function filters_init() {
                             <div class="shopPage__filtersRow__listItem__sublistItem active" data-slug="<?php echo $term; ?>"<?php if(!empty($parent_term_slug)): ?> data-parent="<?php echo $parent_term_slug; ?>"<?php endif; ?>>
                                 <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
                                 <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $full_term->name; ?></div>
-                                <?php if(!empty($category_description)): ?>
-                                    <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php echo wpautop($category_description); ?></div>
-                                <?php endif; ?>
                             </div>
                         <?php endforeach; ?>
                     <?php endif; ?>
@@ -1233,7 +1229,6 @@ function changing_filters() {
                         <?php foreach($kategori as $term): ?>
                             <?php 
                             $full_term = get_term_by('slug', $term, 'product_cat');
-                            $category_description = $full_term->description;
 
                             $parent_term_slug = '';
                             if ($full_term->parent != 0) {
@@ -1244,9 +1239,6 @@ function changing_filters() {
                             <div class="shopPage__filtersRow__listItem__sublistItem active" data-slug="<?php echo $term; ?>"<?php if(!empty($parent_term_slug)): ?> data-parent="<?php echo $parent_term_slug; ?>"<?php endif; ?>>
                                 <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
                                 <div class="shopPage__filtersRow__listItem__sublistItem__name"><?php echo $full_term->name; ?></div>
-                                <?php if(!empty($category_description)): ?>
-                                    <div class="shopPage__filtersRow__listItem__sublistItem__description"><?php echo wpautop($category_description); ?></div>
-                                <?php endif; ?>
                             </div>
                         <?php endforeach; ?>
                     <?php endif; ?>
@@ -1478,5 +1470,26 @@ function get_initial_teams_content() {
 
     wp_send_json_success($content);
 
+    wp_die();
+}
+
+
+add_action('wp_ajax_nopriv_topContentChange', 'topContentChange');
+add_action('wp_ajax_topContentChange', 'topContentChange');
+
+function topContentChange() {
+    $category_slug = $_POST['topContentCategory'];
+    if(empty($category_slug)) {
+        $page_id = get_option( 'woocommerce_shop_page_id' ); ;
+        $page_content = get_post_field( 'post_content', $page_id );
+        $content = '<h2>' . get_post_field( 'post_title', $page_id ) . '</h2>' . $page_content;
+    } else {
+        $full_term = get_term_by('slug', $category_slug, 'product_cat');
+        $content = wpautop($full_term->description);
+    }
+
+
+    
+    echo $content;
     wp_die();
 }

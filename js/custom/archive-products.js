@@ -118,6 +118,26 @@ jQuery(document).ready(function($){
                 }
             }
             $('.filters-wrapper .shopPage__filtersRow__list__apply .btn').click();
+            const itemCategory = $('.shopPage__filtersRow__listItem[data-attr-name="kategori"] .shopPage__filtersRow__listItem__sublistItem.active').attr('data-slug');
+            if($(this).parent().hasClass('category')){
+                $.ajax({
+                    url: codelibry.ajax_url,
+                    type: 'post',
+                    data: {
+                        action: 'topContentChange',
+                        topContentCategory: itemCategory,
+                    },
+                    success: function(response){
+                        $('.seo-text__content').html(response);
+                        $('.seo-text').removeClass('seo-text__content--long-opened');
+                        if($('.seo-text').prop('scrollHeight') <= Math.ceil($('.seo-text').outerHeight())){
+                            $('.seo-text').removeClass('seo-text__content--long');
+                        } else {
+                            $('.seo-text').addClass('seo-text__content--long');
+                        }
+                    }
+                })
+            }
         })
     }
     paginationActionUpdate();

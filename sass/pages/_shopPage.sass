@@ -270,6 +270,7 @@
         margin-bottom: 20px
         overflow: hidden
         max-height: 200px
+        position: relative
         .yrm-content-gradient-1
             background: none !important
         .yrm-toggle-expand
@@ -315,7 +316,8 @@
             +max-screen($breakpoint-md)
                 max-width: 600px
                 margin: auto
-        &__opener 
+    .seo-text__content--long
+        .seo-text__opener 
             &::before 
                 content: ""
                 position: absolute
