@@ -8,13 +8,18 @@ jQuery(document).ready(function($){
         kategori = $('.shopPage__list').attr('data-kategori'),
         searchText = $('.shopPage__list').attr('data-search');
 
-    function updateBreadcrumbs(arr){
+    function updateBreadcrumbs(arr, team, farg, tag, storlek, varumarke){
         $.ajax({
             url: codelibry.ajax_url,
             type: 'post',
             data: {
                 action: 'breadcrumbs_changing',
                 kategori: arr,
+                team: team,
+                farg: farg,
+                tag: tag,
+                storlek: storlek,
+                varumarke: varumarke,
             },
             success: function(response) {
                 $('#main .woocommerce-breadcrumb').html(response);
@@ -466,12 +471,12 @@ jQuery(document).ready(function($){
         
 
 
-            updateBreadcrumbs(kategori_list);
+            updateBreadcrumbs(kategori_list, team_list, color_list, taggar_list, storek_list, varumarke_list);
         })
     }
 
     
-    updateBreadcrumbs(kategori);
+    updateBreadcrumbs(kategori, team, color, taggar, storek, varumarke);
     filters();
 
 

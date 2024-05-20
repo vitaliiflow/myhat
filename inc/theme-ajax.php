@@ -1285,6 +1285,56 @@ function breadcrumbs_changing() { ?>
         $term_parents = get_term_parents_list($term_id->term_id, $taxonomy);
 
         echo '<a href="' . get_home_url() . '">Hem</a> / ' . $term_parents;     
+    }
+    elseif(!empty($_POST['team'])){ 
+        $taxonomy = 'team'; 
+        $categories = implode(',', $_POST['team']);
+            
+        $term_id = get_term_by( 'slug', $categories, $taxonomy );
+
+        $term_parents = get_term_parents_list($term_id->term_id, $taxonomy);
+
+        echo '<a href="' . get_home_url() . '">Hem</a> / ' . $term_parents;     
+    }
+    elseif(!empty($_POST['farg'])){ 
+        $taxonomy = 'color'; 
+        $categories = implode(',', $_POST['farg']);
+            
+        $term_id = get_term_by( 'slug', $categories, $taxonomy );
+
+        $term_parents = get_term_parents_list($term_id->term_id, $taxonomy);
+
+        echo '<a href="' . get_home_url() . '">Hem</a> / ' . $term_parents;     
+    }
+    elseif(!empty($_POST['tag'])){ 
+        $taxonomy = 'product_tag'; 
+        $categories = implode(',', $_POST['tag']);
+            
+        $term_id = get_term_by( 'slug', $categories, $taxonomy );
+
+        $term_parents = get_term_parents_list($term_id->term_id, $taxonomy);
+
+        echo '<a href="' . get_home_url() . '">Hem</a> / ' . $term_parents;     
+    }
+    elseif(!empty($_POST['storlek'])){ 
+        $taxonomy = 'pa_storlek'; 
+        $categories = implode(',', $_POST['storlek']);
+            
+        $term_id = get_term_by( 'slug', $categories, $taxonomy );
+
+        $term_parents = get_term_parents_list($term_id->term_id, $taxonomy);
+
+        echo '<a href="' . get_home_url() . '">Hem</a> / ' . $term_parents;     
+    }
+    elseif(!empty($_POST['varumarke'])){ 
+        $taxonomy = 'varumarke'; 
+        $categories = implode(',', $_POST['varumarke']);
+            
+        $term_id = get_term_by( 'slug', $categories, $taxonomy );
+
+        $term_parents = get_term_parents_list($term_id->term_id, $taxonomy);
+
+        echo '<a href="' . get_home_url() . '">Hem</a> / ' . _e('Varumärken', 'custom_woocommerce_text') . ' / ' . $term_parents;     
     } else {
 
 
