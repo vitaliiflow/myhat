@@ -1,0 +1,31 @@
+.postPage 
+    padding: 56px 0
+    padding-bottom: 80px
+    flex: 1 
+    +max-screen($breakpoint-md)
+        padding: 36px 0
+        padding-bottom: 48px
+    &__title,
+    &__text 
+        max-width: 900px 
+        margin: 0 auto 
+    &__title 
+        margin-bottom: 32px
+        +max-screen($breakpoint-md)
+            margin-bottom: 24px
+    &__image 
+        margin-bottom: 32px
+        +max-screen($breakpoint-md)
+            margin-bottom: 24px
+        img 
+            width: 100% 
+            max-height: 450px 
+            object-fit: cover
+.single-post 
+    min-height: 100vh
+    display: flex 
+    flex-direction: column
+    .wrapper
+        display: flex 
+        flex: 1
+        flex-direction: column

@@ -31,8 +31,22 @@
 	?>
 
 </head>
-
-<body <?php body_class(); ?>>
+<?php 
+$class = '';
+if(is_home()):
+    $args = array(
+        'post_type' => 'post',
+        'posts_per_page' => -1,
+    );
+    $the_query = new WP_Query($args);
+    $posts = $the_query->found_posts;
+    if($posts == 0):
+        $class = 'posts_empty_page';
+    endif;
+    wp_reset_postdata(  );
+endif;
+?>
+<body <?php body_class($class); ?>>
 
     <?php if ($bodyScripts) : echo $bodyScripts; endif; ?>
 

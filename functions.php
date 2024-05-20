@@ -26,3 +26,14 @@ function filter_posts_by_title( $where, &$wp_query ) {
     return $where;
 }
 add_filter( 'posts_where', 'filter_posts_by_title', 10, 2 );
+
+
+function custom_excerpt_length( $length ) {
+    return 16;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+function new_excerpt_more( $more ) {
+	return '...';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
