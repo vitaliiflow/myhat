@@ -8,13 +8,18 @@ jQuery(document).ready(function($){
         kategori = $('.shopPage__list').attr('data-kategori'),
         searchText = $('.shopPage__list').attr('data-search');
 
-    function updateBreadcrumbs(arr){
+    function updateBreadcrumbs(arr, team, farg, tag, storlek, varumarke){
         $.ajax({
             url: codelibry.ajax_url,
             type: 'post',
             data: {
                 action: 'breadcrumbs_changing',
                 kategori: arr,
+                team: team,
+                farg: farg,
+                tag: tag,
+                storlek: storlek,
+                varumarke: varumarke,
             },
             success: function(response) {
                 $('#main .woocommerce-breadcrumb').html(response);
@@ -193,7 +198,7 @@ jQuery(document).ready(function($){
         kategori = kategori.split(',');
         kategori.forEach(function(i){
             $(`.shopPage__filtersRow__listItem[data-attr-name="kategori"] .shopPage__filtersRow__listItem__sublistItem[data-slug="${i}"]`).addClass('active').css('order', -1);
-            $(`<div class="shopPage__filtersRow__pillsList__item" data-term="${i}"><div class="shopPage__filtersRow__pillsList__itemRemove"></div><div class="shopPage__filtersRow__pillsList__itemLabel">${$(`.shopPage__filtersRow__listItem[data-attr-name="kategori"] .shopPage__filtersRow__listItem__sublistItem[data-slug="${i}"] .shopPage__filtersRow__listItem__sublistItem__name`).html()}</div></div>`).appendTo('.shopPage__filtersRow__pillsList');
+            $(`<div class="shopPage__filtersRow__pillsList__item category" data-term="${i}"><div class="shopPage__filtersRow__pillsList__itemRemove"></div><div class="shopPage__filtersRow__pillsList__itemLabel">${$(`.shopPage__filtersRow__listItem[data-attr-name="kategori"] .shopPage__filtersRow__listItem__sublistItem[data-slug="${i}"] .shopPage__filtersRow__listItem__sublistItem__name`).html()}</div></div>`).appendTo('.shopPage__filtersRow__pillsList');
         })
     }
     if(searchText != '' && searchText != undefined){
@@ -228,7 +233,26 @@ jQuery(document).ready(function($){
 
         $('.shopPage__filtersRow__listItem__sublistItem').click(function(){
             if($(this).closest('.shopPage__filtersRow__listItem').attr('data-attr-name') == 'kategori'){
+                const topContentCategory = $(this).attr('data-slug');
                 $(this).closest('.shopPage__filtersRow__listItem').find('.shopPage__filtersRow__listItem__sublistItem').not($(this)).removeClass('active');
+                //Change Top Content
+                $.ajax({
+                    url: codelibry.ajax_url,
+                    type: 'post',
+                    data: {
+                        action: 'topContentChange',
+                        topContentCategory: topContentCategory,
+                    },
+                    success: function(response){
+                        $('.seo-text__content').html(response);
+                        $('.seo-text').removeClass('seo-text__content--long-opened');
+                        if($('.seo-text').prop('scrollHeight') <= Math.ceil($('.seo-text').outerHeight())){
+                            $('.seo-text').removeClass('seo-text__content--long');
+                        } else {
+                            $('.seo-text').addClass('seo-text__content--long');
+                        }
+                    }
+                })
             }
             $(this).toggleClass('active');
         })
@@ -237,6 +261,23 @@ jQuery(document).ready(function($){
         $('.shopPage__filtersRow__list__clear').click(function(){
             $('.shopPage__filtersRow__listItem__sublistItem').removeClass('active');
             $('.filters-wrapper .shopPage__filtersRow__list__apply .btn').click();
+            $.ajax({
+                url: codelibry.ajax_url,
+                type: 'post',
+                data: {
+                    action: 'topContentChange',
+                    topContentCategory: '',
+                },
+                success: function(response){
+                    $('.seo-text__content').html(response);
+                    $('.seo-text').removeClass('seo-text__content--long-opened');
+                    if($('.seo-text').prop('scrollHeight') <= Math.ceil($('.seo-text').outerHeight())){
+                        $('.seo-text').removeClass('seo-text__content--long');
+                    } else {
+                        $('.seo-text').addClass('seo-text__content--long');
+                    }
+                }
+            })
         })
 
 
@@ -292,7 +333,11 @@ jQuery(document).ready(function($){
                 const attrName = $(this).closest('.shopPage__filtersRow__listItem').attr('data-attr-name');
                 $(this).find('.shopPage__filtersRow__listItem__sublistItem').each(function(){
                     if($(this).hasClass('active')){
-                        $(`<div class="shopPage__filtersRow__pillsList__item" data-term="${$(this).attr('data-slug')}"><div class="shopPage__filtersRow__pillsList__itemRemove"></div><div class="shopPage__filtersRow__pillsList__itemLabel">${$(this).find('.shopPage__filtersRow__listItem__sublistItem__name').html()}</div></div>`).appendTo('.shopPage__filtersRow__pillsList');
+                        let itemClass = '';
+                        if(attrName == 'kategori'){
+                            itemClass = ' category';
+                        }
+                        $(`<div class="shopPage__filtersRow__pillsList__item${itemClass}" data-term="${$(this).attr('data-slug')}"><div class="shopPage__filtersRow__pillsList__itemRemove"></div><div class="shopPage__filtersRow__pillsList__itemLabel">${$(this).find('.shopPage__filtersRow__listItem__sublistItem__name').html()}</div></div>`).appendTo('.shopPage__filtersRow__pillsList');
                         switch(attrName){
                             case 'varumarke': 
                                 varumarke_list.push($(this).attr('data-slug'));
@@ -393,25 +438,6 @@ jQuery(document).ready(function($){
                 },
                 success: function(response){
                     $('.filter .shopPage__filtersRow__listWrapper').html(response);
-
-                    if($('.shopPage__filtersRow__listItem[data-attr-name="kategori"] .shopPage__filtersRow__listItem__sublistItem.active').length > 0){
-                        if($('.shopPage__filtersRow__listItem[data-attr-name="kategori"] .shopPage__filtersRow__listItem__sublistItem.active .shopPage__filtersRow__listItem__sublistItem__description').html() != undefined && $('.shopPage__filtersRow__listItem[data-attr-name="kategori"] .shopPage__filtersRow__listItem__sublistItem.active .shopPage__filtersRow__listItem__sublistItem__description').html() != ''){
-                            $('.seo-text__content').html($('.shopPage__filtersRow__listItem[data-attr-name="kategori"] .shopPage__filtersRow__listItem__sublistItem.active .shopPage__filtersRow__listItem__sublistItem__description').html());
-                        }
-                        else{ 
-                            $('.seo-text__content').html('');
-                        }
-                    }
-            
-                    if($('.shopPage__filtersRow__listItem[data-attr-name="kategori"] .shopPage__filtersRow__listItem__sublistItem.active').length == 0){
-                        $('.seo-text__content').html($('.shopPage__filtersRow__itemTitle .shopPage__filtersRow__itemTitle__emptyContent').html());
-                    }
-                    $('.seo-text').removeClass('seo-text__content--long-opened');
-                    if($('.seo-text').prop('scrollHeight') <= Math.ceil($('.seo-text').outerHeight())){
-                        $('.seo-text').removeClass('seo-text__content--long');
-                    } else {
-                        $('.seo-text').addClass('seo-text__content--long');
-                    }
                 }
             })
             $(document).ajaxComplete(function(event, xhr, settings){
@@ -445,12 +471,12 @@ jQuery(document).ready(function($){
         
 
 
-            updateBreadcrumbs(kategori_list);
+            updateBreadcrumbs(kategori_list, team_list, color_list, taggar_list, storek_list, varumarke_list);
         })
     }
 
     
-    updateBreadcrumbs(kategori);
+    updateBreadcrumbs(kategori, team, color, taggar, storek, varumarke);
     filters();
 
 

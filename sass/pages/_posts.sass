@@ -1,0 +1,131 @@
+.posts_empty_page
+    height: 100vh 
+    display: flex 
+    flex-direction: column
+    .wrapper 
+        height: 100vh 
+        display: flex 
+        flex-direction: column
+        .noPostsFound
+            height: 100%
+            display: flex 
+            align-items: center
+            &__title 
+                text-align: center
+.postsPage 
+    &__top 
+        padding: 42px 0
+        +max-screen(1200px)
+            padding: 32px 0
+    &__list 
+        margin: 0 -24px 
+        padding-top: 42px
+        padding-bottom: 128px
+        +max-screen(1200px)
+            margin: 0 -16px 
+            padding-top: 32px
+            padding-bottom: 80px
+        +max-screen($breakpoint-lg)
+            justify-content: center
+            padding-top: 24px
+        +max-screen($breakpoint-md)
+            padding-top: 12px
+        &Item 
+            border-radius: 32px 
+            overflow: hidden
+            display: block
+            transition: .3s
+            height: 100% 
+            display: flex 
+            flex-direction: column
+            +max-screen(1200px)
+                border-radius: 16px 
+            &:hover 
+                box-shadow: 0 10px 16px rgba(0, 0, 0, 0.3)
+                transform: translateY(-20px)
+                +max-screen(1200px)
+                    transform: translateY(-15px)
+            &__wrapper 
+                padding: 0 24px 
+                margin-bottom: 48px
+                +max-screen(1200px)
+                    padding: 0 16px 
+                    margin-bottom: 32px
+            &__image 
+                img 
+                    height: 250px 
+                    object-fit: cover 
+                    width: 100% 
+                    object-position: center 
+                    +max-screen(1320px)
+                        height: 200px
+            &__body 
+                padding: 24px 32px 
+                background-color: $color-white
+                height: 100% 
+                +max-screen(1200px) 
+                    padding: 16px 24px 
+            &__title 
+                margin-bottom: 8px
+                +max-screen(1200px) 
+                    margin-bottom: 4px
+            &__description 
+                font-size: 16px
+    &__pagination 
+        margin-top: 32px
+        display: flex
+        justify-content: center
+        width: auto 
+        margin: 0 auto 
+        position: relative
+        +max-screen(1200px)
+            margin-top: 12px
+        +max-screen($breakpoint-md)
+            margin: 0 -5px 
+            margin-top: 6px
+        &Wrapper 
+            width: 100% 
+            position: relative
+            display: flex 
+            justify-content: center
+        a,
+        span 
+            display: flex
+            align-items: center
+            justify-content: center 
+            font-size: 20px
+            width: 36px 
+            height: 36px 
+            border-radius: 5px 
+            border: 1px solid $color-text
+            margin: 0 8px 
+            transition: .3s
+            +max-screen($breakpoint-md)
+                width: 28px 
+                height: 28px 
+                font-size: 16px
+                margin: 0 5px 
+        span 
+            background-color: $color-text 
+            color: $color-white
+        .prev 
+            left: -52px 
+            +max-screen($breakpoint-md)
+                left: -32px 
+        .next 
+            right: -52px 
+            +max-screen($breakpoint-md)
+                right: -32px 
+        .next,
+        .prev
+            border: 0
+            background-image: url('../assets/images/icons/pagionation-arrow.png')
+            background-size: 16px
+            background-repeat: no-repeat
+            background-position: center
+            position: absolute
+            +max-screen($breakpoint-md)
+                background-size: 12px 
+        .prev 
+            transform: rotate(-180deg)
+
