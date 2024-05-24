@@ -467,7 +467,7 @@ body.single-product:not(.loaded){position:relative}
 .singleProduct__breadcrumbs{position:relative}
 .singleProduct__breadcrumbs #breadcrumbs{position:relative}
 .singleProduct__gallery{overflow:hidden;position:relative}
-.singleProduct__gallery img{width:100%}
+.singleProduct__gallery img{width:100%;-o-object-fit:contain;object-fit:contain}
 .singleProduct__galleryWrapper{width:50%;padding:0 20px;position:relative}
 .singleProduct__gallerySlider{position:fixed;top:0;left:0;width:100%;height:100%;z-index:200;visibility:hidden;opacity:0;-webkit-transition:.5s;transition:.5s}
 .singleProduct__gallerySlider a{pointer-events:none}
@@ -721,6 +721,21 @@ body.single-product:not(.loaded){position:relative}
 .header__mobileMenu .header__close::before{-webkit-transform:rotate(45deg);transform:rotate(45deg)}
 .header__mobileMenu .header__close::after{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}
 .header__content{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
+.i-pseudo a::after{content:"";display:block;width:35px;height:35px;background-size:contain;background-repeat:no-repeat;background-position:center;margin-right:10px}
+.i-5-panels a::after{background-image:url(../assets/images/header-menu-icons/5-panel-k-i.png)}
+.i-army-cap a::after{background-image:url(../assets/images/header-menu-icons/myhat-army-cap.png)}
+.i-barn-cap a::after{background-image:url(../assets/images/header-menu-icons/myhat-barn.png)}
+.i-dam a::after{background-image:url(../assets/images/header-menu-icons/myhat-dam.png)}
+.i-dad-caps a::after{background-image:url(../assets/images/header-menu-icons/myhat-dad-caps.png)}
+.i-flat-caps a::after{background-image:url(../assets/images/header-menu-icons/myhat-flat-cap.png)}
+.i-fitted-cap a::after{background-image:url(../assets/images/header-menu-icons/myhat-fitted-cap.png)}
+.i-flexfit-cap a::after{background-image:url(../assets/images/header-menu-icons/myhat-flexfit-cap.png)}
+.i-reglerbar-cap a::after{background-image:url(../assets/images/header-menu-icons/myhat-reglerbarkeps.png)}
+.i-snapback a::after{background-image:url(../assets/images/header-menu-icons/myhat-snapback.png)}
+.i-strapback a::after{background-image:url(../assets/images/header-menu-icons/myhat-snapback.png)}
+.i-stretch-snap a::after{background-image:url(../assets/images/header-menu-icons/myhat-stretch-snap-keps.png)}
+.i-trucker a::after{background-image:url(../assets/images/header-menu-icons/myhat-trucker.png)}
+.i-vega a::after{background-image:url(../assets/images/header-menu-icons/myhat-flat-cap.png)}
 .footer__container>.row{margin-left:-1.5rem;margin-right:-1.5rem}
 .footer__container>.row .col-sm,.footer__container>.row .col-12{padding-left:1.5rem;padding-right:1.5rem}
 .footer__nav,.footer__content-list{position:relative;padding-top:1.5rem;padding-bottom:1.5rem}
@@ -884,6 +899,7 @@ body .woocommerce-message a.button{color:#fff;background:#000;border-radius:0;fo
 .woocommerce-notices-wrapper .woocommerce-error{border-color:red;margin-bottom:18px !important}
 .woocommerce-notices-wrapper .woocommerce-error li{list-style-type:none}
 .woocommerce-notices-wrapper .button{padding:6px 24px;white-space:nowrap;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:auto;border-radius:10px;margin-left:auto}
+.product-customizer__trigger-wrapper{display:none}
 .wac-qty-button{display:inline;text-decoration:none !important;font-weight:bold;width:30px;color:#808b94;border:1px solid lightgray;-webkit-box-sizing:border-box;box-sizing:border-box;padding:5px}
 .wac-quantity{width:100%;font-weight:bold}
 .shop_table .quantity{min-width:120px}

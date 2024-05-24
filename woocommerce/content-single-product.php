@@ -261,6 +261,27 @@ if ($product->is_type('variable')) {
 					<div class="singleProduct__purchase">
 						<?php do_action('woocommerce_product_add_to_cart'); ?>
 					</div>
+
+					<?php if(have_rows('product_features', 'options')): ?>
+						<div class="singleProduct__featuresList">
+							<?php while(have_rows('product_features', 'options')): the_row(); ?>
+								<?php 
+								$icon = get_sub_field('icon');
+								$text = get_sub_field('text');
+								if($icon || $text):
+								?>
+								<div class="singleProduct__featuresList__item">
+									<?php if($icon): ?>
+										<div class="singleProduct__featuresList__itemIcon"><img src="<?php echo $icon; ?>" alt="check icon"></div>
+									<?php endif; ?>
+									<?php if($text): ?>
+										<div class="singleProduct__featuresList__itemLabel"><?php echo $text; ?></div>
+									<?php endif; ?>
+								</div>
+								<?php endif; ?>
+							<?php endwhile; ?>
+						</div>
+					<?php endif; ?>
 					
 					
 					<?php if(!empty($product_tabs)): ?>
