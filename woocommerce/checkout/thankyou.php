@@ -45,7 +45,7 @@ $failed_content = get_field('failed_content', 'options');
 					<?php echo $content; ?>
 				<?php endif; ?>
 				<div class="orderThanks__buttons">
-					<a href="<?php echo get_the_permalink(  ); ?>" class="btn button--black pay">Hem</a>
+					<a href="<?php echo get_home_url(  ); ?>" class="btn button--black pay">Hem</a>
 					<a href="<?php echo get_permalink( wc_get_page_id( 'shop' ) );; ?>" class="btn button--white pay">Shoppa nu</a>
 				</div>
 			<?php endif; ?>
@@ -56,7 +56,7 @@ $failed_content = get_field('failed_content', 'options');
 				<?php echo $content; ?>
 			<?php endif; ?>
 			<div class="orderThanks__buttons">
-				<a href="<?php echo get_the_permalink(  ); ?>" class="btn button--black pay">Hem</a>
+				<a href="<?php echo get_home_url(  ); ?>" class="btn button--black pay">Hem</a>
 				<a href="<?php echo get_permalink( wc_get_page_id( 'shop' ) );; ?>" class="btn button--white pay">Shoppa nu</a>
 			</div>
 		<?php endif; ?>
