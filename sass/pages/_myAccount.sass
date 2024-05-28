@@ -9,9 +9,6 @@
         & > div.section
             flex: 1 
     .content-block .woocommerce 
-        display: flex 
-        +max-screen($breakpoint-md)
-            flex-direction: column
         & > .woocommerce-MyAccount-navigation
             width: 25% 
             min-width: 220px 
@@ -209,3 +206,8 @@
             td 
                 text-align: right
                 padding: 8px 0
+.woocommerce-account.logged-in
+    .content-block .woocommerce 
+        display: flex 
+        +max-screen($breakpoint-md)
+            flex-direction: column
