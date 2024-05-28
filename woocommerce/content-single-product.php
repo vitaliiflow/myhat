@@ -223,7 +223,7 @@ if ($product->is_type('variable')) {
 												
 												<?php 
     } else {
-        echo '<p>No variations available.</p>';
+        // No variations available. Product is out of stock;
     }
 }
 ?>
@@ -253,9 +253,16 @@ if ($product->is_type('variable')) {
 						<?php endif; ?>
 						
 
+						<?php 
+						
+						$product_id = get_the_ID(); // Replace this with the ID of your product
+						if (is_any_variation_in_stock($product_id)) { ?>
+
 						<div class="product-customizer__trigger-wrapper col-sm-6">
 							<a href="#product-customizer-popup" class="product-customizer__trigger d-block button--black"><?php _e('Customize','myhat');?></a>
 						</div>
+
+						<?php } ?>
 
 					</div>
 					<div class="singleProduct__purchase">
