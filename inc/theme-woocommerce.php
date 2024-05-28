@@ -123,11 +123,6 @@ function add_product_json_ld() {
         $shippingMaxValue = get_field('shipping_max_value','option');
         $shippingMinValue = get_field('shipping_min_value','option');
         $addressCountry = get_field('addressCountry','option');
-
-        $delivery_handling_min = get_field('delivery_handling_min', 'option');
-        $delivery_handling_max = get_field('delivery_handling_max', 'option');
-        $delivery_transit_min = get_field('delivery_transit_min', 'option');
-        $delivery_transit_max = get_field('delivery_transit_max', 'option');
 		
         if ($product_image_url) {
             $json_ld_markup = '
@@ -163,21 +158,6 @@ function add_product_json_ld() {
                         "shippingDestination": {
                             "@type": "DefinedRegion",
                             "addressCountry": ' . $addressCountry . '
-                        },
-                        "deliveryTime": {
-                            "@type": "ShippingDeliveryTime",
-                            "handlingTime": {
-                              "@type": "QuantitativeValue",
-                              "minValue": ' . $delivery_handling_min . ',
-                              "maxValue": ' . $delivery_handling_max . ',
-                              "unitCode": "d" // "d" stands for day(s)
-                            },
-                            "transitTime": {
-                              "@type": "QuantitativeValue",
-                              "minValue": ' . $delivery_transit_min . ',
-                              "maxValue": ' . $delivery_transit_max . ',
-                              "unitCode": "d" // "d" stands for day(s)
-                            }   
                         }
                     }
                 },

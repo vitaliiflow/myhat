@@ -37,3 +37,18 @@ function new_excerpt_more( $more ) {
 	return '...';
 }
 add_filter('excerpt_more', 'new_excerpt_more');
+
+
+
+add_filter('woocommerce_breadcrumb_defaults', 'custom_woocommerce_breadcrumbs');
+
+function custom_woocommerce_breadcrumbs() {
+    return array(
+        'delimiter'   => ' <span class="separator">/</span> ', // Вкажіть ваш новий сепаратор
+        'wrap_before' => '<nav class="woocommerce-breadcrumb">',
+        'wrap_after'  => '</nav>',
+        'before'      => '<span class="woocommerce-breadcrumbs-item">',
+        'after'       => '</span>',
+        'home'        => _x('Home', 'breadcrumb', 'woocommerce'),
+    );
+}

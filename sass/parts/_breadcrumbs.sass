@@ -8,10 +8,17 @@
             font-size: 0
             a 
                 font-size: 19px
-                &::after 
-                    content: " / "
-                    font-weight: 400
                 &:last-child
                     font-weight: 400
                     &::after 
                         content: none 
+            .woocommerce-breadcrumbs-item,
+            a 
+                &::after 
+                    content: " / "
+                    font-weight: 400
+        .woocommerce-breadcrumbs-item
+            font-weight: 700
+            font-size: 1rem
+            &:last-child
+                font-weight: 400
