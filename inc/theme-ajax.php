@@ -1294,7 +1294,7 @@ function breadcrumbs_changing() { ?>
 
         $term_parents = get_term_parents_list($term_id->term_id, $taxonomy);
 
-        echo '<a href="' . get_home_url() . '">Hem</a> / ' . $term_parents;     
+        echo '<a href="' . get_home_url() . '">Hem</a> / <span class="woocommerce-breadcrumbs-item">Teams</span> / ' . $term_parents;     
     }
     elseif(!empty($_POST['farg'])){ 
         $taxonomy = 'color'; 

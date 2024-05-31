@@ -1,16 +1,20 @@
 .orderThanks
-    padding: 80px 0
+    padding-top: 32px
     text-align: center
-    +max-screen(1200px)
-        padding: 64px 0
-    +max-screen($breakpoint-lg)
-        padding: 52px 0
     +max-screen($breakpoint-md)
-        padding: 42px 0
-    &__title 
+        padding: 0 
     &__subtitle 
         font-weight: 400
-    &__conetent 
+    &__content 
+        h1 
+            +max-screen($breakpoint-lg)
+                margin-top: 24px
+        h2 
+            +max-screen($breakpoint-md)
+                margin-top: 16px
+        table.woocommerce-table.woocommerce-table--order-details
+            border: 0
+            border-collapse: collapse
     &__buttons 
         display: flex
         flex-direction: column
@@ -30,6 +34,123 @@
             margin-bottom: 12px
             &:last-child
                 margin-bottom: 0
+.woocommerce-order-details
+    margin-bottom: 24px
+    & > h2
+        display: none 
+    .woocommerce-table
+        border: 0
+        margin-top: 32px
+        margin-bottom: 48px
+        +max-screen($breakpoint-md)
+            margin-bottom: 0
+            margin-top: 24px
+        border-collapse: collapse
+        tbody,
+        tfoot 
+            th,
+            td 
+                border-top: 1px solid rgba(0, 0, 0, 0.6)
+                font-weight: 400
+                +max-screen($breakpoint-md)
+                    font-size: 14px
+                    padding: 6px 0
+            td
+                +max-screen($breakpoint-md)
+                    text-align: right
+            .woocommerce-table__product-name
+                display: flex 
+                flex-wrap: wrap
+                +max-screen($breakpoint-md)
+                    text-align: left
+                .product-quantity + div 
+                    width: 100px !important
+                    order: -1
+                    margin: 0 !important
+                    margin-right: 15px
+                    border: 0 !important
+                    max-width: 100px !important
+                & > a 
+                    text-decoration: none
+                    width: calc( 100% - 115px )
+                    +max-screen($breakpoint-md)
+                        width: 100%
+                .product-quantity,
+                .wc-item-meta li strong  
+                    display: none
+                .wc-item-meta li 
+                    list-style-type: none
+                .wc-item-meta 
+                    font-size: 16px
+                    padding-left: 0
+                    margin-bottom: 0
+                    width: 100%
+                    +max-screen($breakpoint-md)
+                        font-size: 14px
+                    & + a 
+                        width: 100% 
+                        font-size: 14px !important
+                        margin-left: 0
+.woocommerce-customer-details
+    display: flex 
+    margin-bottom: 0
+    +max-screen($breakpoint-md)
+        flex-direction: column
+        margin-bottom: 12px
+    .woocommerce-columns--addresses 
+        max-width: 620px
+        margin: auto
+        margin-left: -15px
+    .woocommerce-column--shipping-address,
+    .woocommerce-columns--addresses 
+        address
+            font-size: 16px
+            +max-screen($breakpoint-md)
+                font-size: 14px
+    .orderThanks__buttons 
+        flex-direction: row 
+        margin-top: auto
+        margin-right: 0
+        +max-screen($breakpoint-md)
+            margin-top: 32px
+            margin-left: 0
+        .btn.button--black
+            margin-right: 32px
+            margin-bottom: 0
+.woocommerce-customer-details
+    .woocommerce-columns 
+        display: flex 
+        width: calc( 100% + 30px )
+        margin: 0 -15px 
+        +max-screen($breakpoint-md)
+            flex-direction: column 
+    .woocommerce-column--billing-address
+        +max-screen($breakpoint-md)
+            margin-bottom: 24px
+    .woocommerce-column
+        width: 50%
+        flex: 0 0 50%
+        min-width: 50%
+        +max-screen($breakpoint-lg)
+            width: 100% 
+            flex: 0 0 100%
+        +max-screen($breakpoint-md)
+            max-width: 100%
+        .woocommerce-column__title 
+            text-align: left
+        .woocommerce-customer-details--phone
+            margin-bottom: 0
+            margin-top: 12px
+        .woocommerce-customer-details--phone,
+        .woocommerce-customer-details--email
+            display: flex 
+            align-items: center
+        address 
+            padding: 0
+            border: 0
+            br 
+                +max-screen($breakpoint-md)
+                    display: block 
 body.woocommerce-order-received
     display: flex
     flex-direction: column
@@ -46,3 +167,4 @@ body.woocommerce-order-received
                 margin-bottom: auto
     #breadcrumbs 
         display: none 
+

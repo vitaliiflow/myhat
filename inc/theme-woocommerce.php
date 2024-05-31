@@ -168,11 +168,6 @@ function add_product_json_ld() {
         $shippingMaxValue = get_field('shipping_max_value','option');
         $shippingMinValue = get_field('shipping_min_value','option');
         $addressCountry = get_field('addressCountry','option');
-
-        $delivery_handling_min = get_field('delivery_handling_min', 'option');
-        $delivery_handling_max = get_field('delivery_handling_max', 'option');
-        $delivery_transit_min = get_field('delivery_transit_min', 'option');
-        $delivery_transit_max = get_field('delivery_transit_max', 'option');
 		
         if ($product_image_url) {
             $json_ld_markup = '
@@ -208,21 +203,6 @@ function add_product_json_ld() {
                         "shippingDestination": {
                             "@type": "DefinedRegion",
                             "addressCountry": ' . $addressCountry . '
-                        },
-                        "deliveryTime": {
-                            "@type": "ShippingDeliveryTime",
-                            "handlingTime": {
-                              "@type": "QuantitativeValue",
-                              "minValue": ' . $delivery_handling_min . ',
-                              "maxValue": ' . $delivery_handling_max . ',
-                              "unitCode": "d" // "d" stands for day(s)
-                            },
-                            "transitTime": {
-                              "@type": "QuantitativeValue",
-                              "minValue": ' . $delivery_transit_min . ',
-                              "maxValue": ' . $delivery_transit_max . ',
-                              "unitCode": "d" // "d" stands for day(s)
-                            }   
                         }
                     }
                 },
@@ -337,76 +317,143 @@ add_action( 'woocommerce_thankyou', 'add_shipping_note_on_order_creation', 10, 1
 
 
 
-function custom_admin_order_page_styles($order_id) {
+// function custom_admin_order_page_styles($order_id) {
 
-	global $pagenow, $post;
-    if ($pagenow == 'post.php' && isset($post) && $post->post_type == 'shop_order') {
-        $order_id = $post->ID;
-		$order = wc_get_order( $order_id );
-		if(!empty($order)):
-			$products = $order->get_items();
-			foreach($products as $product):
-				 // Get the meta data of the item
-				$item_meta_data = $product->get_meta_data();
+// 	global $pagenow, $post;
+//     if ($pagenow == 'post.php' && isset($post) && $post->post_type == 'shop_order') {
+//         $order_id = $post->ID;
+// 		$order = wc_get_order( $order_id );
+// 		if(!empty($order)):
+// 			$products = $order->get_items();
+// 			foreach($products as $product):
+// 				 // Get the meta data of the item
+// 				$item_meta_data = $product->get_meta_data();
 
-				$isCustomProduct = 0;
+// 				$isCustomProduct = 0;
 
-				// Check if the custom information exists in the meta data
-				foreach ($item_meta_data as $meta) {
-					if ($meta->key === '_fpd_data') {
-						$custom_info = $meta->value;
+// 				// Check if the custom information exists in the meta data
+// 				foreach ($item_meta_data as $meta) {
+// 					if ($meta->key === '_fpd_data') {
+// 						$custom_info = $meta->value;
 
-						// Proceed with custom information logic if the necessary keys exist
-						$fpd_data = json_decode(stripslashes($custom_info), true);
+// 						// Proceed with custom information logic if the necessary keys exist
+// 						$fpd_data = json_decode(stripslashes($custom_info), true);
 
-						if (isset($fpd_data['product']) && $fpd_data['product']) {
-							$myhat_products = $fpd_data['product'];
+// 						if (isset($fpd_data['product']) && $fpd_data['product']) {
+// 							$myhat_products = $fpd_data['product'];
 
-							foreach ($myhat_products as $myhat_product) {
-								$elements = $myhat_product['elements'];
+// 							foreach ($myhat_products as $myhat_product) {
+// 								$elements = $myhat_product['elements'];
 
-								if (isset($myhat_product['elements'])) {
+// 								if (isset($myhat_product['elements'])) {
 
-									foreach($elements as $element) {
-										$parameters = $element['parameters'];
-										if (isset($parameters)) {
-											if (isset($parameters['_initialText'])) {
-												$isCustomProduct++;
-											} elseif (isset($parameters['originParams'])) {
-												$url = $parameters['originParams']['source'];
+// 									foreach($elements as $element) {
+// 										$parameters = $element['parameters'];
+// 										if (isset($parameters)) {
+// 											if (isset($parameters['_initialText'])) {
+// 												$isCustomProduct++;
+// 											} elseif (isset($parameters['originParams'])) {
+// 												$url = $parameters['originParams']['source'];
 
-												// Define the pattern to search for
-												$patternUploads = '/fancy_products_uploads/';
-												$patterncloudfront = '/cloudfront\.net/';
-												$patternForProductAssets = '/fpd-product/';
+// 												// Define the pattern to search for
+// 												$patternUploads = '/fancy_products_uploads/';
+// 												$patterncloudfront = '/cloudfront\.net/';
+// 												$patternForProductAssets = '/fpd-product/';
 
-												// Use preg_match to search for the pattern
-												if (preg_match($patternUploads, $url)) {
-													$isCustomProduct++;
-												} elseif (preg_match($patterncloudfront, $url)) {
-													$isCustomProduct++;
-												} elseif (!preg_match($patternForProductAssets, $url)) {
-													$isCustomProduct++;
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
+// 												// Use preg_match to search for the pattern
+// 												if (preg_match($patternUploads, $url)) {
+// 													$isCustomProduct++;
+// 												} elseif (preg_match($patterncloudfront, $url)) {
+// 													$isCustomProduct++;
+// 												} elseif (!preg_match($patternForProductAssets, $url)) {
+// 													$isCustomProduct++;
+// 												}
+// 											}
+// 										}
+// 									}
+// 								}
+// 							}
+// 						}
+// 					}
+// 				}
 
 
-			endforeach; 
-			if($isCustomProduct > 0):
-				echo '<style>
-					#order_data .order_data_column p.order_note::after {
-						content: ", Customization: Yes";
-					}    
-				</style>';
-			endif;
-		endif;
+// 			endforeach; 
+// 			if($isCustomProduct > 0):
+// 				echo '<style>
+// 					#order_data .order_data_column p.order_note::after {
+// 						content: ", Customization: Yes";
+// 					}    
+// 				</style>';
+// 			endif;
+// 		endif;
+// 	}
+// }
+// add_action('admin_head', 'custom_admin_order_page_styles');
+
+
+
+add_action('woocommerce_checkout_update_order_meta', 'custom_update_order_comment_based_on_customization', 10, 2);
+
+function custom_update_order_comment_based_on_customization($order_id, $posted_data) {
+    $order = wc_get_order($order_id);
+
+    $isCustomProduct = 0;
+
+    $products = $order->get_items();
+    foreach($products as $product) {
+        $item_meta_data = $product->get_meta_data();
+
+        foreach ($item_meta_data as $meta) {
+            if ($meta->key === '_fpd_data') {
+                $custom_info = $meta->value;
+
+                $fpd_data = json_decode(stripslashes($custom_info), true);
+
+                if (isset($fpd_data['product']) && $fpd_data['product']) {
+                    $myhat_products = $fpd_data['product'];
+
+                    foreach ($myhat_products as $myhat_product) {
+                        $elements = $myhat_product['elements'];
+
+                        if (isset($myhat_product['elements'])) {
+                            foreach($elements as $element) {
+                                $parameters = $element['parameters'];
+                                if (isset($parameters)) {
+                                    if (isset($parameters['_initialText'])) {
+                                        $isCustomProduct++;
+                                    } elseif (isset($parameters['originParams'])) {
+                                        $url = $parameters['originParams']['source'];
+
+                                        $patternUploads = '/fancy_products_uploads/';
+                                        $patterncloudfront = '/cloudfront\.net/';
+                                        $patternForProductAssets = '/fpd-product/';
+
+                                        if (preg_match($patternUploads, $url)) {
+                                            $isCustomProduct++;
+                                        } elseif (preg_match($patterncloudfront, $url)) {
+                                            $isCustomProduct++;
+                                        } elseif (!preg_match($patternForProductAssets, $url)) {
+                                            $isCustomProduct++;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    $order_comment = $order->get_customer_note();
+	$separator = ''; 
+	if(!empty($order_comment)){
+		$separator = ' - ';
 	}
+    if ($isCustomProduct > 0) {
+        $new_comment = $order_comment . $separator . 'Customization: Yes';
+        $order->set_customer_note( $new_comment );
+        $order->save();
+    }
 }
-add_action('admin_head', 'custom_admin_order_page_styles');
