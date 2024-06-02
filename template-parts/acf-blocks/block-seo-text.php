@@ -2,7 +2,7 @@
 if(is_shop() && empty($_GET['kategori'])):
     $page_id = get_option( 'woocommerce_shop_page_id' ); ;
     $page_content = get_post_field( 'post_content', $page_id );
-    $content = '<h2>' . get_post_field( 'post_title', $page_id ) . '</h2>' . $page_content;
+    $content = '<h1>' . get_post_field( 'post_title', $page_id ) . '</h1>' . $page_content;
 endif;
 if(is_tax(  )):
     $content = category_description(get_queried_object_id());
