@@ -805,6 +805,17 @@ body.single-product:not(.loaded){position:relative}
 .i-stretch-snap a::after{background-image:url(../assets/images/header-menu-icons/myhat-stretch-snap-keps.png)}
 .i-trucker a::after{background-image:url(../assets/images/header-menu-icons/myhat-trucker.png)}
 .i-vega a::after{background-image:url(../assets/images/header-menu-icons/myhat-flat-cap.png)}
+.i-buckets a::after{background-image:url(../assets/images/header-menu-icons/myhat-hat.png)}
+.i-fedora a::after{background-image:url(../assets/images/header-menu-icons/myhat-fedora.png)}
+.i-pork-pie a::after{background-image:url(../assets/images/header-menu-icons/myhat-porkpie.png)}
+.i-mossor-barn a::after{background-image:url(../assets/images/header-menu-icons/mossor-barn.png)}
+.i-lang-mossa a::after{background-image:url(../assets/images/header-menu-icons/myhat-langmossa.png)}
+.i-pilotmossa a::after{background-image:url(../assets/images/header-menu-icons/myhat-pilotmossa.png)}
+.i-rak-mossa a::after{background-image:url(../assets/images/header-menu-icons/myhat-rak-mossa.png)}
+.i-sotarmossa a::after{background-image:url(../assets/images/header-menu-icons/myhat-sotarmossa.png)}
+.i-tofsmossa a::after{background-image:url(../assets/images/header-menu-icons/myhat-tofsmossa.png)}
+.i-uppvikt-mossa a::after{background-image:url(../assets/images/header-menu-icons/myhat-beanie-2.png)}
+.i-trillby a::after{background-image:url(../assets/images/header-menu-icons/myhat-trillby.png)}
 .footer__container>.row{margin-left:-1.5rem;margin-right:-1.5rem}
 .footer__container>.row .col-sm,.footer__container>.row .col-12{padding-left:1.5rem;padding-right:1.5rem}
 .footer__nav,.footer__content-list{position:relative;padding-top:1.5rem;padding-bottom:1.5rem}
