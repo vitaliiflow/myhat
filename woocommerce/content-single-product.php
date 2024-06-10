@@ -213,7 +213,13 @@ if ($product->is_type('variable')) {
 						
 						<div class="singleProduct__sizeList__item attributes-picker-item" data-attribute="<?php echo $slug; ?>"><?php echo $result; ?></div>
 					<?php 
-				} 
+				} else { ?>
+												
+					<div class="singleProduct__sizeList__item attributes-picker-item" data-attribute="<?php echo $variation_slug; ?>"><?php echo $variation_name; ?></div>						
+											
+				<?php 							
+		
+			}
 
 
 			} 
