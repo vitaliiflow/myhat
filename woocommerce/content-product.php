@@ -28,7 +28,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 <a href="<?php the_permalink( ); ?>" class="shopPage__listItem__content">
 	<div class="shopPage__listItem__labels">
 		<?php get_template_part( 'woocommerce/loop/sale-flash' ); ?>
-		<?php get_template_part( 'woocommerce/parts/product-badges' ); ?>
+		<?php get_template_part( 'woocommerce/parts/product-bages' ); ?>
 
 	</div>
 	<?php 
