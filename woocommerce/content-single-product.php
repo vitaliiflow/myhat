@@ -164,37 +164,12 @@ if (!$full_customizer) :
 					<?php endif; ?>
 
 					<div class="singleProduct__before-purchase row">
-						
-						<?php
-						global $product;
-
-						if ($product->is_type('variable')) {
-							// Отримуємо атрибути продукту
-							$attributes = $product->get_attributes();
-
-							// Виводимо атрибути
-							if (!empty($attributes)) {
+						<div class="singleProduct__sizeWrapper col-sm-6">
+							<div class="singleProduct__sizeTitle">Välj storlek</div>
+							<div class="singleProduct__sizeList attributes-picker-list" data-attribute-name="<?php echo $attribute->get_name(); ?>">
 								
-								foreach ($attributes as $attribute) {
-									if ($attribute->get_variation() && $attribute->get_name() == 'pa_storlek') { ?>
-									<div class="singleProduct__sizeWrapper col-sm-6">
-										<div class="singleProduct__sizeTitle">Välj storlek</div>
-																			<div class="singleProduct__sizeList attributes-picker-list" data-attribute-name="<?php echo $attribute->get_name(); ?>">
-										<?php $options = $attribute->get_options();
-										foreach($options as $option):
-											$full_term = get_term_by('id', $option, 'pa_storlek'); ?>
-												<div class="singleProduct__sizeList__item attributes-picker-item" data-attribute="<?php echo $full_term->slug; ?>"><?php echo $full_term->name; ?></div>
-										<?php endforeach; ?>
-										</div>
-									</div>
-									<?php }
-								}
-								
-							}
-						}
-						?>
-
-					
+							</div>
+						</div>
 						<?php 
 						if(is_a( $product, 'WC_Product_Variable' ) && false):
 						?>

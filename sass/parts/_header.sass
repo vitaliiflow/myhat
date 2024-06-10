@@ -385,6 +385,7 @@
                         input 
                             padding-left: 2.3rem
                             color: $color-text 
+                            background-color: #fff
                             +max-screen($breakpoint-md)
                                 width: 100% 
                             &::placeholder 
@@ -397,6 +398,7 @@
                             +max-screen($breakpoint-lg)
                                 right: 0 
                                 top: 100%
+                                visibility: hidden
                             +max-screen($breakpoint-md)
                                 width: 100% 
                                 top: calc( 100% + 0.5rem )
@@ -431,12 +433,6 @@
                                 position: absolute
                                 top: 50%
                                 transform: translateY(-50%)
-                    &.visible 
-                        .search__barWrapper
-                            input 
-                                +max-screen($breakpoint-lg)
-                                    opacity: 1
-                                    visibility: visible 
                     &__resultsList 
                         background-color: $color-white
                         margin-top: 8px
@@ -465,6 +461,14 @@
                     &_results__list 
                         display: flex 
                         flex-direction: column 
+                &.visible 
+                    .search__barWrapper
+                        +max-screen($breakpoint-lg)
+                            visibility: visible
+                        input 
+                            +max-screen($breakpoint-lg)
+                                opacity: 1
+                                visibility: visible 
     &__burger 
         width: 1.1112rem
         height: 0.889rem
