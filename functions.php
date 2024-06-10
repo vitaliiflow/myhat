@@ -38,6 +38,21 @@ function new_excerpt_more( $more ) {
 }
 add_filter('excerpt_more', 'new_excerpt_more');
 
+/**
+ * @snippet       Remove Sidebar @ Single Product Page
+ * @how-to        Get CustomizeWoo.com FREE
+ * @sourcecode    https://businessbloomer.com/?p=19572
+ * @author        Rodolfo Melogli
+ * @testedwith    WooCommerce 3.2.6
+ */
+ 
+ add_action( 'wp', 'bbloomer_remove_sidebar_product_pages' );
+ 
+ function bbloomer_remove_sidebar_product_pages() {
+ if ( is_product() ) {
+ remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
+ }
+ }
 
 
 add_filter('woocommerce_breadcrumb_defaults', 'custom_woocommerce_breadcrumbs');

@@ -98,7 +98,52 @@ function add_product_json_ld() {
         $product_id = $product->get_id();
         $product_name = $product->get_name();
         $product_image_url = wp_get_attachment_url($product->get_image_id());
-        $product_price = $product->get_price();
+
+        /* Handle product pricing */
+		
+		$product_price = '';
+		
+        if ($product->is_type('variable')) {
+            // Get all variations including those that are out of stock
+            $variations = $product->get_children();
+            $prices = [];
+
+            foreach ($variations as $variation_id) {
+                $variation_obj = new WC_Product_Variation($variation_id);
+
+                // Check for regular and sale prices
+                $regular_price = $variation_obj->get_regular_price();
+                $sale_price = $variation_obj->get_sale_price();
+
+                if (!$variation_obj->is_in_stock()) {
+                    if ($regular_price) {
+                        $prices[] = $regular_price;
+                    }
+                } else {
+                    if ($sale_price) {
+                        $prices[] = $sale_price;
+                    } elseif ($regular_price) {
+                        $prices[] = $regular_price;
+                    }
+                }
+            }
+
+            if (!empty($prices)) {
+                $product_price = min($prices);
+            } else {
+                $product_price = 'Price not available';
+            }
+        } else {
+            // Get regular price if the product is out of stock
+            if (!$product->is_in_stock()) {
+                $product_price = $product->get_regular_price();
+            } else {
+                $product_price = $product->get_price();
+            }
+        }
+		
+		/* End of handle product price */
+
         $product_rating = round(4.5 + ($product->get_id() / 100000) , 2);
 		if ($product_rating > 4.9) {
 			$product_rating = 4.9;
@@ -178,6 +223,11 @@ function is_any_variation_in_stock($product_id) {
     // Get the product object
     $product = wc_get_product($product_id);
 
+    // Check if the product is valid
+    if ( ! $product ) {
+        return false;
+    }
+
     // Check if the product is a variable product
     if ($product->is_type('variable')) {
         // Get the product variations
@@ -193,8 +243,8 @@ function is_any_variation_in_stock($product_id) {
 
         return false; // Return false if none of the variations are in stock
     } else {
-        // Product is not a variable product
-        return false;
+        // Product is a simple product, check if it's in stock
+        return $product->is_in_stock();
     }
 }
 

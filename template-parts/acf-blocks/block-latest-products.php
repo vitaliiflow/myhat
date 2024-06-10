@@ -46,7 +46,15 @@ if (!empty($products)) : ?>
 
                     <?php if ($title) : ?>
 
-                        <h2 class="text-center"><?php echo $title; ?></h2>
+                        <?php if (is_front_page()) : ?>
+
+                            <h2 class="text-center"><?php echo $title; ?></h2>
+
+                        <?php else : ?>
+
+                            <h1 class="text-center"><?php echo $title; ?></h1>
+                        
+                        <?php endif; ?>
 
                     <?php endif; ?>
                         
