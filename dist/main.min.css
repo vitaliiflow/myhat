@@ -749,7 +749,7 @@ body.single-product:not(.loaded){position:relative}
 .header__menu .menu-item.has-magic-icon a::after{content:"";position:absolute;top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%);width:1.1112rem;height:1.1112rem;right:0;background-image:url("../assets/images/icons/magic-wand.png");background-size:contain;background-repeat:no-repeat;background-position:center}
 .header__iconsList{display:-webkit-box;display:-ms-flexbox;display:flex;margin:0 -0.445rem;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
 .header__iconsList__item{padding:0 .445rem}
-.header__iconsList__item button.search-toggle{background-image:url("../assets/images/icons/search.png");background-size:contain;background-repeat:no-repeat;background-position:center;display:block;width:20px;height:20px;padding:0;border-radius:0}
+.header__iconsList__item button.search-toggle{background-image:url("../assets/images/icons/search.png");background-size:contain;background-repeat:no-repeat;background-position:center;display:block;width:20px;height:20px;padding:0;border-radius:0;background-color:transparent}
 .header__iconsList__item button.search-toggle:focus ~ .search__barWrapper input{opacity:1;visibility:visible}
 .header__iconsList__item img{display:block;width:1.334rem;height:1.334rem}
 .header__iconsList__item.cart a{position:relative}
@@ -1983,6 +1983,7 @@ body.loading::after,.shopPage__filtersRow__listWrapper.loading::after{width:42px
 .header__menu .menu-item.has-magic-icon a::after{width:.889rem;height:.889rem}
 .header__iconsList__item.search{position:static}
 .header__iconsList__item.search .search__barWrapper{right:0;top:100%}
+.header__iconsList__item.search .search.visible .search__barWrapper input{opacity:1;visibility:visible}
 .header__burger{display:block}
 .header__mobileMenu{position:fixed;top:0;right:-100%;width:100%;height:100%;background-color:#f1f1ef;padding:1.1112rem 30px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;overflow:scroll;-webkit-transition:.3s;transition:.3s;z-index:999}
 .header__mobileMenu .header__menu{display:block;padding-top:1.56rem;padding-bottom:1.56rem;margin:0}

@@ -692,6 +692,17 @@ jQuery(document).ready(function ($) {
       $('.header__mobileMenu .menu-item-has-children .sub-menu').slideUp();
     }
   });
+  var w = $(window).width();
+  if (w < 992) {
+    $('.search-toggle').click(function () {
+      $(this).parent().addClass('visible');
+    });
+    $('body').click(function (e) {
+      if (!$(e.target).closest('.header__iconsList__item.search').length) {
+        $('.header__iconsList__item.search').removeClass('visible');
+      }
+    });
+  }
 });
 // console.log("Hello world!");
 "use strict";

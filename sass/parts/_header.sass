@@ -340,6 +340,7 @@
                 height: 20px
                 padding: 0
                 border-radius: 0 
+                background-color: transparent
                 &:focus ~ .search__barWrapper input 
                     opacity: 1
                     visibility: visible
@@ -382,11 +383,7 @@
                         +max-screen($breakpoint-md)
                             width: 100% 
                         input 
-                            // the styles below moved to _forms.sass
-                            // padding: 0.5rem 1rem 
                             padding-left: 2.3rem
-                            // font-size: 16px
-                            // border: 0
                             color: $color-text 
                             +max-screen($breakpoint-md)
                                 width: 100% 
@@ -434,6 +431,12 @@
                                 position: absolute
                                 top: 50%
                                 transform: translateY(-50%)
+                    &.visible 
+                        .search__barWrapper
+                            input 
+                                +max-screen($breakpoint-lg)
+                                    opacity: 1
+                                    visibility: visible 
                     &__resultsList 
                         background-color: $color-white
                         margin-top: 8px
