@@ -164,77 +164,12 @@ if (!$full_customizer) :
 					<?php endif; ?>
 
 					<div class="singleProduct__before-purchase row">
-						
-						<?php
-global $product;
-
-if ($product->is_type('variable')) {
-    $variations = $product->get_available_variations();
-
-    if (!empty($variations)) {
-        ?>
 						<div class="singleProduct__sizeWrapper col-sm-6">
-		<div class="singleProduct__sizeTitle">Välj storlek</div>
-											<div class="singleProduct__sizeList attributes-picker-list" data-attribute-name="<?php echo $attribute['name']; ?>">
-												
-		<?php 
-
-        foreach ($variations as $variation) {
-            // Get the variation ID
-			$variation_id = $variation['variation_id'];
-
-			// Get the variation object
-			$variation_obj = wc_get_product($variation_id);
-
-			if ($variation_obj) {
-				// Get the variation name
-				$variation_name = $variation_obj->get_name();
-				$variation_slug = $variation_obj->get_slug();
-			
-
-				// Find the position of "storlek" (case insensitive)
-				$position = stripos($variation_slug, "storlek");
-
-				// If "storlek" is found
-				if ($position !== false) {
-					// Extract the substring starting from "storlek"
-					$slug = substr($variation_slug, $position);
-				}
-				
-				//echo $variation_name;
-				// Find the position of "Storlek"
-				$position = strpos($variation_name, "Storlek");
-
-				// If "Storlek" is found
-				if ($position !== false) {
-					// Extract the substring starting from "Storlek"
-					$result = substr($variation_name, $position);
-					?>
-						
-						<div class="singleProduct__sizeList__item attributes-picker-item" data-attribute="<?php echo $slug; ?>"><?php echo $result; ?></div>
-					<?php 
-				} else { ?>
-												
-					<div class="singleProduct__sizeList__item attributes-picker-item" data-attribute="<?php echo $variation_slug; ?>"><?php echo $variation_name; ?></div>						
-											
-				<?php 							
-		
-			}
-
-
-			} 
-        }
-	?>
-							</div></div>
-												
-												<?php 
-    } else {
-        // No variations available. Product is out of stock;
-    }
-}
-?>
-
-					
+							<div class="singleProduct__sizeTitle">Välj storlek</div>
+							<div class="singleProduct__sizeList attributes-picker-list" data-attribute-name="<?php echo $attribute->get_name(); ?>">
+								
+							</div>
+						</div>
 						<?php 
 						if(is_a( $product, 'WC_Product_Variable' ) && false):
 						?>

@@ -340,6 +340,7 @@
                 height: 20px
                 padding: 0
                 border-radius: 0 
+                background-color: transparent
                 &:focus ~ .search__barWrapper input 
                     opacity: 1
                     visibility: visible
@@ -382,12 +383,9 @@
                         +max-screen($breakpoint-md)
                             width: 100% 
                         input 
-                            // the styles below moved to _forms.sass
-                            // padding: 0.5rem 1rem 
                             padding-left: 2.3rem
-                            // font-size: 16px
-                            // border: 0
                             color: $color-text 
+                            background-color: #fff
                             +max-screen($breakpoint-md)
                                 width: 100% 
                             &::placeholder 
@@ -400,6 +398,7 @@
                             +max-screen($breakpoint-lg)
                                 right: 0 
                                 top: 100%
+                                visibility: hidden
                             +max-screen($breakpoint-md)
                                 width: 100% 
                                 top: calc( 100% + 0.5rem )
@@ -462,6 +461,14 @@
                     &_results__list 
                         display: flex 
                         flex-direction: column 
+                &.visible 
+                    .search__barWrapper
+                        +max-screen($breakpoint-lg)
+                            visibility: visible
+                        input 
+                            +max-screen($breakpoint-lg)
+                                opacity: 1
+                                visibility: visible 
     &__burger 
         width: 1.1112rem
         height: 0.889rem

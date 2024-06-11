@@ -528,6 +528,7 @@ body.single-product:not(.loaded){position:relative}
 .singleProduct__price.sale ins{color:#e40d68;margin-left:3px}
 .singleProduct__price.sale ins{width:100%}
 .singleProduct__sizeWrapper{margin-bottom:24px;font-size:18px}
+.singleProduct__sizeWrapper.hide{display:none}
 .singleProduct__sizeTitle{text-align:center;background-color:#f1f1ef;position:relative;cursor:pointer;padding:15px 24px}
 .singleProduct__sizeTitle::after{content:"▼";position:absolute;top:50%;right:10px;-webkit-transform:translateY(-50%);transform:translateY(-50%);font-size:10px;-webkit-transition:.3s;transition:.3s}
 .singleProduct__sizeTitle.opened::after{-webkit-transform:translateY(-50%) rotate(180deg);transform:translateY(-50%) rotate(180deg)}
@@ -749,14 +750,14 @@ body.single-product:not(.loaded){position:relative}
 .header__menu .menu-item.has-magic-icon a::after{content:"";position:absolute;top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%);width:1.1112rem;height:1.1112rem;right:0;background-image:url("../assets/images/icons/magic-wand.png");background-size:contain;background-repeat:no-repeat;background-position:center}
 .header__iconsList{display:-webkit-box;display:-ms-flexbox;display:flex;margin:0 -0.445rem;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
 .header__iconsList__item{padding:0 .445rem}
-.header__iconsList__item button.search-toggle{background-image:url("../assets/images/icons/search.png");background-size:contain;background-repeat:no-repeat;background-position:center;display:block;width:20px;height:20px;padding:0;border-radius:0}
+.header__iconsList__item button.search-toggle{background-image:url("../assets/images/icons/search.png");background-size:contain;background-repeat:no-repeat;background-position:center;display:block;width:20px;height:20px;padding:0;border-radius:0;background-color:transparent}
 .header__iconsList__item button.search-toggle:focus ~ .search__barWrapper input{opacity:1;visibility:visible}
 .header__iconsList__item img{display:block;width:1.334rem;height:1.334rem}
 .header__iconsList__item.cart a{position:relative}
 .header__iconsList__item.cart__count{position:absolute;top:0;right:0;-webkit-transform:translate(30%,-50%);transform:translate(30%,-50%);background:#f1f1ef;text-align:center;border-radius:50%;border:1px solid #000;font-size:12px;width:18.8px;text-align:center;padding:0}
 .header__iconsList__item.search{position:relative;z-index:999}
 .header__iconsList__item.search img{width:1.1112rem;height:1.1112rem;cursor:pointer}
-.header__iconsList__item.search .search__bar input{padding-left:2.3rem;color:#000}
+.header__iconsList__item.search .search__bar input{padding-left:2.3rem;color:#000;background-color:#fff}
 .header__iconsList__item.search .search__bar input::-webkit-input-placeholder{color:#000}
 .header__iconsList__item.search .search__bar input::-moz-placeholder{color:#000}
 .header__iconsList__item.search .search__bar input:-ms-input-placeholder{color:#000}
@@ -1993,7 +1994,9 @@ body.loading::after,.shopPage__filtersRow__listWrapper.loading::after{width:42px
 .header__menu .menu-item.has-magic-icon a{padding-right:1.1112rem}
 .header__menu .menu-item.has-magic-icon a::after{width:.889rem;height:.889rem}
 .header__iconsList__item.search{position:static}
-.header__iconsList__item.search .search__barWrapper{right:0;top:100%}
+.header__iconsList__item.search .search__barWrapper{right:0;top:100%;visibility:hidden}
+.header__iconsList__item.search.visible .search__barWrapper{visibility:visible}
+.header__iconsList__item.search.visible .search__barWrapper input{opacity:1;visibility:visible}
 .header__burger{display:block}
 .header__mobileMenu{position:fixed;top:0;right:-100%;width:100%;height:100%;background-color:#f1f1ef;padding:1.1112rem 30px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;overflow:scroll;-webkit-transition:.3s;transition:.3s;z-index:999}
 .header__mobileMenu .header__menu{display:block;padding-top:1.56rem;padding-bottom:1.56rem;margin:0}
