@@ -477,3 +477,12 @@ function custom_update_order_comment_based_on_customization($order_id, $posted_d
         $order->save();
     }
 }
+
+
+/* Remove Yoast SEO Prev/Next URL from all pages
+ * Credit: Yoast Team
+ * Last Tested: Jun 10 2017 using Yoast SEO 4.9 on WordPress 4.8
+ */
+
+ add_filter( 'wpseo_next_rel_link', '__return_false' );
+ add_filter( 'wpseo_prev_rel_link', '__return_false' );
