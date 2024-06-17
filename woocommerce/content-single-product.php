@@ -203,6 +203,27 @@ if (!$full_customizer) :
 							<a href="#product-customizer-popup" class="product-customizer__trigger d-block button--black"><?php _e('Customize','myhat');?></a>
 						</div>
 
+						<script>
+
+						jQuery(document).ready(function(){
+							console.log('this sript is working');
+							jQuery(".fancy-product").on("click", ".fpd-add-text .fpd-btn", function(){
+								
+								let leftSmart = jQuery('.fpd-container').offset().left;
+								let topSmart = jQuery('.fpd-container').offset().top;
+								jQuery(".fpd-smart").addClass('fpd-show').css("left",leftSmart).css("top",topSmart).css("transform",'none');
+								jQuery('.fpd-tool-duplicate').addClass('fpd-hidden');
+								jQuery('.fpd-tool-advanced-editing').addClass('fpd-hidden');
+								jQuery('.fpd-tool-remove-bg').addClass('fpd-hidden');
+								//console.log(topSmart);
+								//console.log(leftSmart);
+								//console.log('fpd-smart should be visible');
+								//jQuery(".product-select--price-discount-block").slideToggle();
+							})
+						});
+
+					</script>
+
 						<?php } ?>
 
 					</div>
