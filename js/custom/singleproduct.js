@@ -1,5 +1,4 @@
 jQuery(document).ready(function($){
-    $(window).on('load', function(){
         setTimeout(function(){
             if($('.variations #pa_storlek option').length > 0){
                 let itemsContent = '', i = 0;
@@ -71,9 +70,8 @@ jQuery(document).ready(function($){
                     }
                 }, 100)
             });
-        }, 100);
+        }, 300);
 
-    });
     
 
     if($('body').hasClass('single-product')){
