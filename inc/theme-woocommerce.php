@@ -94,7 +94,8 @@ add_filter('woocommerce_resize_images', static function() {
 add_action('wp_head', 'add_product_json_ld');
 function add_product_json_ld() {
     if (is_product()) {
-        global $product;
+        $id = get_the_ID();
+        $product = wc_get_product($id);
         $product_id = $product->get_id();
         $product_name = $product->get_name();
         $product_image_url = wp_get_attachment_url($product->get_image_id());

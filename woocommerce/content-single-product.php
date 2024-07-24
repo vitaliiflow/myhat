@@ -197,32 +197,67 @@ if (!$full_customizer) :
 						<?php 
 						
 						$product_id = get_the_ID(); // Replace this with the ID of your product
+
+						/**
+						 * Get products added to Settings->Single Product->available for full customization
+						 */
+
+						$full_customization_tabs = get_field('tabs_list','option');
+						//var_dump($full_customization_list);
+						$products_id_array = array();
+						foreach ($full_customization_tabs as $full_customization_tab) {
+
+							$list = $full_customization_tab['products_for_customization'];
+							//var_dump($list);
+							foreach($list as $item) {
+								//var_dump($item);
+								array_push($products_id_array,$item->ID );
+							}
+						
+							
+						}
+
+
+
 						if (is_any_variation_in_stock($product_id)) { ?>
 
-						<div class="product-customizer__trigger-wrapper col-sm-6">
-							<a href="#product-customizer-popup" class="product-customizer__trigger d-block button--black"><?php _e('Customize','myhat');?></a>
-						</div>
+							<?php if (in_array($product_id, $products_id_array)) { ?>
+
+								<div class="product-customizer__trigger-wrapper col-sm-6">
+									<?php 
+
+									$permalink = get_the_permalink(); ?>
+									<a href="<?php echo $permalink .'?customize';?>" class="d-block button--black"><?php _e('Customize','myhat');?></a>
+								</div>
+
+							<?php } else { ?>
+
+								<div class="product-customizer__trigger-wrapper col-sm-6">
+									<a href="#product-customizer-popup" class="product-customizer__trigger d-block button--black"><?php _e('Customize','myhat');?></a>
+								</div>
+
+							<?php } ?>
 
 						<script>
 
-						jQuery(document).ready(function(){
-							console.log('this sript is working');
-							jQuery(".fancy-product").on("click", ".fpd-add-text .fpd-btn", function(){
-								
-								let leftSmart = jQuery('.fpd-container').offset().left;
-								let topSmart = jQuery('.fpd-container').offset().top;
-								jQuery(".fpd-smart").addClass('fpd-show').css("left",leftSmart).css("top",topSmart).css("transform",'none');
-								jQuery('.fpd-tool-duplicate').addClass('fpd-hidden');
-								jQuery('.fpd-tool-advanced-editing').addClass('fpd-hidden');
-								jQuery('.fpd-tool-remove-bg').addClass('fpd-hidden');
-								//console.log(topSmart);
-								//console.log(leftSmart);
-								//console.log('fpd-smart should be visible');
-								//jQuery(".product-select--price-discount-block").slideToggle();
-							})
-						});
+							jQuery(document).ready(function(){
+								console.log('this sript is working');
+								jQuery(".fancy-product").on("click", ".fpd-add-text .fpd-btn", function(){
+									
+									let leftSmart = jQuery('.fpd-container').offset().left;
+									let topSmart = jQuery('.fpd-container').offset().top;
+									jQuery(".fpd-smart").addClass('fpd-show').css("left",leftSmart).css("top",topSmart).css("transform",'none');
+									jQuery('.fpd-tool-duplicate').addClass('fpd-hidden');
+									jQuery('.fpd-tool-advanced-editing').addClass('fpd-hidden');
+									jQuery('.fpd-tool-remove-bg').addClass('fpd-hidden');
+									//console.log(topSmart);
+									//console.log(leftSmart);
+									//console.log('fpd-smart should be visible');
+									//jQuery(".product-select--price-discount-block").slideToggle();
+								})
+							});
 
-					</script>
+						</script>
 
 						<?php } ?>
 
