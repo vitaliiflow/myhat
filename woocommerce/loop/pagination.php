@@ -248,13 +248,20 @@ if((sizeof($kategori) > 1 || $kategori[0] != '') && $taxonomy_slug != 'product_c
 }
 $the_query = new WP_Query($args);
 
+if(empty(get_queried_object()->taxonomy)){
+    $link = wc_get_page_permalink( 'shop' );
+} else {
+    $link = get_term_link(get_queried_object()->slug, get_queried_object()->taxonomy);
+}
+$prev = $current - 1;
+$next = $current + 1;
 ?>
 <div class="shopPage__pagination">
-    <a href="#" rel="previous" class="shopPage__paginationButton prev<?php if($current == 1){ echo ' disabled';} ?>"><?php echo get_inline_svg('pagination-arrow-right.svg'); ?>Föregående</a>
+    <a href="<?php echo $link . 'page/' . $prev; ?>" rel="previous" class="shopPage__paginationButton prev<?php if($current == 1){ echo ' disabled';} ?>"><?php echo get_inline_svg('pagination-arrow-right.svg'); ?>Föregående</a>
     <div class="shopPage__paginationPage">
         <span class="current"><?php echo $current ?></span>
         <span>/</span>
         <span class="total"><?php echo $the_query->max_num_pages; ?></span>
     </div>
-    <a href="#" rel="next" class="shopPage__paginationButton next<?php if($the_query->max_num_pages <= 1 || $current == $the_query->max_num_pages){echo ' disabled';} ?>">Nästa<?php echo get_inline_svg('pagination-arrow-right.svg'); ?></a>
+    <a href="<?php echo $link . 'page/' . $next; ?>" rel="next" class="shopPage__paginationButton next<?php if($the_query->max_num_pages <= 1 || $current == $the_query->max_num_pages){echo ' disabled';} ?>">Nästa<?php echo get_inline_svg('pagination-arrow-right.svg'); ?></a>
 </div>
