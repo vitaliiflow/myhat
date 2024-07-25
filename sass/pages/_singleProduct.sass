@@ -369,6 +369,8 @@ body.single-product:not(.loaded)
                     background-color: $color-text 
                     color: $color-white
     &__purchase 
+        .cart 
+            flex-direction: column
         & > input 
             display: none 
         .woocommerce-variation-price 
@@ -601,3 +603,30 @@ body.single-product:not(.loaded)
             background-repeat: no-repeat
             background-position: center
             position: absolute
+.fpd-navigation--color-selection 
+    form.variations_form.cart 
+        flex-direction: row
+        align-items: flex-start
+        +max-screen($breakpoint-md)
+            flex-direction: column
+    .singleProduct__before-purchase 
+        margin-right: 9px
+        +max-screen($breakpoint-md)
+            margin-right: -15px
+            margin-bottom: 12px
+            width: calc( 100% + 30px )
+        .singleProduct__sizeWrapper
+            margin: 0
+            width: 100%
+            flex: 0 0 100%
+            max-width: 100%
+    .single_variation_wrap 
+        +max-screen($breakpoint-md)
+            width: 100%
+        .single_variation
+            margin: 0
+    .singleProduct__sizeTitle
+        +max-screen(1200px)
+            padding: 15px 24px
+        +max-screen($breakpoint-lg)
+            padding: 11px 24px
