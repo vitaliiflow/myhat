@@ -35,8 +35,8 @@ jQuery(document).ready(function ($) {
       if ($(this).hasClass('prev')) {
         paged = paged - 1;
       }
-      $('.shopPage__paginationButton.prev').attr('href', $('.shopPage__paginationButton.prev').attr('href').split('page/')[0] + 'page/' + parseInt(paged - 1));
-      $('.shopPage__paginationButton.next').attr('href', $('.shopPage__paginationButton.next').attr('href').split('page/')[0] + 'page/' + parseInt(paged + 1));
+      $('.shopPage__paginationButton.prev').attr('href', $('.shopPage__paginationButton.prev').attr('href').split('page/')[0] + 'page/' + parseInt(paged - 1) + '/');
+      $('.shopPage__paginationButton.next').attr('href', $('.shopPage__paginationButton.next').attr('href').split('page/')[0] + 'page/' + parseInt(paged + 1) + '/');
       switch (sort) {
         case 'popularity':
           orderby = 'popularity';
