@@ -74,8 +74,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 											$color = get_field('color', 'pa_colors_' . $result->term_id); 
 											?>
 											<div class="singleProduct__colorsList__itemWrapper">
-												<div class="singleProduct__colorsList__item attributes-picker-item" style="background-color: <?php echo $color ?>" data-attribute="<?php echo $result->slug; ?>">
-												</div>
+												<div class="singleProduct__colorsList__item attributes-picker-item" style="background-color: <?php echo $color ?>" data-attribute="<?php echo $result->slug; ?>"></div>
 											</div>
 										<?php endforeach; ?>
 								<?php endif; ?>

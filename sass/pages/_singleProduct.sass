@@ -607,11 +607,24 @@ body.single-product:not(.loaded)
     form.variations_form.cart 
         flex-direction: row
         align-items: flex-start
+        +max-screen($breakpoint-lg)
+            flex-direction: column-reverse
         +max-screen($breakpoint-md)
             flex-direction: column
+        .singleProduct__colorsList
+            &:empty 
+                margin: 0
     .singleProduct__before-purchase 
         margin-right: 9px
+        width: 280px 
+        +max-screen(1200px)
+            width: 240px 
+        +max-screen($breakpoint-lg)
+            margin-right: -12px
+            width: 301.78px
+            margin-top: 16px
         +max-screen($breakpoint-md)
+            margin-top: 0
             margin-right: -15px
             margin-bottom: 12px
             width: calc( 100% + 30px )
@@ -630,3 +643,4 @@ body.single-product:not(.loaded)
             padding: 15px 24px
         +max-screen($breakpoint-lg)
             padding: 11px 24px
+            min-height: auto 
