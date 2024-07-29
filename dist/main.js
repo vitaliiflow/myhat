@@ -28,15 +28,34 @@ jQuery(document).ready(function ($) {
         orderby,
         order,
         metaKey = '',
-        separator;
+        separator,
+        paginationPrev,
+        paginationNext,
+        paginationLinkMain;
       if ($(this).hasClass('next')) {
         paged = ++paged;
       }
       if ($(this).hasClass('prev')) {
         paged = paged - 1;
       }
-      $('.shopPage__paginationButton.prev').attr('href', $('.shopPage__paginationButton.prev').attr('href').split('page/')[0] + 'page/' + parseInt(paged - 1) + '/');
-      $('.shopPage__paginationButton.next').attr('href', $('.shopPage__paginationButton.next').attr('href').split('page/')[0] + 'page/' + parseInt(paged + 1) + '/');
+      if ($('.shopPage__paginationButton.prev').attr('href') != 'javascript:void(0);') {
+        paginationLinkMain = $('.shopPage__paginationButton.prev').attr('href');
+      }
+      if ($('.shopPage__paginationButton.next').attr('href') != 'javascript:void(0);') {
+        paginationLinkMain = $('.shopPage__paginationButton.next').attr('href');
+      }
+      if (parseInt(paged - 1) > 0) {
+        paginationPrev = paginationLinkMain.split('page/')[0] + 'page/' + parseInt(paged - 1) + '/';
+      } else {
+        paginationPrev = 'javascript:void(0);';
+      }
+      if (parseInt(paged + 1) <= total) {
+        paginationNext = paginationLinkMain.split('page/')[0] + 'page/' + parseInt(paged + 1) + '/';
+      } else {
+        paginationNext = 'javascript:void(0);';
+      }
+      $('.shopPage__paginationButton.prev').attr('href', paginationPrev);
+      $('.shopPage__paginationButton.next').attr('href', paginationNext);
       switch (sort) {
         case 'popularity':
           orderby = 'popularity';
