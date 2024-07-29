@@ -324,13 +324,13 @@ function products_filter() {
             $next = $paged + 1;
         ?>
         <div class="shopPage__pagination">
-            <a href="<?php echo $link . 'page/' . $prev . '/'; ?>" rel="previous" class="shopPage__paginationButton prev<?php if($paged == 1){ echo ' disabled';} ?>"><?php echo get_inline_svg('pagination-arrow-right.svg'); ?>Föregående</a>
+            <a href="<?php if($prev > 0){echo $link . 'page/' . $prev . '/';} else{echo 'javascript:void(0);';} ?>" rel="previous" class="shopPage__paginationButton prev<?php if($paged == 1){ echo ' disabled';} ?>"><?php echo get_inline_svg('pagination-arrow-right.svg'); ?>Föregående</a>
             <div class="shopPage__paginationPage">
                 <span class="current"><?php echo $paged; ?></span>
                 <span>/</span>
                 <span class="total"><?php echo $the_query->max_num_pages; ?></span>
             </div>
-            <a href="<?php echo $link . 'page/' . $next . '/'; ?>" rel="next" class="shopPage__paginationButton next<?php if($the_query->max_num_pages <= 1 || $paged == $the_query->max_num_pages){echo ' disabled';} ?>">Nästa<?php echo get_inline_svg('pagination-arrow-right.svg'); ?></a>
+            <a href="<?php if($next <= $the_query->max_num_pages) {echo $link . 'page/' . $next . '/';} else{echo 'javascript:void(0);';} ?>" rel="next" class="shopPage__paginationButton next<?php if($the_query->max_num_pages <= 1 || $paged == $the_query->max_num_pages){echo ' disabled';} ?>">Nästa<?php echo get_inline_svg('pagination-arrow-right.svg'); ?></a>
     <?php else: 
         echo '<h4>Inget hittades...</h4>';
     endif;
