@@ -67,7 +67,7 @@ body.single-product:not(.loaded)
             &__trigger
                 text-align: center
             &__trigger-wrapper 
-                margin-left: 0
+                margin-left: 0 !important
                 padding-right: 12px
                 padding-left: 12px
                 a
@@ -417,6 +417,7 @@ body.single-product:not(.loaded)
             display: flex
         .cart 
             flex-direction: column
+            flex: 1 1 auto
         & > input 
             display: none 
         .woocommerce-variation-price 
@@ -496,7 +497,7 @@ body.single-product:not(.loaded)
             opacity: 1
             text-align: center
             display: block
-            width: calc( 70% - 6px )
+            width: 100%
             margin-left: 24px
             font-size: 18px
             white-space: nowrap
@@ -700,3 +701,9 @@ body.single-product:not(.loaded)
 
 .woocommerce-product-gallery__wrapper:not(.slick-initialized) .woocommerce-product-gallery__image:first-child
 	display: block
+
+.singleProduct__sizeTitle
+    min-height: 55px
+    display: flex
+    justify-content: center
+    align-items: center
