@@ -58,8 +58,8 @@ function my_wp_nav_menu_objects( $items, $args ) {
 
 				if (!in_array('i-pseudo', $item->classes) && is_array($post_thumbnail_img)) { // Check if $post_thumbnail_img is an array
 					$item->classes[] = 'has-mobile-icon '; // No need for `.=` here
-					$item->title .= '<img src="' . $post_thumbnail_img[0] . '" alt="' . $item->title . '"/>';
-
+					//$item->title .= '<img src="' . $post_thumbnail_img[0] . '" alt="' . $item->title . '"/>';
+					$item->title .= '<span class="img-icon" style="background-image: url(' . $post_thumbnail_img[0] . ')"></span>';
 				} else  {
 				  $term = get_term($item->object_id);
 				  $team_thumbnail = get_field('taxonomy-image', $term );
@@ -70,12 +70,14 @@ function my_wp_nav_menu_objects( $items, $args ) {
 
 				  if (!empty($team_thumbnail)) {
 					$item->classes[] = 'has-mobile-icon '; // No need for `.=` here
-					$item->title .= '<img src="' . $team_thumbnail['url'] . '" alt="' . $item->title .  '"/>';
+					//$item->title .= '<img src="' . $team_thumbnail['url'] . '" alt="' . $item->title .  '"/>';
+					$item->title .= '<span class="img-icon" style="background-image: url(' . $team_thumbnail['url'] . ')"></span>';
 				  }
 
 				  if (!empty($brand_thumbnail)) {
 					$item->classes[] = 'has-mobile-icon '; // No need for `.=` here
-					$item->title .= '<img src="' . $brand_thumbnail['url'] . '" alt="' . $item->title . '"/>';
+					// $item->title .= '<img src="' . $brand_thumbnail['url'] . '" alt="' . $item->title . '"/>';
+					$item->title .= '<span class="img-icon" style="background-image: url(' . $brand_thumbnail['url'] . ')"></span>';
 				  }
 
 				}
