@@ -1,3 +1,22 @@
 .product-customizer
     &__trigger-wrapper
         display: none
+
+.fpd-container .fpd-btn, .fpd-modal-inner .fpd-btn
+    background-color: #000
+    border-radius: 0
+    padding: 16px 36px
+    display: block
+    text-align: center
+    text-transform: capitalize
+
+.fpd-container
+    fpd-actions-bar
+        +min-screen($breakpoint-md)
+            background-color: #f1f1ef
+        .fpd-btn
+            +min-screen($breakpoint-md)
+                color: black
+
+.wcbv-discounts-table
+    padding: 0 15px
