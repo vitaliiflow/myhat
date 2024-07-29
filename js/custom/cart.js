@@ -37,11 +37,8 @@ jQuery(document).ready(function($){
     $(document).ajaxComplete(function(event, xhr, settings) {
         if(settings.data !== undefined){
             cartActions();
-            console.log(settings.data);
             if(settings.data.includes('update_cart')){
-                console.log(312);
                 $('.cart__couponToggler').click(function(){
-                    console.log(123);
                     $(this).parent().find('.actions').stop().slideToggle();
                 });
             }

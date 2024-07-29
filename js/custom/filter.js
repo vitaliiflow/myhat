@@ -451,7 +451,6 @@ jQuery(document).ready(function($){
                             } else{
                                 pageLink = window.location['origin'] + `/butik/?paged=${paged}&orderby=${sortType}`;
                             }
-                            console.log(searchText);
                             if(searchText != '' && searchText != undefined){
                                 let searchArr = [searchText];
                                 pageLink = updateLink(searchArr, 's=', pageLink);
