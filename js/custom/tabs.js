@@ -1,7 +1,6 @@
 jQuery(document).ready(function($){
     if ($('.tabs').length) {
 
-        console.log('tabs');
     
         var sectionId = window.location.hash;
     
@@ -19,7 +18,6 @@ jQuery(document).ready(function($){
                 e.stopImmediatePropagation();
                 var id = $(this).attr('href');
 
-                console.log(id);
 
                 block.find('.tabs__nav').removeClass('active');
                 block.find(this).addClass('active');
@@ -28,7 +26,6 @@ jQuery(document).ready(function($){
                 })
                 block.find('.tabs__item.active').removeClass('active').fadeOut(function(){
                     block.find('.tabs__item' + id).fadeIn().addClass('active');
-                    console.log('.tabs__item' + id);
                 });
             });
         });

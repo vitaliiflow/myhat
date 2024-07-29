@@ -59,6 +59,9 @@ body.single-product:not(.loaded)
     &__before-purchase
         margin-left: -12px
         margin-right: -12px
+        flex-wrap: nowrap 
+        +max-screen($breakpoint-sm)
+            flex-wrap: wrap
         .singleProduct__sizeWrapper
             margin-bottom: 20px
             padding-left: 12px
@@ -501,6 +504,7 @@ body.single-product:not(.loaded)
             margin-left: 24px
             font-size: 18px
             white-space: nowrap
+            flex: 1
             +max-screen($breakpoint-md)
                 padding-left: 12px
                 padding-right: 12px

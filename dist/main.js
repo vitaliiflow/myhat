@@ -222,6 +222,14 @@ jQuery(document).ready(function ($) {
       $('#shipping_method > li').removeClass('checked');
       $(this).addClass('checked');
     });
+    $('.wac-btn-sub').click(function () {
+      var item = $(this).closest('.cart__item').find('.qty');
+      if (parseInt(item.val()) == 0) {
+        item.trigger("submit");
+        $('.cart__hiddenContent button[name="update_cart"]').click();
+        item.focus().submit();
+      }
+    });
   }
   $('.cart__couponToggler').click(function () {
     $(this).parent().find('.actions').stop().slideToggle();
@@ -230,11 +238,8 @@ jQuery(document).ready(function ($) {
   $(document).ajaxComplete(function (event, xhr, settings) {
     if (settings.data !== undefined) {
       cartActions();
-      console.log(settings.data);
       if (settings.data.includes('update_cart')) {
-        console.log(312);
         $('.cart__couponToggler').click(function () {
-          console.log(123);
           $(this).parent().find('.actions').stop().slideToggle();
         });
       }
@@ -650,7 +655,6 @@ jQuery(document).ready(function ($) {
               } else {
                 pageLink = window.location['origin'] + "/butik/?paged=".concat(paged, "&orderby=").concat(sortType);
               }
-              console.log(searchText);
               if (searchText != '' && searchText != undefined) {
                 var searchArr = [searchText];
                 pageLink = updateLink(searchArr, 's=', pageLink);
@@ -769,7 +773,6 @@ jQuery(document).ready(function ($) {
 jQuery(document).ready(function ($) {
   var seoText = $('.seo-text');
   var seoTextHeight = seoText.prop('scrollHeight');
-  console.log(seoTextHeight);
   if (seoTextHeight > 300 && !$('body').hasClass('archive')) {
     seoText.addClass('seo-text__content--long');
   }
@@ -784,10 +787,8 @@ jQuery(document).ready(function ($) {
 
 jQuery(document).ready(function ($) {
   $('.search .search-toggle, #search-input').focus(function () {
-    console.log(1234);
     // $(this).closest('.header__iconsList__item.search').find('.search__barWrapper').addClass('opened');
   });
-
   $('.search__barWrapper input.search-input').bind("change paste keyup", function () {
     var _this = this;
     setTimeout(function () {
@@ -1029,7 +1030,6 @@ jQuery(document).ready(function ($) {
   function initializeTabs() {
     var tabsContainer = $('.tabs');
     if (tabsContainer.length) {
-      console.log('tabs');
       tabsContainer.each(function () {
         var block = $(this);
         block.find('.js-tab-nav').off('click').on('click', function (e) {
@@ -1278,7 +1278,6 @@ jQuery(document).ready(function ($) {
 
 jQuery(document).ready(function ($) {
   if ($('.tabs').length) {
-    console.log('tabs');
     var sectionId = window.location.hash;
     if (sectionId) {
       $('.tabs__nav').removeClass('active');
@@ -1292,7 +1291,6 @@ jQuery(document).ready(function ($) {
         e.preventDefault();
         e.stopImmediatePropagation();
         var id = $(this).attr('href');
-        console.log(id);
         block.find('.tabs__nav').removeClass('active');
         block.find(this).addClass('active');
         block.find('.tabs__item').each(function () {
@@ -1300,7 +1298,6 @@ jQuery(document).ready(function ($) {
         });
         block.find('.tabs__item.active').removeClass('active').fadeOut(function () {
           block.find('.tabs__item' + id).fadeIn().addClass('active');
-          console.log('.tabs__item' + id);
         });
       });
     });

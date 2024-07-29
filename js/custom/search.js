@@ -1,7 +1,6 @@
 jQuery(document).ready(function($){
 
     $('.search .search-toggle, #search-input').focus(function(){
-        console.log(1234);
         // $(this).closest('.header__iconsList__item.search').find('.search__barWrapper').addClass('opened');
     });
     $('.search__barWrapper input.search-input').bind("change paste keyup", function () {
@@ -287,7 +286,6 @@ jQuery(document).ready(function($){
         var tabsContainer = $('.tabs');
 
         if (tabsContainer.length) {
-            console.log('tabs');
 
             tabsContainer.each(function() {
                 var block = $(this);
