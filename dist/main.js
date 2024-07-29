@@ -222,6 +222,14 @@ jQuery(document).ready(function ($) {
       $('#shipping_method > li').removeClass('checked');
       $(this).addClass('checked');
     });
+    $('.wac-btn-sub').click(function () {
+      var item = $(this).closest('.cart__item').find('.qty');
+      if (parseInt(item.val()) == 0) {
+        item.trigger("submit");
+        $('.cart__hiddenContent button[name="update_cart"]').click();
+        item.focus().submit();
+      }
+    });
   }
   $('.cart__couponToggler').click(function () {
     $(this).parent().find('.actions').stop().slideToggle();
