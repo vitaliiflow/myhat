@@ -519,3 +519,20 @@ function custom_woocommerce_breadcrumbs() {
         'home'        => _x('Home', 'breadcrumb', 'woocommerce'),
     );
 }
+
+// Display customization badge on cart page
+add_filter('woocommerce_cart_item_name', 'display_customization_badge_on_cart_page', 10, 2);
+function display_customization_badge_on_cart_page($product_name, $cart_item) {
+    if (isset($cart_item['fpd_data']['fpd_print_order'])) {
+        //$fpd_print_order = json_decode($cart_item['fpd_data']['fpd_print_order'], true);
+		$fpd_data = json_decode(stripslashes($cart_item['fpd_data']['fpd_print_order']), true);
+        //$product_name .= ' <span class="customization-badge" style="display: none;">' . $fpd_data .'</span>';
+        if (isset($fpd_data['custom_images']) && !empty($fpd_data['custom_images'])) {
+            ob_start();
+            get_template_part('woocommerce/parts/customization-badge');
+            $badge = ob_get_clean();
+            $product_name .= ' ' . $badge;
+        }
+    }
+    return $product_name;
+}
