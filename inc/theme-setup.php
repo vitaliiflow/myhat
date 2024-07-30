@@ -107,3 +107,35 @@ function my_wp_nav_menu_objects( $items, $args ) {
 	 return $link_output;
  }
  
+
+/**
+ * Excerpt adjustments
+ */
+
+ function custom_excerpt_length( $length ) {
+    return 16;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+function new_excerpt_more( $more ) {
+	return '...';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
+
+
+
+/**
+ * Search adjustments
+ */
+
+
+function filter_posts_by_title( $where, &$wp_query ) {
+    global $wpdb;
+    if ( $specific_chars = $wp_query->get( 'specific_chars' ) ) {
+        $where .= $wpdb->prepare( " AND $wpdb->posts.post_title LIKE %s", '%' . $wpdb->esc_like( $specific_chars ) . '%' );
+    }
+    return $where;
+}
+add_filter( 'posts_where', 'filter_posts_by_title', 10, 2 );
+
+
