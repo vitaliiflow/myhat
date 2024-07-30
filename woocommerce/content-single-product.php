@@ -140,6 +140,187 @@ if (!$full_customizer) :
 					<h1 class="singleProduct__title h2"><?php the_title(); ?></h1>
 					<div class="singleProduct__price<?php if($product->is_on_sale()){ echo ' sale'; } ?>"><?php echo $product->get_price_html(); ?></div>
 					<div class="singleProduct__purchase">
+						
+						<?php 
+						
+						$product_id = $product->get_id();
+						
+						// Retrieve the value of the custom checkbox
+						$wcbv_checked = get_post_meta($product_id, '_wcbv', true);
+						
+						if ($wcbv_checked === 'yes') {
+							echo do_shortcode('[wcbv]');
+							
+							?>
+						
+						<style>
+							.singleProduct__purchase {
+								display: block;
+							}
+							
+							.singleProduct__before-purchase {
+								display: none;
+							}
+							
+							.singleProduct__purchase .quantity-btn {
+								display: none;
+							}
+							
+							.wcbv-reset-variations {
+						display: none;
+					}
+					
+					.wcbv-fields select {
+					  -webkit-appearance: none;
+					  -moz-appearance: none;
+					  text-indent: 1px;
+					  text-overflow: '';
+					  height: 45.5px;
+					  padding: 10px;
+					  margin-left: -5px !important;
+					  min-width: 200px;
+					  margin-right: 10px !important;
+					}
+					
+					.wcbv-quantity--wrapper {
+						display: flex;
+					}
+					
+					.wcbv-wrapper .wcbv-quantity {
+						flex-basis: 155px !important;
+						padding-right: 20px;
+					}
+					
+					#wcbv-add-row {
+						padding: 10px 20px;
+					}
+					
+					.wcbv-quantity--wrapper .btn {
+						border-radius: 0;
+					}
+					
+					.wcbv-attributes-head>div.wcbv-remove {
+						border-bottom: 2px solid rgba(0,0,0,.1);
+					}
+					
+					.wcbv-quantity--wrapper input {
+						width: 70px;
+						height: 100% !important;
+						background-color: #f1f1ef;
+						border-radius: 0;
+						padding-left: 15px;
+						padding-right: 15px;
+						text-align: center;
+					}
+					
+					.wcbv-remove .wcbv-remove-row {
+						left: -10px;
+					}
+					
+					
+					
+					@media screen and (max-width: 767px) {
+    					.pvtfw_variant_table_block table.variant td:before {
+							padding: 20px;
+						}
+						
+						.product-select--thumbnails {
+							width: 100%;
+						}
+						
+						.product-select--thumbnails .fpd-view-thumbnails-wrapper {
+							width: 100%;
+						}
+						
+						.product-select--thumbnails .fpd-view-thumbnails-wrapper>.fpd-item {
+							width: calc(25% - 15px);
+							height: auto;
+							aspect-ratio: 1 / 1;
+						}
+						.pvtfw_init_variation_table, .pvtfw_variant_table_block, table.variant, .singleProduct__purchase {
+							width: 100%;
+						}
+					}
+					
+					@media (max-width: 568px) {
+						.wcbv-row .wcbv-fields {
+							display: flex !important;
+						}
+					}
+					
+					@media screen and (max-width: 450px) {
+						.fpd-view-thumbnails-wrapper {
+							gap: 0;
+/* 							margin-left: -10px;
+							margin-right: -10px; */
+						}
+						.product-select--thumbnails .fpd-view-thumbnails-wrapper>.fpd-item {
+							width: calc(50% - 20px);
+							margin: 10px
+						}
+						
+						.pvtfw_variant_table_block, table.variant, .singleProduct__purchase {
+							width: 100%;
+						}
+						
+						.pvtfw_init_variation_table {
+							margin-left: 10px;
+							margin-right: 10px;
+							width: calc(100% - 20px);
+						}
+						
+						.product-select--thumbnails, .fpd-navigation--color-selection .singleProduct__purchase {
+							padding-left: 10px;
+							padding-right: 10px;
+						}
+						
+						.wcbv-quantity--wrapper input {
+							width: 50px;
+							padding-left: 10px; 
+							padding-right: 10px;
+						}
+						
+						.wcbv-fields select {
+							max-width: 175px;
+							min-width: 175px;
+							margin-left: 0 !important;
+						}
+						
+						.wcbv-wrapper .wcbv-selects>* {
+							margin-bottom: 0;
+						}
+						
+						.wcbv-quantity--wrapper .btn {
+							padding-left: 15px;
+							padding-right: 15px;
+						}
+					}
+					
+					@media screen and (max-width: 390px) {
+						.wcbv-fields select {
+							max-width: 150px;
+							min-width: 150px;
+						}
+					}
+							
+							.singleProduct__purchase .single_add_to_cart_button {
+								margin-left: 0;
+							}
+							
+							.singleProduct__colorsList {
+								display: none;
+							}
+						</style>
+						
+						<div class="bulk-variation-addon <?php echo $product_id;?>" style="display:none;">
+							<?php var_dump($wcbv_checked); ?>
+						</div>
+						
+						<?php 
+					
+						}
+						
+						?>
 						<?php do_action('woocommerce_product_add_to_cart'); ?>
 					</div>
 
