@@ -368,6 +368,17 @@ if (!$full_customizer) :
 		</div>
 	</div>
 </section>
+<script>
+	jQuery(document).on('click', '.btn-plus, .btn-minus', function(e) {
+		const isNegative = jQuery(e.target).closest('.btn-minus').is('.btn-minus');
+		const input = jQuery(e.target).closest('.wcbv-quantity').find('input');
+		if (input.is('input')) {
+			input[0][isNegative ? 'stepDown' : 'stepUp']();
+			// Trigger 'input' event to notify any listeners about the value change
+			input.trigger('change');
+		}
+	});
+</script>
 <?php 
 $title = get_field('related_products_title', 'options');
 $link = get_field('related_products_link', 'options');
@@ -680,17 +691,7 @@ $link = get_field('related_products_link', 'options');
 						
 							<div class="singleProduct__purchase">
 
-								<script>
-									jQuery(document).on('click', '.btn-plus, .btn-minus', function(e) {
-										const isNegative = jQuery(e.target).closest('.btn-minus').is('.btn-minus');
-										const input = jQuery(e.target).closest('.wcbv-quantity').find('input');
-										if (input.is('input')) {
-											input[0][isNegative ? 'stepDown' : 'stepUp']();
-											// Trigger 'input' event to notify any listeners about the value change
-											input.trigger('change');
-										}
-									});
-								</script>
+								
 							
 								<?php 
 
