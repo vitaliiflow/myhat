@@ -31,7 +31,7 @@ if ( post_password_required() ) {
 	return;
 }
 $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
-$full_customizer = get_field('full_customier') || isset($_GET['customize']);
+$full_customizer = isset($_GET['customize']);
 
 
 if (!$full_customizer) : 
@@ -457,7 +457,22 @@ $link = get_field('related_products_link', 'options');
 				
 				?>
 				
-				<?php if ($list) : ?>
+				<?php if ($list) : 
+
+				$locale = get_locale();
+
+				$label_select_the_product = 'Select the product';
+				$label_wholesale_discount = 'Wholesale discounts';
+
+				if ($locale == 'sv_SE') :
+					$label_select_the_product = 'Välj produkt';
+					$label_wholesale_discount = 'Mängdrabatt';
+				endif;
+					
+					
+					?>
+
+					
 
             <div class="tabs" style="background-color: white;">
 				
@@ -465,12 +480,12 @@ $link = get_field('related_products_link', 'options');
 				
 					<div class="product-select product-select--trigger">
 						<span class="fpd-nav-icon fpd-icon-grid"></span>
-						<span class="fpd-label">Select the product</span>
+						<span class="fpd-label"><?php echo $label_select_the_product;?></span>
 					</div>
 
 					<div class="product-select product-select--price-discount">
 						<span class="fpd-nav-icon fpd-icon-grid"></span>
-						<span class="fpd-label">Wholesale discounts</span>
+						<span class="fpd-label"><?php echo $label_wholesale_discount;?></span>
 					</div>
 					
 				</div>

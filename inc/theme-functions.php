@@ -216,3 +216,13 @@ function acf_link_attrs(array $link) {
   echo 'href="' . esc_url($url) . '" target="' . esc_attr($target) . '"';
 }
 
+// this is for fancy product designer plugin
+
+function my_custom_admin_inline_styles() {
+    echo '<style>
+        #fpd-main-entry {
+			width: 100%;
+		}
+    </style>';
+}
+add_action('admin_head', 'my_custom_admin_inline_styles');

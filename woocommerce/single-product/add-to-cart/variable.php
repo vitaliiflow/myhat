@@ -20,6 +20,7 @@ defined( 'ABSPATH' ) || exit;
 global $product;
 
 $product_id = $product->get_id();
+$full_customizer = get_field('full_customier') || isset($_GET['customize']);
     
 // Retrieve the value of the custom checkbox
 $wcbv_checked = get_post_meta($product_id, '_wcbv', true);
@@ -123,7 +124,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
 		if (is_any_variation_in_stock($product_id)) { ?>
 
-        <?php if (in_array($product_id, $products_id_array)) { ?>
+        <?php if (in_array($product_id, $products_id_array) || $full_customizer) { ?>
 
             <div class="product-customizer__trigger-wrapper col-sm-6">
                 <?php 
@@ -202,7 +203,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
         <div class="row">
             <?php if (is_any_variation_in_stock($product_id)) { ?>
 
-                <?php if (in_array($product_id, $products_id_array)) { ?>
+                <?php if (in_array($product_id, $products_id_array) || $full_customizer) { ?>
 
                     <div class="product-customizer__trigger-wrapper col-sm-6">
                         <?php 
