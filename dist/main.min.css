@@ -767,6 +767,7 @@ body.single-product:not(.loaded){position:relative}
 .header__iconsList{display:-webkit-box;display:-ms-flexbox;display:flex;margin:0 -0.445rem;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
 .header__iconsList__item{padding:0 .445rem}
 .header__iconsList__item button.search-toggle{background-image:url("../assets/images/icons/search.png");background-size:contain;background-repeat:no-repeat;background-position:center;display:block;width:20px;height:20px;padding:0;border-radius:0;background-color:transparent}
+.header__iconsList__item button.search-toggle:focus ~ .search__barWrapper{visibility:visible}
 .header__iconsList__item button.search-toggle:focus ~ .search__barWrapper input{opacity:1;visibility:visible}
 .header__iconsList__item img{display:block;width:1.334rem;height:1.334rem}
 .header__iconsList__item.cart a{position:relative}
@@ -779,7 +780,7 @@ body.single-product:not(.loaded){position:relative}
 .header__iconsList__item.search .search__bar input:-ms-input-placeholder{color:#000}
 .header__iconsList__item.search .search__bar input::-ms-input-placeholder{color:#000}
 .header__iconsList__item.search .search__bar input::placeholder{color:#000}
-.header__iconsList__item.search .search__barWrapper{position:absolute;top:calc(100% + 1.1112rem);right:.445rem;-webkit-transition:.3s;transition:.3s}
+.header__iconsList__item.search .search__barWrapper{position:absolute;top:calc(100% + 1.1112rem);right:.445rem;-webkit-transition:.3s;transition:.3s;visibility:hidden}
 .header__iconsList__item.search .search__barWrapper form{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse;border-radius:20px;overflow:hidden}
 .header__iconsList__item.search .search__barWrapper input{opacity:0;visibility:hidden;-webkit-transition:.3s;transition:.3s}
 .header__iconsList__item.search .search__barWrapper input[type="search"]:focus,.header__iconsList__item.search .search__barWrapper input[type="search"]:focus+input{opacity:1;visibility:visible}
