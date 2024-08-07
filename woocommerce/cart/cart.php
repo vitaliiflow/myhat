@@ -69,54 +69,10 @@ do_action( 'woocommerce_before_cart' ); ?>
 							<div class="cart__itemName">
 								<?php echo $product_name; ?>
 								<?php 
-								$isCustomProduct = 0;
-								$item_meta_data = $_product->get_meta_data();
-
-								foreach ($item_meta_data as $meta) {
-									if ($meta->key === '_fpd_data') {
-										$custom_info = $meta->value;
-
-										$fpd_data = json_decode(stripslashes($custom_info), true);
-
-										if (isset($fpd_data['product']) && $fpd_data['product']) {
-											$myhat_products = $fpd_data['product'];
-
-											foreach ($myhat_products as $myhat_product) {
-												$elements = $myhat_product['elements'];
-
-												if (isset($myhat_product['elements'])) {
-													foreach($elements as $element) {
-														$parameters = $element['parameters'];
-														if (isset($parameters)) {
-															if (isset($parameters['_initialText'])) {
-																$isCustomProduct++;
-															} elseif (isset($parameters['originParams'])) {
-																$url = $parameters['originParams']['source'];
-
-																$patternUploads = '/fancy_products_uploads/';
-																$patterncloudfront = '/cloudfront\.net/';
-																$patternForProductAssets = '/fpd-product/';
-
-																if (preg_match($patternUploads, $url)) {
-																	$isCustomProduct++;
-																} elseif (preg_match($patterncloudfront, $url)) {
-																	$isCustomProduct++;
-																} elseif (!preg_match($patternForProductAssets, $url)) {
-																	$isCustomProduct++;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
 
 								// Meta data.
-								if (wc_get_formatted_cart_item_data( $cart_item ) || $isCustomProduct) : // PHPCS: XSS ok.
-									echo '<div class="badge-wrapper"><div class="badge" 
-									style="line-height: 1; border-radius: 20px; padding: 4px 8px; display: inline-block; margin-top: 6px;font-weight: 500;background-color: #3e4a56;color: #fff;">+ Customization</div></div>';
+								if (wc_get_formatted_cart_item_data( $cart_item )) : // PHPCS: XSS ok.
+									echo get_template_part('woocommerce/parts/customization-badge');
 								endif; 
 								?>
 							</div>
