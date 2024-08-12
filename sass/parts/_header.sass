@@ -356,9 +356,11 @@
                 padding: 0
                 border-radius: 0 
                 background-color: transparent
-                &:focus ~ .search__barWrapper input 
-                    opacity: 1
-                    visibility: visible
+                &:focus ~ .search__barWrapper 
+                    visibility: visible 
+                    input 
+                        opacity: 1
+                        visibility: visible
 
             img 
                 display: block 
@@ -410,6 +412,7 @@
                             top: calc( 100% + 1.1112rem )
                             right: 0.445rem 
                             transition: .3s 
+                            visibility: hidden
                             +max-screen($breakpoint-lg)
                                 right: 0 
                                 top: 100%
