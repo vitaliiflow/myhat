@@ -516,6 +516,7 @@ a.text-dark:hover,a.text-dark:focus{color:#121416 !important}
 .mobile-only.view-all-menu-link{margin-top:20px}
 .mobile-only.view-all-menu-link a{border:0;padding:.75rem 1rem !important;-webkit-box-align:center !important;-ms-flex-align:center !important;align-items:center !important;font-weight:600 !important}
 .i-pseudo a::after{content:"";display:block;width:35px;height:35px;background-size:contain;background-repeat:no-repeat;background-position:center;margin-right:10px}
+.has-mobile-icon,.img-icon{display:block;width:35px;height:35px;background-size:contain;background-repeat:no-repeat;background-position:center;margin-right:10px}
 .i-5-panels a::after{background-image:url(../assets/images/header-menu-icons/5-panel-k-i.png)}
 .i-army-cap a::after{background-image:url(../assets/images/header-menu-icons/myhat-army-cap.png)}
 .i-barn-cap a::after{background-image:url(../assets/images/header-menu-icons/myhat-barn.png)}
@@ -646,7 +647,7 @@ body .woocommerce-message a.button{color:#fff;background:#000;border-radius:0;fo
 .woocommerce-notices-wrapper .woocommerce-error{border-color:red;margin-bottom:18px !important}
 .woocommerce-notices-wrapper .woocommerce-error li{list-style-type:none}
 .woocommerce-notices-wrapper .button{padding:6px 24px;white-space:nowrap;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:auto;border-radius:10px;margin-left:auto}
-.wc-block-components-notice-banner{margin-bottom:30px;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:10px;border:1px solid black;border-radius:30px;max-width:1205px;margin:0 auto}
+.wc-block-components-notice-banner{margin-bottom:30px;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:10px;border:1px solid black;border-radius:30px;max-width:1205px;margin:0 auto;margin-left:auto !important;margin-right:auto !important}
 .wc-block-components-notice-banner__content{-webkit-box-flex:1;-ms-flex:1 1 auto;flex:1 1 auto;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end}
 .wc-block-components-notice-banner__content a{width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;margin:0;margin-left:15px}
 .wac-qty-button{display:inline;text-decoration:none !important;font-weight:bold;width:30px;color:#808b94;border:1px solid lightgray;-webkit-box-sizing:border-box;box-sizing:border-box;padding:5px}

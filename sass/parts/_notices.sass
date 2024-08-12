@@ -1,4 +1,5 @@
 .woocommerce-notices-wrapper
+    margin-bottom: 16px
     .woocommerce-message,
     .woocommerce-error
         display: flex
@@ -40,6 +41,10 @@
     border-radius: 30px
     max-width: 1205px
     margin: 0 auto
+    margin-left: auto !important
+    margin-right: auto !important
+    & + .wc-block-components-notice-banner
+        margin-top: 16px
     &__content
         flex: 1 1 auto
         display: flex

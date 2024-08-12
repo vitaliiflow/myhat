@@ -20,3 +20,22 @@
 
 .wcbv-discounts-table
     padding: 0 15px
+
+.fpd-navigation.fpd-scrollbar-hidden
+    +max-screen($breakpoint-md)
+        overflow: hidden
+        flex-direction: row !important
+        width: 100%
+        height: auto !important
+        .fpd-nav-item
+            +max-screen($breakpoint-md)
+                width: 50%
+                height: auto
+.product-data-wrapper
+    .product-select
+        +max-screen($breakpoint-md)
+            width: 50%
+        &:last-child
+            +max-screen(450px)
+                width: 100%
+                border-bottom: 1px solid var(--fpd-border-color)
