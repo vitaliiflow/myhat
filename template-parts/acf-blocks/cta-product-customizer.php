@@ -11,8 +11,8 @@ if ($image && $link) :
     $link_title = $link['title'];
     $link_target = $link['target'] ? $link['target'] : '_self'; 
     ?>
-
-<sectioin class="section cta cta--product-customizer">
+    <a href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>" style="display:block;">
+<section class="section cta cta--product-customizer">
 
     <picture class="img-absoolute cta__img">
 
@@ -43,10 +43,14 @@ if ($image && $link) :
 
         <?php endif; ?>
 
-        <a class="button button--arrow mt-2 mt-md-3" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?><?php echo get_inline_svg('arrow-right.svg');?></a>
+        <div class="button button--arrow mt-2 mt-md-3"><?php echo esc_html( $link_title ); ?><?php echo get_inline_svg('arrow-right.svg');?></div>
 
     </div>
 
-</sectioin>
+   
+
+</section>
+
+</a>
 
 <?php endif; ?>

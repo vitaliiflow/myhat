@@ -31,12 +31,115 @@ if ( post_password_required() ) {
 	return;
 }
 $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
-$full_customizer = isset($_GET['customize']);
+$full_customizer =  isset($_GET['customize']);
+
+if( 'simple' === $product->get_type() ) { ?>
+	<style>
+		.singleProduct__purchase {
+			flex-wrap: wrap;
+		}
+		
+		.singleProduct__purchase .stock {
+			margin-bottom: 1rem;
+			margin-top: 1rem;
+			width: 100%;
+		}
+		
+		.singleProduct__purchase .cart {
+			flex-direction: row;
+		}
+		
+		.single_add_to_cart_button {
+			border-radius: 0;
+		}
+	</style>
+<?php }
+
+?>
+
+<script>
+	jQuery(document).on('click', '.btn-plus, .btn-minus', function(e) {
+		const isNegative = jQuery(e.target).closest('.btn-minus').is('.btn-minus');
+		const input = jQuery(e.target).closest('.wcbv-quantity').find('input');
+		if (input.is('input')) {
+			input[0][isNegative ? 'stepDown' : 'stepUp']();
+			// Trigger 'input' event to notify any listeners about the value change
+			input.trigger('change');
+		}
+	});
+</script>
+
+<?php 
 
 
 if (!$full_customizer) : 
 
+
 ?>
+
+<style>
+
+@media (max-width: 576px) {
+	.product-customizer__trigger-wrapper {
+		text-align: center;
+		margin-bottom: 1rem;
+	}
+}
+	
+	.pathes-tab-trigger {
+/* 		opacity: 0; */
+		margin-left: 10px;
+		margin-right: 10px;
+		margin-top: 0;
+	}
+	
+	.fpd-text-templates {
+		padding: 10px;
+	}
+	
+	.fpd-padding + .pathes-tab-trigger {
+		margin-top: -20px;
+	}
+	
+	.fpd-container fpd-module-text .fpd-add-text .fpd-btn {
+		margin-bottom: 0;
+	}
+
+
+</style>
+<script>
+
+	
+	jQuery(document).ready(function () {
+		// Log to verify the script is working
+		// console.log('this script is working');
+
+		// Event handler for clicking the product customizer trigger
+		jQuery(document).on("click", ".product-customizer__trigger-wrapper", function () {
+
+			// Select all target elements where you want to append the div
+			var targetElements = jQuery('.fpd-text-templates'); // Replace with your target elements selector
+
+			// Iterate through each target element and append the new div if it doesn't already exist
+			targetElements.each(function() {
+				if (jQuery(this).find('.pathes-tab-trigger').length === 0) {
+					var newDiv = jQuery('<div>Flaggor och patchar.</div>').addClass('pathes-tab-trigger fpd-btn'); // Replace 'your-class' with the desired class
+					jQuery(this).append(newDiv);
+				}
+			});
+
+		});
+
+		// Event handler for clicking the pathes-tab-trigger
+		jQuery(document).on("click", ".pathes-tab-trigger", function () {
+			jQuery('.fpd-add-design').click();
+		});
+	});
+
+	
+	
+</script>
+
 <section id="product-<?php the_ID(); ?>" <?php wc_product_class( 'singleProduct', $product ); ?>>
 	<div class="container">
 		<div class="singleProduct__breadcrumbs"><?php get_template_part('template-parts/parts/breadcrumbs'); ?></div>
@@ -52,6 +155,42 @@ if (!$full_customizer) :
 
 					<div class="product-customizer__wrapper">
 						<?php echo do_shortcode('[fpd]'); ?>
+						<?php if (!$full_customizer) : ?>
+							<div class="wc-block-components-notice-banner--fpd-color" style="margin-top: 30px; background: #f1f1ef; padding: 15px; display: none;">
+								<div class="wc-block-components-notice-banner__content">
+									! Klicka på din text för att ändra färg!
+								</div>
+							</div>
+						<script>
+							jQuery(document).ready(function () {
+								//console.log('this sript is working');
+								jQuery(".fancy-product").on("click", ".fpd-add-text .fpd-btn", function () {
+
+									jQuery('.wc-block-components-notice-banner--fpd-color').show();
+								})
+							});
+						</script>
+						<style>
+							.fpd-container .fpd-scroll-area.fpd-tools-nav {
+								flex-direction: row;
+							}
+							
+							.fpd-tool-position {
+								display: none !important;
+							}
+							
+							@media (max-width: 450px) {
+								.wc-block-components-notice-banner--fpd-color {
+									position: absolute;
+									left: 0;
+									bottom: 0;
+									width: 100%;
+									z-index: 100;
+								}
+							}
+						
+						</style>
+						<?php endif; ?>
 					</div>
 					
 
