@@ -51,6 +51,10 @@ if ($list ) : ?>
                 $thumbnail_id = get_term_meta( $id, 'thumbnail_id', true );
                 $image = wp_get_attachment_url( $thumbnail_id );
 
+                if (empty($image)) : 
+					$image = $item['taxonomy-image']['url'];
+				endif;
+
                 if ($image) : ?>
 
                     <li class="product-cat__item col-auto">
