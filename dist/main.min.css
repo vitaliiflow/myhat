@@ -813,7 +813,7 @@ body.single-product:not(.loaded){position:relative}
 .mobile-only.view-all-menu-link{margin-top:20px}
 .mobile-only.view-all-menu-link a{border:0;padding:.75rem 1rem !important;-webkit-box-align:center !important;-ms-flex-align:center !important;align-items:center !important;font-weight:600 !important}
 .i-pseudo a::after{content:"";display:block;width:35px;height:35px;background-size:contain;background-repeat:no-repeat;background-position:center;margin-right:10px}
-.has-mobile-icon,.img-icon{display:block;width:35px;height:35px;background-size:contain;background-repeat:no-repeat;background-position:center;margin-right:10px}
+.has-mobile-icon .img-icon{display:block;width:35px;height:35px;background-size:contain;background-repeat:no-repeat;background-position:center;margin-right:10px}
 .i-5-panels a::after{background-image:url(../assets/images/header-menu-icons/5-panel-k-i.png)}
 .i-army-cap a::after{background-image:url(../assets/images/header-menu-icons/myhat-army-cap.png)}
 .i-barn-cap a::after{background-image:url(../assets/images/header-menu-icons/myhat-barn.png)}
