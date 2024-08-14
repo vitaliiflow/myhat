@@ -140,453 +140,453 @@ if (!$full_customizer) :
 	
 </script>
 
-<section id="product-<?php the_ID(); ?>" <?php wc_product_class( 'singleProduct', $product ); ?>>
-	<div class="container">
-		<div class="singleProduct__breadcrumbs"><?php get_template_part('template-parts/parts/breadcrumbs'); ?></div>
-		<div class="singleProduct__content">
-			<div class="singleProduct__galleryWrapper">
-				<div class="shopPage__listItem__labels">
-					<?php echo get_template_part( 'woocommerce/loop/sale-flash' ); ?>
-					<?php get_template_part( 'woocommerce/parts/product-bages' ); ?>
+	<section id="product-<?php the_ID(); ?>" <?php wc_product_class( 'singleProduct', $product ); ?>>
+		<div class="container">
+			<div class="singleProduct__breadcrumbs"><?php get_template_part('template-parts/parts/breadcrumbs'); ?></div>
+			<div class="singleProduct__content">
+				<div class="singleProduct__galleryWrapper">
+					<div class="shopPage__listItem__labels">
+						<?php echo get_template_part( 'woocommerce/loop/sale-flash' ); ?>
+						<?php get_template_part( 'woocommerce/parts/product-bages' ); ?>
 
 
-				</div>
-				<div class="singleProduct__gallery">
-
-					<div class="product-customizer__wrapper">
-						<?php echo do_shortcode('[fpd]'); ?>
-						<?php if (!$full_customizer) : ?>
-							<div class="wc-block-components-notice-banner--fpd-color" style="margin-top: 30px; background: #f1f1ef; padding: 15px; display: none;">
-								<div class="wc-block-components-notice-banner__content">
-									! Klicka på din text för att ändra färg!
-								</div>
-							</div>
-						<script>
-							jQuery(document).ready(function () {
-								//console.log('this sript is working');
-								jQuery(".fancy-product").on("click", ".fpd-add-text .fpd-btn", function () {
-
-									jQuery('.wc-block-components-notice-banner--fpd-color').show();
-								})
-							});
-						</script>
-						<style>
-							.fpd-container .fpd-scroll-area.fpd-tools-nav {
-								flex-direction: row;
-							}
-							
-							.fpd-tool-position {
-								display: none !important;
-							}
-							
-							@media (max-width: 450px) {
-								.wc-block-components-notice-banner--fpd-color {
-									position: absolute;
-									left: 0;
-									bottom: 0;
-									width: 100%;
-									z-index: 100;
-								}
-							}
-						
-						</style>
-						<?php endif; ?>
 					</div>
-					
+					<div class="singleProduct__gallery">
 
-					<?php 
-					global $product;
-
-					$columns           = apply_filters( 'woocommerce_product_thumbnails_columns', 4 );
-					$post_thumbnail_id = $product->get_image_id();
-					$wrapper_classes   = apply_filters(
-						'woocommerce_single_product_image_gallery_classes',
-						array(
-							'woocommerce-product-gallery',
-							'woocommerce-product-gallery--' . ( $post_thumbnail_id ? 'with-images' : 'without-images' ),
-							'woocommerce-product-gallery--columns-' . absint( $columns ),
-							'images',
-						)
-					);
-					?>
-					<div class="<?php echo esc_attr( implode( ' ', array_map( 'sanitize_html_class', $wrapper_classes ) ) ); ?>" data-columns="<?php echo esc_attr( $columns ); ?>" style="opacity: 0; transition: opacity .25s ease-in-out;">
-						<div class="woocommerce-product-gallery__wrapper">
-							<?php
-							if ( $post_thumbnail_id ) {
-								$html = wc_get_gallery_image_html( $post_thumbnail_id, true );
-							} else {
-								$html  = '<div class="woocommerce-product-gallery__image--placeholder">';
-								$html .= sprintf( '<img src="%s" alt="%s" class="wp-post-image" />', esc_url( wc_placeholder_img_src( 'woocommerce_single' ) ), esc_html__( 'Awaiting product image', 'woocommerce' ) );
-								$html .= '</div>';
-							}
-					
-							echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', $html, $post_thumbnail_id ); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
-					
-							$attachment_ids = $product->get_gallery_image_ids();
-							if ( $attachment_ids && count( $attachment_ids ) > 0 ) {
-							    foreach ( $attachment_ids as $attachment_id ) {
-							        $image_url = wp_get_attachment_image_url( $attachment_id, 'full' ); ?>
-									<div data-thumb="<?php echo esc_url( $image_url ); ?>" class="woocommerce-product-gallery__image">
-										<a href="<?php echo esc_url( $image_url ); ?>">
-											<?php echo '<img src="' . esc_url( $image_url ) . '" alt="' . esc_attr( get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ) ) . '" />'; ?>
-										</a>
+						<div class="product-customizer__wrapper">
+							<?php echo do_shortcode('[fpd]'); ?>
+							<?php if (!$full_customizer) : ?>
+								<div class="wc-block-components-notice-banner--fpd-color" style="margin-top: 30px; background: #f1f1ef; padding: 15px; display: none;">
+									<div class="wc-block-components-notice-banner__content">
+										! Klicka på din text för att ändra färg!
 									</div>
-									<?php
-							    }
-							}
-							?>
+								</div>
+							<script>
+								jQuery(document).ready(function () {
+									//console.log('this sript is working');
+									jQuery(".fancy-product").on("click", ".fpd-add-text .fpd-btn", function () {
+
+										jQuery('.wc-block-components-notice-banner--fpd-color').show();
+									})
+								});
+							</script>
+							<style>
+								.fpd-container .fpd-scroll-area.fpd-tools-nav {
+									flex-direction: row;
+								}
+								
+								.fpd-tool-position {
+									display: none !important;
+								}
+								
+								@media (max-width: 450px) {
+									.wc-block-components-notice-banner--fpd-color {
+										position: absolute;
+										left: 0;
+										bottom: 0;
+										width: 100%;
+										z-index: 100;
+									}
+								}
+							
+							</style>
+							<?php endif; ?>
 						</div>
-					</div>
-					
-				</div>
-			</div>
-			<div class="singleProduct__gallerySlider">
-				<div class="woocommerce-product-gallery__wrapper">
-					<?php
-					if ( $post_thumbnail_id ) {
-						$html = wc_get_gallery_image_html( $post_thumbnail_id, true );
-					} else {
-						$html  = '<div class="woocommerce-product-gallery__image--placeholder">';
-						$html .= sprintf( '<img src="%s" alt="%s" class="wp-post-image" />', esc_url( wc_placeholder_img_src( 'woocommerce_single' ) ), esc_html__( 'Awaiting product image', 'woocommerce' ) );
-						$html .= '</div>';
-					}
-					echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', $html, $post_thumbnail_id ); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
-					$attachment_ids = $product->get_gallery_image_ids();
-					if ( $attachment_ids && count( $attachment_ids ) > 0 ) {
-					    foreach ( $attachment_ids as $attachment_id ) {
-					        $image_url = wp_get_attachment_image_url( $attachment_id, 'full' ); ?>
-							<div data-thumb="<?php echo esc_url( $image_url ); ?>" class="woocommerce-product-gallery__image">
-								<?php echo '<img src="' . esc_url( $image_url ) . '" alt="' . esc_attr( get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ) ) . '" />'; ?>
-							</div>
-							<?php
-					    }
-					}
-					?>
-				</div>
-				<div class="singleProduct__galleryOverlay"></div>
-				<div class="singleProduct__gallerySlider__close"></div>
-			</div>
-			<div class="singleProduct__dataWrapper">
-				<div class="singleProduct__data">
-					<?php $categories = get_the_terms( $product->get_id(), 'varumarke' ); ?>
-					<?php if($categories && ! is_wp_error( $categories )): ?>
+						
+
 						<?php 
-							$tax = $categories[0]->name; 
-							$tax_id = $categories[0]->term_id;
+						global $product;
+
+						$columns           = apply_filters( 'woocommerce_product_thumbnails_columns', 4 );
+						$post_thumbnail_id = $product->get_image_id();
+						$wrapper_classes   = apply_filters(
+							'woocommerce_single_product_image_gallery_classes',
+							array(
+								'woocommerce-product-gallery',
+								'woocommerce-product-gallery--' . ( $post_thumbnail_id ? 'with-images' : 'without-images' ),
+								'woocommerce-product-gallery--columns-' . absint( $columns ),
+								'images',
+							)
+						);
 						?>
-						<div class="singleProduct__tax"><?php echo $tax; ?></div>
-					<?php endif; ?>
-					<h1 class="singleProduct__title h2"><?php the_title(); ?></h1>
-					<div class="singleProduct__price<?php if($product->is_on_sale()){ echo ' sale'; } ?>"><?php echo $product->get_price_html(); ?></div>
-					<div class="singleProduct__purchase">
+						<div class="<?php echo esc_attr( implode( ' ', array_map( 'sanitize_html_class', $wrapper_classes ) ) ); ?>" data-columns="<?php echo esc_attr( $columns ); ?>" style="opacity: 0; transition: opacity .25s ease-in-out;">
+							<div class="woocommerce-product-gallery__wrapper">
+								<?php
+								if ( $post_thumbnail_id ) {
+									$html = wc_get_gallery_image_html( $post_thumbnail_id, true );
+								} else {
+									$html  = '<div class="woocommerce-product-gallery__image--placeholder">';
+									$html .= sprintf( '<img src="%s" alt="%s" class="wp-post-image" />', esc_url( wc_placeholder_img_src( 'woocommerce_single' ) ), esc_html__( 'Awaiting product image', 'woocommerce' ) );
+									$html .= '</div>';
+								}
 						
-						<?php 
+								echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', $html, $post_thumbnail_id ); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
 						
-						$product_id = $product->get_id();
+								$attachment_ids = $product->get_gallery_image_ids();
+								if ( $attachment_ids && count( $attachment_ids ) > 0 ) {
+									foreach ( $attachment_ids as $attachment_id ) {
+										$image_url = wp_get_attachment_image_url( $attachment_id, 'full' ); ?>
+										<div data-thumb="<?php echo esc_url( $image_url ); ?>" class="woocommerce-product-gallery__image">
+											<a href="<?php echo esc_url( $image_url ); ?>">
+												<?php echo '<img src="' . esc_url( $image_url ) . '" alt="' . esc_attr( get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ) ) . '" />'; ?>
+											</a>
+										</div>
+										<?php
+									}
+								}
+								?>
+							</div>
+						</div>
 						
-						// Retrieve the value of the custom checkbox
-						$wcbv_checked = get_post_meta($product_id, '_wcbv', true);
-						
-						if ($wcbv_checked === 'yes') {
-							echo do_shortcode('[wcbv]');
-							
+					</div>
+				</div>
+				<div class="singleProduct__gallerySlider">
+					<div class="woocommerce-product-gallery__wrapper">
+						<?php
+						if ( $post_thumbnail_id ) {
+							$html = wc_get_gallery_image_html( $post_thumbnail_id, true );
+						} else {
+							$html  = '<div class="woocommerce-product-gallery__image--placeholder">';
+							$html .= sprintf( '<img src="%s" alt="%s" class="wp-post-image" />', esc_url( wc_placeholder_img_src( 'woocommerce_single' ) ), esc_html__( 'Awaiting product image', 'woocommerce' ) );
+							$html .= '</div>';
+						}
+						echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', $html, $post_thumbnail_id ); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
+						$attachment_ids = $product->get_gallery_image_ids();
+						if ( $attachment_ids && count( $attachment_ids ) > 0 ) {
+							foreach ( $attachment_ids as $attachment_id ) {
+								$image_url = wp_get_attachment_image_url( $attachment_id, 'full' ); ?>
+								<div data-thumb="<?php echo esc_url( $image_url ); ?>" class="woocommerce-product-gallery__image">
+									<?php echo '<img src="' . esc_url( $image_url ) . '" alt="' . esc_attr( get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ) ) . '" />'; ?>
+								</div>
+								<?php
+							}
+						}
+						?>
+					</div>
+					<div class="singleProduct__galleryOverlay"></div>
+					<div class="singleProduct__gallerySlider__close"></div>
+				</div>
+				<div class="singleProduct__dataWrapper">
+					<div class="singleProduct__data">
+						<?php $categories = get_the_terms( $product->get_id(), 'varumarke' ); ?>
+						<?php if($categories && ! is_wp_error( $categories )): ?>
+							<?php 
+								$tax = $categories[0]->name; 
+								$tax_id = $categories[0]->term_id;
 							?>
-						
-						<style>
-							.singleProduct__purchase {
-								display: block;
-							}
+							<div class="singleProduct__tax"><?php echo $tax; ?></div>
+						<?php endif; ?>
+						<h1 class="singleProduct__title h2"><?php the_title(); ?></h1>
+						<div class="singleProduct__price<?php if($product->is_on_sale()){ echo ' sale'; } ?>"><?php echo $product->get_price_html(); ?></div>
+						<div class="singleProduct__purchase">
 							
-							.singleProduct__before-purchase {
-								display: none;
-							}
+							<?php 
 							
-							.singleProduct__purchase .quantity-btn {
-								display: none;
-							}
+							$product_id = $product->get_id();
 							
-							.wcbv-reset-variations {
-						display: none;
-					}
-					
-					.wcbv-fields select {
-					  -webkit-appearance: none;
-					  -moz-appearance: none;
-					  text-indent: 1px;
-					  text-overflow: '';
-					  height: 45.5px;
-					  padding: 10px;
-					  margin-left: -5px !important;
-					  min-width: 200px;
-					  margin-right: 10px !important;
-					}
-					
-					.wcbv-quantity--wrapper {
-						display: flex;
-					}
-					
-					.wcbv-wrapper .wcbv-quantity {
-						flex-basis: 155px !important;
-						padding-right: 20px;
-					}
-					
-					#wcbv-add-row {
-						padding: 10px 20px;
-					}
-					
-					.wcbv-quantity--wrapper .btn {
-						border-radius: 0;
-					}
-					
-					.wcbv-attributes-head>div.wcbv-remove {
-						border-bottom: 2px solid rgba(0,0,0,.1);
-					}
-					
-					.wcbv-quantity--wrapper input {
-						width: 70px;
-						height: 100% !important;
-						background-color: #f1f1ef;
-						border-radius: 0;
-						padding-left: 15px;
-						padding-right: 15px;
-						text-align: center;
-					}
-					
-					.wcbv-remove .wcbv-remove-row {
-						left: -10px;
-					}
-					
-					
-					
-					@media screen and (max-width: 767px) {
-    					.pvtfw_variant_table_block table.variant td:before {
-							padding: 20px;
-						}
-						
-						.product-select--thumbnails {
-							width: 100%;
-						}
-						
-						.product-select--thumbnails .fpd-view-thumbnails-wrapper {
-							width: 100%;
-						}
-						
-						.product-select--thumbnails .fpd-view-thumbnails-wrapper>.fpd-item {
-							width: calc(25% - 15px);
-							height: auto;
-							aspect-ratio: 1 / 1;
-						}
-						.pvtfw_init_variation_table, .pvtfw_variant_table_block, table.variant, .singleProduct__purchase {
-							width: 100%;
-						}
-					}
-					
-					@media (max-width: 568px) {
-						.wcbv-row .wcbv-fields {
-							display: flex !important;
-						}
-					}
-					
-					@media screen and (max-width: 450px) {
-						.fpd-view-thumbnails-wrapper {
-							gap: 0;
-/* 							margin-left: -10px;
-							margin-right: -10px; */
-						}
-						.product-select--thumbnails .fpd-view-thumbnails-wrapper>.fpd-item {
-							width: calc(50% - 20px);
-							margin: 10px
-						}
-						
-						.pvtfw_variant_table_block, table.variant, .singleProduct__purchase {
-							width: 100%;
-						}
-						
-						.pvtfw_init_variation_table {
-							margin-left: 10px;
-							margin-right: 10px;
-							width: calc(100% - 20px);
-						}
-						
-						.product-select--thumbnails, .fpd-navigation--color-selection .singleProduct__purchase {
-							padding-left: 10px;
-							padding-right: 10px;
-						}
-						
-						.wcbv-quantity--wrapper input {
-							width: 50px;
-							padding-left: 10px; 
-							padding-right: 10px;
+							// Retrieve the value of the custom checkbox
+							$wcbv_checked = get_post_meta($product_id, '_wcbv', true);
+							
+							if ($wcbv_checked === 'yes') {
+								echo do_shortcode('[wcbv]');
+								
+								?>
+							
+							<style>
+								.singleProduct__purchase {
+									display: block;
+								}
+								
+								.singleProduct__before-purchase {
+									display: none;
+								}
+								
+								.singleProduct__purchase .quantity-btn {
+									display: none;
+								}
+								
+								.wcbv-reset-variations {
+							display: none;
 						}
 						
 						.wcbv-fields select {
-							max-width: 175px;
-							min-width: 175px;
-							margin-left: 0 !important;
+						-webkit-appearance: none;
+						-moz-appearance: none;
+						text-indent: 1px;
+						text-overflow: '';
+						height: 45.5px;
+						padding: 10px;
+						margin-left: -5px !important;
+						min-width: 200px;
+						margin-right: 10px !important;
 						}
 						
-						.wcbv-wrapper .wcbv-selects>* {
-							margin-bottom: 0;
+						.wcbv-quantity--wrapper {
+							display: flex;
+						}
+						
+						.wcbv-wrapper .wcbv-quantity {
+							flex-basis: 155px !important;
+							padding-right: 20px;
+						}
+						
+						#wcbv-add-row {
+							padding: 10px 20px;
 						}
 						
 						.wcbv-quantity--wrapper .btn {
+							border-radius: 0;
+						}
+						
+						.wcbv-attributes-head>div.wcbv-remove {
+							border-bottom: 2px solid rgba(0,0,0,.1);
+						}
+						
+						.wcbv-quantity--wrapper input {
+							width: 70px;
+							height: 100% !important;
+							background-color: #f1f1ef;
+							border-radius: 0;
 							padding-left: 15px;
 							padding-right: 15px;
+							text-align: center;
 						}
-					}
-					
-					@media screen and (max-width: 390px) {
-						.wcbv-fields select {
-							max-width: 150px;
-							min-width: 150px;
-						}
-					}
-							
-							.singleProduct__purchase .single_add_to_cart_button {
-								margin-left: 0;
-							}
-							
-							.singleProduct__colorsList {
-								display: none;
-							}
-						</style>
 						
-						<div class="bulk-variation-addon <?php echo $product_id;?>" style="display:none;">
-							<?php var_dump($wcbv_checked); ?>
+						.wcbv-remove .wcbv-remove-row {
+							left: -10px;
+						}
+						
+						
+						
+						@media screen and (max-width: 767px) {
+							.pvtfw_variant_table_block table.variant td:before {
+								padding: 20px;
+							}
+							
+							.product-select--thumbnails {
+								width: 100%;
+							}
+							
+							.product-select--thumbnails .fpd-view-thumbnails-wrapper {
+								width: 100%;
+							}
+							
+							.product-select--thumbnails .fpd-view-thumbnails-wrapper>.fpd-item {
+								width: calc(25% - 15px);
+								height: auto;
+								aspect-ratio: 1 / 1;
+							}
+							.pvtfw_init_variation_table, .pvtfw_variant_table_block, table.variant, .singleProduct__purchase {
+								width: 100%;
+							}
+						}
+						
+						@media (max-width: 568px) {
+							.wcbv-row .wcbv-fields {
+								display: flex !important;
+							}
+						}
+						
+						@media screen and (max-width: 450px) {
+							.fpd-view-thumbnails-wrapper {
+								gap: 0;
+	/* 							margin-left: -10px;
+								margin-right: -10px; */
+							}
+							.product-select--thumbnails .fpd-view-thumbnails-wrapper>.fpd-item {
+								width: calc(50% - 20px);
+								margin: 10px
+							}
+							
+							.pvtfw_variant_table_block, table.variant, .singleProduct__purchase {
+								width: 100%;
+							}
+							
+							.pvtfw_init_variation_table {
+								margin-left: 10px;
+								margin-right: 10px;
+								width: calc(100% - 20px);
+							}
+							
+							.product-select--thumbnails, .fpd-navigation--color-selection .singleProduct__purchase {
+								padding-left: 10px;
+								padding-right: 10px;
+							}
+							
+							.wcbv-quantity--wrapper input {
+								width: 50px;
+								padding-left: 10px; 
+								padding-right: 10px;
+							}
+							
+							.wcbv-fields select {
+								max-width: 175px;
+								min-width: 175px;
+								margin-left: 0 !important;
+							}
+							
+							.wcbv-wrapper .wcbv-selects>* {
+								margin-bottom: 0;
+							}
+							
+							.wcbv-quantity--wrapper .btn {
+								padding-left: 15px;
+								padding-right: 15px;
+							}
+						}
+						
+						@media screen and (max-width: 390px) {
+							.wcbv-fields select {
+								max-width: 150px;
+								min-width: 150px;
+							}
+						}
+								
+								.singleProduct__purchase .single_add_to_cart_button {
+									margin-left: 0;
+								}
+								
+								.singleProduct__colorsList {
+									display: none;
+								}
+							</style>
+							
+							<div class="bulk-variation-addon <?php echo $product_id;?>" style="display:none;">
+								<?php var_dump($wcbv_checked); ?>
+							</div>
+							
+							<?php 
+						
+							}
+							
+							?>
+							<?php do_action('woocommerce_product_add_to_cart'); ?>
 						</div>
-						
-						<?php 
-					
-						}
-						
-						?>
-						<?php do_action('woocommerce_product_add_to_cart'); ?>
-					</div>
 
-					<?php if(have_rows('product_features', 'options')): ?>
-						<div class="singleProduct__featuresList">
-							<?php while(have_rows('product_features', 'options')): the_row(); ?>
-								<?php 
-								$icon = get_sub_field('icon');
-								$text = get_sub_field('text');
-								if($icon || $text):
-								?>
-								<div class="singleProduct__featuresList__item">
-									<?php if($icon): ?>
-										<div class="singleProduct__featuresList__itemIcon"><img src="<?php echo $icon; ?>" alt="check icon"></div>
-									<?php endif; ?>
-									<?php if($text): ?>
-										<div class="singleProduct__featuresList__itemLabel"><?php echo $text; ?></div>
-									<?php endif; ?>
-								</div>
-								<?php endif; ?>
-							<?php endwhile; ?>
-						</div>
-					<?php endif; ?>
-					
-					
-					<?php if(!empty($product_tabs)): ?>
-						<div class="singleProduct__accordionList">
-							<?php foreach($product_tabs as $key => $product_tab): ?>
-								<div class="singleProduct__accordionItem">
-									<div class="singleProduct__accordionItem__title"><?php echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); ?></div>
+						<?php if(have_rows('product_features', 'options')): ?>
+							<div class="singleProduct__featuresList">
+								<?php while(have_rows('product_features', 'options')): the_row(); ?>
 									<?php 
-									if ( isset( $product_tab['callback'] ) ) :
+									$icon = get_sub_field('icon');
+									$text = get_sub_field('text');
+									if($icon || $text):
 									?>
-										<div class="singleProduct__accordionItem__content"><?php call_user_func( $product_tab['callback'], $key, $product_tab ); ?></div>
+									<div class="singleProduct__featuresList__item">
+										<?php if($icon): ?>
+											<div class="singleProduct__featuresList__itemIcon"><img src="<?php echo $icon; ?>" alt="check icon"></div>
+										<?php endif; ?>
+										<?php if($text): ?>
+											<div class="singleProduct__featuresList__itemLabel"><?php echo $text; ?></div>
+										<?php endif; ?>
+									</div>
 									<?php endif; ?>
-								</div>
-							<?php endforeach; ?>
-						</div>
-					<?php endif; ?>
-					<?php if(!empty($tax)): ?>
-						<a href="<?php echo get_category_link($tax_id); ?>" class="singleProduct__link"><?php echo 'Se mer från ' . $tax; ?></a>
-					<?php endif; ?>
+								<?php endwhile; ?>
+							</div>
+						<?php endif; ?>
+						
+						
+						<?php if(!empty($product_tabs)): ?>
+							<div class="singleProduct__accordionList">
+								<?php foreach($product_tabs as $key => $product_tab): ?>
+									<div class="singleProduct__accordionItem">
+										<div class="singleProduct__accordionItem__title"><?php echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); ?></div>
+										<?php 
+										if ( isset( $product_tab['callback'] ) ) :
+										?>
+											<div class="singleProduct__accordionItem__content"><?php call_user_func( $product_tab['callback'], $key, $product_tab ); ?></div>
+										<?php endif; ?>
+									</div>
+								<?php endforeach; ?>
+							</div>
+						<?php endif; ?>
+						<?php if(!empty($tax)): ?>
+							<a href="<?php echo get_category_link($tax_id); ?>" class="singleProduct__link"><?php echo 'Se mer från ' . $tax; ?></a>
+						<?php endif; ?>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
-<script>
-	jQuery(document).on('click', '.btn-plus, .btn-minus', function(e) {
-		const isNegative = jQuery(e.target).closest('.btn-minus').is('.btn-minus');
-		const input = jQuery(e.target).closest('.wcbv-quantity').find('input');
-		if (input.is('input')) {
-			input[0][isNegative ? 'stepDown' : 'stepUp']();
-			// Trigger 'input' event to notify any listeners about the value change
-			input.trigger('change');
-		}
-	});
-</script>
-<?php 
-$title = get_field('related_products_title', 'options');
-$link = get_field('related_products_link', 'options');
-?>
-<section class="section latest-products">
-    <div class="container">
-		<?php if($title || $link): ?>
-			<div class="section__title">
-				<?php if($title): ?>
-					<h2 class="text-center"><?php echo $title; ?></h2>
-				<?php endif; ?>
-				<?php if($link): ?>
-					<?php $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-					<a class="btn button--arrow sm" href="<?php echo $link['url']; ?>" target="<?php echo $link_target; ?>"><?php echo $link['title']; ?><?php echo get_inline_svg('arrow-right.svg');?></a>
-				<?php endif; ?>
-			</div>
-		<?php endif; ?>
-		<?php 
-		$chosen_products = $product->get_upsell_ids();
-		if(count($chosen_products) <= 5){
-			$product_per_page = 5 - count($chosen_products);	
-		}
-		else{
-			$product_per_page = 0;
-		}
-		
-		$related_products = array_filter( array_map( 'wc_get_product', wc_get_related_products( $product->get_id(), $product_per_page, $chosen_products ) ), 'wc_products_array_filter_visible' );
-		$products = wc_products_array_orderby( $related_products, 'rand', 'desc' );
-		?>
-        <ul class="row products latest-products__list latest-products__list-slider">
-		<?php $i = 0; foreach($chosen_products as $product_id): ?>
-			<?php 
-				if($i < 5):
-				$post_object = get_post( $product_id );
-				setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found ?>
-	
-				<div class="shopPage__listItem latest-products__item col-lg-auto">
-	
-					<?php wc_get_template_part('content', 'product'); ?>
-	
+	</section>
+	<script>
+		jQuery(document).on('click', '.btn-plus, .btn-minus', function(e) {
+			const isNegative = jQuery(e.target).closest('.btn-minus').is('.btn-minus');
+			const input = jQuery(e.target).closest('.wcbv-quantity').find('input');
+			if (input.is('input')) {
+				input[0][isNegative ? 'stepDown' : 'stepUp']();
+				// Trigger 'input' event to notify any listeners about the value change
+				input.trigger('change');
+			}
+		});
+	</script>
+	<?php 
+	$title = get_field('related_products_title', 'options');
+	$link = get_field('related_products_link', 'options');
+	?>
+	<section class="section latest-products">
+		<div class="container">
+			<?php if($title || $link): ?>
+				<div class="section__title">
+					<?php if($title): ?>
+						<h2 class="text-center"><?php echo $title; ?></h2>
+					<?php endif; ?>
+					<?php if($link): ?>
+						<?php $link_target = $link['target'] ? $link['target'] : '_self'; ?>
+						<a class="btn button--arrow sm" href="<?php echo $link['url']; ?>" target="<?php echo $link_target; ?>"><?php echo $link['title']; ?><?php echo get_inline_svg('arrow-right.svg');?></a>
+					<?php endif; ?>
 				</div>
-				<?php endif; $i++ ?>
+			<?php endif; ?>
+			<?php 
+			$chosen_products = $product->get_upsell_ids();
+			if(count($chosen_products) <= 5){
+				$product_per_page = 5 - count($chosen_products);	
+			}
+			else{
+				$product_per_page = 0;
+			}
+			
+			$related_products = array_filter( array_map( 'wc_get_product', wc_get_related_products( $product->get_id(), $product_per_page, $chosen_products ) ), 'wc_products_array_filter_visible' );
+			$products = wc_products_array_orderby( $related_products, 'rand', 'desc' );
+			?>
+			<ul class="row products latest-products__list latest-products__list-slider">
+			<?php $i = 0; foreach($chosen_products as $product_id): ?>
+				<?php 
+					if($i < 5):
+					$post_object = get_post( $product_id );
+					setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found ?>
+		
+					<div class="shopPage__listItem latest-products__item col-lg-auto">
+		
+						<?php wc_get_template_part('content', 'product'); ?>
+		
+					</div>
+					<?php endif; $i++ ?>
+					<?php 
+					// Reset the global post data
+					wp_reset_postdata();
+				endforeach; ?>
+			<?php foreach ($products as $product_id) :
+				
+				$post_object = get_post( $product_id->get_id() );
+				setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found ?>
+
+				<div class="shopPage__listItem latest-products__item col-lg-auto">
+
+					<?php wc_get_template_part('content', 'product'); ?>
+
+				</div>
 				<?php 
 				// Reset the global post data
 				wp_reset_postdata();
 			endforeach; ?>
-        <?php foreach ($products as $product_id) :
-            
-			$post_object = get_post( $product_id->get_id() );
-			setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found ?>
-
-			<div class="shopPage__listItem latest-products__item col-lg-auto">
-
-				<?php wc_get_template_part('content', 'product'); ?>
-
-			</div>
-            <?php 
-			// Reset the global post data
-            wp_reset_postdata();
-        endforeach; ?>
-        </ul>
-    </div>
-</section>
+			</ul>
+		</div>
+	</section>
 
 <?php else : ?>
 
 	
 
-	<div class="container">
+	<div class="container full">
 		<div class="row">
 			<div class="col-md-12">
 				<?php echo do_shortcode('[fpd]'); ?>
