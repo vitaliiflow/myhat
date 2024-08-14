@@ -1048,6 +1048,7 @@ jQuery(document).ready(function ($) {
 "use strict";
 
 jQuery(document).ready(function ($) {
+  var sizeLabel;
   if ($('html').attr('lang') == "sv-SE") {
     sizeLabel = 'pa_storlek';
   } else if ($('html').attr('lang') == "nb-NO") {

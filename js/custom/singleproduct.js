@@ -1,4 +1,5 @@
 jQuery(document).ready(function($){
+        let sizeLabel;
         if($('html').attr('lang') == "sv-SE"){
             sizeLabel = 'pa_storlek';
         } else if($('html').attr('lang') == "nb-NO"){

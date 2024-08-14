@@ -87,9 +87,6 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 							<?php endforeach; ?>
 						</div>
 					<?php endif; ?>
-
-    <?php if ($wcbv_checked === 'no') : ?>
-                    
     <div class="singleProduct__before-purchase row">
         <div class="singleProduct__sizeWrapper col-sm-6">
             <div class="singleProduct__sizeTitle">Välj storlek</div>
@@ -97,6 +94,9 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
                 data-attribute-name="<?php echo $attribute->get_name(); ?>">
             </div>
         </div>
+    <?php if ($wcbv_checked === 'no') : ?>
+                    
+    
 
         <?php 
 						
@@ -145,10 +145,10 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
         <?php } ?>
 
-    </div>
+    
 
     <?php endif; //if ($wcbv_checked === 'no') ?>
-
+    </div>
     <?php do_action( 'woocommerce_after_variations_table' ); ?>
 
     <?php 
