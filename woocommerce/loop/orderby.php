@@ -26,8 +26,13 @@ $varumarke_terms = get_terms(
         'hide_empty' => true,
     )
 );
+if(get_locale() == "sv_SE"){
+    $size_name = "pa_storlek";
+} elseif(get_locale() == "nb_NO") {
+    $size_name = "pa_storrelse";
+}
 $pa_storlek = get_terms(array(
-    'taxonomy' => 'pa_storlek',
+    'taxonomy' => $size_name,
     'hide_empty' => true,
 ));
 

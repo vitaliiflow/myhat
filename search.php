@@ -84,10 +84,16 @@ $searchText=get_search_query();
                     $varumarke = $term_id;
                 }
 
-                if($taxonomy_slug == 'pa_storlek' && (sizeof($storek) > 1 || $storek[0] != '')){
+                if(get_locale() == "sv_SE"){
+                    $size_name = "pa_storlek";
+                } elseif(get_locale() == "nb_NO") {
+                    $size_name = "pa_storrelse";
+                }
+
+                if($taxonomy_slug == $size_name && (sizeof($storek) > 1 || $storek[0] != '')){
                     $term_id = array_merge( $term_id, $storek );
                 }
-                if($taxonomy_slug == 'pa_storlek'){
+                if($taxonomy_slug == $size_name){
                     $storek = $term_id;
                 }
 
@@ -139,9 +145,9 @@ $searchText=get_search_query();
                 );
                 array_push($args["tax_query"], $varumarke__arr);
             }
-            if((sizeof($storek) > 1 || $storek[0] != '') && $taxonomy_slug != 'pa_storlek'){
+            if((sizeof($storek) > 1 || $storek[0] != '') && $taxonomy_slug != $size_name){
                 $storek__arr = array(
-                    'taxonomy' => 'pa_storlek', 
+                    'taxonomy' => $size_name, 
                     'field' => 'slug',
                     'terms' => $storek 
                 );
@@ -193,7 +199,7 @@ $searchText=get_search_query();
                     $the_query->the_post();
 
                     $post_terms = wp_get_post_terms(get_the_ID(), 'varumarke'); // Замініть 'your_taxonomy' на вашу таксономію
-                    $product_attributes = wc_get_product_terms(get_the_ID(), 'pa_storlek');
+                    $product_attributes = wc_get_product_terms(get_the_ID(), $size_name);
                     $product_taggar = wc_get_product_terms(get_the_ID(), 'product_tag');
                     $product_color = wc_get_product_terms(get_the_ID(), 'color');
                     $product_team = wc_get_product_terms(get_the_ID(), 'team');
@@ -330,7 +336,7 @@ $searchText=get_search_query();
                                             <?php if((sizeof($storek) > 1 || $storek[0] != '')): ?>
                                                 <?php foreach($storek as $term): ?>
                                                     <?php 
-                                                    $full_term = get_term_by('slug', $term, 'pa_storlek');
+                                                    $full_term = get_term_by('slug', $term, $size_name);
                                                     ?>
                                                     <div class="shopPage__filtersRow__listItem__sublistItem active" data-slug="<?php echo $term; ?>">
                                                         <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>

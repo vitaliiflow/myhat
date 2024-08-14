@@ -1,8 +1,13 @@
 jQuery(document).ready(function($){
+        if($('html').attr('lang') == "sv-SE"){
+            sizeLabel = 'pa_storlek';
+        } else if($('html').attr('lang') == "nb-NO"){
+            sizeLabel = 'pa_storrelse';
+        }
         setTimeout(function(){
-            if($('.variations #pa_storlek option').length > 0){
+            if($(`.variations #${sizeLabel} option`).length > 0){
                 let itemsContent = '', i = 0;
-                $('.variations #pa_storlek option').each(function(){
+                $(`.variations #${sizeLabel} option`).each(function(){
                     if(i > 0){
                         const name = $(this).html();
                         const slug = $(this).attr('value');
@@ -35,7 +40,7 @@ jQuery(document).ready(function($){
                 element.addClass('active');
                 $(`#${attr}`).prop('selectedIndex', $(`#${attr} option[value="${elementAttr}"]`).index());
                 $(`#${attr} option[value="${elementAttr}"]`).change();
-                if(attr == 'pa_storlek'){
+                if(attr == sizeLabel){
                     $('.singleProduct__sizeWrapper').find('.singleProduct__sizeTitle').html(element.html());
                 }
             });
@@ -51,7 +56,7 @@ jQuery(document).ready(function($){
                     if(typeof $(this).attr('selected') !== 'undefined' && $(this).attr('selected') !== false){
                         const listitem = $(`div[data-attribute-name="${$(this).parent().attr('id')}"] div[data-attribute="${$(this).attr('value')}"]`);
                         listitem.addClass('active');
-                        if($(this).parent().attr('name') == 'attribute_pa_storlek'){
+                        if($(this).parent().attr('name') == `attribute_${sizeLabel}`){
                             $('.singleProduct__sizeWrapper').find('.singleProduct__sizeTitle').html(listitem.html());
                         }
                     }
