@@ -138,14 +138,9 @@ function products_sorting() {
         array_push($args["tax_query"], $varumarke_array);
     }
     if(!empty($storek)){
-        if(get_locale() == "sv_SE"){
-            $size_name = "pa_storlek";
-        } elseif(get_locale() == "nb_NO") {
-            $size_name = "pa_storrelse";
-        }
         $storek = explode(',', $storek);
         $storek_array = array(
-            'taxonomy' => $size_name,
+            'taxonomy' => 'pa_storlek',
             'field' => 'slug',
             'terms' => $storek,
         );
@@ -266,13 +261,8 @@ function products_filter() {
         array_push($args["tax_query"], $varumarke_array);
     }
     if(!empty($storek)){
-        if(get_locale() == "sv_SE"){
-            $size_name = "pa_storlek";
-        } elseif(get_locale() == "nb_NO") {
-            $size_name = "pa_storrelse";
-        }
         $storek_array = array(
-            'taxonomy' => $size_name,
+            'taxonomy' => 'pa_storlek',
             'field' => 'slug',
             'terms' => $storek,
         );
@@ -425,14 +415,9 @@ function products_pagination() {
         array_push($args["tax_query"], $varumarke_array);
     }
     if(!empty($storek)){
-        if(get_locale() == "sv_SE"){
-            $size_name = "pa_storlek";
-        } elseif(get_locale() == "nb_NO") {
-            $size_name = "pa_storrelse";
-        }
         $storek = explode(',', $storek);
         $storek_array = array(
-            'taxonomy' => $size_name,
+            'taxonomy' => 'pa_storlek',
             'field' => 'slug',
             'terms' => $storek,
         );
@@ -554,13 +539,8 @@ function filters_init() {
         array_push($args["tax_query"], $varumarke_array);
     }
     if(!empty($storek)){
-        if(get_locale() == "sv_SE"){
-            $size_name = "pa_storlek";
-        } elseif(get_locale() == "nb_NO") {
-            $size_name = "pa_storrelse";
-        }
         $storek_array = array(
-            'taxonomy' => $size_name,
+            'taxonomy' => 'pa_storlek',
             'field' => 'slug',
             'terms' => $storek,
         );
@@ -615,13 +595,9 @@ function filters_init() {
     if ($query->have_posts()) {
         while ($query->have_posts()) {
             $query->the_post();
-            if(get_locale() == "sv_SE"){
-                $size_name = "pa_storlek";
-            } elseif(get_locale() == "nb_NO") {
-                $size_name = "pa_storrelse";
-            }
+    
             $post_terms = wp_get_post_terms(get_the_ID(), 'varumarke'); 
-            $product_attributes = wc_get_product_terms(get_the_ID(), $size_name);
+            $product_attributes = wc_get_product_terms(get_the_ID(), 'pa_storlek');
             $product_taggar = wc_get_product_terms(get_the_ID(), 'product_tag');
             $product_team = wc_get_product_terms(get_the_ID(), 'team');
             $product_color = wc_get_product_terms(get_the_ID(), 'color');
@@ -729,12 +705,7 @@ function filters_init() {
                     <?php if(!empty($storek)): ?>
                         <?php foreach($storek as $term): ?>
                             <?php 
-                            if(get_locale() == "sv_SE"){
-                                $size_name = "pa_storlek";
-                            } elseif(get_locale() == "nb_NO") {
-                                $size_name = "pa_storrelse";
-                            }
-                            $full_term = get_term_by('slug', $term, $size_name);
+                            $full_term = get_term_by('slug', $term, 'pa_storlek');
                             ?>
                             <div class="shopPage__filtersRow__listItem__sublistItem active" data-slug="<?php echo $term; ?>">
                                 <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
@@ -955,13 +926,8 @@ function changing_filters() {
         array_push($args["tax_query"], $varumarke_array);
     }
     if(!empty($storek)){
-        if(get_locale() == "sv_SE"){
-            $size_name = "pa_storlek";
-        } elseif(get_locale() == "nb_NO") {
-            $size_name = "pa_storrelse";
-        }
         $storek_array = array(
-            'taxonomy' => $size_name,
+            'taxonomy' => 'pa_storlek',
             'field' => 'slug',
             'terms' => $storek,
         );
@@ -1016,13 +982,9 @@ function changing_filters() {
     if ($query->have_posts()) {
         while ($query->have_posts()) {
             $query->the_post();
-            if(get_locale() == "sv_SE"){
-                $size_name = "pa_storlek";
-            } elseif(get_locale() == "nb_NO") {
-                $size_name = "pa_storrelse";
-            }
+    
             $post_terms = wp_get_post_terms(get_the_ID(), 'varumarke'); // Замініть 'your_taxonomy' на вашу таксономію
-            $product_attributes = wc_get_product_terms(get_the_ID(), $size_name);
+            $product_attributes = wc_get_product_terms(get_the_ID(), 'pa_storlek');
             $product_taggar = wc_get_product_terms(get_the_ID(), 'product_tag');
             $product_color = wc_get_product_terms(get_the_ID(), 'color');
             $product_team = wc_get_product_terms(get_the_ID(), 'team');
@@ -1132,12 +1094,7 @@ function changing_filters() {
                     <?php if(!empty($storek)): ?>
                         <?php foreach($storek as $term): ?>
                             <?php 
-                            if(get_locale() == "sv_SE"){
-                                $size_name = "pa_storlek";
-                            } elseif(get_locale() == "nb_NO") {
-                                $size_name = "pa_storrelse";
-                            }
-                            $full_term = get_term_by('slug', $term, $size_name);
+                            $full_term = get_term_by('slug', $term, 'pa_storlek');
                             ?>
                             <div class="shopPage__filtersRow__listItem__sublistItem active" data-slug="<?php echo $term; ?>">
                                 <div class="shopPage__filtersRow__listItem__sublistItem__checkbox"></div>
@@ -1338,11 +1295,7 @@ function breadcrumbs_changing() { ?>
         echo '<a href="' . get_home_url() . '">Hem</a> / ' . $term_parents;     
     }
     elseif(!empty($_POST['storlek'])){ 
-        if(get_locale() == "sv_SE"){
-            $taxonomy = "pa_storlek";
-        } elseif(get_locale() == "nb_NO") {
-            $taxonomy = "pa_storrelse";
-        }
+        $taxonomy = 'pa_storlek'; 
         $categories = implode(',', $_POST['storlek']);
             
         $term_id = get_term_by( 'slug', $categories, $taxonomy );

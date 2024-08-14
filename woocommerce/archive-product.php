@@ -38,13 +38,6 @@ get_header( 'shop' );
     <div class="container">
         <div class="shopPage__content">
             <?php 
-
-            if(get_locale() == "sv_SE"){
-                $size_name = "pa_storlek";
-            } elseif(get_locale() == "nb_NO") {
-                $size_name = "pa_storrelse";
-            }
-
             $searchText = '';
             if(!empty($_GET['s'])):
                 $searchText = $_GET['s'];
@@ -151,7 +144,6 @@ get_header( 'shop' );
                 $args['meta_key'] = $metaKey;
             }
 
-            
 
             if(!empty($term_id) && !empty($taxonomy_slug)) {
                 if(gettype($term_id) == 'string'){
@@ -165,10 +157,10 @@ get_header( 'shop' );
                     $varumarke = $term_id;
                 }
 
-                if($taxonomy_slug == $size_name && (sizeof($storek) > 1 || $storek[0] != '')){
+                if($taxonomy_slug == 'pa_storlek' && (sizeof($storek) > 1 || $storek[0] != '')){
                     $term_id = array_merge( $term_id, $storek );
                 }
-                if($taxonomy_slug == $size_name){
+                if($taxonomy_slug == 'pa_storlek'){
                     $storek = $term_id;
                 }
 
@@ -220,9 +212,9 @@ get_header( 'shop' );
                 );
                 array_push($args["tax_query"], $varumarke__arr);
             }
-            if((sizeof($storek) > 1 || $storek[0] != '') && $taxonomy_slug != $size_name){
+            if((sizeof($storek) > 1 || $storek[0] != '') && $taxonomy_slug != 'pa_storlek'){
                 $storek__arr = array(
-                    'taxonomy' => $size_name, 
+                    'taxonomy' => 'pa_storlek', 
                     'field' => 'slug',
                     'terms' => $storek 
                 );

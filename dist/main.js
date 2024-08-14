@@ -1048,16 +1048,11 @@ jQuery(document).ready(function ($) {
 "use strict";
 
 jQuery(document).ready(function ($) {
-  if ($('html').attr('lang') == "sv-SE") {
-    sizeLabel = 'pa_storlek';
-  } else if ($('html').attr('lang') == "nb-NO") {
-    sizeLabel = 'pa_storrelse';
-  }
   setTimeout(function () {
-    if ($(".variations #".concat(sizeLabel, " option")).length > 0) {
+    if ($('.variations #pa_storlek option').length > 0) {
       var itemsContent = '',
         i = 0;
-      $(".variations #".concat(sizeLabel, " option")).each(function () {
+      $('.variations #pa_storlek option').each(function () {
         if (i > 0) {
           var name = $(this).html();
           var slug = $(this).attr('value');
@@ -1085,7 +1080,7 @@ jQuery(document).ready(function ($) {
       element.addClass('active');
       $("#".concat(attr)).prop('selectedIndex', $("#".concat(attr, " option[value=\"").concat(elementAttr, "\"]")).index());
       $("#".concat(attr, " option[value=\"").concat(elementAttr, "\"]")).change();
-      if (attr == sizeLabel) {
+      if (attr == 'pa_storlek') {
         $('.singleProduct__sizeWrapper').find('.singleProduct__sizeTitle').html(element.html());
       }
     });
@@ -1097,7 +1092,7 @@ jQuery(document).ready(function ($) {
         if (typeof $(this).attr('selected') !== 'undefined' && $(this).attr('selected') !== false) {
           var listitem = $("div[data-attribute-name=\"".concat($(this).parent().attr('id'), "\"] div[data-attribute=\"").concat($(this).attr('value'), "\"]"));
           listitem.addClass('active');
-          if ($(this).parent().attr('name') == "attribute_".concat(sizeLabel)) {
+          if ($(this).parent().attr('name') == 'attribute_pa_storlek') {
             $('.singleProduct__sizeWrapper').find('.singleProduct__sizeTitle').html(listitem.html());
           }
         }
