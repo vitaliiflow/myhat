@@ -87,11 +87,18 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 							<?php endforeach; ?>
 						</div>
 					<?php endif; ?>
+    <?php 
+    if(get_locale() == "sv_SE"){
+        $size_name = "pa_storlek";
+    } elseif(get_locale() == "nb_NO") {
+        $size_name = "pa_storrelse";
+    }
+    ?>
     <div class="singleProduct__before-purchase row">
         <div class="singleProduct__sizeWrapper col-sm-6">
             <div class="singleProduct__sizeTitle">Välj storlek</div>
             <div class="singleProduct__sizeList attributes-picker-list"
-                data-attribute-name="<?php echo $attribute->get_name(); ?>">
+                data-attribute-name="<?php echo $size_name; ?>">
             </div>
         </div>
     <?php if ($wcbv_checked === 'no') : ?>
