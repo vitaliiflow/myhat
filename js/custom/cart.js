@@ -46,6 +46,27 @@ jQuery(document).ready(function($){
     });
 
 
-
+    $('.cartAdditionalProduicts__list').slick({
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        dots: true,
+        arrows: false,
+        responsive: [
+          {
+            breakpoint: 991,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 1
+            }
+          },
+          {
+            breakpoint: 770,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1
+            }
+          }
+        ]
+    })
 })
 

@@ -157,7 +157,28 @@ do_action( 'woocommerce_before_cart' ); ?>
 	</div>
 	<?php do_action( 'woocommerce_after_cart_table' ); ?>
 </form>
-
+<?php 
+$cross_sells = WC()->cart->get_cross_sells();
+$args = array(
+    'post_type'      => 'product',
+    'posts_per_page' => 4, 
+    'post__in'       => $cross_sells,
+    'orderby'        => 'rand'
+);
+$the_query = new WP_Query($args);
+if($the_query->have_posts()):
+?>
+	<div class="cartAdditionalProduicts">
+		<h2 class="cartAdditionalProduicts__title"><?php _e('Förslag för dig', 'woocommerce_custom_text'); ?></h2>
+		<div class="cartAdditionalProduicts__list">
+			<?php while($the_query->have_posts()): $the_query->the_post(); ?>
+				<div class="shopPage__listItem">
+					<?php wc_get_template_part( 'content', 'product' ); ?>
+				</div>
+			<?php endwhile; ?>
+		</div>
+	</div>
+<?php endif; ?>
 <?php do_action( 'woocommerce_before_cart_collaterals' ); ?>
 
 
