@@ -16,7 +16,15 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
 $min_free_shipping_price = get_field('cart_free_shipping_min_price', 'options');
+
+$label_remaining_till_free_shipping = get_field('label_remaining_till_free_shipping','option') ? get_field('label_remaining_till_free_shipping','option') : _('Kvar till fri frakt:','myhat');
+$label_grand_total = get_field('label_grand_total','option') ? get_field('label_grand_total','option') : _('Totalsumma:','myhat');
+$label_go_to_checkout = get_field('label_go_to_checkout','option') ? get_field('label_go_to_checkout','option') : _('Gå till kassan','myhat');
+$label_keep_shopping = get_field('label_add_discount_code$label_keep_shopping','option') ? get_field('$label_keep_shopping','option') : _('Fortsätt handla','myhat');
+
+
 ?>
 <div class="cart_totals <?php echo ( WC()->customer->has_calculated_shipping() ) ? 'calculated_shipping' : ''; ?>">
 			
@@ -89,7 +97,7 @@ $min_free_shipping_price = get_field('cart_free_shipping_min_price', 'options');
 		if($min_free_shipping_price > $subtotal):
 		?>
 			<div class="cart__orderFreeShipping">
-				<div class="cart__orderFreeShipping__label">Kvar till fri frakt:</div>
+				<div class="cart__orderFreeShipping__label"><?php echo $label_remaining_till_free_shipping;?></div>
 				<div class="cart__orderFreeShipping__price">
 					<?php echo $min_free_shipping_price - $subtotal; ?>
 					<span class="currency"><?php echo get_woocommerce_currency_symbol(); ?></span>
@@ -100,7 +108,7 @@ $min_free_shipping_price = get_field('cart_free_shipping_min_price', 'options');
 
 		<div class="cart__orderTotals">
 			<div class="cart__orderTotals__label">
-				Totalsumma:
+				<?php echo $label_grand_total; ?>
 			</div>
 			<div class="cart__orderTotals__price">
 				<div data-title="<?php esc_attr_e( 'Total', 'woocommerce' ); ?>"><?php wc_cart_totals_order_total_html(); ?></div>
@@ -110,8 +118,8 @@ $min_free_shipping_price = get_field('cart_free_shipping_min_price', 'options');
 		<?php do_action( 'woocommerce_cart_totals_after_order_total' ); ?>
 	</div>
 	<div class="wc-proceed-to-checkout cart__totalsButtons">
-        <a href="<?php echo wc_get_page_permalink( 'checkout' ); ?>" class="cart__submit btn button--black">Gå till kassan</a>
-        <a href="<?php echo wc_get_page_permalink( 'shop' ); ?>" class="cart__shop btn button--white button--border--white">Fortsätt handla</a>
+        <a href="<?php echo wc_get_page_permalink( 'checkout' ); ?>" class="cart__submit btn button--black"><?php echo $label_go_to_checkout;?></a>
+        <a href="<?php echo wc_get_page_permalink( 'shop' ); ?>" class="cart__shop btn button--white button--border--white"><?php echo $label_keep_shopping;?></a>
 	</div>
 
 	<?php do_action( 'woocommerce_after_cart_totals' ); ?>
