@@ -50,6 +50,14 @@ if (function_exists('acf_add_options_page')) {
 		'parent_slug' => 'theme-general-settings',
 	));
 
+	// Only for multisite
+
+	acf_add_options_sub_page(array(
+		'page_title' => 'Labels',
+		'menu_title' => 'Labels',
+		'parent_slug' => 'theme-general-settings',
+	));
+
 }
 
 

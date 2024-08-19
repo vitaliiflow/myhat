@@ -23,6 +23,8 @@ defined( 'ABSPATH' ) || exit;
 $content = get_field('successful_content', 'options');
 $failed_content = get_field('failed_content', 'options');
 
+$label_home = get_field('label_home','option') ? get_field('label_home','option') : _('Hem','myhat');
+$label_shop_now = get_field('label_shop_now','option') ? get_field('label_shop_now','option') : _('Visa nu','myhat');
 ?>
 <div class="orderThanks">
 	<div class="orderThanks__content">
@@ -52,8 +54,8 @@ $failed_content = get_field('failed_content', 'options');
 				<?php echo $content; ?>
 			<?php endif; ?>
 			<div class="orderThanks__buttons">
-				<a href="<?php echo get_home_url(  ); ?>" class="btn button--black pay">Hem</a>
-				<a href="<?php echo get_permalink( wc_get_page_id( 'shop' ) );; ?>" class="btn button--white pay">Shoppa nu</a>
+				<a href="<?php echo get_home_url(  ); ?>" class="btn button--black pay"><?php echo $label_home;?></a>
+				<a href="<?php echo get_permalink( wc_get_page_id( 'shop' ) );; ?>" class="btn button--white pay"><?php echo $label_shop_now;?></a>
 			</div>
 		<?php endif; ?>
 	</div>
