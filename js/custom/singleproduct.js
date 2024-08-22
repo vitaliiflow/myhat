@@ -4,7 +4,13 @@ jQuery(document).ready(function($){
             sizeLabel = 'pa_storlek';
         } else if($('html').attr('lang') == "nb-NO"){
             sizeLabel = 'pa_storrelse';
-        }
+        } else if($('html').attr('lang') == "de-DE"){
+            sizeLabel = 'pa_groesse';
+        } else if($('html').attr('lang') == "da-DK"){
+            sizeLabel = 'pa_stoerrelse';
+        } else if($('html').attr('lang') == "fi"){
+            sizeLabel = 'pa_koko';
+        } 
         setTimeout(function(){
             if($(`.variations #${sizeLabel} option`).length > 0){
                 let itemsContent = '', i = 0;

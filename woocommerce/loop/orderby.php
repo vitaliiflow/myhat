@@ -30,6 +30,12 @@ if(get_locale() == "sv_SE"){
     $size_name = "pa_storlek";
 } elseif(get_locale() == "nb_NO") {
     $size_name = "pa_storrelse";
+} elseif(get_locale() == 'de-DE'){
+    $size_name = "pa_groesse";
+} elseif(get_locale() == 'da-DK'){
+    $size_name = "pa_stoerrelse";
+} elseif(get_locale() == 'fi'){
+    $size_name = "pa_koko";
 }
 $pa_storlek = get_terms(array(
     'taxonomy' => $size_name,

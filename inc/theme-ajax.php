@@ -142,6 +142,12 @@ function products_sorting() {
             $size_name = "pa_storlek";
         } elseif(get_locale() == "nb_NO") {
             $size_name = "pa_storrelse";
+        } elseif(get_locale() == 'de-DE'){
+            $size_name = "pa_groesse";
+        } elseif(get_locale() == 'da-DK'){
+            $size_name = "pa_stoerrelse";
+        } elseif(get_locale() == 'fi'){
+            $size_name = "pa_koko";
         }
         $storek = explode(',', $storek);
         $storek_array = array(
@@ -270,6 +276,12 @@ function products_filter() {
             $size_name = "pa_storlek";
         } elseif(get_locale() == "nb_NO") {
             $size_name = "pa_storrelse";
+        } elseif(get_locale() == 'de-DE'){
+            $size_name = "pa_groesse";
+        } elseif(get_locale() == 'da-DK'){
+            $size_name = "pa_stoerrelse";
+        } elseif(get_locale() == 'fi'){
+            $size_name = "pa_koko";
         }
         $storek_array = array(
             'taxonomy' => $size_name,
@@ -429,6 +441,12 @@ function products_pagination() {
             $size_name = "pa_storlek";
         } elseif(get_locale() == "nb_NO") {
             $size_name = "pa_storrelse";
+        } elseif(get_locale() == 'de-DE'){
+            $size_name = "pa_groesse";
+        } elseif(get_locale() == 'da-DK'){
+            $size_name = "pa_stoerrelse";
+        } elseif(get_locale() == 'fi'){
+            $size_name = "pa_koko";
         }
         $storek = explode(',', $storek);
         $storek_array = array(
@@ -558,6 +576,12 @@ function filters_init() {
             $size_name = "pa_storlek";
         } elseif(get_locale() == "nb_NO") {
             $size_name = "pa_storrelse";
+        } elseif(get_locale() == 'de-DE'){
+            $size_name = "pa_groesse";
+        } elseif(get_locale() == 'da-DK'){
+            $size_name = "pa_stoerrelse";
+        } elseif(get_locale() == 'fi'){
+            $size_name = "pa_koko";
         }
         $storek_array = array(
             'taxonomy' => $size_name,
@@ -619,6 +643,12 @@ function filters_init() {
                 $size_name = "pa_storlek";
             } elseif(get_locale() == "nb_NO") {
                 $size_name = "pa_storrelse";
+            } elseif(get_locale() == 'de-DE'){
+                $size_name = "pa_groesse";
+            } elseif(get_locale() == 'da-DK'){
+                $size_name = "pa_stoerrelse";
+            } elseif(get_locale() == 'fi'){
+                $size_name = "pa_koko";
             }
             $post_terms = wp_get_post_terms(get_the_ID(), 'varumarke'); 
             $product_attributes = wc_get_product_terms(get_the_ID(), $size_name);
@@ -733,6 +763,12 @@ function filters_init() {
                                 $size_name = "pa_storlek";
                             } elseif(get_locale() == "nb_NO") {
                                 $size_name = "pa_storrelse";
+                            } elseif(get_locale() == 'de-DE'){
+                                $size_name = "pa_groesse";
+                            } elseif(get_locale() == 'da-DK'){
+                                $size_name = "pa_stoerrelse";
+                            } elseif(get_locale() == 'fi'){
+                                $size_name = "pa_koko";
                             }
                             $full_term = get_term_by('slug', $term, $size_name);
                             ?>
@@ -959,6 +995,12 @@ function changing_filters() {
             $size_name = "pa_storlek";
         } elseif(get_locale() == "nb_NO") {
             $size_name = "pa_storrelse";
+        } elseif(get_locale() == 'de-DE'){
+            $size_name = "pa_groesse";
+        } elseif(get_locale() == 'da-DK'){
+            $size_name = "pa_stoerrelse";
+        } elseif(get_locale() == 'fi'){
+            $size_name = "pa_koko";
         }
         $storek_array = array(
             'taxonomy' => $size_name,
@@ -1020,6 +1062,12 @@ function changing_filters() {
                 $size_name = "pa_storlek";
             } elseif(get_locale() == "nb_NO") {
                 $size_name = "pa_storrelse";
+            } elseif(get_locale() == 'de-DE'){
+                $size_name = "pa_groesse";
+            } elseif(get_locale() == 'da-DK'){
+                $size_name = "pa_stoerrelse";
+            } elseif(get_locale() == 'fi'){
+                $size_name = "pa_koko";
             }
             $post_terms = wp_get_post_terms(get_the_ID(), 'varumarke'); // Замініть 'your_taxonomy' на вашу таксономію
             $product_attributes = wc_get_product_terms(get_the_ID(), $size_name);
@@ -1136,6 +1184,12 @@ function changing_filters() {
                                 $size_name = "pa_storlek";
                             } elseif(get_locale() == "nb_NO") {
                                 $size_name = "pa_storrelse";
+                            } elseif(get_locale() == 'de-DE'){
+                                $size_name = "pa_groesse";
+                            } elseif(get_locale() == 'da-DK'){
+                                $size_name = "pa_stoerrelse";
+                            } elseif(get_locale() == 'fi'){
+                                $size_name = "pa_koko";
                             }
                             $full_term = get_term_by('slug', $term, $size_name);
                             ?>
@@ -1342,6 +1396,12 @@ function breadcrumbs_changing() { ?>
             $taxonomy = "pa_storlek";
         } elseif(get_locale() == "nb_NO") {
             $taxonomy = "pa_storrelse";
+        } elseif(get_locale() == 'de-DE'){
+            $taxonomy = "pa_groesse";
+        } elseif(get_locale() == 'da-DK'){
+            $taxonomy = "pa_stoerrelse";
+        } elseif(get_locale() == 'fi'){
+            $taxonomy = "pa_koko";
         }
         $categories = implode(',', $_POST['storlek']);
             

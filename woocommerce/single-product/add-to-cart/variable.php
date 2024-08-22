@@ -92,6 +92,12 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
         $size_name = "pa_storlek";
     } elseif(get_locale() == "nb_NO") {
         $size_name = "pa_storrelse";
+    } elseif(get_locale() == 'de-DE'){
+        $size_name = "pa_groesse";
+    } elseif(get_locale() == 'da-DK'){
+        $size_name = "pa_stoerrelse";
+    } elseif(get_locale() == 'fi'){
+        $size_name = "pa_koko";
     }
     ?>
     <div class="singleProduct__before-purchase row">

@@ -88,6 +88,12 @@ $searchText=get_search_query();
                     $size_name = "pa_storlek";
                 } elseif(get_locale() == "nb_NO") {
                     $size_name = "pa_storrelse";
+                } elseif(get_locale() == 'de-DE'){
+                    $size_name = "pa_groesse";
+                } elseif(get_locale() == 'da-DK'){
+                    $size_name = "pa_stoerrelse";
+                } elseif(get_locale() == 'fi'){
+                    $size_name = "pa_koko";
                 }
 
                 if($taxonomy_slug == $size_name && (sizeof($storek) > 1 || $storek[0] != '')){
@@ -442,7 +448,7 @@ $searchText=get_search_query();
                             if ( (!empty($list_categories) && !is_wp_error( $list_categories )) || (sizeof($kategori) > 1 || $kategori[0] != '') ):
                             ?>
                                 <div class="shopPage__filtersRow__listItem" data-attr-name="kategori">
-                                    <div class="shopPage__filtersRow__listItem__title">KATEGORI</div>
+                                    <div class="shopPage__filtersRow__listItem__title"><?php _e('KATEGORI', 'woocommerce_custom_text'); ?></div>
                                     <div class="shopPage__filtersRow__listItem__sublist">
                                         <div class="shopPage__filtersRow__listItem__sublistItems">
                                             <?php if((sizeof($kategori) > 1 || $kategori[0] != '')): ?>

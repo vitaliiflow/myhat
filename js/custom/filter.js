@@ -439,7 +439,15 @@ jQuery(document).ready(function($){
                 success: function(response){
                     $('.filter .shopPage__filtersRow__listWrapper').html(response);
                 }
-            })
+            });
+            let shopSlug = '';
+            if($('html').attr('lang') == 'de-DE'){
+                shopSlug = 'laden';
+            } else if($('html').attr('lang') == 'fi' || $('html').attr('lang') == 'da-DK'){
+                shopSlug = 'kauppa';
+            } else {
+                shopSlug = 'butik';
+            }
             $(document).ajaxComplete(function(event, xhr, settings){
                 if(settings.data !== undefined){
                     if(settings.data.includes('action')){
@@ -449,7 +457,7 @@ jQuery(document).ready(function($){
                             if($('.filter .shopPage__filtersRow__listClose').attr('data-cat-link') != '' && $('.filter .shopPage__filtersRow__listClose').attr('data-cat-link') != undefined){
                                 pageLink = $('.filter .shopPage__filtersRow__listClose').attr('data-cat-link') + `?paged=${paged}&orderby=${sortType}`;
                             } else{
-                                pageLink = window.location['origin'] + `/butik/?paged=${paged}&orderby=${sortType}`;
+                                pageLink = window.location['origin'] + `/${shopSlug}/?paged=${paged}&orderby=${sortType}`;
                             }
                             if(searchText != '' && searchText != undefined){
                                 let searchArr = [searchText];
