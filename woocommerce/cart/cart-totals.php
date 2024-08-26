@@ -19,10 +19,10 @@ defined( 'ABSPATH' ) || exit;
 
 $min_free_shipping_price = get_field('cart_free_shipping_min_price', 'options');
 
-$label_remaining_till_free_shipping = get_field('label_remaining_till_free_shipping','option') ? get_field('label_remaining_till_free_shipping','option') : _('Kvar till fri frakt:','myhat');
-$label_grand_total = get_field('label_grand_total','option') ? get_field('label_grand_total','option') : _('Totalsumma:','myhat');
-$label_go_to_checkout = get_field('label_go_to_checkout','option') ? get_field('label_go_to_checkout','option') : _('Gå till kassan','myhat');
-$label_keep_shopping = get_field('label_add_discount_code$label_keep_shopping','option') ? get_field('$label_keep_shopping','option') : _('Fortsätt handla','myhat');
+$label_remaining_till_free_shipping = get_field('label_remaining_till_free_shipping','option');
+$label_grand_total = get_field('label_grand_total','option');
+$label_go_to_checkout = get_field('label_go_to_checkout','option');
+$label_keep_shopping = get_field('label_add_discount_code$label_keep_shopping','option');
 
 
 ?>
@@ -97,7 +97,7 @@ $label_keep_shopping = get_field('label_add_discount_code$label_keep_shopping','
 		if($min_free_shipping_price > $subtotal):
 		?>
 			<div class="cart__orderFreeShipping">
-				<div class="cart__orderFreeShipping__label"><?php echo $label_remaining_till_free_shipping;?></div>
+				<div class="cart__orderFreeShipping__label"><?php if($label_remaining_till_free_shipping){echo $label_remaining_till_free_shipping;}else{_e('Kvar till fri frakt:','myhat');}?></div>
 				<div class="cart__orderFreeShipping__price">
 					<?php echo $min_free_shipping_price - $subtotal; ?>
 					<span class="currency"><?php echo get_woocommerce_currency_symbol(); ?></span>
@@ -108,7 +108,7 @@ $label_keep_shopping = get_field('label_add_discount_code$label_keep_shopping','
 
 		<div class="cart__orderTotals">
 			<div class="cart__orderTotals__label">
-				<?php echo $label_grand_total; ?>
+				<?php if($label_grand_total){echo $label_grand_total;}else{_e('Totalsumma:','myhat');} ?>
 			</div>
 			<div class="cart__orderTotals__price">
 				<div data-title="<?php esc_attr_e( 'Total', 'woocommerce' ); ?>"><?php wc_cart_totals_order_total_html(); ?></div>
@@ -118,8 +118,8 @@ $label_keep_shopping = get_field('label_add_discount_code$label_keep_shopping','
 		<?php do_action( 'woocommerce_cart_totals_after_order_total' ); ?>
 	</div>
 	<div class="wc-proceed-to-checkout cart__totalsButtons">
-        <a href="<?php echo wc_get_page_permalink( 'checkout' ); ?>" class="cart__submit btn button--black"><?php echo $label_go_to_checkout;?></a>
-        <a href="<?php echo wc_get_page_permalink( 'shop' ); ?>" class="cart__shop btn button--white button--border--white"><?php echo $label_keep_shopping;?></a>
+        <a href="<?php echo wc_get_page_permalink( 'checkout' ); ?>" class="cart__submit btn button--black"><?php if($label_go_to_checkout){echo $label_go_to_checkout;}else{ _e('Gå till kassan','myhat');}?></a>
+        <a href="<?php echo wc_get_page_permalink( 'shop' ); ?>" class="cart__shop btn button--white button--border--white"><?php if($label_keep_shopping){echo $label_keep_shopping;}else{_e('Fortsätt handla','myhat');}?></a>
 	</div>
 
 	<?php do_action( 'woocommerce_after_cart_totals' ); ?>

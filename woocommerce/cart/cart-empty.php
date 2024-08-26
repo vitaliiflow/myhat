@@ -22,17 +22,17 @@ defined( 'ABSPATH' ) || exit;
  */
 do_action( 'woocommerce_cart_is_empty' );
 
-$label_cart_empty_message = get_field('label_cart_empty_message','option') ? get_field('label_cart_empty_message','option') : _e('Din varukorg är för närvarande tom','myhat');
-$label_cart_empty_message_long = get_field('label_cart_empty_message_long','option') ? get_field('label_cart_empty_message_long','option') : _e('Innan du går vidare till kassan måste du lägga till några produkter i din varukorg. Du hittar många intressanta produkter på vår "Shop"-sida.','myhat');
-$label_shop_now = get_field('label_shop_now','option') ? get_field('label_shop_now','option') : _e('Visa nu','myhat');
+$label_cart_empty_message = get_field('label_cart_empty_message','option');
+$label_cart_empty_message_long = get_field('label_cart_empty_message_long','option');
+$label_shop_now = get_field('label_shop_now','option');
 
 if ( wc_get_page_id( 'shop' ) > 0 ) : ?>
 	<div class="emptyCart">
         <div class="emptyCart__container">
-            <h1 class="emptyCart__title"><?php echo $label_cart_empty_message;?></h1>
-            <div class="emptyCart__subtitle"><?php echo $label_cart_empty_message_long;?></div>
+            <h1 class="emptyCart__title"><?php if($label_cart_empty_message){echo $label_cart_empty_message;}else{_e('Din varukorg är för närvarande tom','myhat');} ?></h1>
+            <div class="emptyCart__subtitle"><?php if($label_cart_empty_message_long){echo $label_cart_empty_message_long;}else{_e('Innan du går vidare till kassan måste du lägga till några produkter i din varukorg. Du hittar många intressanta produkter på vår "Shop"-sida.','myhat');} ?></div>
             <div class="emptyCart__button">
-                <a href="<?php echo wc_get_page_permalink( 'shop' ) ?>" class="btn button--black"><?php echo $label_shop_now;?></a>
+                <a href="<?php echo wc_get_page_permalink( 'shop' ) ?>" class="btn button--black"><?php if($label_shop_now){echo $label_shop_now;} else{ _e('Visa nu','myhat'); } ?></a>
             </div>
         </div>
     </div>

@@ -17,7 +17,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$label_add_discount_code = get_field('label_add_discount_code','option') ? get_field('label_add_discount_code','option') : _('Lägg till rabattkod','myhat');
+$label_add_discount_code = get_field('label_add_discount_code','option');
 
 
 do_action( 'woocommerce_before_cart' ); ?>
@@ -117,7 +117,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 		</div>
 		<div class="cart__bottom">
 			<div class="cart__couponWrapper">
-					<div class="cart__couponToggler"><?php echo $label_add_discount_code;?></div>
+					<div class="cart__couponToggler"><?php if($label_add_discount_code){echo $label_add_discount_code;} else{_e('Lägg till rabattkod','myhat');}?></div>
 					<div colspan="6" class="actions">
 
 						<?php if ( wc_coupons_enabled() ) { ?>
