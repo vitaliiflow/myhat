@@ -22,9 +22,9 @@ defined( 'ABSPATH' ) || exit;
  */
 do_action( 'woocommerce_cart_is_empty' );
 
-$label_cart_empty_message = get_field('label_cart_empty_message','option') ? get_field('label_cart_empty_message','option') : _('Din varukorg är för närvarande tom','myhat');
-$label_cart_empty_message_long = get_field('label_cart_empty_message_long','option') ? get_field('label_cart_empty_message_long','option') : _('Innan du går vidare till kassan måste du lägga till några produkter i din varukorg. Du hittar många intressanta produkter på vår "Shop"-sida.','myhat');
-$label_shop_now = get_field('label_shop_now','option') ? get_field('label_shop_now','option') : _('Visa nu','myhat');
+$label_cart_empty_message = get_field('label_cart_empty_message','option') ? get_field('label_cart_empty_message','option') : _e('Din varukorg är för närvarande tom','myhat');
+$label_cart_empty_message_long = get_field('label_cart_empty_message_long','option') ? get_field('label_cart_empty_message_long','option') : _e('Innan du går vidare till kassan måste du lägga till några produkter i din varukorg. Du hittar många intressanta produkter på vår "Shop"-sida.','myhat');
+$label_shop_now = get_field('label_shop_now','option') ? get_field('label_shop_now','option') : _e('Visa nu','myhat');
 
 if ( wc_get_page_id( 'shop' ) > 0 ) : ?>
 	<div class="emptyCart">
