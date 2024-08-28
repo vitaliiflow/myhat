@@ -663,6 +663,14 @@ jQuery(document).ready(function ($) {
           $('.filter .shopPage__filtersRow__listWrapper').html(response);
         }
       });
+      var shopSlug = '';
+      if ($('html').attr('lang') == 'de-DE') {
+        shopSlug = 'laden';
+      } else if ($('html').attr('lang') == 'fi' || $('html').attr('lang') == 'da-DK') {
+        shopSlug = 'kauppa';
+      } else {
+        shopSlug = 'butik';
+      }
       $(document).ajaxComplete(function (event, xhr, settings) {
         if (settings.data !== undefined) {
           if (settings.data.includes('action')) {
@@ -672,7 +680,7 @@ jQuery(document).ready(function ($) {
               if ($('.filter .shopPage__filtersRow__listClose').attr('data-cat-link') != '' && $('.filter .shopPage__filtersRow__listClose').attr('data-cat-link') != undefined) {
                 pageLink = $('.filter .shopPage__filtersRow__listClose').attr('data-cat-link') + "?paged=".concat(paged, "&orderby=").concat(sortType);
               } else {
-                pageLink = window.location['origin'] + "/butik/?paged=".concat(paged, "&orderby=").concat(sortType);
+                pageLink = window.location['origin'] + "/".concat(shopSlug, "/?paged=").concat(paged, "&orderby=").concat(sortType);
               }
               if (searchText != '' && searchText != undefined) {
                 var searchArr = [searchText];
@@ -1072,6 +1080,12 @@ jQuery(document).ready(function ($) {
     sizeLabel = 'pa_storlek';
   } else if ($('html').attr('lang') == "nb-NO") {
     sizeLabel = 'pa_storrelse';
+  } else if ($('html').attr('lang') == "de-DE") {
+    sizeLabel = 'pa_groesse';
+  } else if ($('html').attr('lang') == "da-DK") {
+    sizeLabel = 'pa_stoerrelse';
+  } else if ($('html').attr('lang') == "fi") {
+    sizeLabel = 'pa_koko';
   }
   setTimeout(function () {
     if ($(".variations #".concat(sizeLabel, " option")).length > 0) {

@@ -43,9 +43,9 @@ get_header( 'shop' );
                 $size_name = "pa_storlek";
             } elseif(get_locale() == "nb_NO") {
                 $size_name = "pa_storrelse";
-            } elseif(get_locale() == 'de-DE'){
+            } elseif(get_locale() == 'de_DE'){
                 $size_name = "pa_groesse";
-            } elseif(get_locale() == 'da-DK'){
+            } elseif(get_locale() == 'da_DK'){
                 $size_name = "pa_stoerrelse";
             } elseif(get_locale() == 'fi'){
                 $size_name = "pa_koko";

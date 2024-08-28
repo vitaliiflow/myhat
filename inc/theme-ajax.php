@@ -142,9 +142,9 @@ function products_sorting() {
             $size_name = "pa_storlek";
         } elseif(get_locale() == "nb_NO") {
             $size_name = "pa_storrelse";
-        } elseif(get_locale() == 'de-DE'){
+        } elseif(get_locale() == 'de_DE'){
             $size_name = "pa_groesse";
-        } elseif(get_locale() == 'da-DK'){
+        } elseif(get_locale() == 'da_DK'){
             $size_name = "pa_stoerrelse";
         } elseif(get_locale() == 'fi'){
             $size_name = "pa_koko";
@@ -276,9 +276,9 @@ function products_filter() {
             $size_name = "pa_storlek";
         } elseif(get_locale() == "nb_NO") {
             $size_name = "pa_storrelse";
-        } elseif(get_locale() == 'de-DE'){
+        } elseif(get_locale() == 'de_DE'){
             $size_name = "pa_groesse";
-        } elseif(get_locale() == 'da-DK'){
+        } elseif(get_locale() == 'da_DK'){
             $size_name = "pa_stoerrelse";
         } elseif(get_locale() == 'fi'){
             $size_name = "pa_koko";
@@ -441,9 +441,9 @@ function products_pagination() {
             $size_name = "pa_storlek";
         } elseif(get_locale() == "nb_NO") {
             $size_name = "pa_storrelse";
-        } elseif(get_locale() == 'de-DE'){
+        } elseif(get_locale() == 'de_DE'){
             $size_name = "pa_groesse";
-        } elseif(get_locale() == 'da-DK'){
+        } elseif(get_locale() == 'da_DK'){
             $size_name = "pa_stoerrelse";
         } elseif(get_locale() == 'fi'){
             $size_name = "pa_koko";
@@ -576,9 +576,9 @@ function filters_init() {
             $size_name = "pa_storlek";
         } elseif(get_locale() == "nb_NO") {
             $size_name = "pa_storrelse";
-        } elseif(get_locale() == 'de-DE'){
+        } elseif(get_locale() == 'de_DE'){
             $size_name = "pa_groesse";
-        } elseif(get_locale() == 'da-DK'){
+        } elseif(get_locale() == 'da_DK'){
             $size_name = "pa_stoerrelse";
         } elseif(get_locale() == 'fi'){
             $size_name = "pa_koko";
@@ -643,9 +643,9 @@ function filters_init() {
                 $size_name = "pa_storlek";
             } elseif(get_locale() == "nb_NO") {
                 $size_name = "pa_storrelse";
-            } elseif(get_locale() == 'de-DE'){
+            } elseif(get_locale() == 'de_DE'){
                 $size_name = "pa_groesse";
-            } elseif(get_locale() == 'da-DK'){
+            } elseif(get_locale() == 'da_DK'){
                 $size_name = "pa_stoerrelse";
             } elseif(get_locale() == 'fi'){
                 $size_name = "pa_koko";
@@ -763,9 +763,9 @@ function filters_init() {
                                 $size_name = "pa_storlek";
                             } elseif(get_locale() == "nb_NO") {
                                 $size_name = "pa_storrelse";
-                            } elseif(get_locale() == 'de-DE'){
+                            } elseif(get_locale() == 'de_DE'){
                                 $size_name = "pa_groesse";
-                            } elseif(get_locale() == 'da-DK'){
+                            } elseif(get_locale() == 'da_DK'){
                                 $size_name = "pa_stoerrelse";
                             } elseif(get_locale() == 'fi'){
                                 $size_name = "pa_koko";
@@ -995,9 +995,9 @@ function changing_filters() {
             $size_name = "pa_storlek";
         } elseif(get_locale() == "nb_NO") {
             $size_name = "pa_storrelse";
-        } elseif(get_locale() == 'de-DE'){
+        } elseif(get_locale() == 'de_DE'){
             $size_name = "pa_groesse";
-        } elseif(get_locale() == 'da-DK'){
+        } elseif(get_locale() == 'da_DK'){
             $size_name = "pa_stoerrelse";
         } elseif(get_locale() == 'fi'){
             $size_name = "pa_koko";
@@ -1062,9 +1062,9 @@ function changing_filters() {
                 $size_name = "pa_storlek";
             } elseif(get_locale() == "nb_NO") {
                 $size_name = "pa_storrelse";
-            } elseif(get_locale() == 'de-DE'){
+            } elseif(get_locale() == 'de_DE'){
                 $size_name = "pa_groesse";
-            } elseif(get_locale() == 'da-DK'){
+            } elseif(get_locale() == 'da_DK'){
                 $size_name = "pa_stoerrelse";
             } elseif(get_locale() == 'fi'){
                 $size_name = "pa_koko";
@@ -1184,9 +1184,9 @@ function changing_filters() {
                                 $size_name = "pa_storlek";
                             } elseif(get_locale() == "nb_NO") {
                                 $size_name = "pa_storrelse";
-                            } elseif(get_locale() == 'de-DE'){
+                            } elseif(get_locale() == 'de_DE'){
                                 $size_name = "pa_groesse";
-                            } elseif(get_locale() == 'da-DK'){
+                            } elseif(get_locale() == 'da_DK'){
                                 $size_name = "pa_stoerrelse";
                             } elseif(get_locale() == 'fi'){
                                 $size_name = "pa_koko";
@@ -1396,9 +1396,9 @@ function breadcrumbs_changing() { ?>
             $taxonomy = "pa_storlek";
         } elseif(get_locale() == "nb_NO") {
             $taxonomy = "pa_storrelse";
-        } elseif(get_locale() == 'de-DE'){
+        } elseif(get_locale() == 'de_DE'){
             $taxonomy = "pa_groesse";
-        } elseif(get_locale() == 'da-DK'){
+        } elseif(get_locale() == 'da_DK'){
             $taxonomy = "pa_stoerrelse";
         } elseif(get_locale() == 'fi'){
             $taxonomy = "pa_koko";

@@ -577,6 +577,7 @@ body.single-product:not(.loaded){position:relative}
 .singleProduct__accordionItem__content a{text-decoration:underline}
 .singleProduct__link{position:relative;margin-top:16px;display:block;font-size:18px}
 .singleProduct__link::after{content:"";width:18px;height:18px;top:50%;right:-2px;-webkit-transform:translateY(-50%);transform:translateY(-50%);background-image:url("../assets/images/icons/right-arrow.png");background-size:contain;background-repeat:no-repeat;background-position:center;position:absolute}
+.fpd-navigation--color-selection .singleProduct__before-purchase{display:none}
 .fpd-navigation--color-selection .singleProduct__colorsList,.fpd-navigation--color-selection .singleProduct__before-purchase{margin-right:9px;width:280px}
 .fpd-navigation--color-selection .singleProduct__colorsList .singleProduct__sizeWrapper,.fpd-navigation--color-selection .singleProduct__before-purchase .singleProduct__sizeWrapper{margin:0;width:100%;-webkit-box-flex:0;-ms-flex:0 0 100%;flex:0 0 100%;max-width:100%}
 .fpd-navigation--color-selection .single_variation_wrap .single_variation{margin:0}
