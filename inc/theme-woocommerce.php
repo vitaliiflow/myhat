@@ -536,3 +536,14 @@ function display_customization_badge_on_cart_page($product_name, $cart_item) {
     }
     return $product_name;
 }
+
+
+
+function custom_woocommerce_dropdown_variation_attribute_options_args( $args ) {
+    if ( isset( $args['attribute'] ) && strpos( $args['attribute'], 'pa_size' ) !== false ) {
+        $args['show_option_none'] = 'Виберіть розмір'; 
+    }
+
+    return $args;
+}
+add_filter( 'woocommerce_dropdown_variation_attribute_options_args', 'custom_woocommerce_dropdown_variation_attribute_options_args' );

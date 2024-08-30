@@ -99,14 +99,16 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
     } elseif(get_locale() == 'fi'){
         $size_name = "pa_koko";
     }
+    $size_picker_label = get_field('size_picker_label', 'options');
     ?>
     <div class="singleProduct__before-purchase row">
         <div class="singleProduct__sizeWrapper col-sm-6">
-            <div class="singleProduct__sizeTitle">Välj storlek</div>
+            <div class="singleProduct__sizeTitle"><?php if($size_picker_label){echo $size_picker_label;}else{_e('Välj storlek', 'myhat');} ?> </div>
             <div class="singleProduct__sizeList attributes-picker-list"
                 data-attribute-name="<?php echo $size_name; ?>">
             </div>
         </div>
+    <?php $customize_label = get_field('customize_button_label', 'options'); ?>
     <?php if ($wcbv_checked === 'no') : ?>
                     
     
@@ -134,7 +136,6 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
         }
 
 
-
 		if (is_any_variation_in_stock($product_id)) { ?>
 
         <?php if (in_array($product_id, $products_id_array) || $full_customizer) { ?>
@@ -144,14 +145,14 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
                                         $permalink = get_the_permalink(); ?>
                 <a href="<?php echo $permalink .'?customize';?>"
-                    class="d-block button--black"><?php _e('Customize','myhat');?></a>
+                    class="d-block button--black"><?php if($customize_label){echo $customize_label;}else{_e('Customize','myhat');}?></a>
             </div>
 
         <?php } else { ?>
 
             <div class="product-customizer__trigger-wrapper col-sm-6">
                 <a href="#product-customizer-popup"
-                    class="product-customizer__trigger d-block button--black"><?php _e('Customize','myhat');?></a>
+                    class="product-customizer__trigger d-block button--black"><?php if($customize_label){echo $customize_label;}else{_e('Customize','myhat');}?></a>
             </div>
 
         <?php } ?>
@@ -203,14 +204,14 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
                                                 $permalink = get_the_permalink(); ?>
                         <a href="<?php echo $permalink .'?customize';?>"
-                            class="d-block button--black"><?php _e('Customize','myhat');?></a>
+                            class="d-block button--black"><?php if($customize_label){echo $customize_label;}else{_e('Customize','myhat');}?></a>
                     </div>
 
                 <?php } else { ?>
 
                     <div class="product-customizer__trigger-wrapper col-sm-6">
                         <a href="#product-customizer-popup"
-                            class="product-customizer__trigger d-block button--black"><?php _e('Customize','myhat');?></a>
+                            class="product-customizer__trigger d-block button--black"><?php if($customize_label){echo $customize_label;}else{_e('Customize','myhat');}?></a>
                     </div>
 
                 <?php } ?>

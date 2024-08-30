@@ -156,9 +156,16 @@ if (!$full_customizer) :
 					<div class="product-customizer__wrapper">
 						<?php echo do_shortcode('[fpd]'); ?>
 						<?php if (!$full_customizer) : ?>
+							<?php $customizer_notice = get_field('customizer_notice', 'options'); ?>
 							<div class="wc-block-components-notice-banner--fpd-color" style="margin-top: 30px; background: #f1f1ef; padding: 15px; display: none;">
 								<div class="wc-block-components-notice-banner__content">
-									! Klicka på din text för att ändra färg!
+									<?php 
+									if($customizer_notice):
+										echo $customizer_notice;
+									else: 
+										_e('! Klicka på din text för att ändra färg!', 'myhat');
+									endif;
+									?>
 								</div>
 							</div>
 						<script>
@@ -500,7 +507,10 @@ if (!$full_customizer) :
 						</div>
 					<?php endif; ?>
 					<?php if(!empty($tax)): ?>
-						<a href="<?php echo get_category_link($tax_id); ?>" class="singleProduct__link"><?php echo 'Se mer från ' . $tax; ?></a>
+						<?php 
+						$tax_prefix = get_field('taxonomy_prefix', 'options');	
+						?>
+						<a href="<?php echo get_category_link($tax_id); ?>" class="singleProduct__link"><?php if($tax_prefix){echo $tax_prefix;}else{_e('Se mer från', 'myhat');} ?> <?php echo $tax; ?></a>
 					<?php endif; ?>
 				</div>
 			</div>
@@ -599,17 +609,10 @@ $link = get_field('related_products_link', 'options');
 				<?php if ($list) : 
 
 				$locale = get_locale();
-
-				$label_select_the_product = 'Select the product';
-				$label_wholesale_discount = 'Wholesale discounts';
-
-				if ($locale == 'sv_SE') :
-					$label_select_the_product = 'Välj produkt';
-					$label_wholesale_discount = 'Mängdrabatt';
-				endif;
-					
-					
-					?>
+				
+				$label_select_the_product = get_field('select_product_label', 'options');
+				$label_wholesale_discount = get_field('wholesale_discount_label', 'options');
+				?>
 
 					
 
@@ -619,12 +622,12 @@ $link = get_field('related_products_link', 'options');
 				
 					<div class="product-select product-select--trigger">
 						<span class="fpd-nav-icon fpd-icon-grid"></span>
-						<span class="fpd-label"><?php echo $label_select_the_product;?></span>
+						<span class="fpd-label"><?php if($label_select_the_product){echo $label_select_the_product;}else{_e('Select the product', 'myhat');} ?></span>
 					</div>
 
 					<div class="product-select product-select--price-discount">
 						<span class="fpd-nav-icon fpd-icon-grid"></span>
-						<span class="fpd-label"><?php echo $label_wholesale_discount;?></span>
+						<span class="fpd-label"><?php if($label_wholesale_discount){echo $label_wholesale_discount;}else{_e('Wholesale discounts', 'myhat');} ?></span>
 					</div>
 					
 				</div>
@@ -696,7 +699,10 @@ $link = get_field('related_products_link', 'options');
 					}
 					
 				</style>
-				
+				<?php 
+				$qty_label = get_field('quantity_label', 'options');
+				$discount_label = get_field('discount_label', 'options');
+				?>
 				<div class="product-select--price-discount-block">
 					<div class="wcbv-discounts-table" bis_skin_checked="1">
 									<div class="wcbv-variation-desc" bis_skin_checked="1">
@@ -704,8 +710,8 @@ $link = get_field('related_products_link', 'options');
 					<div class="wcbv-discount-rules" bis_skin_checked="1">
 
 						<div class="wcbv-head" bis_skin_checked="1">
-							<div bis_skin_checked="1">QTY</div>
-							<div bis_skin_checked="1">Discount</div>
+							<div bis_skin_checked="1"><?php if($qty_label){echo $qty_label;}else{_e('QTY', 'myhat');} ?></div>
+							<div bis_skin_checked="1"><?php if($discount_label){echo $discount_label;}else{_e('Discount', 'myhat');} ?></div>
 						</div>
 
 									<div class="wcbv-discount-rule" bis_skin_checked="1">
@@ -856,10 +862,10 @@ $link = get_field('related_products_link', 'options');
 							</div> <?php 
 							
 						} else { ?>
-						
+							<?php $out_of_stock_label = get_field('out_of_stock_label', 'options'); ?>
 							<div class="singleProduct__purchase" style="align-self: center;">
 
-								<?php echo 'Sorry, the product is out of stock'; ?>
+								<?php if($out_of_stock_label){echo $out_of_stock_label;}else{_e('Sorry, the product is out of stock', 'myhat');} ?>
 							</div>
 						
 						<?php } ?>
