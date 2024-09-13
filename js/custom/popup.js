@@ -23,8 +23,8 @@ jQuery(document).ready(function ($) {
 
     });
 
-    if ($('.product-customizer__wrapper').length && $.trim($('.product-customizer__wrapper').html()) != '') {
-       $('.product-customizer__trigger-wrapper').show();
+    if ($('.product-customizer__wrapper').length && $('.product-customizer__wrapper > *').length > 3) {
+        $('.product-customizer__trigger-wrapper').show();
     }
 
     $(".product-customizer__trigger").on("click", function(){

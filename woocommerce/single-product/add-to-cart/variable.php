@@ -109,7 +109,8 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
             </div>
         </div>
     <?php $customize_label = get_field('customize_button_label', 'options'); ?>
-    <?php if ($wcbv_checked === 'no') : ?>
+
+    <?php if ($wcbv_checked === 'no' || $wcbv_checked === '') : ?>
                     
     
 
