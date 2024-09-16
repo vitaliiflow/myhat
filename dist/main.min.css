@@ -664,6 +664,7 @@ body.single-product:not(.loaded){position:relative}
 .cartAdditionalProduicts__list .slick-dots li button[aria-label="1 of 1"]{display:none}
 .cartAdditionalProduicts__list .slick-dots li.slick-active button{background-color:#000;opacity:1}
 h2.cartAdditionalProduicts__title{margin-bottom:42px;margin-top:0}
+body.woocommerce-cart{min-height:100vh}
 .woocommerce-checkout textarea{border:1px solid rgba(0,0,0,0.1);border-radius:5px;background:transparent}
 .posts_empty_page{height:100vh;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}
 .posts_empty_page .wrapper{height:100vh;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}
