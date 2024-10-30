@@ -14,7 +14,7 @@ function storage_location_of_order_items( $item_id, $item, $product ){
     if( ! ( is_admin() && $item->is_type('line_item') ) ) return;
 
     // Get your ACF product value (replace the slug by yours below)
-    if( $acf_value = get_field( 'lagerplats', $product->get_parent_id() ) ) {
+    if( gettype($product) == 'object' && $acf_value = get_field( 'lagerplats', $product->get_parent_id() ) ) {
         $acf_label = __('Lagerplats: ');
 
         // Outputing the value of the "location storage" for this product item
