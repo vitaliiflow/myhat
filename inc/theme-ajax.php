@@ -724,8 +724,9 @@ function filters_init() {
     <?php 
     if ( (!empty($list_varumarke) && !is_wp_error( $list_varumarke )) || !empty($varumarke) ):
     ?>
+        <?php $varumarke_label = get_field('trademark_filter_label', 'options') ? get_field('trademark_filter_label', 'options') : __( 'VARUMÄRKE', 'woocommerce_custom_text' ); ?>
         <div class="shopPage__filtersRow__listItem <?php if(!empty($varumarke) && $varumarke != ''){ echo ' opened'; } ?>" data-attr-name="varumarke">
-            <div class="shopPage__filtersRow__listItem__title">VARUMÄRKE</div>
+            <div class="shopPage__filtersRow__listItem__title"><?php echo $varumarke_label; ?></div>
             <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($varumarke) && $varumarke != ''){ echo ' style="display:block;"'; } ?>>
                 <div class="shopPage__filtersRow__listItem__sublistItems">
                     <?php if(!empty($varumarke)): ?>
@@ -752,8 +753,9 @@ function filters_init() {
     <?php 
     if ( (!empty($list_storek) && !is_wp_error( $list_storek )) || !empty($storek) ):
     ?>
+        <?php $size_label = get_field('size_filter_label', 'options') ? get_field('size_filter_label', 'options') : __('STORLEK', 'woocommerce_custom_text'); ?>
         <div class="shopPage__filtersRow__listItem<?php if(!empty($storek) && $storek != ''){ echo ' opened'; } ?>" data-attr-name="storek">
-            <div class="shopPage__filtersRow__listItem__title">STORLEK</div>
+            <div class="shopPage__filtersRow__listItem__title"><?php echo $size_label; ?></div>
             <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($storek) && $storek != ''){ echo ' style="display:block;"'; } ?>>
                 <div class="shopPage__filtersRow__listItem__sublistItems">
                     <?php if(!empty($storek)): ?>
@@ -790,9 +792,9 @@ function filters_init() {
     <?php endif; ?>
     <?php 
     if ( (!empty($list_taggar) && !is_wp_error( $list_taggar )) || !empty($taggar) ):
-    ?>
+        $tag_label = get_field('tag_filter_label', 'options') ? get_field('tag_filter_label', 'options') : __('TAGGAR', 'woocommerce_custom_text'); ?>
         <div class="shopPage__filtersRow__listItem<?php if(!empty($taggar) && $taggar != ''){ echo ' opened'; } ?>" data-attr-name="taggar">
-            <div class="shopPage__filtersRow__listItem__title">TAGGAR</div>
+            <div class="shopPage__filtersRow__listItem__title"><?php echo $tag_label; ?></div>
             <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($taggar) && $taggar != ''){ echo ' style="display:block;"'; } ?>>
                 <div class="shopPage__filtersRow__listItem__sublistItems">
                     <?php if(!empty($taggar)): ?>
@@ -818,9 +820,10 @@ function filters_init() {
     <?php endif; ?>
     <?php 
     if ( (!empty($list_color) && !is_wp_error( $list_color )) || !empty($color) ):
+        $paint_label = get_field('paint_filter_label', 'options') ? get_field('paint_filter_label', 'options') : __('FÄRG', 'woocommerce_custom_text');
     ?>
         <div class="shopPage__filtersRow__listItem<?php if(!empty($color) && $color != ''){ echo ' opened'; } ?>" data-attr-name="color">
-            <div class="shopPage__filtersRow__listItem__title">FÄRG</div>
+            <div class="shopPage__filtersRow__listItem__title"><?php echo $paint_label; ?></div>
             <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($color) && $color != ''){ echo ' style="display:block;"'; } ?>>
                 <div class="shopPage__filtersRow__listItem__sublistItems">
                     <?php if(!empty($color)): ?>
@@ -846,9 +849,10 @@ function filters_init() {
     <?php endif; ?>
     <?php 
     if ( (!empty($list_team) && !is_wp_error( $list_team )) || !empty($team) ):
+        $team_label = get_field('team_filter_label', 'options') ? get_field('team_filter_label', 'options') : __('TEAM', 'woocommerce_custom_text');
     ?>
         <div class="shopPage__filtersRow__listItem<?php if(!empty($team) && $team != ''){ echo ' opened'; } ?>" data-attr-name="team">
-            <div class="shopPage__filtersRow__listItem__title">TEAM</div>
+            <div class="shopPage__filtersRow__listItem__title"><?php echo $team_label; ?></div>
             <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($team) && $team != ''){ echo ' style="display:block;"'; } ?>>
                 <div class="shopPage__filtersRow__listItem__sublistItems">
                     <?php if(!empty($team)): ?>
@@ -874,9 +878,10 @@ function filters_init() {
     <?php endif; ?>
     <?php 
     if ( (!empty($list_categories) && !is_wp_error( $list_categories )) || !empty($kategori) ):
+        $cat_label = get_field('category_filter_label', 'options') ? get_field('category_filter_label', 'options') : __('KATEGORI', 'woocommerce_custom_text');
     ?>
         <div class="shopPage__filtersRow__listItem category__item<?php if(!empty($kategori) && $kategori[0] != ''){ echo ' opened'; } ?>" data-attr-name="kategori">
-            <div class="shopPage__filtersRow__listItem__title">KATEGORI</div>
+            <div class="shopPage__filtersRow__listItem__title"><?php echo $cat_label; ?></div>
             <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($kategori) && $kategori[0] != ''){ echo ' style="display:block;"'; } ?>>
                 <div class="shopPage__filtersRow__listItem__sublistItems">
                     <?php if(!empty($kategori) && $kategori[0] != ''): ?>
@@ -1145,8 +1150,9 @@ function changing_filters() {
     <?php 
     if ( (!empty($list_varumarke) && !is_wp_error( $list_varumarke )) || !empty($varumarke) ):
     ?>
+        <?php $varumarke_label = get_field('trademark_filter_label', 'options') ? get_field('trademark_filter_label', 'options') : __( 'VARUMÄRKE', 'woocommerce_custom_text' ); ?>
         <div class="shopPage__filtersRow__listItem<?php if(!empty($openedItems) && is_array($openedItems) && in_array('varumarke',$openedItems)){ echo ' opened'; } ?>" data-attr-name="varumarke">
-            <div class="shopPage__filtersRow__listItem__title">VARUMÄRKE</div>
+            <div class="shopPage__filtersRow__listItem__title"><?php echo $varumarke_label; ?></div>
             <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($openedItems) && is_array($openedItems) && in_array('varumarke',$openedItems)){ echo '  style="display: block;"'; } ?>>
                 <div class="shopPage__filtersRow__listItem__sublistItems">
                     <?php if(!empty($varumarke)): ?>
@@ -1173,8 +1179,9 @@ function changing_filters() {
     <?php 
     if ( (!empty($list_storek) && !is_wp_error( $list_storek )) || !empty($storek) ):
     ?>
+        <?php $size_label = get_field('size_filter_label', 'options') ? get_field('size_filter_label', 'options') : __('STORLEK', 'woocommerce_custom_text'); ?>
         <div class="shopPage__filtersRow__listItem<?php if(!empty($openedItems) && is_array($openedItems) && in_array('storek',$openedItems)){ echo ' opened'; } ?>" data-attr-name="storek">
-            <div class="shopPage__filtersRow__listItem__title">STORLEK</div>
+            <div class="shopPage__filtersRow__listItem__title"><?php echo $size_label; ?></div>
             <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($openedItems) && is_array($openedItems) && in_array('storek',$openedItems)){ echo '  style="display: block;"'; } ?>>
                 <div class="shopPage__filtersRow__listItem__sublistItems">
                     <?php if(!empty($storek)): ?>
@@ -1211,9 +1218,9 @@ function changing_filters() {
     <?php endif; ?>
     <?php 
     if ( (!empty($list_taggar) && !is_wp_error( $list_taggar )) || !empty($taggar) ):
-    ?>
+        $tag_label = get_field('tag_filter_label', 'options') ? get_field('tag_filter_label', 'options') : __('TAGGAR', 'woocommerce_custom_text'); ?>
         <div class="shopPage__filtersRow__listItem<?php if(!empty($openedItems) && is_array($openedItems) && in_array('taggar',$openedItems)){ echo ' opened'; } ?>" data-attr-name="taggar">
-            <div class="shopPage__filtersRow__listItem__title">TAGGAR</div>
+            <div class="shopPage__filtersRow__listItem__title"><?php echo $tag_label; ?></div>
             <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($openedItems) && is_array($openedItems) && in_array('taggar',$openedItems)){ echo '  style="display: block;"'; } ?>>
                 <div class="shopPage__filtersRow__listItem__sublistItems">
                     <?php if(!empty($taggar)): ?>
@@ -1239,9 +1246,10 @@ function changing_filters() {
     <?php endif; ?>
     <?php 
     if ( (!empty($list_color) && !is_wp_error( $list_color )) || !empty($color) ):
+        $paint_label = get_field('paint_filter_label', 'options') ? get_field('paint_filter_label', 'options') : __('FÄRG', 'woocommerce_custom_text');
     ?>
         <div class="shopPage__filtersRow__listItem<?php if(!empty($openedItems) && is_array($openedItems) && in_array('color',$openedItems)){ echo ' opened'; } ?>" data-attr-name="color">
-            <div class="shopPage__filtersRow__listItem__title">FÄRG</div>
+            <div class="shopPage__filtersRow__listItem__title"><?php echo $paint_label; ?></div>
             <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($openedItems) && is_array($openedItems) && in_array('color',$openedItems)){ echo ' style="display:block;"'; } ?>>
                 <div class="shopPage__filtersRow__listItem__sublistItems">
                     <?php if(!empty($color)): ?>
@@ -1267,9 +1275,10 @@ function changing_filters() {
     <?php endif; ?>
     <?php 
     if ( (!empty($list_team) && !is_wp_error( $list_team )) || !empty($team) ):
+        $team_label = get_field('team_filter_label', 'options') ? get_field('team_filter_label', 'options') : __('TEAM', 'woocommerce_custom_text');
     ?>
         <div class="shopPage__filtersRow__listItem<?php if(!empty($openedItems) && is_array($openedItems) && in_array('team',$openedItems)){ echo ' opened'; } ?>" data-attr-name="team">
-            <div class="shopPage__filtersRow__listItem__title">TEAM</div>
+            <div class="shopPage__filtersRow__listItem__title"><?php echo $team_label; ?></div>
             <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($openedItems) && is_array($openedItems) && in_array('team',$openedItems)){ echo ' style="display:block;"'; } ?>>
                 <div class="shopPage__filtersRow__listItem__sublistItems">
                     <?php if(!empty($team)): ?>
@@ -1295,9 +1304,10 @@ function changing_filters() {
     <?php endif; ?>
     <?php 
     if ( (!empty($list_categories) && !is_wp_error( $list_categories )) || !empty($kategori) ):
+        $cat_label = get_field('category_filter_label', 'options') ? get_field('category_filter_label', 'options') : __('KATEGORI', 'woocommerce_custom_text');
     ?>
         <div class="shopPage__filtersRow__listItem category__item<?php if(!empty($openedItems) && is_array($openedItems) && in_array('kategori',$openedItems)){ echo ' opened'; } ?>" data-attr-name="kategori">
-            <div class="shopPage__filtersRow__listItem__title">KATEGORI</div>
+            <div class="shopPage__filtersRow__listItem__title"><?php echo $cat_label; ?></div>
             <div class="shopPage__filtersRow__listItem__sublist"<?php if(!empty($openedItems) && is_array($openedItems) && in_array('kategori',$openedItems)){ echo ' style="display:block;"'; } ?>>
                 <div class="shopPage__filtersRow__listItem__sublistItems">
                     <?php if(!empty($kategori) && $kategori[0] != ''): ?>
@@ -1418,8 +1428,9 @@ function breadcrumbs_changing() { ?>
         $term_id = get_term_by( 'slug', $categories, $taxonomy );
 
         $term_parents = get_term_parents_list($term_id->term_id, $taxonomy);
+        $varumarke_label = get_field('trademark_filter_label', 'options') ? get_field('trademark_filter_label', 'options') : __( 'VARUMÄRKE', 'woocommerce_custom_text' );
 
-        echo '<a href="' . get_home_url() . '">Hem</a> / ' . _e('Varumärken', 'custom_woocommerce_text') . ' / ' . $term_parents;     
+        echo '<a href="' . get_home_url() . '">Hem</a> / ' . $varumarke_label . ' / ' . $term_parents;     
     } else {
 
 

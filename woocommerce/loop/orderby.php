@@ -127,9 +127,10 @@ if(empty($_GET['orderby'])){
                 <div class="shopPage__filtersRow__listClose mobile-toggler refreshed"></div>
                 <?php 
                 if ( !empty($varumarke_terms) && !is_wp_error( $varumarke_terms ) ):
+                $varumarke_label = get_field('trademark_filter_label', 'options') ? get_field('trademark_filter_label', 'options') : __( 'VARUMÄRKE', 'woocommerce_custom_text' );
                 ?>
                     <div class="shopPage__filtersRow__listItem" data-attr-name="varumarke">
-                        <div class="shopPage__filtersRow__listItem__title">VARUMÄRKE</div>
+                        <div class="shopPage__filtersRow__listItem__title"><?php echo $varumarke_label; ?></div>
                         <div class="shopPage__filtersRow__listItem__sublist">
                             <div class="shopPage__filtersRow__listItem__sublistItems">
                                 <?php foreach($varumarke_terms as $term): ?>
@@ -151,9 +152,9 @@ if(empty($_GET['orderby'])){
                 <?php endif; ?>
                 <?php 
                 if ( !empty($pa_storlek) && !is_wp_error( $pa_storlek ) ):
-                ?>
+                    $size_label = get_field('size_filter_label', 'options') ? get_field('size_filter_label', 'options') : __('STORLEK', 'woocommerce_custom_text'); ?>
                     <div class="shopPage__filtersRow__listItem" data-attr-name="storek">
-                        <div class="shopPage__filtersRow__listItem__title">STORLEK</div>
+                        <div class="shopPage__filtersRow__listItem__title"><?php echo $size_label; ?></div>
                         <div class="shopPage__filtersRow__listItem__sublist">
                             <div class="shopPage__filtersRow__listItem__sublistItems">
                                 <?php foreach($pa_storlek as $term): ?>
@@ -168,9 +169,9 @@ if(empty($_GET['orderby'])){
                 <?php endif; ?>
                 <?php 
                 if ( !empty($tags) && !is_wp_error( $tags ) ):
-                ?>
+                $tag_label = get_field('tag_filter_label', 'options') ? get_field('tag_filter_label', 'options') : __('TAGGAR', 'woocommerce_custom_text'); ?>
                     <div class="shopPage__filtersRow__listItem" data-attr-name="taggar">
-                        <div class="shopPage__filtersRow__listItem__title">TAGGAR</div>
+                        <div class="shopPage__filtersRow__listItem__title"><?php echo $tag_label; ?></div>
                         <div class="shopPage__filtersRow__listItem__sublist">
                             <div class="shopPage__filtersRow__listItem__sublistItems">
                                 <?php foreach($tags as $term): ?>
@@ -185,9 +186,10 @@ if(empty($_GET['orderby'])){
                 <?php endif; ?>
                 <?php 
                 if ( !empty($color) && !is_wp_error( $color ) ):
+                    $paint_label = get_field('paint_filter_label', 'options') ? get_field('paint_filter_label', 'options') : __('FÄRG', 'woocommerce_custom_text');
                 ?>
                     <div class="shopPage__filtersRow__listItem" data-attr-name="color">
-                        <div class="shopPage__filtersRow__listItem__title">FÄRG</div>
+                        <div class="shopPage__filtersRow__listItem__title"><?php echo $paint_label; ?></div>
                         <div class="shopPage__filtersRow__listItem__sublist">
                             <div class="shopPage__filtersRow__listItem__sublistItems">
                                 <?php foreach($color as $term): ?>
@@ -202,9 +204,10 @@ if(empty($_GET['orderby'])){
                 <?php endif; ?>
                 <?php 
                 if ( !empty($team) && !is_wp_error( $team ) ):
+                    $team_label = get_field('team_filter_label', 'options') ? get_field('team_filter_label', 'options') : __('TEAM', 'woocommerce_custom_text');
                 ?>
                     <div class="shopPage__filtersRow__listItem" data-attr-name="team">
-                        <div class="shopPage__filtersRow__listItem__title">TEAM</div>
+                        <div class="shopPage__filtersRow__listItem__title"><?php echo $team_label; ?></div>
                         <div class="shopPage__filtersRow__listItem__sublist">
                             <div class="shopPage__filtersRow__listItem__sublistItems">
                                 <?php foreach($team as $term): ?>
@@ -219,9 +222,10 @@ if(empty($_GET['orderby'])){
                 <?php endif; ?>
                 <?php 
                 if ( !empty($categories) && !is_wp_error( $categories ) ):
+                    $cat_label = get_field('category_filter_label', 'options') ? get_field('category_filter_label', 'options') : __('KATEGORI', 'woocommerce_custom_text');
                 ?>
                     <div class="shopPage__filtersRow__listItem" data-attr-name="kategori">
-                        <div class="shopPage__filtersRow__listItem__title">KATEGORI</div>
+                        <div class="shopPage__filtersRow__listItem__title"><?php echo $cat_label; ?></div>
                         <div class="shopPage__filtersRow__listItem__sublist">
                             <div class="shopPage__filtersRow__listItem__sublistItems">
                                 <?php foreach($categories as $term): ?>

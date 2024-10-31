@@ -22,7 +22,7 @@ $min_free_shipping_price = get_field('cart_free_shipping_min_price', 'options');
 $label_remaining_till_free_shipping = get_field('label_remaining_till_free_shipping','option');
 $label_grand_total = get_field('label_grand_total','option');
 $label_go_to_checkout = get_field('label_go_to_checkout','option');
-$label_keep_shopping = get_field('label_add_discount_code$label_keep_shopping','option');
+$label_keep_shopping = get_field('label_keep_shopping','option');
 
 
 ?>

@@ -305,10 +305,11 @@ $searchText=get_search_query();
                         <div class="shopPage__filtersRow__listWrapper">
                             <div class="shopPage__filtersRow__listClose mobile-toggler refreshed"></div>
                             <?php 
+                            $varumarke_label = get_field('trademark_filter_label', 'options') ? get_field('trademark_filter_label', 'options') : __( 'VARUMÄRKE', 'woocommerce_custom_text' );
                             if ( (!empty($list_varumarke) && !is_wp_error( $list_varumarke )) || (sizeof($varumarke) > 1 || $varumarke[0] != '') ):
                             ?>
                                 <div class="shopPage__filtersRow__listItem" data-attr-name="varumarke">
-                                    <div class="shopPage__filtersRow__listItem__title">VARUMÄRKE</div>
+                                    <div class="shopPage__filtersRow__listItem__title"><?php echo $varumarke_label; ?></div>
                                     <div class="shopPage__filtersRow__listItem__sublist">
                                         <div class="shopPage__filtersRow__listItem__sublistItems">
                                             <?php if((sizeof($varumarke) > 1 || $varumarke[0] != '')): ?>
@@ -335,8 +336,9 @@ $searchText=get_search_query();
                             <?php 
                             if ( (!empty($list_storek) && !is_wp_error( $list_storek )) || (sizeof($storek) > 1 || $storek[0] != '') ):
                             ?>
+                                <?php $size_label = get_field('size_filter_label', 'options') ? get_field('size_filter_label', 'options') : __('STORLEK', 'woocommerce_custom_text'); ?>
                                 <div class="shopPage__filtersRow__listItem" data-attr-name="storek">
-                                    <div class="shopPage__filtersRow__listItem__title">STORLEK</div>
+                                    <div class="shopPage__filtersRow__listItem__title"><?php echo $size_label; ?></div>
                                     <div class="shopPage__filtersRow__listItem__sublist">
                                         <div class="shopPage__filtersRow__listItem__sublistItems">
                                             <?php if((sizeof($storek) > 1 || $storek[0] != '')): ?>
@@ -362,9 +364,9 @@ $searchText=get_search_query();
                             <?php endif; ?>
                             <?php 
                             if ( (!empty($list_taggar) && !is_wp_error( $list_taggar )) || (sizeof($taggar) > 1 || $taggar[0] != '') ):
-                            ?>
+                                $tag_label = get_field('tag_filter_label', 'options') ? get_field('tag_filter_label', 'options') : __('TAGGAR', 'woocommerce_custom_text'); ?>
                                 <div class="shopPage__filtersRow__listItem" data-attr-name="taggar">
-                                    <div class="shopPage__filtersRow__listItem__title">TAGGAR</div>
+                                    <div class="shopPage__filtersRow__listItem__title"><?php echo $tag_label; ?></div>
                                     <div class="shopPage__filtersRow__listItem__sublist">
                                         <div class="shopPage__filtersRow__listItem__sublistItems">
                                             <?php if((sizeof($taggar) > 1 || $taggar[0] != '')): ?>
@@ -390,9 +392,10 @@ $searchText=get_search_query();
                             <?php endif; ?>
                             <?php 
                             if ( (!empty($list_color) && !is_wp_error( $list_color )) || (sizeof($color) > 1 || $color[0] != '') ):
+                            $paint_label = get_field('paint_filter_label', 'options') ? get_field('paint_filter_label', 'options') : __('FÄRG', 'woocommerce_custom_text');
                             ?>
                                 <div class="shopPage__filtersRow__listItem" data-attr-name="color">
-                                    <div class="shopPage__filtersRow__listItem__title">FÄRG</div>
+                                    <div class="shopPage__filtersRow__listItem__title"><?php echo $paint_label; ?></div>
                                     <div class="shopPage__filtersRow__listItem__sublist">
                                         <div class="shopPage__filtersRow__listItem__sublistItems">
                                             <?php if((sizeof($color) > 1 || $color[0] != '')): ?>
@@ -418,9 +421,10 @@ $searchText=get_search_query();
                             <?php endif; ?>
                             <?php 
                             if ( (!empty($list_team) && !is_wp_error( $list_team )) || (sizeof($team) > 1 || $team[0] != '') ):
+                                $team_label = get_field('team_filter_label', 'options') ? get_field('team_filter_label', 'options') : __('TEAM', 'woocommerce_custom_text');
                             ?>
                                 <div class="shopPage__filtersRow__listItem" data-attr-name="team">
-                                    <div class="shopPage__filtersRow__listItem__title">TEAM</div>
+                                    <div class="shopPage__filtersRow__listItem__title"><?php echo $team_label; ?></div>
                                     <div class="shopPage__filtersRow__listItem__sublist">
                                         <div class="shopPage__filtersRow__listItem__sublistItems">
                                             <?php if((sizeof($team) > 1 || $team[0] != '')): ?>
@@ -446,9 +450,10 @@ $searchText=get_search_query();
                             <?php endif; ?>
                             <?php 
                             if ( (!empty($list_categories) && !is_wp_error( $list_categories )) || (sizeof($kategori) > 1 || $kategori[0] != '') ):
+                                $cat_label = get_field('category_filter_label', 'options') ? get_field('category_filter_label', 'options') : __('KATEGORI', 'woocommerce_custom_text');
                             ?>
                                 <div class="shopPage__filtersRow__listItem" data-attr-name="kategori">
-                                    <div class="shopPage__filtersRow__listItem__title"><?php _e('KATEGORI', 'woocommerce_custom_text'); ?></div>
+                                    <div class="shopPage__filtersRow__listItem__title"><?php echo $cat_label; ?></div>
                                     <div class="shopPage__filtersRow__listItem__sublist">
                                         <div class="shopPage__filtersRow__listItem__sublistItems">
                                             <?php if((sizeof($kategori) > 1 || $kategori[0] != '')): ?>
