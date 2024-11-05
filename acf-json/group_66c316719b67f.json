@@ -397,6 +397,26 @@
             "append": ""
         },
         {
+            "key": "field_6723c411a0a59",
+            "label": "Customizer flag btn label",
+            "name": "customizer_flag_btn_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_6723a8d2908a7",
             "label": "Shop",
             "name": "",
@@ -552,5 +572,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1730390359
+    "modified": 1730397227
 }

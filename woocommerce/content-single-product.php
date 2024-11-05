@@ -107,6 +107,7 @@ if (!$full_customizer) :
 
 
 </style>
+<?php $customizer_btn_label = get_field('customizer_flag_btn_label', 'options') ? get_field('customizer_flag_btn_label', 'options') : __('Flaggor och patchar.', 'wooocmmerce_custom_text'); ?>
 <script>
 
 	
@@ -123,7 +124,7 @@ if (!$full_customizer) :
 			// Iterate through each target element and append the new div if it doesn't already exist
 			targetElements.each(function() {
 				if (jQuery(this).find('.pathes-tab-trigger').length === 0) {
-					var newDiv = jQuery('<div>Flaggor och patchar.</div>').addClass('pathes-tab-trigger fpd-btn'); // Replace 'your-class' with the desired class
+					var newDiv = jQuery('<div><?php echo $customizer_btn_label; ?></div>').addClass('pathes-tab-trigger fpd-btn'); // Replace 'your-class' with the desired class
 					jQuery(this).append(newDiv);
 				}
 			});
