@@ -1080,7 +1080,7 @@ jQuery(document).ready(function ($) {
     sizeLabel = 'pa_storlek';
   } else if ($('html').attr('lang') == "nb-NO") {
     sizeLabel = 'pa_storrelse';
-  } else if ($('html').attr('lang') == "de-DE") {
+  } else if ($('html').attr('lang') == "de") {
     sizeLabel = 'pa_groesse';
   } else if ($('html').attr('lang') == "da-DK") {
     sizeLabel = 'pa_stoerrelse';
@@ -1088,6 +1088,7 @@ jQuery(document).ready(function ($) {
     sizeLabel = 'pa_koko';
   }
   setTimeout(function () {
+    console.log($(".variations #".concat(sizeLabel, " option")).length);
     if ($(".variations #".concat(sizeLabel, " option")).length > 0) {
       var itemsContent = '',
         i = 0;
