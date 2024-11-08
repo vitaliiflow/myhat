@@ -919,10 +919,14 @@ function filters_init() {
             </div>
         </div>
     <?php endif; ?>
+    <?php 
+    $reset_label = get_field('filters_reset_button_label', 'options') ? get_field('filters_reset_button_label', 'options') : __('Rensa filter', 'woocommecre_custom_text');
+    $apply_label = get_field('filters_apply_button_label', 'options') ? get_field('filters_apply_button_label', 'options') : __('APPLY', 'woocommecre_custom_text');
+    ?>
     <div class="shopPage__filtersRow__list__apply">
-        <div class="btn button--black">APPLY</div>
+        <div class="btn button--black"><?php echo $apply_label; ?></div>
     </div>
-    <div class="shopPage__filtersRow__list__clear<?php if($clear){ echo ' show'; } ?>">Rensa filter</div>
+    <div class="shopPage__filtersRow__list__clear<?php if($clear){ echo ' show'; } ?>"><?php echo $reset_label; ?></div>
     
     <?php die();
 }
@@ -1346,10 +1350,14 @@ function changing_filters() {
             </div>
         </div>
     <?php endif; ?>
+    <?php 
+    $reset_label = get_field('filters_reset_button_label', 'options') ? get_field('filters_reset_button_label', 'options') : __('Rensa filter', 'woocommecre_custom_text');
+    $apply_label = get_field('filters_apply_button_label', 'options') ? get_field('filters_apply_button_label', 'options') : __('APPLY', 'woocommecre_custom_text');
+    ?>
     <div class="shopPage__filtersRow__list__apply">
-        <div class="btn button--black">APPLY</div>
+        <div class="btn button--black"><?php echo $apply_label; ?></div>
     </div>
-    <div class="shopPage__filtersRow__list__clear<?php if($clear){ echo ' show'; } ?>">Rensa filter</div>
+    <div class="shopPage__filtersRow__list__clear<?php if($clear){ echo ' show'; } ?>"><?php echo $reset_label; ?></div>
     
     <?php die();
 }

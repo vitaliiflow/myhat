@@ -1021,7 +1021,7 @@ body .woocommerce-message a.button{color:#fff;background:#000;border-radius:0;fo
 .wc-block-components-notice-banner__content{-webkit-box-flex:1;-ms-flex:1 1 auto;flex:1 1 auto;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end}
 .wc-block-components-notice-banner__content a{width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;margin:0;margin-left:15px}
 .product-customizer__trigger-wrapper{display:none}
-.fpd-container .fpd-btn,.fpd-modal-inner .fpd-btn{background-color:#000;border-radius:0;padding:16px 36px;display:block;text-align:center;text-transform:capitalize}
+.fpd-container .fpd-btn,.fpd-modal-inner .fpd-btn{background-color:#000;border-radius:0;padding:16px 36px;display:block;text-align:center;text-transform:none}
 .wcbv-discounts-table{padding:0 15px}
 .wac-qty-button{display:inline;text-decoration:none !important;font-weight:bold;width:30px;color:#808b94;border:1px solid lightgray;-webkit-box-sizing:border-box;box-sizing:border-box;padding:5px}
 .wac-quantity{width:100%;font-weight:bold}

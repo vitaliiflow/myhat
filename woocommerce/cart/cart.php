@@ -161,6 +161,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 	<?php do_action( 'woocommerce_after_cart_table' ); ?>
 </form>
 <?php 
+$additional_products_title = get_field('additional_products_title', 'options') ? get_field('additional_products_title', 'options') : __('Förslag för dig', 'woocommerce_custom_text');
 $cross_sells = WC()->cart->get_cross_sells();
 $args = array(
     'post_type'      => 'product',
@@ -172,7 +173,7 @@ $the_query = new WP_Query($args);
 if($the_query->have_posts()):
 ?>
 	<div class="cartAdditionalProduicts">
-		<h2 class="cartAdditionalProduicts__title"><?php _e('Förslag för dig', 'woocommerce_custom_text'); ?></h2>
+		<h2 class="cartAdditionalProduicts__title"><?php echo $additional_products_title; ?></h2>
 		<div class="cartAdditionalProduicts__list">
 			<?php while($the_query->have_posts()): $the_query->the_post(); ?>
 				<div class="shopPage__listItem">

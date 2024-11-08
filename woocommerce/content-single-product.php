@@ -107,7 +107,10 @@ if (!$full_customizer) :
 
 
 </style>
-<?php $customizer_btn_label = get_field('customizer_flag_btn_label', 'options') ? get_field('customizer_flag_btn_label', 'options') : __('Flaggor och patchar.', 'wooocmmerce_custom_text'); ?>
+<?php 
+$customizer_btn_label = get_field('customizer_flag_btn_label', 'options') ? get_field('customizer_flag_btn_label', 'options') : __('Flaggor och patchar.', 'wooocmmerce_custom_text'); 
+$addTextBtn = get_field('customizer_add_text_btn_label', 'options') ? get_field('customizer_add_text_btn_label', 'options') : __('Add Text', 'wooocmmerce_custom_text');
+?>
 <script>
 
 	
@@ -119,6 +122,12 @@ if (!$full_customizer) :
 		jQuery(document).on("click", ".product-customizer__trigger-wrapper", function () {
 
 			// Select all target elements where you want to append the div
+			const addTextBtn = jQuery('.fpd-add-text .fpd-btn > span:not(.fpd-price)');
+
+			addTextBtn.each(function(){
+				jQuery(this).html('<?php echo $addTextBtn; ?>');
+			})
+
 			var targetElements = jQuery('.fpd-text-templates'); // Replace with your target elements selector
 
 			// Iterate through each target element and append the new div if it doesn't already exist
